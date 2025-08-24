@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "project/Dataset-Topics.html",
+    "href": "project/Dataset-Topics.html",
+    "title": "Project Dataset and Topics",
+    "section": "",
+    "text": "Link to dataset\nThings you plan to investigate using this dataset:\n\nThing 1\nThing 2\nThing 3\n\nStat 251 topics you plan to cover during the analysis:\n\nTopic 1\nTopic 2\nTopic 3\nTopic 4"
+  },
+  {
+    "objectID": "project/index.html",
+    "href": "project/index.html",
+    "title": "Project: Screencast",
+    "section": "",
+    "text": "Project Description\nFor your final project (which will take the place of the final exam), you will be recording a screencast in the style of David Robinson’s TidyTuesday screencasts.\nYou can find time-stamped, catalogued versions of some of David Robinson’s screencasts here.\nRequirements:\n\nYour screencast should be approximately 45 minutes long.\nYour screencast should show your analysis of a TidyTuesday dataset from 2023\nYou should showcase at least 4 different techniques you’ve learned in Stat 251. Some examples include:\n\ndata cleaning (dplyr) verbs\nreshaping data (tidyr)\nworking with dates and times (lubridate)\nworking with strings (stringr)\nwriting functions to modularize your code\nvisualizing your data effectively\n\n\nUnlike David Robinson’s screencasts, you will write a rough pseudocode “script” before you start recording. This will give you a rough outline of how to do the analysis and what things you intend to cover.\nYour goal is to help a future Stat 251 student understand some of the topics covered in this class. So while David Robinson and others who record their screencasts live might not fully explain what he’s doing, you should take the time to explain each technique you decide to use in a way that will help someone else understand.\nThere will be three deliverables for this project:\n\nPlan your dataset and topics\nPseudocode script uploaded to github repository\nScreencast + github repository\n\nScreencast uploaded to YouTube/YuJa\nApproximate time index provided for each of the 4 techniques you’re demonstrating (examples)\nCode uploaded to github repository\n\n\nIn lieu of the final exam, you will peer review two classmates’ screencasts."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Stat 471 - Analysis of Messy Data",
+    "section": "",
+    "text": "Fall 2025\nTR 3:30 - 4:45 pm, Canvas\nOffice Hours: by appointment\nInstructor: Heike Hofmann, hhofmann4 at unl dot edu\n\n\n\nCourse description\n\nAnalysis of complex, real-world data sets. Analysis techniques will vary depending on interest and availability of data sets.\n\nNot all data lives in nice, clean spreadsheets, not all data fits in a computer’s main memory. As statisticians we cannot always rely on other people and sciences to get the data into formats that we can deal with: we will discuss aspects of statistical computing as they are relevant for data analysis. Elements of literate programming help us with making our workflow transparent and analyses reproducible. We will discuss communication of results in form of web sites and interactive web applications.\n\n\nLearn how to …\n\ncompute with data to check the quality,\nimpute missing values, wrangle data formats, and join data sources.\nwrite efficient and reproducible code so others are able to replicate the analysis.\npull data together to solve a contemporary problem.\nuse LLM bots to assess their helpfulness in different situations\npublish reports on the web\n\n\n\nMore Info …\nThe course organization on GitHub: https://github.com/stat471-at-UNL/stat471-at-UNL.github.io\nRepo that creates this website: https://github.com/stat471-at-UNL/materials-2025"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/01-tidy-data.html",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/01-tidy-data.html",
+    "title": "What is tidy data?",
+    "section": "",
+    "text": "https://r4ds.had.co.nz/tidy-data.html"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html",
+    "title": "Homework 6: Data Manipulation",
+    "section": "",
+    "text": "Note: This assignment must be submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 0 - Setting up/00-about.html#welcome-to-stat-471",
+    "href": "materials-2025/Module 0 - Setting up/00-about.html#welcome-to-stat-471",
+    "title": "About this class",
+    "section": "Welcome to Stat 471",
+    "text": "Welcome to Stat 471"
+  },
+  {
+    "objectID": "materials-2025/Module 0 - Setting up/01-installations.html",
+    "href": "materials-2025/Module 0 - Setting up/01-installations.html",
+    "title": "R, RStudio, git",
+    "section": "",
+    "text": "How current"
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/10-datetime.html",
+    "href": "materials-2025/Module 2 - Data cleaning/10-datetime.html",
+    "title": "Homework 10: Dates and Times",
+    "section": "",
+    "text": "Note: This assignment must be submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/07-strings.html",
+    "href": "materials-2025/Module 2 - Data cleaning/07-strings.html",
+    "title": "Homework 7: Strings",
+    "section": "",
+    "text": "Note: This assignment must be submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html",
+    "href": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html",
+    "title": "Homework 0 Setup A: Git and Github",
+    "section": "",
+    "text": "Note: This assignment must be submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#todo-items",
+    "href": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#todo-items",
+    "title": "Homework 0 Setup A: Git and Github",
+    "section": "📝 Todo Items",
+    "text": "📝 Todo Items\n\nClone this repository to your local machine\nOn your local machine, create a new markdown file in this repository named ‘About_Me.md’.\nIn the file ‘About_Me.md’ include either a or b:\n\n\na short biography/introduction for yourself and use markdown formatting - Markdown Basics provides an overview of different formatting options in markdown. - You must use at least the following formatting elements: header, subheader, bold or italic, bulleted list, and an image.\nprovide a link to your portfolio (hosted on github) that includes all of the above items.\n\n\nCommit your changes to your new file locally and push them back to your github repository. Check on Github to make sure the new file appears."
+  },
+  {
+    "objectID": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#resources",
+    "href": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#resources",
+    "title": "Homework 0 Setup A: Git and Github",
+    "section": "📚 Resources",
+    "text": "📚 Resources\n\nA short video explaining what GitHub is\nGit and GitHub learning resources\nUnderstanding the GitHub flow\nInteractive Git training materials\nGitHub’s Learning Lab\nEducation community forum\nGitHub community forum"
+  },
+  {
+    "objectID": "materials-2025/Module 0 - Setting up/03-hwk-rstudio-git.html",
+    "href": "materials-2025/Module 0 - Setting up/03-hwk-rstudio-git.html",
+    "title": "Homework 0: Setup B",
+    "section": "",
+    "text": "Note: This assignment must be submitted in github classroom.\n\n\nConnecting-RStudio-and-Git-Github\n\nClone this repository to your local machine\nOpen RStudio using the project file Connecting-RStudio-and-Git-Github.Rproj\nOpen the file README.Rmd\nMake sure that the following code chunks run successfully\n\n\nLoad Packages …\nVersions\n\n\nRun the code chunk 'versions' at least once successfully.\n\nConnection to git\n\n\nRun the code chunk 'gitconnection' at least once successfully.\n\nCreate the README.md file by rendering the README.Rmd file\nCheck the resulting README.md file:\n\nis your version of R (relatively) current? (most current: 4.5.1)\nis your RStudio version from this year?\nis your version of git (relatively) current? (most current: 2.51.0)\n\nIf any of your answers above is ‘no’ install a newer version.\n\nDo you have push and pull access to the Git repository?\n\nIf not, make sure that you have followed all of the steps laid out in chapter 12 of Jenny Bryan’s “Happy Git and GitHub for the useR”\nCommit and push all changed files to Github classroom.\nYour done!"
+  },
+  {
+    "objectID": "materials-2025/Module 4 - Joining data from different sources/09-join.html",
+    "href": "materials-2025/Module 4 - Joining data from different sources/09-join.html",
+    "title": "Homework 9: Joining Data",
+    "section": "",
+    "text": "Note: This assignment must be submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/03-normalizing-data.html",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/03-normalizing-data.html",
+    "title": "Homework 8: Reshaping Data",
+    "section": "",
+    "text": "Note: This assignment must be submitted in github classroom."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Stat 471: Analysis of Messy Data",
+    "section": "",
+    "text": "Course Materials\nDates shown are due dates (for assignments and exams) and dates on which material was presented (for slides).\n\n\n\n\n\n\nModule 0: Setting up the work environment\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nAbout this class\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nR, RStudio, git\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nHomework 0 Setup A: Git and Github\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 1, 2025\n\n\nHomework 0: Setup B\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 1: Tidy forms of data\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nMar 3, 2025\n\n\nHomework 6: Data Manipulation\n\n\n \n\n\n\n\n\n\n\n\n\nMar 31, 2025\n\n\nHomework 8: Reshaping Data\n\n\n \n\n\n\n\n\n\n\n\n\nAug 31, 2025\n\n\nWhat is tidy data?\n\n\nslides\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 2: Data Cleaning\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 3: Working with Missing Values\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 4: Record Linkage: joining data from different sources\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nApr 7, 2025\n\n\nHomework 9: Joining Data\n\n\n \n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 5: Working with large data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "project/screencast-checklist.html",
+    "href": "project/screencast-checklist.html",
+    "title": "Screencast Checklist",
+    "section": "",
+    "text": "Screencast uploaded to YouTube/YuJa\n\nIf on YouTube, your screencast should be set so that anyone with the link can view the video.\n\nApproximate time index provided for each of the 4 techniques you’re demonstrating (examples) provided\n\nin the README of your github repository\nin the description of your video (if on YouTube)\n\nCommented code for your screencast uploaded to the github repository"
+  }
+]
