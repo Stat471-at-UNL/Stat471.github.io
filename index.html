@@ -191,9 +191,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-type','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-type','listing-image',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -425,7 +425,7 @@ Type
 
 </tr>
 
-<tr data-index="1" data-categories="V2VlazAx" data-listing-date-sort="1756184400000" data-listing-file-modified-sort="1756170773576" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="107" data-listing-title-sort="R, RStudio, git" data-listing-filename-sort="01-installations.qmd">
+<tr data-index="1" data-categories="V2VlazAx" data-listing-date-sort="1756184400000" data-listing-file-modified-sort="1756225186216" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="213" data-listing-title-sort="R, RStudio, git" data-listing-filename-sort="01-installations.qmd">
 <td>
 <span class="listing-date">Aug 26, 2025</span>
 </td>
@@ -463,6 +463,22 @@ Type
 </td>
 <td>
 <a href="./materials-2025/Module 0 - Setting up/03-hwk-rstudio-git.html" class="title listing-title">Homework 0 Setup B: Connecting RStudio and Git</a>
+</td>
+<td>
+<span class="listing-type">Homework</span>
+</td>
+<td>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-categories="SFclMkNXZWVrMDI=" data-listing-date-sort="1756962000000" data-listing-file-modified-sort="1756225665329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Homework 1: Reproducibility" data-listing-filename-sort="hwk-1-reproducibility.qmd">
+<td>
+<span class="listing-date">Sep 4, 2025</span>
+</td>
+<td>
+<a href="./materials-2025/Module 0 - Setting up/hwk-1-reproducibility.html" class="title listing-title">Homework 1: Reproducibility</a>
 </td>
 <td>
 <span class="listing-type">Homework</span>
@@ -539,7 +555,7 @@ Type
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="V2VlazAx" data-listing-date-sort="1756357200000" data-listing-file-modified-sort="1756170403697" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="377" data-listing-title-sort="What is &quot;Messy Data&quot;?" data-listing-filename-sort="01-tidy-data.qmd">
+<tr data-index="0" data-categories="V2VlazAx" data-listing-date-sort="1756357200000" data-listing-file-modified-sort="1756227472260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="443" data-listing-title-sort="What is &quot;Messy Data&quot;?" data-listing-filename-sort="01-tidy-data.qmd">
 <td>
 <span class="listing-date">Aug 28, 2025</span>
 </td>
@@ -555,7 +571,7 @@ Type
 
 </tr>
 
-<tr data-index="1" data-categories="V2VlazAy" data-listing-date-sort="1756789200000" data-listing-file-modified-sort="1756140981981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11" data-listing-title-sort="Normal Forms of data" data-listing-filename-sort="02-normal-forms.qmd">
+<tr data-index="1" data-categories="V2VlazAy" data-listing-date-sort="1756789200000" data-listing-file-modified-sort="1756233918882" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="534" data-listing-title-sort="Normal Forms of data" data-listing-filename-sort="02-normal-forms.qmd">
 <td>
 <span class="listing-date">Sep 2, 2025</span>
 </td>
@@ -571,7 +587,7 @@ Type
 
 </tr>
 
-<tr data-index="2" data-categories="SFclMkNXZWVrMDI=" data-listing-date-sort="1756789200000" data-listing-file-modified-sort="1756141033860" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Normalizing Data" data-listing-filename-sort="03-normalizing-data.qmd">
+<tr data-index="2" data-categories="SFclMkNXZWVrMDI=" data-listing-date-sort="1756789200000" data-listing-file-modified-sort="1756239318873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="102" data-listing-title-sort="Normalizing Data" data-listing-filename-sort="03-normalizing-data.qmd">
 <td>
 <span class="listing-date">Sep 2, 2025</span>
 </td>
@@ -680,67 +696,21 @@ Module 4: Record Linkage: joining data from different sources
 <div class="callout-body-container callout-body">
 <div id="listing-module_4" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-module_4-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-module_4'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-title-sort" data-direction="asc">
-        Title
-      </option>
-    </select>
-  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-<table class="quarto-listing-table table">
+<table class="quarto-listing-table table caption-top" data-quarto-postprocess="true">
 <thead>
-<tr>
-
-<th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
-
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-
-<th>
-Type
-</th>
-
-<th>
- 
-</th>
-
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Title</th>
+<th data-quarto-table-cell-role="th">Type</th>
+<th data-quarto-table-cell-role="th"></th>
 </tr>
 </thead>
 <tbody class="list">
-
-<tr data-index="0" data-categories="SFclMkNXZWVrMTA=" data-listing-date-sort="1744002000000" data-listing-file-modified-sort="1755878141754" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9" data-listing-title-sort="Homework 9: Joining Data" data-listing-filename-sort="09-join.qmd">
-<td>
-<span class="listing-date">Apr 7, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/Module 4 - Joining data from different sources/09-join.html" class="title listing-title">Homework 9: Joining Data</a>
-</td>
-<td>
-<span class="listing-type">&nbsp;</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>

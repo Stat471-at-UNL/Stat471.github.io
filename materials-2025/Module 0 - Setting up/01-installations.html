@@ -219,6 +219,36 @@ Push rights: YES </code></pre>
 
 <section id="using-ai-tools" class="title-slide slide level1 center">
 <h1>Using AI tools</h1>
+<ul>
+<li><p>We will be using LLMs in this course</p></li>
+<li><p>We need to document any use (save prompt &amp; output)</p></li>
+<li><p>We need to critically assess any output</p></li>
+</ul>
+</section>
+
+<section id="the-problem-with-ais" class="title-slide slide level1 center">
+<h1>The problem with AIs</h1>
+<ul>
+<li><p>non-deterministic (different day, different luck)</p></li>
+<li><p>model updated quietly by providers</p></li>
+<li><p>inconsistent performance, seemingly not related to task difficulty</p></li>
+</ul>
+
+<img data-src="../images/performance-difficulty-blank.png" class="r-stretch"></section>
+
+<section id="perceived-performance-of-ai-tools" class="title-slide slide level1 center">
+<h1>Perceived Performance of AI tools</h1>
+
+<img data-src="../images/performance-difficulty-saw.png" class="r-stretch"></section>
+
+<section id="ai-setup-in-r" class="title-slide slide level1 center">
+<h1>AI Setup in R</h1>
+<ul>
+<li>package <code>ellmer</code> supports integration with most LLM providers</li>
+<li>you will need to sign up for a service (market changes fast - Gemini offers a year of free Gemini Pro, OpenAI gives $18/m credit)</li>
+<li><code>chat &lt;- ellmer::chat_anthropic()</code> opens chat with claude</li>
+<li><code>live_console(chat)</code> uses the console as a chat, exit with <code>Q</code></li>
+</ul>
 
 
 </section>
