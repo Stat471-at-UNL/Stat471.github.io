@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Stat 471 - Analysis of Messy Data – Stat 471</title>
+<title>02-outlier-detection-and-mitigation – Stat 471</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -79,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Stat 471</span>
     </a>
   </div>
@@ -90,15 +125,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./project.html"> 
+    <a class="nav-link" href="../../project.html"> 
 <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
@@ -121,10 +156,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#fall-2025" id="toc-fall-2025" class="nav-link active" data-scroll-target="#fall-2025">Fall 2025</a></li>
-  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description">Course description</a></li>
-  <li><a href="#learn-how-to" id="toc-learn-how-to" class="nav-link" data-scroll-target="#learn-how-to">Learn how to …</a></li>
-  <li><a href="#more-info" id="toc-more-info" class="nav-link" data-scroll-target="#more-info">More Info …</a></li>
+  <li><a href="#diagnostic-tools-for-messy-data" id="toc-diagnostic-tools-for-messy-data" class="nav-link active" data-scroll-target="#diagnostic-tools-for-messy-data">Diagnostic Tools for Messy Data</a>
+  <ul class="collapse">
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization"><strong>Visualization</strong>:</a></li>
+  <li><a href="#outlier-detection" id="toc-outlier-detection" class="nav-link" data-scroll-target="#outlier-detection"><strong>Outlier Detection</strong>:</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -133,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Stat 471 - Analysis of Messy Data</h1>
+<h1 class="title">02-outlier-detection-and-mitigation</h1>
 </div>
 
 
@@ -150,37 +186,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="fall-2025" class="level3">
-<h3 class="anchored" data-anchor-id="fall-2025">Fall 2025</h3>
-<p>TR 3:30 - 4:45 pm, <a href="">Canvas</a></p>
-<p>Office Hours: by appointment</p>
-<p>Instructor: Heike Hofmann, hhofmann4 at unl dot edu</p>
-<p><img src="//imgs.xkcd.com/comics/flawed_data.png" title="We trained it to produce data that looked convincing, and we have to admit the results look convincing!" alt="xkcd cominc: Flawed Data"></p>
+<section id="diagnostic-tools-for-messy-data" class="level2">
+<h2 class="anchored" data-anchor-id="diagnostic-tools-for-messy-data">Diagnostic Tools for Messy Data</h2>
+<section id="visualization" class="level3">
+<h3 class="anchored" data-anchor-id="visualization"><strong>Visualization</strong>:</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(VIM)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>VIM<span class="sc">::</span><span class="fu">aggr</span>(data)          <span class="co"># Missing data patterns</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>VIM<span class="sc">::</span><span class="fu">marginplot</span>(data)    <span class="co"># Missing vs observed</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(data, <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="course-description" class="level3">
-<h3 class="anchored" data-anchor-id="course-description">Course description</h3>
-<blockquote class="blockquote">
-<p>Analysis of complex, real-world data sets. Analysis techniques will vary depending on interest and availability of data sets.</p>
-</blockquote>
-<p>Not all data lives in nice, clean spreadsheets, not all data fits in a computer’s main memory. As statisticians we cannot always rely on other people and sciences to get the data into formats that we can deal with: we will discuss aspects of statistical computing as they are relevant for data analysis. Elements of literate programming help us with making our workflow transparent and analyses reproducible. We will discuss communication of results in form of web sites and interactive web applications.</p>
-</section>
-<section id="learn-how-to" class="level3">
-<h3 class="anchored" data-anchor-id="learn-how-to">Learn how to …</h3>
-<ul>
-<li>compute with data to check the quality,</li>
-<li>impute missing values, wrangle data formats, and join data sources.</li>
-<li>write efficient and reproducible code so others are able to replicate the analysis.</li>
-<li>pull data together to solve a contemporary problem.</li>
-<li>use LLM bots to assess their helpfulness in different situations</li>
-<li>publish reports on the web</li>
-</ul>
-</section>
-<section id="more-info" class="level3">
-<h3 class="anchored" data-anchor-id="more-info">More Info …</h3>
-<p>The course organization on GitHub: <a href="">https://github.com/stat471-at-UNL/stat471-at-UNL.github.io</a></p>
-<p>Repo that creates this website: <a href="https://github.com/stat471-at-UNL/materials-2025">https://github.com/stat471-at-UNL/materials-2025</a></p>
+<section id="outlier-detection" class="level3">
+<h3 class="anchored" data-anchor-id="outlier-detection"><strong>Outlier Detection</strong>:</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(outliers)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MVN)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple methods for identifying problematic observations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Leftovers – Stat 471</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Stat 471</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../project.html"> 
+<span class="menu-text">Project</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://canvas.unl.edu/courses/205501"> 
+<span class="menu-text">Canvas</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-makes-data-messy-statistically" id="toc-what-makes-data-messy-statistically" class="nav-link active" data-scroll-target="#what-makes-data-messy-statistically">What Makes Data “Messy” Statistically</a>
+  <ul class="collapse">
+  <li><a href="#common-messy-data-problems" id="toc-common-messy-data-problems" class="nav-link" data-scroll-target="#common-messy-data-problems"><strong>Common Messy Data Problems</strong>:</a></li>
+  </ul></li>
+  <li><a href="#best-practices-for-messy-data-analysis" id="toc-best-practices-for-messy-data-analysis" class="nav-link" data-scroll-target="#best-practices-for-messy-data-analysis">Best Practices for Messy Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#understand-your-messiness" id="toc-understand-your-messiness" class="nav-link" data-scroll-target="#understand-your-messiness"><strong>1. Understand Your Messiness</strong></a></li>
+  <li><a href="#dont-rush-to-clean" id="toc-dont-rush-to-clean" class="nav-link" data-scroll-target="#dont-rush-to-clean"><strong>2. Don’t Rush to Clean</strong></a></li>
+  <li><a href="#sensitivity-analysis" id="toc-sensitivity-analysis" class="nav-link" data-scroll-target="#sensitivity-analysis"><strong>3. Sensitivity Analysis</strong></a></li>
+  <li><a href="#model-the-mess" id="toc-model-the-mess" class="nav-link" data-scroll-target="#model-the-mess"><strong>4. Model the Mess</strong></a></li>
+  </ul></li>
+  <li><a href="#what-makes-data-analysis-messy" id="toc-what-makes-data-analysis-messy" class="nav-link" data-scroll-target="#what-makes-data-analysis-messy">What Makes Data Analysis “Messy”</a>
+  <ul class="collapse">
+  <li><a href="#non-linear-process" id="toc-non-linear-process" class="nav-link" data-scroll-target="#non-linear-process">1. <strong>Non-linear Process</strong></a></li>
+  <li><a href="#unexpected-discoveries" id="toc-unexpected-discoveries" class="nav-link" data-scroll-target="#unexpected-discoveries">3. <strong>Unexpected Discoveries</strong></a></li>
+  </ul></li>
+  <li><a href="#characteristics-of-messy-analysis" id="toc-characteristics-of-messy-analysis" class="nav-link" data-scroll-target="#characteristics-of-messy-analysis">Characteristics of Messy Analysis</a>
+  <ul class="collapse">
+  <li><a href="#exploratory-iterative" id="toc-exploratory-iterative" class="nav-link" data-scroll-target="#exploratory-iterative"><strong>Exploratory &amp; Iterative</strong></a></li>
+  <li><a href="#problem-driven" id="toc-problem-driven" class="nav-link" data-scroll-target="#problem-driven"><strong>Problem-Driven</strong></a></li>
+  <li><a href="#tool-switching" id="toc-tool-switching" class="nav-link" data-scroll-target="#tool-switching"><strong>Tool-Switching</strong></a></li>
+  <li><a href="#documentation-challenges" id="toc-documentation-challenges" class="nav-link" data-scroll-target="#documentation-challenges"><strong>Documentation Challenges</strong></a></li>
+  </ul></li>
+  <li><a href="#example-of-messy-analysis-flow" id="toc-example-of-messy-analysis-flow" class="nav-link" data-scroll-target="#example-of-messy-analysis-flow">Example of Messy Analysis Flow</a></li>
+  <li><a href="#messy-vs.-tidy" id="toc-messy-vs.-tidy" class="nav-link" data-scroll-target="#messy-vs.-tidy">Messy vs.&nbsp;Tidy</a></li>
+  <li><a href="#embracing-the-mess" id="toc-embracing-the-mess" class="nav-link" data-scroll-target="#embracing-the-mess">Embracing the Mess</a>
+  <ul class="collapse">
+  <li><a href="#good-practices" id="toc-good-practices" class="nav-link" data-scroll-target="#good-practices"><strong>Good Practices</strong>:</a></li>
+  <li><a href="#tools-for-messy-work" id="toc-tools-for-messy-work" class="nav-link" data-scroll-target="#tools-for-messy-work"><strong>Tools for Messy Work</strong>:</a></li>
+  </ul></li>
+  <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters">Why This Matters</a></li>
+  <li><a href="#characteristics-of-messy-data" id="toc-characteristics-of-messy-data" class="nav-link" data-scroll-target="#characteristics-of-messy-data">Characteristics of Messy Data</a>
+  <ul class="collapse">
+  <li><a href="#structural-issues" id="toc-structural-issues" class="nav-link" data-scroll-target="#structural-issues"><strong>1. Structural Issues</strong></a></li>
+  <li><a href="#data-quality-problems" id="toc-data-quality-problems" class="nav-link" data-scroll-target="#data-quality-problems"><strong>2. Data Quality Problems</strong></a></li>
+  <li><a href="#encoding-issues" id="toc-encoding-issues" class="nav-link" data-scroll-target="#encoding-issues"><strong>3. Encoding Issues</strong></a></li>
+  </ul></li>
+  <li><a href="#common-sources-of-messy-data" id="toc-common-sources-of-messy-data" class="nav-link" data-scroll-target="#common-sources-of-messy-data">Common Sources of Messy Data</a>
+  <ul class="collapse">
+  <li><a href="#human-data-entry" id="toc-human-data-entry" class="nav-link" data-scroll-target="#human-data-entry"><strong>Human Data Entry</strong></a></li>
+  <li><a href="#system-integration" id="toc-system-integration" class="nav-link" data-scroll-target="#system-integration"><strong>System Integration</strong></a></li>
+  <li><a href="#excelspreadsheet-features" id="toc-excelspreadsheet-features" class="nav-link" data-scroll-target="#excelspreadsheet-features"><strong>Excel/Spreadsheet “Features”</strong></a></li>
+  <li><a href="#web-scraping" id="toc-web-scraping" class="nav-link" data-scroll-target="#web-scraping"><strong>Web Scraping</strong></a></li>
+  </ul></li>
+  <li><a href="#examples-of-messy-data" id="toc-examples-of-messy-data" class="nav-link" data-scroll-target="#examples-of-messy-data">Examples of Messy Data</a>
+  <ul class="collapse">
+  <li><a href="#wide-format-should-be-long" id="toc-wide-format-should-be-long" class="nav-link" data-scroll-target="#wide-format-should-be-long"><strong>Wide Format (Should be Long)</strong></a></li>
+  <li><a href="#multiple-variables-in-one-column" id="toc-multiple-variables-in-one-column" class="nav-link" data-scroll-target="#multiple-variables-in-one-column"><strong>Multiple Variables in One Column</strong></a></li>
+  <li><a href="#inconsistent-missing-value-codes" id="toc-inconsistent-missing-value-codes" class="nav-link" data-scroll-target="#inconsistent-missing-value-codes"><strong>Inconsistent Missing Value Codes</strong></a></li>
+  </ul></li>
+  <li><a href="#the-messy-vs-tidy-spectrum" id="toc-the-messy-vs-tidy-spectrum" class="nav-link" data-scroll-target="#the-messy-vs-tidy-spectrum">The Messy vs Tidy Spectrum</a></li>
+  <li><a href="#tools-for-handling-messy-data" id="toc-tools-for-handling-messy-data" class="nav-link" data-scroll-target="#tools-for-handling-messy-data">Tools for Handling Messy Data</a>
+  <ul class="collapse">
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r"><strong>R</strong></a></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python"><strong>Python</strong></a></li>
+  <li><a href="#specialized-tools" id="toc-specialized-tools" class="nav-link" data-scroll-target="#specialized-tools"><strong>Specialized Tools</strong></a></li>
+  </ul></li>
+  <li><a href="#why-messy-data-matters" id="toc-why-messy-data-matters" class="nav-link" data-scroll-target="#why-messy-data-matters">Why Messy Data Matters</a>
+  <ul class="collapse">
+  <li><a href="#reality-check" id="toc-reality-check" class="nav-link" data-scroll-target="#reality-check"><strong>Reality Check</strong></a></li>
+  <li><a href="#business-impact" id="toc-business-impact" class="nav-link" data-scroll-target="#business-impact"><strong>Business Impact</strong></a></li>
+  <li><a href="#statistical-validity" id="toc-statistical-validity" class="nav-link" data-scroll-target="#statistical-validity"><strong>Statistical Validity</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Leftovers</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>“Analysis of messy data” refers to the <strong>statistical methods and techniques</strong> specifically designed to handle data that violates the clean assumptions of standard statistical methods. This is different from “messy data analysis” (the process) - this is about the <strong>analytical techniques themselves</strong>.</p>
+<section id="what-makes-data-messy-statistically" class="level2">
+<h2 class="anchored" data-anchor-id="what-makes-data-messy-statistically">What Makes Data “Messy” Statistically</h2>
+<section id="common-messy-data-problems" class="level3">
+<h3 class="anchored" data-anchor-id="common-messy-data-problems"><strong>Common Messy Data Problems</strong>:</h3>
+<ul>
+<li>Missing values (not at random)</li>
+<li>Outliers and anomalies<br>
+</li>
+<li>Non-normal distributions</li>
+</ul>
+</section>
+</section>
+<section id="best-practices-for-messy-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices-for-messy-data-analysis">Best Practices for Messy Data Analysis</h2>
+<section id="understand-your-messiness" class="level3">
+<h3 class="anchored" data-anchor-id="understand-your-messiness"><strong>1. Understand Your Messiness</strong></h3>
+<ul>
+<li><strong>Why</strong> is the data messy?</li>
+<li>Is it measurement error, missing by design, or data quality issues?</li>
+<li>Different causes require different solutions</li>
+</ul>
+</section>
+<section id="dont-rush-to-clean" class="level3">
+<h3 class="anchored" data-anchor-id="dont-rush-to-clean"><strong>2. Don’t Rush to Clean</strong></h3>
+<ul>
+<li>Sometimes the “mess” contains important information</li>
+<li>Missing patterns might be informative</li>
+<li>Outliers might be your most interesting observations</li>
+</ul>
+</section>
+<section id="sensitivity-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="sensitivity-analysis"><strong>3. Sensitivity Analysis</strong></h3>
+<ul>
+<li>Try multiple approaches</li>
+<li>See if conclusions are robust across methods</li>
+<li>Document what changes and what doesn’t</li>
+</ul>
+</section>
+<section id="model-the-mess" class="level3">
+<h3 class="anchored" data-anchor-id="model-the-mess"><strong>4. Model the Mess</strong></h3>
+<ul>
+<li>Instead of cleaning first, model the messiness directly</li>
+<li>Include missingness indicators as variables</li>
+<li>Use hierarchical models for complex structure</li>
+</ul>
+<p>What is messy data analysis</p>
+<p>“Messy data analysis” refers to the <strong>realistic, iterative, and often chaotic process</strong> of working with real-world data - as opposed to the clean, linear process often taught in textbooks.</p>
+</section>
+</section>
+<section id="what-makes-data-analysis-messy" class="level2">
+<h2 class="anchored" data-anchor-id="what-makes-data-analysis-messy">What Makes Data Analysis “Messy”</h2>
+<section id="non-linear-process" class="level3">
+<h3 class="anchored" data-anchor-id="non-linear-process">1. <strong>Non-linear Process</strong></h3>
+<ul>
+<li>Analysis rarely goes: collect ??? clean ??? analyze ??? report</li>
+<li>Instead: analyze ??? discover problems ??? go back ??? re-clean ??? re-analyze ??? repeat</li>
+<li>Constant backtracking and revision</li>
+</ul>
+</section>
+<section id="unexpected-discoveries" class="level3">
+<h3 class="anchored" data-anchor-id="unexpected-discoveries">3. <strong>Unexpected Discoveries</strong></h3>
+<ul>
+<li>Your hypothesis was wrong</li>
+<li>The “smoking gun” variable is actually data entry errors</li>
+<li>The interesting pattern disappears when you fix a bug</li>
+</ul>
+</section>
+</section>
+<section id="characteristics-of-messy-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="characteristics-of-messy-analysis">Characteristics of Messy Analysis</h2>
+<section id="exploratory-iterative" class="level3">
+<h3 class="anchored" data-anchor-id="exploratory-iterative"><strong>Exploratory &amp; Iterative</strong></h3>
+<ul>
+<li>Start without knowing exactly what you’re looking for</li>
+<li>Follow interesting leads that emerge</li>
+<li>Dead ends and false starts are normal</li>
+</ul>
+</section>
+<section id="problem-driven" class="level3">
+<h3 class="anchored" data-anchor-id="problem-driven"><strong>Problem-Driven</strong></h3>
+<ul>
+<li>Questions evolve as you learn more about the data</li>
+<li>Original research question often changes completely</li>
+<li>Analysis shaped by what’s actually possible with your data</li>
+</ul>
+</section>
+<section id="tool-switching" class="level3">
+<h3 class="anchored" data-anchor-id="tool-switching"><strong>Tool-Switching</strong></h3>
+<ul>
+<li>Excel for quick looks</li>
+<li>R/Python for analysis<br>
+</li>
+<li>Back to Excel to check something</li>
+<li>Maybe some SQL, maybe some manual inspection</li>
+</ul>
+</section>
+<section id="documentation-challenges" class="level3">
+<h3 class="anchored" data-anchor-id="documentation-challenges"><strong>Documentation Challenges</strong></h3>
+<ul>
+<li>Hard to document a non-linear process</li>
+<li>Your final clean code doesn’t show the messy exploration</li>
+<li>Reproducibility becomes complex</li>
+</ul>
+</section>
+</section>
+<section id="example-of-messy-analysis-flow" class="level2">
+<h2 class="anchored" data-anchor-id="example-of-messy-analysis-flow">Example of Messy Analysis Flow</h2>
+<pre><code>1. Load data ??? discover 50% missing values
+2. Investigate missingness ??? find it's not random
+3. Research data collection ??? learn about system change in 2019
+4. Split analysis by time period ??? find different patterns
+5. Discover outliers ??? some are errors, some are real
+6. Clean errors ??? realize you need domain expertise
+7. Consult with subject matter expert ??? learn your assumptions were wrong
+8. Start over with new understanding...</code></pre>
+</section>
+<section id="messy-vs.-tidy" class="level2">
+<h2 class="anchored" data-anchor-id="messy-vs.-tidy">Messy vs.&nbsp;Tidy</h2>
+<p><strong>Hadley Wickham’s “Tidy Data”</strong> principles help organize the technical structure, but even with tidy data, the <em>analysis process</em> remains messy:</p>
+<ul>
+<li><strong>Tidy data</strong>: Structured format for easier manipulation</li>
+<li><strong>Messy analysis</strong>: The human process of discovery and iteration</li>
+</ul>
+</section>
+<section id="embracing-the-mess" class="level2">
+<h2 class="anchored" data-anchor-id="embracing-the-mess">Embracing the Mess</h2>
+<section id="good-practices" class="level3">
+<h3 class="anchored" data-anchor-id="good-practices"><strong>Good Practices</strong>:</h3>
+<ul>
+<li>Keep detailed lab notebooks/logs</li>
+<li>Version control your code and data</li>
+<li>Document dead ends (save future you time)</li>
+<li>Expect to throw away lots of work</li>
+<li>Separate exploration from final analysis scripts</li>
+</ul>
+</section>
+<section id="tools-for-messy-work" class="level3">
+<h3 class="anchored" data-anchor-id="tools-for-messy-work"><strong>Tools for Messy Work</strong>:</h3>
+<ul>
+<li>Jupyter notebooks for exploration</li>
+<li>R Markdown for iterative analysis</li>
+<li>Git for tracking changes</li>
+<li>Informal plots and quick summaries</li>
+<li>Collaborative tools for team messiness</li>
+</ul>
+</section>
+</section>
+<section id="why-this-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-matters">Why This Matters</h2>
+<p>Understanding that analysis is messy helps you: - <strong>Set realistic expectations</strong> for timelines - <strong>Budget time</strong> for exploration and dead ends - <strong>Communicate better</strong> with stakeholders about process - <strong>Feel normal</strong> when your analysis doesn’t go smoothly - <strong>Design better workflows</strong> that accommodate messiness</p>
+<p><strong>Bottom line</strong>: Real data analysis is messy, iterative, and full of surprises. The goal isn’t to eliminate the mess, but to manage it productively!</p>
+<p>“Messy data” refers to <strong>real-world datasets that don’t conform to the clean, structured format</strong> that statistical methods and analysis tools expect. It’s data that requires significant cleaning and preprocessing before analysis.</p>
+</section>
+<section id="characteristics-of-messy-data" class="level2">
+<h2 class="anchored" data-anchor-id="characteristics-of-messy-data">Characteristics of Messy Data</h2>
+<section id="structural-issues" class="level3">
+<h3 class="anchored" data-anchor-id="structural-issues"><strong>1. Structural Issues</strong></h3>
+<ul>
+<li><strong>Multiple tables/sheets</strong> that should be combined</li>
+<li><strong>Variables stored in rows</strong> instead of columns (or vice versa)</li>
+<li><strong>Multiple variables crammed into one column</strong></li>
+<li><strong>Headers and data mixed together</strong></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<pre><code>Messy format:
+┌─────────────────────────────────┐
+│        Sales Data 2023          │
+├─────────────────────────────────┤
+│ Q1: Jan=100, Feb=150, Mar=120   │
+│ Q2: Apr=200, May=180, Jun=220   │
+│ Total: 970                      │
+└─────────────────────────────────┘
+
+Should be:
+┌───────┬─────┬─────────┐
+│ Month │ Qtr │ Sales   │
+├───────┼─────┼─────────┤
+│ Jan   │ Q1  │ 100     │
+│ Feb   │ Q1  │ 150     │
+│ Mar   │ Q1  │ 120     │
+└───────┴─────┴─────────┘</code></pre>
+</section>
+<section id="data-quality-problems" class="level3">
+<h3 class="anchored" data-anchor-id="data-quality-problems"><strong>2. Data Quality Problems</strong></h3>
+<ul>
+<li><strong>Missing values</strong> (blanks, “N/A”, “NULL”, -999, etc.)</li>
+<li><strong>Inconsistent formats</strong> (dates, currencies, addresses)</li>
+<li><strong>Typos and spelling variations</strong> (“New York”, “NY”, “new york”)</li>
+<li><strong>Duplicate records</strong></li>
+<li><strong>Outliers and impossible values</strong> (age = 150, negative prices)</li>
+</ul>
+</section>
+<section id="encoding-issues" class="level3">
+<h3 class="anchored" data-anchor-id="encoding-issues"><strong>3. Encoding Issues</strong></h3>
+<ul>
+<li><strong>Different data types</strong> in same column (numbers stored as text)</li>
+<li><strong>Character encoding problems</strong> (ñ becomes Ã±)</li>
+<li><strong>Mixed units</strong> (some measurements in feet, others in meters)</li>
+<li><strong>Inconsistent categories</strong> (“Male/Female” vs “M/F” vs “1/0”)</li>
+</ul>
+</section>
+</section>
+<section id="common-sources-of-messy-data" class="level2">
+<h2 class="anchored" data-anchor-id="common-sources-of-messy-data">Common Sources of Messy Data</h2>
+<section id="human-data-entry" class="level3">
+<h3 class="anchored" data-anchor-id="human-data-entry"><strong>Human Data Entry</strong></h3>
+<pre><code>Expected:     Actual reality:
+┌──────┬────┐  ┌──────┬────────────┐
+│ Name │Age │  │ Name │ Age        │
+├──────┼────┤  ├──────┼────────────┤
+│ John │ 25 │  │ John │ 25         │
+│ Mary │ 30 │  │ mary │ thirty     │
+│ Bob  │ 22 │  │ Bob  │ 22 years   │
+└──────┴────┘  │      │ old        │
+               │ Rob  │ #N/A       │
+               └──────┴────────────┘</code></pre>
+</section>
+<section id="system-integration" class="level3">
+<h3 class="anchored" data-anchor-id="system-integration"><strong>System Integration</strong></h3>
+<ul>
+<li>Data from multiple systems with different schemas</li>
+<li>Legacy systems with outdated formats</li>
+<li>APIs that change structure over time</li>
+</ul>
+</section>
+<section id="excelspreadsheet-features" class="level3">
+<h3 class="anchored" data-anchor-id="excelspreadsheet-features"><strong>Excel/Spreadsheet “Features”</strong></h3>
+<ul>
+<li>Merged cells</li>
+<li>Formulas mixed with data<br>
+</li>
+<li>Multiple datasets in one sheet</li>
+<li>Formatting used to convey meaning</li>
+</ul>
+</section>
+<section id="web-scraping" class="level3">
+<h3 class="anchored" data-anchor-id="web-scraping"><strong>Web Scraping</strong></h3>
+<ul>
+<li>HTML tags mixed with content</li>
+<li>Inconsistent page structures</li>
+<li>Dynamic content that changes</li>
+</ul>
+</section>
+</section>
+<section id="examples-of-messy-data" class="level2">
+<h2 class="anchored" data-anchor-id="examples-of-messy-data">Examples of Messy Data</h2>
+<section id="wide-format-should-be-long" class="level3">
+<h3 class="anchored" data-anchor-id="wide-format-should-be-long"><strong>Wide Format (Should be Long)</strong></h3>
+<pre><code>Messy:
+┌─────────┬─────┬─────┬─────┬─────┐
+│ Country │2019 │2020 │2021 │2022 │
+├─────────┼─────┼─────┼─────┼─────┤
+│ USA     │ 100 │ 105 │ 103 │ 108 │
+│ Canada  │  80 │  82 │  79 │  85 │
+└─────────┴─────┴─────┴─────┴─────┘
+
+Tidy:
+┌─────────┬──────┬───────┐
+│ Country │ Year │ Value │
+├─────────┼──────┼───────┤
+│ USA     │ 2019 │ 100   │
+│ USA     │ 2020 │ 105   │
+│ Canada  │ 2019 │  80   │
+└─────────┴──────┴───────┘</code></pre>
+</section>
+<section id="multiple-variables-in-one-column" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-variables-in-one-column"><strong>Multiple Variables in One Column</strong></h3>
+<pre><code>Messy:
+┌─────────────────────┐
+│ Name_Age_City       │
+├─────────────────────┤
+│ John_25_Boston      │
+│ Mary_30_Seattle     │
+└─────────────────────┘
+
+Should be:
+┌──────┬─────┬─────────┐
+│ Name │ Age │ City    │
+├──────┼─────┼─────────┤
+│ John │  25 │ Boston  │
+│ Mary │  30 │ Seattle │
+└──────┴─────┴─────────┘</code></pre>
+</section>
+<section id="inconsistent-missing-value-codes" class="level3">
+<h3 class="anchored" data-anchor-id="inconsistent-missing-value-codes"><strong>Inconsistent Missing Value Codes</strong></h3>
+<pre><code>┌──────┬─────┬────────┐
+│ Name │ Age │ Income │
+├──────┼─────┼────────┤
+│ John │  25 │ 50000  │
+│ Mary │ N/A │ -999   │
+│ Bob  │  30 │ NULL   │
+│ Sue  │   0 │        │
+└──────┴─────┴────────┘</code></pre>
+</section>
+</section>
+<section id="the-messy-vs-tidy-spectrum" class="level2">
+<h2 class="anchored" data-anchor-id="the-messy-vs-tidy-spectrum">The Messy vs Tidy Spectrum</h2>
+<p><strong>Extremely Messy</strong>: - PDF reports with embedded tables - Handwritten forms scanned as images - Audio/video that needs transcription</p>
+<p><strong>Moderately Messy</strong>: - Excel files with formatting and merged cells - CSVs with inconsistent column names - Databases with poor normalization</p>
+<p><strong>Slightly Messy</strong>: - Clean structure but some missing values - Consistent format but needs type conversion - Good data with a few outliers</p>
+<p><strong>Tidy</strong>: - Each variable in its own column - Each observation in its own row - Each cell contains a single value - Consistent missing value handling</p>
+</section>
+<section id="tools-for-handling-messy-data" class="level2">
+<h2 class="anchored" data-anchor-id="tools-for-handling-messy-data">Tools for Handling Messy Data</h2>
+<section id="r" class="level3">
+<h3 class="anchored" data-anchor-id="r"><strong>R</strong></h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># dplyr, tidyr, stringr</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)    <span class="co"># clean_names(), get_dupes()</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)     <span class="co"># Excel files</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(VIM)        <span class="co"># Missing data visualization</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(OpenRefine) <span class="co"># GUI data cleaning</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="python" class="level3">
+<h3 class="anchored" data-anchor-id="python"><strong>Python</strong></h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re  <span class="co"># Regular expressions</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fuzzywuzzy <span class="im">import</span> fuzz  <span class="co"># String matching</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno  <span class="co"># Missing data viz</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="specialized-tools" class="level3">
+<h3 class="anchored" data-anchor-id="specialized-tools"><strong>Specialized Tools</strong></h3>
+<ul>
+<li><strong>OpenRefine</strong>: Interactive data cleaning</li>
+<li><strong>Trifacta/Alteryx</strong>: Commercial data prep tools</li>
+<li><strong>Excel Power Query</strong>: Built-in Excel cleaning tools</li>
+</ul>
+</section>
+</section>
+<section id="why-messy-data-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-messy-data-matters">Why Messy Data Matters</h2>
+<section id="reality-check" class="level3">
+<h3 class="anchored" data-anchor-id="reality-check"><strong>Reality Check</strong></h3>
+<ul>
+<li>80% of data science is data cleaning</li>
+<li>Real data is almost always messy</li>
+<li>Textbook examples don’t prepare you for reality</li>
+</ul>
+</section>
+<section id="business-impact" class="level3">
+<h3 class="anchored" data-anchor-id="business-impact"><strong>Business Impact</strong></h3>
+<ul>
+<li>Bad data leads to bad decisions</li>
+<li>Cleaning takes time and resources</li>
+<li>Automation can help but isn’t always possible</li>
+</ul>
+</section>
+<section id="statistical-validity" class="level3">
+<h3 class="anchored" data-anchor-id="statistical-validity"><strong>Statistical Validity</strong></h3>
+<ul>
+<li>Messy data can bias results</li>
+<li>Wrong conclusions from poorly cleaned data</li>
+<li>Need to understand messiness to trust analysis</li>
+</ul>
+<p><strong>Bottom Line</strong>: Messy data is the norm, not the exception. Learning to identify, understand, and systematically clean messy data is one of the most practical skills in data analysis. The goal is transforming messy reality into tidy, analyzable datasets while preserving the valuable information buried in the mess!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
