@@ -18,14 +18,14 @@
     "href": "index.html",
     "title": "Stat 471: Analysis of Messy Data",
     "section": "",
-    "text": "Course Materials\nDates shown are due dates (for assignments and exams) and dates on which material was presented (for slides).\n\n\n\n\n\n\nModule 0: Setting up the work environment\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nAbout Stat 471\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nR, RStudio, git\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nHomework 0 Setup A: Git and Github\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nHomework 0 Setup B: Connecting RStudio and Git\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 1: Tidy forms of data\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nWhat is “Messy Data”?\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nNormal Forms of data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nNormalizing Data\n\n\nslides\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 2: Data Cleaning\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 3: Working with Missing Values\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 4: Record Linkage: joining data from different sources\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 5: Working with large data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items"
+    "text": "Course Materials\nDates shown are due dates (for assignments and exams) and dates on which material was presented (for slides).\n\n\n\n\n\n\nModule 0: Setting up the work environment\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nAbout Stat 471\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nR, RStudio, git\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nHomework 0 Setup A: Git and Github\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nHomework 0 Setup B: Connecting RStudio and Git\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 1: Tidy forms of data\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nWhat is “Messy Data”?\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nNormal Forms of data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nNormalizing Data\n\n\nslides\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 2: Data Cleaning\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 3: Working with Missing Values\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 4: Record Linkage: joining data from different sources\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 5: Working with large data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "materials-2025/Module 1 - Tidy Forms of Data/03-normalizing-data.html",
     "href": "materials-2025/Module 1 - Tidy Forms of Data/03-normalizing-data.html",
     "title": "Normalizing Data",
     "section": "",
-    "text": "Normalization strategies\n\nCheck whether the data set has a (primary) key\n\n\n\nIdentify candidate keys\n\nAre there duplicated rows?\n\n\n# Check uniqueness\n!any(duplicated(&lt;data set&gt;))\n\nError in parse(text = input): &lt;text&gt;:2:17: unexpected '&lt;'\n1: # Check uniqueness\n2: !any(duplicated(&lt;\n                   ^\n\n\nIf there are duplicates, there is either no key or some rows were accidentally duplicated - count what proportion of lines is duplicated\n\nKeys have to uniquely identify a row\n\nIf variables cand1, cand2 are a key candidate, check whether they uniquely identify rows:\n\n# Check for unique combinations\n&lt;data set&gt; %&gt;% \n  count(cand) %&gt;% \n  filter(n &gt; 1)\n\nError in parse(text = input): &lt;text&gt;:2:1: unexpected '&lt;'\n1: # Check for unique combinations\n2: &lt;\n   ^\n\n\n\n\nHow much normalization?\nRule of thumb: Normalize to eliminate anomalies, denormalize for performance. Find the sweet spot for your use case."
+    "text": "Normalization strategies\n\nCheck whether there are (and how many) duplicate rows in the data\nIdentify or create a key\n\n\n\n\nDuplicate rows\n\n# Check uniqueness\n!any(duplicated(&lt;data set&gt;))\n\nError in parse(text = input): &lt;text&gt;:2:17: unexpected '&lt;'\n1: # Check uniqueness\n2: !any(duplicated(&lt;\n                   ^\n\n\nIf there are duplicates, there is either no key or some rows were accidentally duplicated - count what proportion of lines is duplicated\n\n\nIdentify candidate keys\n\nKeys have to uniquely identify a row\n\nIf variables cand1, cand2 are a key candidate, check whether they uniquely identify rows:\n\n# Check for unique combinations\n&lt;data set&gt; %&gt;% \n  count(cand) %&gt;% \n  filter(n &gt; 1)\n\nError in parse(text = input): &lt;text&gt;:2:1: unexpected '&lt;'\n1: # Check for unique combinations\n2: &lt;\n   ^\n\n\n\n\nHow much normalization?\nRule of thumb: Normalize to eliminate anomalies, denormalize for performance. Find the sweet spot for your use case."
   },
   {
     "objectID": "materials-2025/leftovers.html",
@@ -194,6 +194,34 @@
     "title": "Homework 0 Setup A: Git and Github",
     "section": "📚 Resources",
     "text": "📚 Resources\n\nA short video explaining what GitHub is\nGit and GitHub learning resources\nUnderstanding the GitHub flow\nInteractive Git training materials\nGitHub’s Learning Lab\nEducation community forum\nGitHub community forum"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#biological-experiment",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#biological-experiment",
+    "title": "Normal Forms of data",
+    "section": "Biological experiment",
+    "text": "Biological experiment\nIn a study, RNA-seq expressions of 11k different genes are measured at 6 and 12 hours after seeds from two different gene lines have germinated.\nWhat is the key?"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#weather-station",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#weather-station",
+    "title": "Normal Forms of data",
+    "section": "Weather station",
+    "text": "Weather station\nA weather station publishes monthly averages for the minimum and maximum temperature during each hour of the day.\nWhat is the key?"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#tuberculosis",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#tuberculosis",
+    "title": "Normal Forms of data",
+    "section": "Tuberculosis",
+    "text": "Tuberculosis\nThe World Health Organization track the number of new incidences of tuberculosis by sex and age group in each country.\nWhat is the key?"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#french-fries",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#french-fries",
+    "title": "Normal Forms of data",
+    "section": "French Fries",
+    "text": "French Fries\nIn a 10 week sensory experiment, 12 individuals assess taste of french fries on several scales (how potato-y, buttery, grassy, rancid, paint-y do they taste?), fried in one of 3 different oils, replicated twice.\nWhat is the key?"
   },
   {
     "objectID": "materials-2025/Module 1 - Tidy Forms of Data/01-tidy-data.html#cryptic-names",

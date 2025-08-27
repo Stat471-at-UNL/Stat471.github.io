@@ -158,6 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#normalization-strategies" id="toc-normalization-strategies" class="nav-link active" data-scroll-target="#normalization-strategies">Normalization strategies</a></li>
+  <li><a href="#duplicate-rows" id="toc-duplicate-rows" class="nav-link" data-scroll-target="#duplicate-rows">Duplicate rows</a></li>
   <li><a href="#identify-candidate-keys" id="toc-identify-candidate-keys" class="nav-link" data-scroll-target="#identify-candidate-keys">Identify candidate keys</a></li>
   <li><a href="#how-much-normalization" id="toc-how-much-normalization" class="nav-link" data-scroll-target="#how-much-normalization">How much normalization?</a></li>
   </ul>
@@ -198,14 +199,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="normalization-strategies" class="level1">
 <h1>Normalization strategies</h1>
 <ol type="1">
-<li>Check whether the data set has a (primary) key</li>
+<li>Check whether there are (and how many) duplicate rows in the data</li>
+<li>Identify or create a key</li>
+<li></li>
 </ol>
 </section>
-<section id="identify-candidate-keys" class="level1">
-<h1>Identify candidate keys</h1>
-<ol type="1">
-<li>Are there duplicated rows?</li>
-</ol>
+<section id="duplicate-rows" class="level1">
+<h1>Duplicate rows</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check uniqueness</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">any</span>(<span class="fu">duplicated</span>(<span class="sc">&lt;</span>data set<span class="sc">&gt;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -217,6 +217,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If there are duplicates, there is either no key or some rows were accidentally duplicated - count what proportion of lines is duplicated</p>
+</section>
+<section id="identify-candidate-keys" class="level1">
+<h1>Identify candidate keys</h1>
 <ol type="1">
 <li>Keys have to uniquely identify a row</li>
 </ol>
