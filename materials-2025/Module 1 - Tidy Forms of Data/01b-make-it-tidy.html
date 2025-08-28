@@ -9,8 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-09-02">
-  <title>Stat 471 – Normalizing Data</title>
+  <meta name="dcterms.date" content="2025-08-28">
+  <title>Stat 471 – Make it Tidy Data!</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,137 +193,234 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Normalizing Data</h1>
+  <h1 class="title">Make it Tidy Data!</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-09-02</p>
+  <p class="date">2025-08-28</p>
 </section>
-<section id="why-do-we-care-about-normal-forms" class="title-slide slide level1 center">
-<h1>Why do we care about normal forms?</h1>
-<p>Normal forms help (force?) us to</p>
-<ul>
-<li>look for formal structure in datasets</li>
-<li>think about functions/purpose of variables</li>
-</ul>
-<p>Normalizing is a formal way of checking data quality</p>
-</section>
-
-<section id="normalization-strategies" class="title-slide slide level1 center">
-<h1>Normalization strategies</h1>
+<section id="tidy-data-conventions" class="title-slide slide level1 center">
+<h1>Tidy Data Conventions</h1>
 <ol type="1">
-<li>Check whether there are (and how many) duplicate rows in the data</li>
-<li>Identify or create a key</li>
-<li>Normalize from 1st to 2nd NF</li>
-<li>Normalize from 2nd to 3rd NF</li>
+<li>Each observation forms a row (no data info in column names)</li>
+<li>Each variable forms a column (no mashup of multiple pieces of information)</li>
+<li>Each cell contains a single piece of observation</li>
 </ol>
+<p>Original definition: <a href="https://www.jstatsoft.org/article/view/v059i10">Tidy data (2014), Hadley Wickham</a></p>
+<p>Updated: <a href="https://r4ds.had.co.nz/tidy-data.html">R for Data Science (ed.2), Hadley Wickham, chapter 12</a></p>
 </section>
 
-<section id="duplicate-rows" class="title-slide slide level1 center">
-<h1>Duplicate rows</h1>
+<section id="the-tidy-conventions-are-deceptively-simple.-beware-the-details" class="title-slide slide level1 center">
+<h1>The tidy conventions are deceptively simple. Beware the details!</h1>
+<p>… let’s unpack that!</p>
+</section>
+
+<section id="each-observation-forms-a-row" class="title-slide slide level1 center">
+<h1>Each observation forms a row</h1>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>not like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Check uniqueness</span></span>
-<span id="cb1-2"><a></a><span class="sc">!</span><span class="fu">any</span>(<span class="fu">duplicated</span>(<span class="sc">&lt;</span>data set<span class="sc">&gt;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  student_id variable value
+1        101     name Alice
+2        101      age    16
+3        101    grade    85
+4        102     name   Bob
+5        102      age    17
+6        102    grade    92</code></pre>
 </div>
-<p>If there are duplicates, there is either no key or some rows were accidentally duplicated - count what proportion of lines is duplicated</p>
+</div>
+<p>Alice’s data is scattered across 3 rows</p>
+</div><div class="column" style="width:10%;">
+<!-- empty column to create gap -->
+</div><div class="column" style="width:40%;">
+<p>But this</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># What is the ratio of duplicated rows?</span></span>
-<span id="cb2-2"><a></a><span class="fu">table</span>(<span class="fu">duplicated</span>(<span class="sc">&lt;</span>data set<span class="sc">&gt;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  student_id  name age grade
+1        101 Alice  16    85
+2        102   Bob  17    92</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+
+<section id="each-variable-forms-a-column" class="title-slide slide level1 center">
+<h1>Each variable forms a column</h1>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>not like this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     city jan_temp feb_temp mar_temp apr_temp
+1     NYC       32       35       45       55
+2      LA       65       67       70       73
+3 Chicago       25       28       38       48
+4   Miami       75       77       80       83</code></pre>
+</div>
+</div>
+<p>Variables <code>temperature</code> and <code>month</code> are scattered across multiple columns</p>
+</div><div class="column" style="width:5%;">
+<!-- empty column to create gap -->
+</div><div class="column" style="width:35%;">
+<p>But this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>      city    month temp
+1      NYC  January   32
+2      NYC February   35
+3      NYC    March   45
+4      NYC    April   55
+5       LA  January   65
+6       LA February   67
+7       LA    March   70
+8       LA    April   73
+9  Chicago  January   25
+10 Chicago February   28
+11 Chicago    March   38
+12 Chicago    April   48
+13   Miami  January   75
+14   Miami February   77
+15   Miami    March   80
+16   Miami    April   83</code></pre>
+</div>
+</div>
+<p>Both <code>month</code> and <code>temp</code> are in one column each</p>
+</div></div>
+</section>
+
+<section id="each-cell-has-a-single-value" class="title-slide slide level1 center" data-auto-animate="true">
+<h1 data-id="quarto-animate-title">Each Cell has a single value</h1>
+<p>not like this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  participant_id    name       favorite_colors age_height
+1              1   Alice             blue, red   25_5.6ft
+2              2     Bob green, yellow, purple   30_6.1ft
+3              3 Charlie                   red   22_5.4ft
+4              4   Diana          blue, orange   28_5.8ft</code></pre>
+</div>
 </div>
 </section>
 
-<section id="identify-candidate-keys" class="title-slide slide level1 center">
-<h1>Identify candidate keys</h1>
-<ol type="1">
-<li>Keys have to uniquely identify a row</li>
-</ol>
-<p>If variables <code>cand1, cand2</code> are a key candidate, the following line will result in zero output:</p>
+<section id="each-cell-has-a-single-value-1" class="title-slide slide level1 center" data-auto-animate="true">
+<h1 data-id="quarto-animate-title">Each Cell has a single value</h1>
+<p>But this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Check for unique combinations</span></span>
-<span id="cb3-2"><a></a><span class="sc">&lt;</span>data set<span class="sc">&gt;</span> <span class="sc">%&gt;%</span> </span>
-<span id="cb3-3"><a></a>  <span class="fu">count</span>(cand1, cand2) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-4"><a></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  participant_id    name  color age height_ft
+1              1   Alice   blue  25       5.6
+2              1   Alice    red  25       5.6
+3              2     Bob  green  30       6.1
+4              2     Bob yellow  30       6.1
+5              2     Bob purple  30       6.1
+6              3 Charlie    red  22       5.4
+7              4   Diana   blue  28       5.8
+8              4   Diana orange  28       5.8</code></pre>
 </div>
+</div>
+</section>
+
+<section id="do-you-remember-how-to-make-these-changes" class="title-slide slide level1 center">
+<h1>Do you remember how to make these changes?</h1>
+
 </section>
 
 <section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
 <h1>Your Turn</h1>
-<p>Consider the following data set capturing University records for student exam scores:</p>
+<p>Write the code that turns the left data into the right data</p>
+<div class="columns">
+<div class="column" style="width:40%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>student_courses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb4-2"><a></a>  <span class="at">student_id =</span> <span class="fu">c</span>(<span class="dv">101</span>, <span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">103</span>),</span>
-<span id="cb4-3"><a></a>  <span class="at">course_id =</span> <span class="fu">c</span>(<span class="st">"CS101"</span>, <span class="st">"MATH201"</span>, <span class="st">"CS101"</span>, <span class="st">"PHYS101"</span>, <span class="st">"MATH201"</span>, <span class="st">"CS101"</span>),</span>
-<span id="cb4-4"><a></a>  <span class="at">semester =</span> <span class="fu">c</span>(<span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>),</span>
-<span id="cb4-5"><a></a>  <span class="at">instructor_name =</span> <span class="fu">c</span>(<span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Johnson"</span>, <span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Johnson"</span>, <span class="st">"Dr. Brown"</span>, <span class="st">"Dr. Smith"</span>),</span>
-<span id="cb4-6"><a></a>  <span class="at">grade =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B+"</span>, <span class="st">"B"</span>, <span class="st">"A-"</span>, <span class="st">"A"</span>, <span class="st">"B+"</span>)</span>
-<span id="cb4-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  student_id variable value
+1        101     name Alice
+2        101      age    16
+3        101    grade    85
+4        102     name   Bob
+5        102      age    17
+6        102    grade    92</code></pre>
 </div>
+</div>
+</div><div class="column" style="width:10%;">
+<!-- empty column to create gap -->
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  student_id  name age grade
+1        101 Alice  16    85
+2        102   Bob  17    92</code></pre>
+</div>
+</div>
+</div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>untidy_student_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-2"><a></a>  <span class="at">student_id =</span> <span class="fu">c</span>(<span class="dv">101</span>, <span class="dv">101</span>, <span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">102</span>, <span class="dv">102</span>),</span>
+<span id="cb9-3"><a></a>  <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"name"</span>, <span class="st">"age"</span>, <span class="st">"grade"</span>, <span class="st">"name"</span>, <span class="st">"age"</span>, <span class="st">"grade"</span>),</span>
+<span id="cb9-4"><a></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"16"</span>, <span class="st">"85"</span>, <span class="st">"Bob"</span>, <span class="st">"17"</span>, <span class="st">"92"</span>)</span>
+<span id="cb9-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="tidy-verbs" class="title-slide slide level1 center">
+<h1>Tidy verbs</h1>
 <ul>
-<li>Is this dataset in 1st normal form?</li>
-<li>Is this dataset in 2nd normal form?</li>
+<li><code>pivot_longer</code>: combine multiple columns into one</li>
+<li><code>pivot_wider</code>: combine multiple rows into one</li>
+<li><code>separate</code>: make one cell multiple ones (opposite: <code>unite</code>)</li>
+<li>(<code>unnest</code>: get a data frame out of a list variable (opposite: <code>nest</code>) - We will deal with this later)</li>
 </ul>
 </section>
 
-<section id="normalizing-from-1st-to-2nd-nf" class="title-slide slide level1 center" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Normalizing from 1st to 2nd NF</h1>
-<ul>
-<li><p>Fixing a split key requires to split the data</p></li>
-<li><p>The set of non-key variables depending on a part of the key need to be summarized. This process can reveal inconsistencies</p></li>
-</ul>
-<div class="fragment fade-in">
-<p>Idea: all variables depending on a part of the key should have the same repeated data. A group-wise summary of <code>unique</code> should only result in one value:</p>
+<section id="a-questionable-experiment" class="title-slide slide level1 center">
+<h1>A questionable experiment</h1>
+<p>10 week sensory experiment, 12 individuals assessed taste of french fries on several scales (how potato-y, buttery, grassy, rancid, paint-y do they taste?), fried in one of 3 different oils, replicated twice.</p>
+<p>First few rows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb5-1" class="hljs-ln-code"><a></a>new_table <span class="ot">&lt;-</span> old_table <span class="sc">|&gt;</span> <span class="fu">group_by</span>(<span class="sc">&lt;</span>partial key<span class="sc">&gt;</span>) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(</span>
-<span id="cb5-2" class="hljs-ln-code"><a></a>  <span class="at">variable1 =</span> <span class="fu">unique</span>(variable1),</span>
-<span id="cb5-3" class="hljs-ln-code"><a></a>  <span class="at">variable2 =</span> <span class="fu">unique</span>(variable2),</span>
-<span id="cb5-4" class="hljs-ln-code"><a></a>  <span class="at">variable3 =</span> <span class="fu">unique</span>(variable3)</span>
-<span id="cb5-5" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   time treatment subject rep potato buttery grassy rancid painty
+61    1         1       3   1    2.9     0.0    0.0    0.0    5.5
+25    1         1       3   2   14.0     0.0    0.0    1.1    0.0
+62    1         1      10   1   11.0     6.4    0.0    0.0    0.0
+26    1         1      10   2    9.9     5.9    2.9    2.2    0.0</code></pre>
 </div>
 </div>
-</section>
-
-<section id="normalizing-from-1st-to-2nd-nf-1" class="title-slide slide level1 center" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Normalizing from 1st to 2nd NF</h1>
-<p>In case of errors (because of different lengths in <code>unique</code>), we can use <code>paste</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb6-1" class="hljs-ln-code"><a></a>new_table <span class="ot">&lt;-</span> old_table <span class="sc">|&gt;</span> <span class="fu">group_by</span>(<span class="sc">&lt;</span>partial key<span class="sc">&gt;</span>) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(</span>
-<span id="cb6-2" class="hljs-ln-code"><a></a>  <span class="at">variable1 =</span> <span class="fu">unique</span>(variable1),</span>
-<span id="cb6-3" class="hljs-ln-code"><a></a>  <span class="at">variable2 =</span> <span class="fu">unique</span>(variable2),</span>
-<span id="cb6-4" class="hljs-ln-code"><a></a>  <span class="at">variable3 =</span> <span class="fu">unique</span>(variable3)</span>
-<span id="cb6-5" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="normalizing-from-1st-to-2nd-nf-2" class="title-slide slide level1 center" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Normalizing from 1st to 2nd NF</h1>
-<p>In case of errors (because of different lengths in <code>unique</code>), we can use <code>paste</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb7-1" class="hljs-ln-code"><a></a>new_table <span class="ot">&lt;-</span> old_table <span class="sc">|&gt;</span> <span class="fu">group_by</span>(<span class="sc">&lt;</span>partial key<span class="sc">&gt;</span>) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(</span>
-<span id="cb7-2" class="hljs-ln-code"><a></a>  <span class="at">variable1 =</span> <span class="fu">paste</span>(<span class="fu">unique</span>(variable1), <span class="at">collapse =</span> <span class="st">", "</span>),</span>
-<span id="cb7-3" class="hljs-ln-code"><a></a>  <span class="at">variable2 =</span> <span class="fu">unique</span>(variable2),</span>
-<span id="cb7-4" class="hljs-ln-code"><a></a>  <span class="at">variable3 =</span> <span class="fu">unique</span>(variable3)</span>
-<span id="cb7-5" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>What variables give us the experimental design? What was measured? Is this data tidy?</p>
 </section>
 
 <section id="your-turn-1" class="title-slide slide level1 center" data-background-color="#006666">
 <h1>Your Turn</h1>
-<p>Bring the <code>student_courses</code> dataset into 2nd normal form:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>student_courses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb8-2"><a></a>  <span class="at">student_id =</span> <span class="fu">c</span>(<span class="dv">101</span>, <span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">103</span>),</span>
-<span id="cb8-3"><a></a>  <span class="at">course_id =</span> <span class="fu">c</span>(<span class="st">"CS101"</span>, <span class="st">"MATH201"</span>, <span class="st">"CS101"</span>, <span class="st">"PHYS101"</span>, <span class="st">"MATH201"</span>, <span class="st">"CS101"</span>),</span>
-<span id="cb8-4"><a></a>  <span class="at">semester =</span> <span class="fu">c</span>(<span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>),</span>
-<span id="cb8-5"><a></a>  <span class="at">instructor_name =</span> <span class="fu">c</span>(<span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Johnson"</span>, <span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Johnson"</span>, <span class="st">"Dr. Brown"</span>, <span class="st">"Dr. Smith"</span>),</span>
-<span id="cb8-6"><a></a>  <span class="at">grade =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B+"</span>, <span class="st">"B"</span>, <span class="st">"A-"</span>, <span class="st">"A"</span>, <span class="st">"B+"</span>)</span>
-<span id="cb8-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>Load the <code>french_fries</code> data</p>
+<p>Use <code>tidy</code> verbs to make the dataset (more) tidy</p>
 </section>
 
-<section id="how-much-normalization" class="title-slide slide level1 center">
-<h1>How much normalization?</h1>
-<p><strong>Rule of thumb:</strong> Normalize to eliminate anomalies, denormalize for performance. Find the sweet spot for your use case.</p>
+<section id="your-turn-2" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<p>Go back to the set of examples discussed in the previous slide deck and tidy each one.</p>
+</section>
+
+<section id="tidy-data-can-be-messy" class="title-slide slide level1 center">
+<h1>‘Tidy Data’ can be messy</h1>
+<ul>
+<li>‘tidy data’ requirements are minimal - mostly allow us to work with R</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  student_name  course grade
+1        Alice    Math    85
+2        Alice Science    92
+3          Bob    Math    78
+4          Bob Science    88
+5        Alice    Math    82
+6        Alice Science    90</code></pre>
+</div>
+</div>
+<ul>
+<li><p>… unfortunately not sufficient to avoid all ‘messiness’</p></li>
+<li><p>computer science concept (originally for database design): normal forms of data</p></li>
+</ul>
 
 
 </section>
@@ -489,14 +586,14 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'none',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'fade',
+        backgroundTransition: 'none',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,
