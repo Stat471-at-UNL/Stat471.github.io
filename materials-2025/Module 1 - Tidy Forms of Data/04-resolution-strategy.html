@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="dcterms.date" content="2025-09-02">
-  <title>Stat 471 – Normalizing Data</title>
+  <title>Stat 471 – Resolution Strategies</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -193,137 +127,92 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Normalizing Data</h1>
+  <h1 class="title">Resolution Strategies</h1>
 
 <div class="quarto-title-authors">
 </div>
 
   <p class="date">2025-09-02</p>
 </section>
-<section id="why-do-we-care-about-normal-forms" class="title-slide slide level1 center">
-<h1>Why do we care about normal forms?</h1>
-<p>Normal forms help (force?) us to</p>
+<section id="there-are-inconsistencies---now-what" class="title-slide slide level1 center">
+<h1>There are inconsistencies - now what?</h1>
+
+</section>
+
+<section id="immediate-actions" class="title-slide slide level1 center">
+<h1>Immediate Actions</h1>
 <ul>
-<li>look for formal structure in datasets</li>
-<li>think about functions/purpose of variables</li>
-</ul>
-<p>Normalizing is a formal way of checking data quality</p>
-</section>
-
-<section id="normalization-strategies" class="title-slide slide level1 center">
-<h1>Normalization strategies</h1>
-<ol type="1">
-<li>Check whether there are (and how many) duplicate rows in the data</li>
-<li>Identify or create a key</li>
-<li>Normalize from 1st to 2nd NF</li>
-<li>Normalize from 2nd to 3rd NF</li>
-</ol>
-</section>
-
-<section id="duplicate-rows" class="title-slide slide level1 center">
-<h1>Duplicate rows</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Check uniqueness</span></span>
-<span id="cb1-2"><a></a><span class="sc">!</span><span class="fu">any</span>(<span class="fu">duplicated</span>(<span class="sc">&lt;</span>data set<span class="sc">&gt;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>If there are duplicates, there is either no key or some rows were accidentally duplicated - count what proportion of lines is duplicated</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># What is the ratio of duplicated rows?</span></span>
-<span id="cb2-2"><a></a><span class="fu">table</span>(<span class="fu">duplicated</span>(<span class="sc">&lt;</span>data set<span class="sc">&gt;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="identify-candidate-keys" class="title-slide slide level1 center">
-<h1>Identify candidate keys</h1>
-<ol type="1">
-<li>Keys have to uniquely identify a row</li>
-</ol>
-<p>If variables <code>cand1, cand2</code> are a key candidate, the following line will result in zero output:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Check for unique combinations</span></span>
-<span id="cb3-2"><a></a><span class="sc">&lt;</span>data set<span class="sc">&gt;</span> <span class="sc">%&gt;%</span> </span>
-<span id="cb3-3"><a></a>  <span class="fu">count</span>(cand1, cand2) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-4"><a></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
-<h1>Your Turn</h1>
-<p>Consider the following data set capturing University records for student exam scores:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>student_courses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb4-2"><a></a>  <span class="at">student_id =</span> <span class="fu">c</span>(<span class="dv">101</span>, <span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">103</span>),</span>
-<span id="cb4-3"><a></a>  <span class="at">course_id =</span> <span class="fu">c</span>(<span class="st">"CS101"</span>, <span class="st">"MATH201"</span>, <span class="st">"CS101"</span>, <span class="st">"PHYS101"</span>, <span class="st">"MATH201"</span>, <span class="st">"CS101"</span>),</span>
-<span id="cb4-4"><a></a>  <span class="at">semester =</span> <span class="fu">c</span>(<span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>),</span>
-<span id="cb4-5"><a></a>  <span class="at">instructor_name =</span> <span class="fu">c</span>(<span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Johnson"</span>, <span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Johnson"</span>, <span class="st">"Dr. Brown"</span>, <span class="st">"Dr. Smith"</span>),</span>
-<span id="cb4-6"><a></a>  <span class="at">grade =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B+"</span>, <span class="st">"B"</span>, <span class="st">"A-"</span>, <span class="st">"A"</span>, <span class="st">"B+"</span>)</span>
-<span id="cb4-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Is this dataset in 1st normal form?</li>
-<li>Is this dataset in 2nd normal form?</li>
+<li><strong>Document!</strong>: Record the inconsistency type, location, scope, and examples</li>
+<li><strong>Assess impact</strong>: Determine how it affects existing downstream processes and analyses</li>
+<li><strong>Quarantine affected data</strong>: don’t let problematic records go any further</li>
 </ul>
 </section>
 
-<section id="normalizing-from-1st-to-2nd-nf" class="title-slide slide level1 center" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Normalizing from 1st to 2nd NF</h1>
+<section id="resolution-strategy" class="title-slide slide level1 center">
+<h1>Resolution Strategy</h1>
 <ul>
-<li><p>Fixing a split key requires to split the data</p></li>
-<li><p>The set of non-key variables depending on a part of the key need to be summarized. This process can reveal inconsistencies</p></li>
+<li><strong>Investigate root cause</strong>: Trace back to source systems or processes - where does the problem come from?</li>
+<li><strong>Consult domain experts</strong>: Is it a known problem?</li>
+<li><strong>Choose correction method</strong>: and document it!</li>
 </ul>
-<div class="fragment fade-in">
-<p>Idea: all variables depending on a part of the key should have the same repeated data. A group-wise summary of <code>unique</code> <em>should</em> only result in one value:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb5-1" class="hljs-ln-code"><a></a>new_table <span class="ot">&lt;-</span> old_table <span class="sc">|&gt;</span> <span class="fu">group_by</span>(<span class="sc">&lt;</span>partial key<span class="sc">&gt;</span>) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(</span>
-<span id="cb5-2" class="hljs-ln-code"><a></a>  <span class="at">variable1 =</span> <span class="fu">unique</span>(variable1),</span>
-<span id="cb5-3" class="hljs-ln-code"><a></a>  <span class="at">variable2 =</span> <span class="fu">unique</span>(variable2),</span>
-<span id="cb5-4" class="hljs-ln-code"><a></a>  <span class="at">variable3 =</span> <span class="fu">unique</span>(variable3)</span>
-<span id="cb5-5" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
 </section>
 
-<section id="normalizing-from-1st-to-2nd-nf-1" class="title-slide slide level1 center" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Normalizing from 1st to 2nd NF</h1>
-<p>In case of errors (because of different lengths in <code>unique</code>), we can use <code>paste</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb6-1" class="hljs-ln-code"><a></a>new_table <span class="ot">&lt;-</span> old_table <span class="sc">|&gt;</span> <span class="fu">group_by</span>(<span class="sc">&lt;</span>partial key<span class="sc">&gt;</span>) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(</span>
-<span id="cb6-2" class="hljs-ln-code"><a></a>  <span class="at">variable1 =</span> <span class="fu">unique</span>(variable1),</span>
-<span id="cb6-3" class="hljs-ln-code"><a></a>  <span class="at">variable2 =</span> <span class="fu">unique</span>(variable2),</span>
-<span id="cb6-4" class="hljs-ln-code"><a></a>  <span class="at">variable3 =</span> <span class="fu">unique</span>(variable3)</span>
-<span id="cb6-5" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="correction-framework" class="title-slide slide level1 center">
+<h1>Correction Framework</h1>
+<ul>
+<li><strong>High confidence fixes</strong>: Automate corrections (e.g., standardize formats)</li>
+<li><strong>Medium confidence</strong>: Flag for review with suggested corrections (warning in code)</li>
+<li><strong>Low confidence</strong>: Escalate to subject matter experts (strong warning in code)</li>
+<li><strong>Cannot resolve</strong>: Document limitations and exclude from analysis (error message in code)</li>
+</ul>
 </section>
 
-<section id="normalizing-from-1st-to-2nd-nf-2" class="title-slide slide level1 center" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Normalizing from 1st to 2nd NF</h1>
-<p>In case of errors (because of different lengths in <code>unique</code>), we can use <code>paste</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb7-1" class="hljs-ln-code"><a></a>new_table <span class="ot">&lt;-</span> old_table <span class="sc">|&gt;</span> <span class="fu">group_by</span>(<span class="sc">&lt;</span>partial key<span class="sc">&gt;</span>) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(</span>
-<span id="cb7-2" class="hljs-ln-code"><a></a>  <span class="at">variable1 =</span> <span class="fu">paste</span>(<span class="fu">unique</span>(variable1), <span class="at">collapse =</span> <span class="st">", "</span>),</span>
-<span id="cb7-3" class="hljs-ln-code"><a></a>  <span class="at">variable2 =</span> <span class="fu">unique</span>(variable2),</span>
-<span id="cb7-4" class="hljs-ln-code"><a></a>  <span class="at">variable3 =</span> <span class="fu">unique</span>(variable3)</span>
-<span id="cb7-5" class="hljs-ln-code"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="implementation" class="title-slide slide level1 center">
+<h1>Implementation</h1>
+<ul>
+<li><strong>Create correction rules</strong> that can be reapplied</li>
+<li><strong>Validate fixes</strong> so you do not accidentally introduce new problems</li>
+<li><strong>Update documentation</strong> and data lineage</li>
+<li><strong>Communicate changes</strong> to stakeholders</li>
+<li><strong>Monitor</strong> for recurring issues</li>
+</ul>
 </section>
 
-<section id="your-turn-1" class="title-slide slide level1 center" data-background-color="#006666">
-<h1>Your Turn</h1>
-<p>Bring the <code>student_courses</code> dataset into 2nd normal form:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>student_courses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb8-2"><a></a>  <span class="at">student_id =</span> <span class="fu">c</span>(<span class="dv">101</span>, <span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">103</span>),</span>
-<span id="cb8-3"><a></a>  <span class="at">course_id =</span> <span class="fu">c</span>(<span class="st">"CS101"</span>, <span class="st">"MATH201"</span>, <span class="st">"CS101"</span>, <span class="st">"PHYS101"</span>, <span class="st">"MATH201"</span>, <span class="st">"CS101"</span>),</span>
-<span id="cb8-4"><a></a>  <span class="at">semester =</span> <span class="fu">c</span>(<span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>),</span>
-<span id="cb8-5"><a></a>  <span class="at">instructor_name =</span> <span class="fu">c</span>(<span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Johnson"</span>, <span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Johnson"</span>, <span class="st">"Dr. Brown"</span>, <span class="st">"Dr. Smith"</span>),</span>
-<span id="cb8-6"><a></a>  <span class="at">grade =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B+"</span>, <span class="st">"B"</span>, <span class="st">"A-"</span>, <span class="st">"A"</span>, <span class="st">"B+"</span>)</span>
-<span id="cb8-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="some-examples" class="title-slide slide level1 center">
+<h1>Some Examples</h1>
+<p><strong>Inconsistency Found:</strong> Customer names in different formats</p>
+<pre><code>"John Smith", "JOHN SMITH", "Smith, John", "J. Smith"</code></pre>
+<p><strong>Actions Taken:</strong></p>
+<ul>
+<li><strong>Document:</strong> “Name standardization needed - 4 different formats for same customer”</li>
+<li><strong>Solution:</strong> Create standardization rules (e.g.&nbsp;Title Case, “First Last” format) and apply</li>
+<li><strong>Result:</strong> All become “John Smith”</li>
+<li><strong>Prevention:</strong> add a customer ID to make sure that J. Smith isn’t confused with Jayden Smith.</li>
+</ul>
 </section>
 
-<section id="how-much-normalization" class="title-slide slide level1 center">
-<h1>How much normalization?</h1>
-<p><strong>Rule of thumb:</strong> Normalize to eliminate anomalies, denormalize for performance. Find the sweet spot for your use case.</p>
+<section id="date-format-example" class="title-slide slide level1 center">
+<h1>Date Format Example</h1>
+<p><strong>Inconsistency Found:</strong> Mixed date formats</p>
+<pre><code>"01/02/2023", "2023-01-02", "Feb 1, 2023", "1-2-23"</code></pre>
+<p><strong>Actions Taken:</strong></p>
+<ul>
+<li><strong>High confidence:</strong> Convert obvious ISO dates automatically</li>
+<li><strong>Medium confidence:</strong> Flag ambiguous dates (01/02 - Jan 2 or Feb 1?)</li>
+<li><strong>Solution:</strong> Standardize to ISO format, manually review ambiguous cases</li>
+</ul>
+</section>
+
+<section id="address-example" class="title-slide slide level1 center">
+<h1>Address Example</h1>
+<p><strong>Inconsistency Found:</strong> Incomplete addresses</p>
+<pre><code>"123 Main", "123 Main St", "123 Main Street, Anytown"</code></pre>
+<p><strong>Actions Taken:</strong></p>
+<ul>
+<li><strong>Standardize:</strong> Use postal service abbreviations (“St”)</li>
+<li><strong>Geocode validation:</strong> Verify addresses exist</li>
+<li><strong>Flag incomplete:</strong> Missing city/state for manual review</li>
+</ul>
 
 
 </section>

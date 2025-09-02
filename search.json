@@ -18,7 +18,105 @@
     "href": "index.html",
     "title": "Stat 471: Analysis of Messy Data",
     "section": "",
-    "text": "Course Materials\nDates shown are due dates (for assignments and exams) and dates on which material was presented (for slides).\n\n\n\n\n\n\nModule 0: Setting up the work environment\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nAbout Stat 471\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nR, RStudio, git\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nHomework 0 Setup A: Git and Github\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nHomework 0 Setup B: Connecting RStudio and Git\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 1: Tidy forms of data\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nWhat is “Messy Data”?\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nMake it Tidy Data!\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nNormal Forms of data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nNormalizing Data\n\n\nslides\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 2: Data Cleaning\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 3: Working with Missing Values\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 4: Record Linkage: joining data from different sources\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 5: Working with large data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items"
+    "text": "Course Materials\nDates shown are due dates (for assignments and exams) and dates on which material was presented (for slides).\n\n\n\n\n\n\nModule 0: Setting up the work environment\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nAbout Stat 471\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nR, RStudio, git\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nHomework 0 Setup A: Git and Github\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nHomework 0 Setup B: Connecting RStudio and Git\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 1: Tidy forms of data\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nWhat is “Messy Data”?\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nMake it Tidy Data!\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nNormal Forms of data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nNormalizing Data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nResolution Strategies\n\n\nslides\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 2: Data Cleaning\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 3: Working with Missing Values\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 4: Record Linkage: joining data from different sources\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 5: Working with large data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-TylerJDavis/About_Me.html",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-TylerJDavis/About_Me.html",
+    "title": "About_Me",
+    "section": "",
+    "text": "I am from Morris,IL, which is about 1 hour from Chicago. I have enjoyed coming to Nebraska and being a part of this University. I am excited for the last semester of my college career. I am hoping to attend graduate school in the fall of 2026. I am currently applying for Ph.D. programs in statistics.\n\n\n\nUNL\nIowa State\nColorado State\nIllinois\netc.\n\nOne of my favorite parts of my undergraduate experience at UNL has been the football games at Memorial Stadium. I have looked forward to the football season every year and this year is no different. The Nebraska Cornhuskers kick off the season tonight at Arrowhead stadium at 8:00 p.m.\n\nMemorial Stadium"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-TylerJDavis/About_Me.html#biography",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-TylerJDavis/About_Me.html#biography",
+    "title": "About_Me",
+    "section": "",
+    "text": "I am from Morris,IL, which is about 1 hour from Chicago. I have enjoyed coming to Nebraska and being a part of this University. I am excited for the last semester of my college career. I am hoping to attend graduate school in the fall of 2026. I am currently applying for Ph.D. programs in statistics.\n\n\n\nUNL\nIowa State\nColorado State\nIllinois\netc.\n\nOne of my favorite parts of my undergraduate experience at UNL has been the football games at Memorial Stadium. I have looked forward to the football season every year and this year is no different. The Nebraska Cornhuskers kick off the season tonight at Arrowhead stadium at 8:00 p.m.\n\nMemorial Stadium"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html",
+    "title": "About Me (Jack Macfadyen)",
+    "section": "",
+    "text": "I’m Jack Macfadyen, a student at the University of Nebraska–Lincoln. I am a senior double-majoring in Statistics and Sociology, and expect to graduate this December. Last year, I had a wonderful experience studying abroad in Amsterdam, where I developed a great love for cycling.\nOne important thing to know about me is that I love movies. I don’t prefer any particular genre, but the more unique a movie is, the more likely I am to enjoy it. Below is a list of some of my favorites, in no particular order.\n\n\n\n\nThe Green Knight (2021)\nLa La Land (2016)\nEx Machina (2014)\nMad God (2021)\nShin Godzilla (2016)\nKillers of the Flower Moon (2023)\nRRR (2022)\nAnnihilation (2018)\n\n\n\n\nEvery opportunity I get, I show off my dog. He’s a young Rottweiler named Theodore (Theo when he’s a good boy, which is always)."
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#introduction",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#introduction",
+    "title": "About Me (Jack Macfadyen)",
+    "section": "",
+    "text": "I’m Jack Macfadyen, a student at the University of Nebraska–Lincoln. I am a senior double-majoring in Statistics and Sociology, and expect to graduate this December. Last year, I had a wonderful experience studying abroad in Amsterdam, where I developed a great love for cycling.\nOne important thing to know about me is that I love movies. I don’t prefer any particular genre, but the more unique a movie is, the more likely I am to enjoy it. Below is a list of some of my favorites, in no particular order."
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#some-of-my-favorite-movies",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#some-of-my-favorite-movies",
+    "title": "About Me (Jack Macfadyen)",
+    "section": "",
+    "text": "The Green Knight (2021)\nLa La Land (2016)\nEx Machina (2014)\nMad God (2021)\nShin Godzilla (2016)\nKillers of the Flower Moon (2023)\nRRR (2022)\nAnnihilation (2018)"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#my-dog",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#my-dog",
+    "title": "About Me (Jack Macfadyen)",
+    "section": "",
+    "text": "Every opportunity I get, I show off my dog. He’s a young Rottweiler named Theodore (Theo when he’s a good boy, which is always)."
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-dsander04/About_Me.html",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-dsander04/About_Me.html",
+    "title": "About_Me.qmd",
+    "section": "",
+    "text": "About Me\n\nFamily\nHello! My name is Dominic Sander and I am a senior statistics major with a math minor. I am from Lincoln, Nebraska having graduated from Lincoln Southwest in 2022. I have one younger sister who is a freshman at UNL this year studying interior design. My mom works for LPS as a Speech Pathologist and my dad does fundraising for the Museum of American Speed. We have two dogs, June (a fawn Great Dane) and Gus (a merle Great Dane). We also have two farm cats Luke and Luna!\n\n\n\nThis is my family and I the day I moved into my dorm at the start of freshman year!\n\n\n\n\nInvolvements at UNL\n\nUNL Unified (2022-2026) - Treasurer (2024-2026) - I have been a member of UNL Unified during all four years here. Unified is a club on campus that allows people with intellectual and physical disabilities in the Lincoln area to play intramural sports with UNL students.\nPitch Please (2022-2026) - Pitch Please is UNL’s premiere all-gender a capella group. We sing all sorts of music, from Earth Wind and Fire, to Harry Styles, to Dua Lipa. I am a baritone and I do vocal percussion (beat boxing) as well! If you’ve seen the movie Pitch Perfect, it’s just like that minus the “Riff-Offs.”\n\n\n\nCareer Goals\nIn a perfect world, I become a sports statistician for a professional sports team of some kind straight out of college. I would love to do professional football, volleyball, or basketball, but I love all sports and can make do anywhere. If that doesn’t pan out immediately, I’d also be interested in biostatistics and would like working in a hospital/ healthcare setting."
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html",
+    "title": "About_Me",
+    "section": "",
+    "text": "```"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html#major",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html#major",
+    "title": "About_Me",
+    "section": "Major",
+    "text": "Major\nI am majoring in Data Science and minoring in Statistics and Data Analytics"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html#favorite-food",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html#favorite-food",
+    "title": "About_Me",
+    "section": "Favorite food",
+    "text": "Favorite food\n\nNasi Lemak\nLou shu fun\nAsam Laksa\n\n\nLink to portfolio?\nhttps://github.com/Stat471-at-UNL/setup-a-introductions-to-github-jiayeew\nI am not sure what does the link to portfolio means, and I am not sure if the link above is what you are looking for."
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#biological-experiment",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#biological-experiment",
+    "title": "Normal Forms of data",
+    "section": "Biological experiment",
+    "text": "Biological experiment\nIn a study, RNA-seq expressions of 11k different genes are measured at 6 and 12 hours after seeds from two different gene lines have germinated.\nWhat is the key?"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#weather-station",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#weather-station",
+    "title": "Normal Forms of data",
+    "section": "Weather station",
+    "text": "Weather station\nA weather station publishes monthly averages for the minimum and maximum temperature during each hour of the day.\nWhat is the key?"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#tuberculosis",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#tuberculosis",
+    "title": "Normal Forms of data",
+    "section": "Tuberculosis",
+    "text": "Tuberculosis\nThe World Health Organization track the number of new incidences of tuberculosis by sex and age group in each country.\nWhat is the key?"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#french-fries",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#french-fries",
+    "title": "Normal Forms of data",
+    "section": "French Fries",
+    "text": "French Fries\nIn a 10 week sensory experiment, 12 individuals assess taste of french fries on several scales (how potato-y, buttery, grassy, rancid, paint-y do they taste?), fried in one of 3 different oils, replicated twice.\nWhat is the key?"
   },
   {
     "objectID": "materials-2025/Module 1 - Tidy Forms of Data/01-what-is-messy.html#cryptic-names",
@@ -102,7 +200,49 @@
     "href": "materials-2025/Module 2 - Data cleaning/00-outline.html",
     "title": "Outline",
     "section": "",
-    "text": "Outline\n\nChecking data quality\n\n\nsimple summary statistics"
+    "text": "Detection strategies\n\n\nsimple summary statistics\n\n\n\n\nData profiling - Automated scanning for patterns, anomalies, and quality issues\nStatistical analysis - Outlier detection using z-scores, IQR, box plots\nRule-based validation - Business logic and constraint checking\nPattern matching - Regular expressions for format validation\nCross-field validation - Checking relationships between columns\n\n\n\n\n\nDeletion - Remove rows/columns with missing values\nImputation - Fill with mean, median, mode, or predicted values\nForward/backward fill - Use previous/next valid values\nDomain-specific rules - Business logic for missing value treatment\nFlag creation - Create indicator variables for missingness\n\n\n\n\n\nFormat normalization - Consistent date formats, case, spacing\nValue mapping - Standardize categories (“M/F” → “Male/Female”)\nUnit conversion - Consistent measurement units\nEncoding standardization - UTF-8, consistent character sets\nNaming conventions - Consistent column names and values\n\n\n\n\n\nExact matching - Remove identical records\nFuzzy matching - Similar records with slight differences\nKey-based deduplication - Remove based on unique identifiers\nRecord linkage - Merge related duplicate entries\nMaster data management - Establish single source of truth\n\n\n\n\n\nType conversion - Ensure proper data types (numeric, date, categorical)\nSchema validation - Verify structure matches expectations\n\nConstraint enforcement - Check ranges, lengths, formats\nNormalization - Split compound fields, remove redundancy\n\n\n\n\n\nOutlier treatment - Remove, cap, or transform extreme values\nNoise reduction - Smooth inconsistent measurements\nError correction - Fix typos, invalid entries\nEnrichment - Add missing information from external sources\nValidation against reference data - Check against authoritative sources\n\nThe key is applying these systematically and documenting all decisions for reproducibility."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/00-outline.html#detection-strategies",
+    "href": "materials-2025/Module 2 - Data cleaning/00-outline.html#detection-strategies",
+    "title": "Outline",
+    "section": "",
+    "text": "Data profiling - Automated scanning for patterns, anomalies, and quality issues\nStatistical analysis - Outlier detection using z-scores, IQR, box plots\nRule-based validation - Business logic and constraint checking\nPattern matching - Regular expressions for format validation\nCross-field validation - Checking relationships between columns"
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/00-outline.html#handling-missing-data",
+    "href": "materials-2025/Module 2 - Data cleaning/00-outline.html#handling-missing-data",
+    "title": "Outline",
+    "section": "",
+    "text": "Deletion - Remove rows/columns with missing values\nImputation - Fill with mean, median, mode, or predicted values\nForward/backward fill - Use previous/next valid values\nDomain-specific rules - Business logic for missing value treatment\nFlag creation - Create indicator variables for missingness"
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/00-outline.html#standardization",
+    "href": "materials-2025/Module 2 - Data cleaning/00-outline.html#standardization",
+    "title": "Outline",
+    "section": "",
+    "text": "Format normalization - Consistent date formats, case, spacing\nValue mapping - Standardize categories (“M/F” → “Male/Female”)\nUnit conversion - Consistent measurement units\nEncoding standardization - UTF-8, consistent character sets\nNaming conventions - Consistent column names and values"
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/00-outline.html#duplicate-handling",
+    "href": "materials-2025/Module 2 - Data cleaning/00-outline.html#duplicate-handling",
+    "title": "Outline",
+    "section": "",
+    "text": "Exact matching - Remove identical records\nFuzzy matching - Similar records with slight differences\nKey-based deduplication - Remove based on unique identifiers\nRecord linkage - Merge related duplicate entries\nMaster data management - Establish single source of truth"
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/00-outline.html#data-type-structure",
+    "href": "materials-2025/Module 2 - Data cleaning/00-outline.html#data-type-structure",
+    "title": "Outline",
+    "section": "",
+    "text": "Type conversion - Ensure proper data types (numeric, date, categorical)\nSchema validation - Verify structure matches expectations\n\nConstraint enforcement - Check ranges, lengths, formats\nNormalization - Split compound fields, remove redundancy"
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/00-outline.html#quality-improvement",
+    "href": "materials-2025/Module 2 - Data cleaning/00-outline.html#quality-improvement",
+    "title": "Outline",
+    "section": "",
+    "text": "Outlier treatment - Remove, cap, or transform extreme values\nNoise reduction - Smooth inconsistent measurements\nError correction - Fix typos, invalid entries\nEnrichment - Add missing information from external sources\nValidation against reference data - Check against authoritative sources\n\nThe key is applying these systematically and documenting all decisions for reproducibility."
   },
   {
     "objectID": "materials-2025/Module 0 - Setting up/hwk-1-reproducibility.html",
@@ -231,32 +371,88 @@
     "text": "Why Messy Data Matters\n\nReality Check\n\n80% of data science is data cleaning\nReal data is almost always messy\nTextbook examples don’t prepare you for reality\n\n\n\nBusiness Impact\n\nBad data leads to bad decisions\nCleaning takes time and resources\nAutomation can help but isn’t always possible\n\n\n\nStatistical Validity\n\nMessy data can bias results\nWrong conclusions from poorly cleaned data\nNeed to understand messiness to trust analysis\n\nBottom Line: Messy data is the norm, not the exception. Learning to identify, understand, and systematically clean messy data is one of the most practical skills in data analysis. The goal is transforming messy reality into tidy, analyzable datasets while preserving the valuable information buried in the mess!"
   },
   {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#biological-experiment",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#biological-experiment",
-    "title": "Normal Forms of data",
-    "section": "Biological experiment",
-    "text": "Biological experiment\nIn a study, RNA-seq expressions of 11k different genes are measured at 6 and 12 hours after seeds from two different gene lines have germinated.\nWhat is the key?"
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html",
+    "title": "About Me - Grey Gergen",
+    "section": "",
+    "text": "I am from Lincoln, NE where I graduated from Lincoln Southeast High School in 2021.\n\n\nI started off studying chemical engineering and switched into Statistics & Data Analytics my sophomore year. I am getting a minor in Software Development and Economics. I plan on graduating with my bachelors in December of 2025.\n\n\n\nI have been interning as a data analyst for 2 years at Leadership Resources. Being at a smaller company that is catching up technology wise has given me a broad experience with tech. I have discovered an interest in data engineering and software engineering.\n\n\n\n\nHiking\nSkiing\nClimbing\nMusic\nGolf\n\n\n\n\nCaption"
   },
   {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#weather-station",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#weather-station",
-    "title": "Normal Forms of data",
-    "section": "Weather station",
-    "text": "Weather station\nA weather station publishes monthly averages for the minimum and maximum temperature during each hour of the day.\nWhat is the key?"
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#unl",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#unl",
+    "title": "About Me - Grey Gergen",
+    "section": "",
+    "text": "I started off studying chemical engineering and switched into Statistics & Data Analytics my sophomore year. I am getting a minor in Software Development and Economics. I plan on graduating with my bachelors in December of 2025."
   },
   {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#tuberculosis",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#tuberculosis",
-    "title": "Normal Forms of data",
-    "section": "Tuberculosis",
-    "text": "Tuberculosis\nThe World Health Organization track the number of new incidences of tuberculosis by sex and age group in each country.\nWhat is the key?"
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#career",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#career",
+    "title": "About Me - Grey Gergen",
+    "section": "",
+    "text": "I have been interning as a data analyst for 2 years at Leadership Resources. Being at a smaller company that is catching up technology wise has given me a broad experience with tech. I have discovered an interest in data engineering and software engineering."
   },
   {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#french-fries",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#french-fries",
-    "title": "Normal Forms of data",
-    "section": "French Fries",
-    "text": "French Fries\nIn a 10 week sensory experiment, 12 individuals assess taste of french fries on several scales (how potato-y, buttery, grassy, rancid, paint-y do they taste?), fried in one of 3 different oils, replicated twice.\nWhat is the key?"
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#hobbies-interests",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#hobbies-interests",
+    "title": "About Me - Grey Gergen",
+    "section": "",
+    "text": "Hiking\nSkiing\nClimbing\nMusic\nGolf\n\n\n\n\nCaption"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jesusrod44/About_Me.html",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jesusrod44/About_Me.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I am a Senior at UNL graduating in December of 2025 with a Bachelor’s Degree in Statistics and Data Analytics and a Minor in Mathematics. As an aspiring biostatistician, I am passionate about turning data into actionable insights to drive informed decision-making. I love finding a way to easily clean or export data in order to prepare it for analysis!\n\n\nBreakfast is my favorite meal of the day because I love the following foods so much:\n\nWaffles\nBacon\nEggs\nOatmeal\n\nI have worked at an animal clinic for 7 years! Before statistics, I was on a pre-vet track. I enjoy working with animals and helping out the veterinarians and vet techs, but I found statistics something that I was much better at. I hope I can continue to help people in the future in my work as a biostatistician. Below is a picture of me with one of the only sphinx cats I’ve seen during my stay there!"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jesusrod44/About_Me.html#fun-facts",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jesusrod44/About_Me.html#fun-facts",
+    "title": "About Me",
+    "section": "",
+    "text": "Breakfast is my favorite meal of the day because I love the following foods so much:\n\nWaffles\nBacon\nEggs\nOatmeal\n\nI have worked at an animal clinic for 7 years! Before statistics, I was on a pre-vet track. I enjoy working with animals and helping out the veterinarians and vet techs, but I found statistics something that I was much better at. I hope I can continue to help people in the future in my work as a biostatistician. Below is a picture of me with one of the only sphinx cats I’ve seen during my stay there!"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-mfehr34/About_Me.html#career-plans",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-mfehr34/About_Me.html#career-plans",
+    "title": "About Me",
+    "section": "Career Plans",
+    "text": "Career Plans\nAs a Data Science major, my goal straight out of college is to become a Data Scientist in industry. Preferably, I would like to work in the Finance or Tech industries. Another one of my big interests is Machine Learning, specifically Artificial Intelligence, such as AI agents and automation, so getting a job in that area would also be amazing. After a few years full-time, I would like to get a master’s degree in Statistics, Data Analytics, or Data Science."
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html",
+    "title": "About_Me",
+    "section": "",
+    "text": "Hello! My name is Josephine (Josie) Browning, and I am a senior at the University of Nebraska-Lincoln. I am a double major in Statistics and Actuarial Science, and I am hoping to be an Actuarial Analyst post-grad. I have two SOA exams passed and I am beginning to study for my third exam, SRM. I am originally from Omaha, and have lived there my whole life with my parents and younger sister. We also have an old cat named Jackson!\n\n\n\n\n\n\nI have been using a lot of my free time in college to explore new hobbies and crafts! Some of my favorite include, but are not limited to:\n\nMaking beaded jewelry, mostly bracelets, necklaces, and charms\nPainting watercolors landscapes and turning them into reusable calenders\nMaking and designing press-on nail sets\nCanning and pickling home-grown veggies (taken from my parents garden)\nPlaying Stardew Valley and taking care of my pretend farm\n\n\n\n\nHere are some of my favorite movies, shows, and music! I would love to hear any and all opinions that people may have (even if it’s just to tell me how much they dislike it).\n\n\n\nWhiplash (2014)\nThe Last of Sheila (1973)\nHow to Train Your Dragon (2010)\nThe Fantastic Mr. Fox (2009)\nJojo Rabbit (2019)\nY Tu Mamá También (2001)\n\n\n\n\n\nBojack Horseman\nFleabag\nHannibal\nThe Bear"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html#hobbies",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html#hobbies",
+    "title": "About_Me",
+    "section": "",
+    "text": "I have been using a lot of my free time in college to explore new hobbies and crafts! Some of my favorite include, but are not limited to:\n\nMaking beaded jewelry, mostly bracelets, necklaces, and charms\nPainting watercolors landscapes and turning them into reusable calenders\nMaking and designing press-on nail sets\nCanning and pickling home-grown veggies (taken from my parents garden)\nPlaying Stardew Valley and taking care of my pretend farm"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html#media-favorites",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html#media-favorites",
+    "title": "About_Me",
+    "section": "",
+    "text": "Here are some of my favorite movies, shows, and music! I would love to hear any and all opinions that people may have (even if it’s just to tell me how much they dislike it).\n\n\n\nWhiplash (2014)\nThe Last of Sheila (1973)\nHow to Train Your Dragon (2010)\nThe Fantastic Mr. Fox (2009)\nJojo Rabbit (2019)\nY Tu Mamá También (2001)\n\n\n\n\n\nBojack Horseman\nFleabag\nHannibal\nThe Bear"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jcharbonneau2/About-Me.html",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jcharbonneau2/About-Me.html",
+    "title": "Stat 471",
+    "section": "",
+    "text": "Hi, I’m Jo Charbonneau and I’m currently a senior Statistics and Data Analytics student at UNL. I’m currently on the Pre-Law track and I want to go into criminal defense or immigration law. My hope is to start out with public defending and then move up, possibly getting into the politics in the future. Here is a little more about me:\n\n\nWhen I’m not doing schoolwork (or right now, studying for the LSAT), I enjoy cooking & baking, reading, and playing video games. Cookies are currently my specialty in terms of baking, but I’ve been trying to branch out into more things such as sweet breads and kolaches.\n\n\n\n\nHowl’s Moving Castle (2004)\n1917 (2019)\nSinners (2025)\nDarkest Hour (2017)\n\n\n\n\n\nModern Family\nAbbott Elementary\n\n\n\n\n\nMartyr! by Kaveh Akbar\nThe Sword of Kaigen by M.L. Wang\nThe Lies of Locke Lamora by Scott Lynch\nThe Poppy War by R.F. Kuang\n\nAlso, here’s my cat. His name is Odin (or “Omen”, as my friend’s nephew would call him). He’s four and really cute, but also a little bit evil depending on the day. We got him in 2021 when he was a kitten :)"
+  },
+  {
+    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jcharbonneau2/About-Me.html#about-me",
+    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jcharbonneau2/About-Me.html#about-me",
+    "title": "Stat 471",
+    "section": "",
+    "text": "Hi, I’m Jo Charbonneau and I’m currently a senior Statistics and Data Analytics student at UNL. I’m currently on the Pre-Law track and I want to go into criminal defense or immigration law. My hope is to start out with public defending and then move up, possibly getting into the politics in the future. Here is a little more about me:\n\n\nWhen I’m not doing schoolwork (or right now, studying for the LSAT), I enjoy cooking & baking, reading, and playing video games. Cookies are currently my specialty in terms of baking, but I’ve been trying to branch out into more things such as sweet breads and kolaches.\n\n\n\n\nHowl’s Moving Castle (2004)\n1917 (2019)\nSinners (2025)\nDarkest Hour (2017)\n\n\n\n\n\nModern Family\nAbbott Elementary\n\n\n\n\n\nMartyr! by Kaveh Akbar\nThe Sword of Kaigen by M.L. Wang\nThe Lies of Locke Lamora by Scott Lynch\nThe Poppy War by R.F. Kuang\n\nAlso, here’s my cat. His name is Odin (or “Omen”, as my friend’s nephew would call him). He’s four and really cute, but also a little bit evil depending on the day. We got him in 2021 when he was a kitten :)"
   },
   {
     "objectID": "about.html",
