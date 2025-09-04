@@ -9,8 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-09-02">
-  <title>Stat 471 – Normal Forms of data</title>
+  <meta name="dcterms.date" content="2025-09-09">
+  <title>Stat 471 – Data Formats</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,323 +193,295 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Normal Forms of data</h1>
+  <h1 class="title">Data Formats</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-09-02</p>
+  <p class="date">2025-09-09</p>
 </section>
-<section id="double-entry-or-error" class="title-slide slide level1 center">
-<h1>Double entry or error?</h1>
-<p>The data set below is tidy, but does not allow us to distinguish between two Alices in the class or a data entry</p>
+<section id="data-formatting" class="title-slide slide level1 center">
+<h1>Data Formatting</h1>
+<p>“Every column is a variable”</p>
+<p>All elements in a column are realizations of the same random variable, i.e.&nbsp;have the same data type and format</p>
+</section>
+
+<section id="types-of-data" class="title-slide slide level1 center">
+<h1>Types of Data</h1>
+<p>Basic data types (<code>read.csv</code>):</p>
+<ul>
+<li>logical (binary: <code>TRUE</code>/<code>FALSE</code>),<br>
+</li>
+<li>numeric (integer, float/double),</li>
+<li>character (text)</li>
+</ul>
+<p>Additional formats (<code>read_csv</code>):</p>
+<ul>
+<li>factor variables (hybrid of numeric and text),</li>
+<li>dates &amp; times (<code>lubridate</code> package),</li>
+</ul>
+</section>
+
+<section id="an-example" class="title-slide slide level1 center">
+<h1>An example</h1>
+<p>The <a href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads">FBI Crime Data Explorer</a> allows a download of different aggregates of data in Excel spread sheets.</p>
+<p><img data-src="../images/cde-fbi-state.png"> The downloaded data is available in the file <a href="../data/state.zip">state.zip</a>.</p>
+</section>
+
+<section id="an-example-2" class="title-slide slide level1 center">
+<h1>An example (2)</h1>
+<p>Download the file <code>state.zip</code> and unzip it:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">download.file</span>(<span class="st">'https://github.com/stat471-at-unl/materials-2025/raw/main/data/state.zip'</span>, <span class="at">destfile =</span> <span class="st">"state.zip"</span>)</span>
+<span id="cb1-2"><a></a><span class="fu">unzip</span>(<span class="st">"state.zip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This creates the folder <code>state</code> with the three files:</p>
+<pre><code>NIBRS_Table_27_Crimes_Against_Persons_Offenses_Offense_Category_by_State_2024.xlsx
+NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx
+NIBRS_Table_29_Crimes_Against_Society_Offenses_Offense_Category_by_State_2024.xlsx</code></pre>
+</section>
+
+<section id="an-example-3" class="title-slide slide level1 center">
+<h1>An Example (3)</h1>
+<p>Opening the file <code>NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx</code> shows a large table with some meta data at the top and one entry for each state:</p>
+
+<img data-src="../images/table28.png" class="r-stretch"></section>
+
+<section id="an-example-4" class="title-slide slide level1 center">
+<h1>An Example (4)</h1>
+<p>We import the spreadsheet with <code>readxl::read_xlsx</code> and skipping the first couple of lines:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>property <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx"</span>, <span class="at">skip =</span> <span class="dv">4</span>)</span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a><span class="fu">head</span>(property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  student_name  course grade
-1        Alice    Math    85
-2        Alice Science    92
-3          Bob    Math    78
-4          Bob Science    88
-5        Alice    Math    82
-6        Alice Science    90</code></pre>
+<pre><code># A tibble: 6 × 16
+  State    Number of \r\nParticipa…¹ Population\r\nCovere…² `Total \r\nOffenses`
+  &lt;chr&gt;                        &lt;dbl&gt;                  &lt;dbl&gt;                &lt;dbl&gt;
+1 &lt;NA&gt;                            NA                     NA                   NA
+2 Total                        14601              296527998              8237977
+3 Alabama                        418                5033518               132140
+4 Alaska                          32                 450712                 8934
+5 Arizona                         92                5307431               143887
+6 Arkansas                       361                3029333                96727
+# ℹ abbreviated names: ¹​`Number of \r\nParticipating\r\nAgencies`,
+#   ²​`Population\r\nCovered`
+# ℹ 12 more variables: `Offense Category` &lt;chr&gt;, ...6 &lt;chr&gt;, ...7 &lt;chr&gt;,
+#   ...8 &lt;chr&gt;, ...9 &lt;chr&gt;, ...10 &lt;chr&gt;, ...11 &lt;chr&gt;, ...12 &lt;chr&gt;, ...13 &lt;chr&gt;,
+#   ...14 &lt;chr&gt;, ...15 &lt;chr&gt;, ...16 &lt;chr&gt;</code></pre>
 </div>
 </div>
-<ul>
-<li>solution(?) - add a last name!</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>students<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="ids-over-names" class="title-slide slide level1 center">
-<h1>IDs over names</h1>
-<p>Identifiers help us to</p>
-<ul>
-<li>distinguish between individuals with the same name,</li>
-<li>track individuals across name changes</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>students<span class="sc">$</span>student_id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="first-normal-form" class="title-slide slide level1 center">
-<h1>First normal form</h1>
-<p><strong>The key</strong></p>
-<p>A tidy data set is in first normal form, if it has a <strong>key</strong>.</p>
-<p><br></p>
-<p>The <em>key of a data set</em> is defined as the (set of) variable(s) that uniquely identifies each row</p>
-<p>A key should be <em>stable</em> and <em>unique</em> over time.</p>
-</section>
-
-<section id="what-is-the-key" class="title-slide slide level1 center">
-<h1>What is the key?</h1>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  student_name  course grade last_name student_id
-1        Alice    Math    85         A          1
-2        Alice Science    92         A          1
-3          Bob    Math    78         B          2
-4          Bob Science    88         B          2
-5        Alice    Math    82         B          3
-6        Alice Science    90         B          3</code></pre>
-</div>
-</div>
-</section>
-
-<section id="is-there-a-key" class="title-slide slide level1 center">
-<h1>Is there a key?</h1>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  student_name  course grade last_name
-1        Alice    Math    85         A
-2        Alice Science    92         A
-3          Bob    Math    78         B
-4          Bob Science    88         B
-5        Alice    Math    82         B
-6        Alice Science    90         B</code></pre>
-</div>
-</div>
-</section>
-
-<section id="key-variables" class="title-slide slide level1 center">
-<h1>Key variables</h1>
-<ul>
-<li><p>Identifying the key needs some practice</p></li>
-<li><p>Maybe helpful: think about the problem as statistical design question (what is designed ahead of a study, what is observed)</p></li>
-<li><p>all design variables are part of the key</p></li>
-<li><p>no measurement variable should be part of the key</p></li>
-</ul>
-</section>
-
-<section>
-<section id="identifying-the-key" class="title-slide slide level1 center">
-<h1>Identifying the key</h1>
-
-</section>
-<section id="biological-experiment" class="slide level2">
-<h2>Biological experiment</h2>
-<p>In a study, RNA-seq expressions of 11k different genes are measured at 6 and 12 hours after seeds from two different gene lines have germinated.</p>
-<p>What is the key?</p>
-</section>
-<section id="weather-station" class="slide level2">
-<h2>Weather station</h2>
-<p>A weather station publishes monthly averages for the minimum and maximum temperature during each hour of the day.</p>
-<p>What is the key?</p>
-</section>
-<section id="tuberculosis" class="slide level2">
-<h2>Tuberculosis</h2>
-<p>The World Health Organization track the number of new incidences of tuberculosis by sex and age group in each country.</p>
-<p>What is the key?</p>
-</section>
-<section id="french-fries" class="slide level2">
-<h2>French Fries</h2>
-<p>In a 10 week sensory experiment, 12 individuals assess taste of french fries on several scales (how potato-y, buttery, grassy, rancid, paint-y do they taste?), fried in one of 3 different oils, replicated twice.</p>
-<p>What is the key?</p>
-</section></section>
-<section id="data-queries" class="title-slide slide level1 center">
-<h1>Data queries</h1>
-<ul>
-<li><p>Generally, data doesn’t just exist but should provide answers to questions</p></li>
-<li><p>What questions can you think of?</p></li>
-</ul>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  student_name  course grade last_name student_id
-1        Alice    Math    85         A          1
-2        Alice Science    92         A          1
-3          Bob    Math    78         B          2
-4          Bob Science    88         B          2
-5        Alice    Math    82         B          3
-6        Alice Science    90         B          3</code></pre>
-</div>
-</div>
-</section>
-
-<section id="sample-questions" class="title-slide slide level1 center">
-<h1>Sample Questions</h1>
-<ul>
-<li><p>What grade does student X have in subject Y?</p></li>
-<li><p>What is the average grade in subject Y?</p></li>
-<li><p>How many courses does student X take?</p></li>
-<li><p>How many students have taken subject Y?</p></li>
-<li><p>How many students are enrolled in total?</p></li>
-</ul>
 </section>
 
 <section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
-<h1>Your Turn</h1>
-<p>Write code to create data summaries to answer:</p>
+<h1>Your turn</h1>
+<p>For the <code>property</code> crime data, create sensible variable names for the 6th through the 16th variable</p>
+<p>Hint: you might want to try out what happens when you skip the first five lines.</p>
+</section>
+
+<section id="the-janitor-package" class="title-slide slide level1 center">
+<h1>The <code>janitor</code> package</h1>
+<p><code>janitor::clean_names</code> removes spaces and special symbols; original first line is also removed</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>prop_names <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx"</span>, <span class="at">skip =</span> <span class="dv">5</span>)</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a>property <span class="ot">&lt;-</span> property <span class="sc">|&gt;</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="an-example-6" class="title-slide slide level1 center">
+<h1>An example (6)</h1>
+<p>Some columns do not have the correct format:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">str</span>(property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [53 × 16] (S3: tbl_df/tbl/data.frame)
+ $ state                           : chr [1:53] NA "Total" "Alabama" "Alaska" ...
+ $ number_of_participating_agencies: num [1:53] NA 14601 418 32 92 ...
+ $ population_covered              : num [1:53] NA 2.97e+08 5.03e+06 4.51e+05 5.31e+06 ...
+ $ total_offenses                  : num [1:53] NA 8237977 132140 8934 143887 ...
+ $ offense_category                : chr [1:53] "Arson" "31982" "597" "61" ...
+ $ x6                              : chr [1:53] "Bribery" "849" "7" "4" ...
+ $ x7                              : chr [1:53] "Burglary/\r\nBreaking &amp;\r\nEntering" "655847" "11771" "881" ...
+ $ x8                              : chr [1:53] "Counterfeiting/\r\nForgery" "142471" "2775" "149" ...
+ $ x9                              : chr [1:53] "Destruction/\r\nDamage/\r\nVandalism" "1567082" "27264" "2489" ...
+ $ x10                             : chr [1:53] "Embezzlement" "32845" "324" "37" ...
+ $ x11                             : chr [1:53] "Extortion/\r\nBlackmail" "26555" "332" "24" ...
+ $ x12                             : chr [1:53] "Fraud \r\nOffenses" "891661" "14346" "1148" ...
+ $ x13                             : chr [1:53] "Larceny/\r\nTheft\r\nOffenses" "3832550" "62250" "3350" ...
+ $ x14                             : chr [1:53] "Motor\r\nVehicle\r\nTheft" "750704" "8601" "606" ...
+ $ x15                             : chr [1:53] "Robbery" "175072" "1817" "129" ...
+ $ x16                             : chr [1:53] "Stolen \r\nProperty \r\nOffenses" "130359" "2056" "56" ...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>property <span class="ot">&lt;-</span> property <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">16</span>, as.numeric))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="an-example-7" class="title-slide slide level1 center">
+<h1>An example (7)</h1>
+<p>Is this dataset now tidy?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">head</span>(property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 16
+  state    number_of_participating_agencies population_covered total_offenses
+  &lt;chr&gt;                               &lt;dbl&gt;              &lt;dbl&gt;          &lt;dbl&gt;
+1 &lt;NA&gt;                                   NA                 NA             NA
+2 Total                               14601          296527998        8237977
+3 Alabama                               418            5033518         132140
+4 Alaska                                 32             450712           8934
+5 Arizona                                92            5307431         143887
+6 Arkansas                              361            3029333          96727
+# ℹ 12 more variables: offense_category &lt;chr&gt;, x6 &lt;dbl&gt;, x7 &lt;dbl&gt;, x8 &lt;dbl&gt;,
+#   x9 &lt;dbl&gt;, x10 &lt;dbl&gt;, x11 &lt;dbl&gt;, x12 &lt;dbl&gt;, x13 &lt;dbl&gt;, x14 &lt;dbl&gt;, x15 &lt;dbl&gt;,
+#   x16 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+
+<section id="conversion-between-types" class="title-slide slide level1 center">
+<h1>Conversion between types</h1>
 <ul>
-<li><p>What is the average grade in each subject?</p></li>
-<li><p>How many courses does each student take?</p></li>
-<li><p>How many students are enrolled in total?</p></li>
+<li><p>Casting from specific to more general data type always works:</p>
+<p>logical -&gt; integer -&gt; double/float -&gt; character</p>
+<p><code>as.integer</code>, <code>as.numeric</code>, <code>as.character</code></p></li>
+<li><p>Casting to more specific data types only works when the values have the correct format</p></li>
+<li><p>Maybe easier: use column specification in <code>readr</code>.</p></li>
 </ul>
 </section>
 
-<section id="updates-to-the-data" class="title-slide slide level1 center">
-<h1>Updates to the data</h1>
+<section id="example-box-office-data" class="title-slide slide level1 center">
+<h1>Example: Box office data</h1>
+<p><code>The-Numbers.com</code> provides a weekly summary of box office numbers for movies currently in theatres:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(rvest)</span>
+<span id="cb11-2"><a></a>url <span class="ot">&lt;-</span> <span class="st">"https://www.the-numbers.com/box-office-chart/weekend/2025/08/22"</span></span>
+<span id="cb11-3"><a></a>doc <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb11-4"><a></a>tables <span class="ot">&lt;-</span> doc <span class="sc">|&gt;</span> <span class="fu">html_table</span>()</span>
+<span id="cb11-5"><a></a>tables[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 70 × 11
+   ``    ``    `Movie Title`     Distributor Gross `%LW` Theaters TheatersChange
+   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;         
+ 1 1     (-)   KPop Demon Hunte… Netflix     $19,… ""    1,700    ""            
+ 2 2     (1)   Weapons           Warner Bro… $15,… "-37… 3,631    "+181"        
+ 3 3     (2)   Freakier Friday   Walt Disney $8,8… "-38… 3,675    "-300"        
+ 4 4     (4)   The Fantastic Fo… Walt Disney $6,0… "-33… 3,190    "-165"        
+ 5 5     (5)   The Bad Guys 2    Universal   $5,1… "-32… 3,288    "-92"         
+ 6 6     (3)   Nobody 2          Universal   $3,7… "-60… 3,282    "+22"         
+ 7 7     (6)   Superman          Warner Bro… $3,4… "-35… 2,338    "-317"        
+ 8 8     N     Honey Don’t       Focus Feat… $3,0… ""    1,317    ""            
+ 9 9     (7)   The Naked Gun     Paramount … $2,9… "-39… 2,776    "-251"        
+10 10    (8)   Jurassic World R… Universal   $2,1… "-29… 2,100    "-170"        
+# ℹ 60 more rows
+# ℹ 3 more variables: PerTheater &lt;chr&gt;, TotalGross &lt;chr&gt;,
+#   `Weekends InRelease` &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+
+<section id="controlling-column-types" class="title-slide slide level1 center">
+<h1>Controlling Column Types</h1>
 <ul>
-<li>What happens, if Bob withdraws from Math and Science?</li>
+<li><p>Nicely formatted tables in html don’t result in nicely formatted data in R or python</p></li>
+<li><p>Text files do not contain any information about column types</p></li>
+<li><p>Different functions use different guessing heuristics (<code>read_csv</code> from <code>readr</code> package is a lot better than base <code>read.csv</code>, and faster)</p></li>
+<li><p><code>spec()</code> show the specification of a data set in <code>tibble</code> format</p></li>
 </ul>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">write.csv</span>(tables[[<span class="dv">2</span>]], <span class="st">"box-office.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-2"><a></a>box_office <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"box-office.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="current-column-specifications" class="title-slide slide level1 center">
+<h1>Current column specifications</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>box_office <span class="sc">|&gt;</span> readr<span class="sc">::</span><span class="fu">spec</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  student_name  course grade last_name student_id
-1        Alice    Math    85         A          1
-2        Alice Science    92         A          1
-3          Bob    Math    78         B          2
-4          Bob Science    88         B          2
-5        Alice    Math    82         B          3
-6        Alice Science    90         B          3</code></pre>
+<pre><code>cols(
+  ...1 = col_character(),
+  ...2 = col_character(),
+  `Movie Title` = col_character(),
+  Distributor = col_character(),
+  Gross = col_character(),
+  `%LW` = col_character(),
+  Theaters = col_number(),
+  TheatersChange = col_character(),
+  PerTheater = col_character(),
+  TotalGross = col_character(),
+  `Weekends InRelease` = col_number()
+)</code></pre>
 </div>
-</div>
-<div class="fragment fade-in">
-<ul>
-<li>It looks like Bob has left the school!</li>
-<li><strong>deletion anomaly</strong></li>
-</ul>
 </div>
 </section>
 
-<section id="issues-with-1st-normal-form-data" class="title-slide slide level1 center">
-<h1>Issues with 1st normal form data</h1>
-<p>Potential consistency issues (“split key problems”):</p>
-<ul>
-<li><strong>Update anomaly</strong>: e.g.&nbsp;change to person’s name must be made in multiple rows</li>
-<li><strong>Insert anomaly</strong>: e.g.&nbsp;student can’t be registered without being enrolled in at least one class</li>
-<li><strong>Delete anomaly</strong>: e.g.&nbsp;student can’t withdraw from classes without being removed completely</li>
-</ul>
-<p>Efficiency problem:</p>
-<ul>
-<li><strong>Storage waste</strong>: <code>student_name</code> and <code>last_name</code> repeated unnecessarily</li>
-</ul>
-</section>
-
-<section id="second-normalform" class="title-slide slide level1 center">
-<h1>Second Normalform</h1>
-<p><strong>the whole key</strong></p>
-<p>A data set is in second normal form if</p>
-<ul>
-<li>it is in 1st NF</li>
-<li>and no non-key variable depends on only a part of the key</li>
-</ul>
-<div class="fragment fade-in">
-<p>All data in 1st NF with a single variable as a key are automatically in 2nd NF!</p>
+<section id="set-column-specifications" class="title-slide slide level1 center">
+<h1>Set column specifications</h1>
+<p><code>col_number()</code> is lenient: ignores grouping mark, percent symbol, leading <code>$</code>, …</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(readr)</span>
+<span id="cb16-2"><a></a>box_office <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb16-3"><a></a> <span class="st">"box-office.csv"</span>, </span>
+<span id="cb16-4"><a></a>  <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="fu">col_number</span>(),</span>
+<span id="cb16-5"><a></a>                   <span class="st">`</span><span class="at">Movie Title</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">col_character</span>(),</span>
+<span id="cb16-6"><a></a>                   <span class="at">Distributor =</span> <span class="fu">col_character</span>())</span>
+<span id="cb16-7"><a></a>)  </span>
+<span id="cb16-8"><a></a><span class="fu">names</span>(box_office)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Rank"</span>, <span class="st">"Rank_LW"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">head</span>(box_office)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 11
+   Rank Rank_LW `Movie Title`   Distributor  Gross `%LW` Theaters TheatersChange
+  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;          &lt;dbl&gt;
+1     1      NA KPop Demon Hun… Netflix     1.92e7    NA     1700             NA
+2     2       1 Weapons         Warner Bro… 1.54e7   -37     3631            181
+3     3       2 Freakier Friday Walt Disney 8.90e6   -38     3675           -300
+4     4       4 The Fantastic … Walt Disney 6.01e6   -33     3190           -165
+5     5       5 The Bad Guys 2  Universal   5.11e6   -32     3288            -92
+6     6       3 Nobody 2        Universal   3.71e6   -60     3282             22
+# ℹ 3 more variables: PerTheater &lt;dbl&gt;, TotalGross &lt;dbl&gt;,
+#   `Weekends InRelease` &lt;dbl&gt;</code></pre>
+</div>
 </div>
 </section>
 
-<section id="normalizing-from-1st-to-2nd" class="title-slide slide level1 center">
-<h1>Normalizing from 1st to 2nd</h1>
-<div class="fragment fade-in">
-<p>Idea: If the key is split, split the dataset into two</p>
-</div>
-<div class="fragment fade-in">
+<section id="other-column-specifications" class="title-slide slide level1 center">
+<h1>Other column specifications</h1>
+<p>The <code>readr</code> package provides functionality to set column types:</p>
 <div class="columns">
-<div class="column" style="width:40%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>students_registered <span class="ot">&lt;-</span> students <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a></a>  <span class="fu">group_by</span>(student_id) <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">summarize</span>(<span class="at">first =</span> student_name[<span class="dv">1</span>], </span>
-<span id="cb8-4"><a></a>            <span class="at">second =</span> last_name[<span class="dv">1</span>])</span>
-<span id="cb8-5"><a></a></span>
-<span id="cb8-6"><a></a>students_registered</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  student_id first second
-       &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
-1          1 Alice A     
-2          2 Bob   B     
-3          3 Alice B     </code></pre>
-</div>
-</div>
+<div class="column" style="width:45%;">
+<ul>
+<li><code>col_character()</code> (c)</li>
+<li><code>col_integer()</code> (i)</li>
+<li><code>col_number()</code> (n)</li>
+<li><code>col_ double()</code> (d)</li>
+<li><code>col_logical()</code> (l)</li>
+</ul>
 </div><div class="column" style="width:10%;">
 <!-- empty column to create gap -->
-</div><div class="column" style="width:40%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>students_enrolled <span class="ot">&lt;-</span> students <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">select</span>(student_id, course, grade) </span>
-<span id="cb10-3"><a></a></span>
-<span id="cb10-4"><a></a>students_enrolled</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  student_id  course grade
-1          1    Math    85
-2          1 Science    92
-3          2    Math    78
-4          2 Science    88
-5          3    Math    82
-6          3 Science    90</code></pre>
-</div>
-</div>
+</div><div class="column" style="width:45%;">
+<ul>
+<li><code>col_factor()</code> (f)</li>
+<li><code>col_date()</code> (D)</li>
+<li><code>col_datetime()</code> (T)</li>
+<li><code>col_time()</code> (t)</li>
+</ul>
 </div></div>
-</div>
-</section>
-
-<section id="adding-letter-grades" class="title-slide slide level1 center">
-<h1>Adding letter grades</h1>
-<p>Assume that the registrar adds letter grades to the dataset <code>students_enrolled</code>:</p>
+<p><code>vroom()</code> read a delimited data set and allows a compressed column specification using a combination of these characters</p>
+<p>‘?’ = guess ’_’ or ‘-’ = skip this column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>students_enrolled<span class="sc">$</span>letter_grades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"B"</span>, <span class="st">"A-"</span>, <span class="st">"C+"</span>, <span class="st">"B+"</span>, <span class="st">"B-"</span>, <span class="st">"A-"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Why could this be a potential problem?</p>
-</section>
-
-<section id="issues-with-the-second-normal-form" class="title-slide slide level1 center">
-<h1>Issues with the second Normal form</h1>
-<p>Potential consistency issue:</p>
-<ul>
-<li><strong>transitive dependencies</strong>: e.g.&nbsp;change to points might require a change to the letter grade.</li>
-</ul>
-</section>
-
-<section id="third-normalform" class="title-slide slide level1 center">
-<h1>Third Normalform</h1>
-<p><strong>and nothing but the key</strong></p>
-<p>A data set is in third normal form if</p>
-<ol type="1">
-<li>it is in second normal form, and</li>
-<li>no non-key variable determines the values of another non-key variable (no transitive dependency)</li>
-</ol>
-</section>
-
-<section id="normalizing-from-2nd-to-3rd" class="title-slide slide level1 center">
-<h1>Normalizing from 2nd to 3rd</h1>
-<p>If there is a transitive dependency,</p>
-<ul>
-<li><p>remove the dependent variable from the dataset</p></li>
-<li><p>create a new table to capture the dependency</p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>grading_scheme <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb13-2"><a></a>    <span class="at">letter_grade =</span> <span class="fu">c</span>(<span class="st">"F"</span>, <span class="st">"D-"</span>, <span class="st">"D"</span>, <span class="st">"D+"</span>, <span class="st">"C-"</span>, <span class="st">"C"</span>, <span class="st">"C+"</span>, </span>
-<span id="cb13-3"><a></a>            <span class="st">"B-"</span>, <span class="st">"B"</span>, <span class="st">"B+"</span>, <span class="st">"A-"</span>, <span class="st">"A"</span>, <span class="st">"A+"</span>),</span>
-<span id="cb13-4"><a></a>    <span class="at">point_minimum =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">60</span>, <span class="dv">63</span>, <span class="dv">67</span>, <span class="dv">70</span>, <span class="dv">73</span>, <span class="dv">77</span>, <span class="dv">80</span>, <span class="dv">83</span>, <span class="dv">87</span>, <span class="dv">90</span>, <span class="dv">93</span>, <span class="dv">97</span>)</span>
-<span id="cb13-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>(optional) encode the dependency as function</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>point_to_letter <span class="ot">&lt;-</span> <span class="cf">function</span>(point) {</span>
-<span id="cb14-2"><a></a>  idx <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">which</span>(point <span class="sc">&gt;=</span> grading_scheme<span class="sc">$</span>point_minimum))</span>
-<span id="cb14-3"><a></a>  </span>
-<span id="cb14-4"><a></a>  grading_scheme<span class="sc">$</span>letter_grade[idx]</span>
-<span id="cb14-5"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "F"</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "A+"</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>box <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(<span class="st">"box-office.csv"</span>, <span class="at">delim =</span> <span class="st">","</span>, </span>
+<span id="cb19-2"><a></a>                    <span class="at">col_types =</span> <span class="st">"iiccddiiddi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
-<section id="additional-resources" class="title-slide slide level1 center">
-<h1>Additional Resources</h1>
-<p>Another example data set: <a href="https://srvanderplas.github.io/stat-computing-r-python/part-wrangling/05b-normal-forms.html">chapter 25: Normal Forms of Data</a></p>
-<p>Watch Decomplexify’s video on Normal forms: https://www.youtube.com/watch?v=GFQaEYEc8_8</p>
+<section id="dates-and-times" class="title-slide slide level1 center">
+<h1>Dates and times</h1>
+<p>Dates and times: https://r4ds.hadley.nz/datetimes.html</p>
 
 
 </section>
@@ -675,14 +647,14 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'slide',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+        backgroundTransition: 'fade',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,
