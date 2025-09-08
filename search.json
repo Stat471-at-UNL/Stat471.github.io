@@ -18,84 +18,14 @@
     "href": "index.html",
     "title": "Stat 471: Analysis of Messy Data",
     "section": "",
-    "text": "Course Materials\nDates shown are due dates (for assignments and exams) and dates on which material was presented (for slides).\n\n\n\n\n\n\nModule 0: Setting up the work environment\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nAbout Stat 471\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nR, RStudio, git\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nHomework 0 Setup A: Git and Github\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nHomework 0 Setup B: Connecting RStudio and Git\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 1: Tidy forms of data\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nWhat is “Messy Data”?\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nMake it Tidy Data!\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nNormal Forms of data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nNormalizing Data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nResolution Strategies\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nHomework 2: Cleaning the weather\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 2: Data Cleaning\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nData Formats\n\n\nslides\n\n\n\n\n\n\n\n\n\n \n\n\n01-regular-expressions\n\n\n \n\n\n\n\n\n\n\n\n\n \n\n\nValidation\n\n\n \n\n\n\n\n\n\n\n\n\n \n\n\nRegular Expressions\n\n\n \n\n\n\n\n\n\n\n\n\n \n\n\nOutlier Detection\n\n\n \n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 3: Working with Missing Values\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 4: Record Linkage: joining data from different sources\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 5: Working with large data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-TylerJDavis/About_Me.html",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-TylerJDavis/About_Me.html",
-    "title": "About_Me",
-    "section": "",
-    "text": "I am from Morris,IL, which is about 1 hour from Chicago. I have enjoyed coming to Nebraska and being a part of this University. I am excited for the last semester of my college career. I am hoping to attend graduate school in the fall of 2026. I am currently applying for Ph.D. programs in statistics.\n\n\n\nUNL\nIowa State\nColorado State\nIllinois\netc.\n\nOne of my favorite parts of my undergraduate experience at UNL has been the football games at Memorial Stadium. I have looked forward to the football season every year and this year is no different. The Nebraska Cornhuskers kick off the season tonight at Arrowhead stadium at 8:00 p.m.\n\nMemorial Stadium"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-TylerJDavis/About_Me.html#biography",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-TylerJDavis/About_Me.html#biography",
-    "title": "About_Me",
-    "section": "",
-    "text": "I am from Morris,IL, which is about 1 hour from Chicago. I have enjoyed coming to Nebraska and being a part of this University. I am excited for the last semester of my college career. I am hoping to attend graduate school in the fall of 2026. I am currently applying for Ph.D. programs in statistics.\n\n\n\nUNL\nIowa State\nColorado State\nIllinois\netc.\n\nOne of my favorite parts of my undergraduate experience at UNL has been the football games at Memorial Stadium. I have looked forward to the football season every year and this year is no different. The Nebraska Cornhuskers kick off the season tonight at Arrowhead stadium at 8:00 p.m.\n\nMemorial Stadium"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html",
-    "title": "About Me (Jack Macfadyen)",
-    "section": "",
-    "text": "I’m Jack Macfadyen, a student at the University of Nebraska–Lincoln. I am a senior double-majoring in Statistics and Sociology, and expect to graduate this December. Last year, I had a wonderful experience studying abroad in Amsterdam, where I developed a great love for cycling.\nOne important thing to know about me is that I love movies. I don’t prefer any particular genre, but the more unique a movie is, the more likely I am to enjoy it. Below is a list of some of my favorites, in no particular order.\n\n\n\n\nThe Green Knight (2021)\nLa La Land (2016)\nEx Machina (2014)\nMad God (2021)\nShin Godzilla (2016)\nKillers of the Flower Moon (2023)\nRRR (2022)\nAnnihilation (2018)\n\n\n\n\nEvery opportunity I get, I show off my dog. He’s a young Rottweiler named Theodore (Theo when he’s a good boy, which is always)."
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#introduction",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#introduction",
-    "title": "About Me (Jack Macfadyen)",
-    "section": "",
-    "text": "I’m Jack Macfadyen, a student at the University of Nebraska–Lincoln. I am a senior double-majoring in Statistics and Sociology, and expect to graduate this December. Last year, I had a wonderful experience studying abroad in Amsterdam, where I developed a great love for cycling.\nOne important thing to know about me is that I love movies. I don’t prefer any particular genre, but the more unique a movie is, the more likely I am to enjoy it. Below is a list of some of my favorites, in no particular order."
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#some-of-my-favorite-movies",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#some-of-my-favorite-movies",
-    "title": "About Me (Jack Macfadyen)",
-    "section": "",
-    "text": "The Green Knight (2021)\nLa La Land (2016)\nEx Machina (2014)\nMad God (2021)\nShin Godzilla (2016)\nKillers of the Flower Moon (2023)\nRRR (2022)\nAnnihilation (2018)"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#my-dog",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jmacfadyen2/About_Me.html#my-dog",
-    "title": "About Me (Jack Macfadyen)",
-    "section": "",
-    "text": "Every opportunity I get, I show off my dog. He’s a young Rottweiler named Theodore (Theo when he’s a good boy, which is always)."
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-dsander04/About_Me.html",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-dsander04/About_Me.html",
-    "title": "About_Me.qmd",
-    "section": "",
-    "text": "About Me\n\nFamily\nHello! My name is Dominic Sander and I am a senior statistics major with a math minor. I am from Lincoln, Nebraska having graduated from Lincoln Southwest in 2022. I have one younger sister who is a freshman at UNL this year studying interior design. My mom works for LPS as a Speech Pathologist and my dad does fundraising for the Museum of American Speed. We have two dogs, June (a fawn Great Dane) and Gus (a merle Great Dane). We also have two farm cats Luke and Luna!\n\n\n\nThis is my family and I the day I moved into my dorm at the start of freshman year!\n\n\n\n\nInvolvements at UNL\n\nUNL Unified (2022-2026) - Treasurer (2024-2026) - I have been a member of UNL Unified during all four years here. Unified is a club on campus that allows people with intellectual and physical disabilities in the Lincoln area to play intramural sports with UNL students.\nPitch Please (2022-2026) - Pitch Please is UNL’s premiere all-gender a capella group. We sing all sorts of music, from Earth Wind and Fire, to Harry Styles, to Dua Lipa. I am a baritone and I do vocal percussion (beat boxing) as well! If you’ve seen the movie Pitch Perfect, it’s just like that minus the “Riff-Offs.”\n\n\n\nCareer Goals\nIn a perfect world, I become a sports statistician for a professional sports team of some kind straight out of college. I would love to do professional football, volleyball, or basketball, but I love all sports and can make do anywhere. If that doesn’t pan out immediately, I’d also be interested in biostatistics and would like working in a hospital/ healthcare setting."
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html",
-    "title": "About_Me",
-    "section": "",
-    "text": "```"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html#major",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html#major",
-    "title": "About_Me",
-    "section": "Major",
-    "text": "Major\nI am majoring in Data Science and minoring in Statistics and Data Analytics"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html#favorite-food",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jiayeew/About_Me.html#favorite-food",
-    "title": "About_Me",
-    "section": "Favorite food",
-    "text": "Favorite food\n\nNasi Lemak\nLou shu fun\nAsam Laksa\n\n\nLink to portfolio?\nhttps://github.com/Stat471-at-UNL/setup-a-introductions-to-github-jiayeew\nI am not sure what does the link to portfolio means, and I am not sure if the link above is what you are looking for."
+    "text": "Course Materials\nDates shown are due dates (for assignments and exams) and dates on which material was presented (for slides).\n\n\n\n\n\n\nModule 0: Setting up the work environment\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nAbout Stat 471\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nR, RStudio, git\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nHomework 0 Setup A: Git and Github\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nHomework 0 Setup B: Connecting RStudio and Git\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 1: Tidy forms of data\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nWhat is “Messy Data”?\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nMake it Tidy Data!\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nNormal Forms of data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nWorking through code: data summaries\n\n\ncode\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nHomework: chi-square and large data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nNormalizing Data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nResolution Strategies\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nHomework 2: Cleaning the weather\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 2: Data Cleaning\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nData Formats\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nHomework 2: Cleaning the weather\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 16, 2025\n\n\nData Validation\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 18, 2025\n\n\nHomework 3: Flights across the US\n\n\nHomework\n\n\n\n\n\n\n\n\n\n \n\n\nRegular Expressions\n\n\n \n\n\n\n\n\n\n\n\n\n \n\n\nOutlier Detection\n\n\n \n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 3: Working with Missing Values\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 4: Record Linkage: joining data from different sources\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 5: Working with large data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "materials-2025/Module 1 - Tidy Forms of Data/hwk-2-clean-weather.html",
     "href": "materials-2025/Module 1 - Tidy Forms of Data/hwk-2-clean-weather.html",
     "title": "Homework 2: Cleaning the weather",
     "section": "",
-    "text": "Note: This assignment must be submitted in github classroom."
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
   },
   {
     "objectID": "materials-2025/Module 1 - Tidy Forms of Data/hwk-2-clean-weather.html#submission",
@@ -103,6 +33,13 @@
     "title": "Homework 2: Cleaning the weather",
     "section": "Submission",
     "text": "Submission\nMake sure that your file index.qmd includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/hwk-1-reproducibility.html",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/hwk-1-reproducibility.html",
+    "title": "Homework 1: Reproducibility",
+    "section": "",
+    "text": "Note: This assignment must be submitted in github classroom.\n\n\nAn example in reproducibility\n\n\nThis repository contains the Nebraskan subset from the 2023 Behavioral Risk Factor Surveillance System (BRFSS). The BRFSS is run annually by the Center for Disease control and prevention (CDC).\nYou can load the data with\nbrfss &lt;- readRDS(\"brfssNE2023.rds\")\nThe dataset contains 12886 observations on 350 variables.\nThe codebook for the full data is available from https://www.cdc.gov/brfss/annual_data/annual_2023.html. A copy of the site is included in the repo in the file USCODE23_LLCP_021924.HTML.\nVariables names starting with X_ in the R data are listed in the codebook without the starting X, i.e. the variable X_AGEG5YR can be found as _AGEG5YR in the codebook.\n\n\nTodo\n\nClone this repository to your local machine and open RStudio using the file reproducibility-brfss.Rproj.\nCreate a quarto document index.qmd. This is the file in which you should include all of your work.\nUse the brfss data described above to find an age distribution of all Nebraskans who participated in the BRFSS survey. Use the variable X_AGEG5YR and show the distribution in a barchart and a table. Make sure to address in a paragraph how you deal with non responses.\n\nIs the age of Nebraskans distributed significantly different from the nationally reported age distribution? (You could run a Chi-square test of homogeneity using chisq.test) Make sure to interpret the results.\nRe-do the analysis in questions 2 and 3 by considering the survey weights X_LLCPWT. Again, interpret the results. How do you explain the differences?\n\n\n\nSubmission\n\nMake sure that your file index.qmd contains all the details needed for me to re-run your analysis.\nEnsure that the file renders without an error.\n\nAdd your file index.qmd to the repository, commit and push."
   },
   {
     "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#biological-experiment",
@@ -301,11 +238,53 @@
     "text": "Note: This assignment must be submitted in github classroom.\n\n\nAn example in reproducibility\n\n\nThis repository contains the Nebraskan subset from the 2023 Behavioral Risk Factor Surveillance System (BRFSS). The BRFSS is run annually by the Center for Disease control and prevention (CDC).\nYou can load the data with\nbrfss &lt;- readRDS(\"brfssNE2023.rds\")\nThe dataset contains 12886 observations on 350 variables.\nThe codebook for the full data is available from https://www.cdc.gov/brfss/annual_data/annual_2023.html. A copy of the site is included in the repo in the file USCODE23_LLCP_021924.HTML.\nVariables names starting with X_ in the R data are listed in the codebook without the starting X, i.e. the variable X_AGEG5YR can be found as _AGEG5YR in the codebook.\n\n\nTodo\n\nClone this repository to your local machine and open RStudio using the file reproducibility-brfss.Rproj.\nCreate a quarto document index.qmd. This is the file in which you should include all of your work.\nUse the brfss data described above to find an age distribution of all Nebraskans who participated in the BRFSS survey. Use the variable X_AGEG5YR and show the distribution in a barchart and a table. Make sure to address in a paragraph how you deal with non responses.\n\nIs the age of Nebraskans distributed significantly different from the nationally reported age distribution? (You could run a Chi-square test of homogeneity using chisq.test) Make sure to interpret the results.\nRe-do the analysis in questions 2 and 3 by considering the survey weights X_LLCPWT. Again, interpret the results. How do you explain the differences?\n\n\n\nSubmission\n\nMake sure that your file index.qmd contains all the details needed for me to re-run your analysis.\nEnsure that the file renders without an error.\n\nAdd your file index.qmd to the repository, commit and push."
   },
   {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html",
+    "title": "Homework 2: Cleaning the weather",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html#submission",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html#submission",
+    "title": "Homework 2: Cleaning the weather",
+    "section": "Submission",
+    "text": "Submission\nMake sure that your file index.qmd includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!"
+  },
+  {
     "objectID": "gasbuddy.html",
     "href": "gasbuddy.html",
     "title": "Stat 471",
     "section": "",
     "text": "authorization: apikey 4mEsIM76saqF28IR638bWr:6XJHqxtklK7pw7haSU8wy9\nlibrary(httr2)\n\n# Set up base request with API key\ngas_request &lt;- request(\"https://api.collectapi.com/gasPrice\") |&gt;\n  req_headers(\"X-API-KEY\" = \"apikey 4mEsIM76saqF28IR638bWr:6XJHqxtklK7pw7haSU8wy9\")\n\n# Get gas prices for a specific country\nget_gas_prices &lt;- function(country = \"united-states\") {\n  gas_request |&gt;\n    req_url_path_append(\"fromCity\") |&gt;\n    req_url_query(country = country) |&gt;\n    req_perform() |&gt;\n    resp_body_json()\n}\n\n# Get all available countries\nget_countries &lt;- function() {\n  gas_request |&gt;\n    req_url_path_append(\"countries\") |&gt;\n    req_perform() |&gt;\n    resp_body_json()\n}\n\n# Usage examples\ncountries &lt;- get_countries()\nus_prices &lt;- get_gas_prices(\"united-states\")\nuk_prices &lt;- get_gas_prices(\"united-kingdom\")\nReplace \"YOUR_API_KEY_HERE\" with your actual CollectAPI key from their dashboard."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html",
+    "title": "Homework 3: Flights across the US",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#prepping",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#prepping",
+    "title": "Homework 3: Flights across the US",
+    "section": "Prepping",
+    "text": "Prepping\n\nAccept the assignment in Canvas, follow the link to create a repository, and clone this repository to your local machine.\nCreate a file named index.qmd and add it to the repository. This is the file that should contain your code, results, and interpretations. Make sure to include enough detail that your work is fully reproducible."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#to-do-items",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#to-do-items",
+    "title": "Homework 3: Flights across the US",
+    "section": "To Do Items",
+    "text": "To Do Items\n\nImport flights for all three months into a single object flights. Report on the number of flights by months and the number of features reported for it.\nDetermine a key for the data set. Make sure to show that it fulfills the requirements of a key.\nGive three different examples of transitive dependencies in the data.\nAirport information is included for both Origin and Dest. Create a new data set called airports in which you include the information once, then remove all but the required airport information from the flights object.\nCreate a summary for the number of flights each day and plot it. Color the points by day of the week. Make sure to provide labels for the days of the week. Describe the general pattern for the number of flights you see. Which days do not follow this pattern?\nThe variable Cancelled contains information about whether a flight was cancelled. Why can we not assume that flight cancellations occur completely randomly? Identify at least two factors contributing to non-random flight cancellations and visualize your findings."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#submission",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#submission",
+    "title": "Homework 3: Flights across the US",
+    "section": "Submission",
+    "text": "Submission\nEnsure that the file index.qmd renders without errors. Read through the rendered document to check for consistency. Remove excessive printouts. Add all relevant(!) files to the repository, commit, and push!"
   },
   {
     "objectID": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html",
@@ -392,95 +371,18 @@
     "text": "Outlier treatment - Remove, cap, or transform extreme values\nNoise reduction - Smooth inconsistent measurements\nError correction - Fix typos, invalid entries\nEnrichment - Add missing information from external sources\nValidation against reference data - Check against authoritative sources\n\nThe key is applying these systematically and documenting all decisions for reproducibility."
   },
   {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/hwk-1-reproducibility.html",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/hwk-1-reproducibility.html",
-    "title": "Homework 1: Reproducibility",
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02b-workday.html",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02b-workday.html",
+    "title": "Working through code: data summaries",
     "section": "",
-    "text": "Note: This assignment must be submitted in github classroom.\n\n\nAn example in reproducibility\n\n\nThis repository contains the Nebraskan subset from the 2023 Behavioral Risk Factor Surveillance System (BRFSS). The BRFSS is run annually by the Center for Disease control and prevention (CDC).\nYou can load the data with\nbrfss &lt;- readRDS(\"brfssNE2023.rds\")\nThe dataset contains 12886 observations on 350 variables.\nThe codebook for the full data is available from https://www.cdc.gov/brfss/annual_data/annual_2023.html. A copy of the site is included in the repo in the file USCODE23_LLCP_021924.HTML.\nVariables names starting with X_ in the R data are listed in the codebook without the starting X, i.e. the variable X_AGEG5YR can be found as _AGEG5YR in the codebook.\n\n\nTodo\n\nClone this repository to your local machine and open RStudio using the file reproducibility-brfss.Rproj.\nCreate a quarto document index.qmd. This is the file in which you should include all of your work.\nUse the brfss data described above to find an age distribution of all Nebraskans who participated in the BRFSS survey. Use the variable X_AGEG5YR and show the distribution in a barchart and a table. Make sure to address in a paragraph how you deal with non responses.\n\nIs the age of Nebraskans distributed significantly different from the nationally reported age distribution? (You could run a Chi-square test of homogeneity using chisq.test) Make sure to interpret the results.\nRe-do the analysis in questions 2 and 3 by considering the survey weights X_LLCPWT. Again, interpret the results. How do you explain the differences?\n\n\n\nSubmission\n\nMake sure that your file index.qmd contains all the details needed for me to re-run your analysis.\nEnsure that the file renders without an error.\n\nAdd your file index.qmd to the repository, commit and push."
+    "text": "#\n# What is the average grade in each subject?\n#\n#   How many courses does each student take?\n#\n#   How many students are enrolled in total?\n\nstudents &lt;- data.frame(\n  student_name = c(\"Alice\", \"Alice\", \"Bob\", \"Bob\", \"Alice\", \"Alice\"),\n  course = c(\"Math\", \"Science\", \"Math\", \"Science\", \"Math\", \"Science\"),\n  grade = c(85, 92, 78, 88, 82, 90),\n  student_id = rep(1:3, each = 2)\n)\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4          ✔ readr     2.1.5     \n✔ forcats   1.0.0          ✔ stringr   1.5.1     \n✔ ggplot2   3.5.2.9002     ✔ tibble    3.3.0     \n✔ lubridate 1.9.4          ✔ tidyr     1.3.1     \n✔ purrr     1.1.0          \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nduplicated(students |&gt; select(student_id, course))\n\n[1] FALSE FALSE FALSE FALSE FALSE FALSE\n\nstudents |&gt; group_by(course) |&gt;\n  summarise(\n    grade = mean(grade, na.rm=TRUE),\n    n = n(),\n    non_missing_grade = sum(is.na(grade))\n  )\n\n# A tibble: 2 × 4\n  course  grade     n non_missing_grade\n  &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt;             &lt;int&gt;\n1 Math     81.7     3                 0\n2 Science  90       3                 0\n\nstudents |&gt; group_by(student_id) |&gt;\n  summarise(\n    num_courses = length(unique(course)),\n    n = n(),\n  ) |&gt; ungroup()\n\n# A tibble: 3 × 3\n  student_id num_courses     n\n       &lt;int&gt;       &lt;int&gt; &lt;int&gt;\n1          1           2     2\n2          2           2     2\n3          3           2     2\n\nstudents |&gt; summarize(\n  num_enrolled = length(unique(student_id))\n)\n\n  num_enrolled\n1            3\n\nstudents |&gt; count(student_id) |&gt; nrow()\n\n[1] 3"
   },
   {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html",
-    "title": "About Me - Grey Gergen",
+    "objectID": "homework-repos/homework-1-reproducibility/index.html",
+    "href": "homework-repos/homework-1-reproducibility/index.html",
+    "title": "Homework #1",
     "section": "",
-    "text": "I am from Lincoln, NE where I graduated from Lincoln Southeast High School in 2021.\n\n\nI started off studying chemical engineering and switched into Statistics & Data Analytics my sophomore year. I am getting a minor in Software Development and Economics. I plan on graduating with my bachelors in December of 2025.\n\n\n\nI have been interning as a data analyst for 2 years at Leadership Resources. Being at a smaller company that is catching up technology wise has given me a broad experience with tech. I have discovered an interest in data engineering and software engineering.\n\n\n\n\nHiking\nSkiing\nClimbing\nMusic\nGolf\n\n\n\n\nCaption"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#unl",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#unl",
-    "title": "About Me - Grey Gergen",
-    "section": "",
-    "text": "I started off studying chemical engineering and switched into Statistics & Data Analytics my sophomore year. I am getting a minor in Software Development and Economics. I plan on graduating with my bachelors in December of 2025."
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#career",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#career",
-    "title": "About Me - Grey Gergen",
-    "section": "",
-    "text": "I have been interning as a data analyst for 2 years at Leadership Resources. Being at a smaller company that is catching up technology wise has given me a broad experience with tech. I have discovered an interest in data engineering and software engineering."
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#hobbies-interests",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-ggergen2/About_Me.html#hobbies-interests",
-    "title": "About Me - Grey Gergen",
-    "section": "",
-    "text": "Hiking\nSkiing\nClimbing\nMusic\nGolf\n\n\n\n\nCaption"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jesusrod44/About_Me.html",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jesusrod44/About_Me.html",
-    "title": "About Me",
-    "section": "",
-    "text": "I am a Senior at UNL graduating in December of 2025 with a Bachelor’s Degree in Statistics and Data Analytics and a Minor in Mathematics. As an aspiring biostatistician, I am passionate about turning data into actionable insights to drive informed decision-making. I love finding a way to easily clean or export data in order to prepare it for analysis!\n\n\nBreakfast is my favorite meal of the day because I love the following foods so much:\n\nWaffles\nBacon\nEggs\nOatmeal\n\nI have worked at an animal clinic for 7 years! Before statistics, I was on a pre-vet track. I enjoy working with animals and helping out the veterinarians and vet techs, but I found statistics something that I was much better at. I hope I can continue to help people in the future in my work as a biostatistician. Below is a picture of me with one of the only sphinx cats I’ve seen during my stay there!"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jesusrod44/About_Me.html#fun-facts",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jesusrod44/About_Me.html#fun-facts",
-    "title": "About Me",
-    "section": "",
-    "text": "Breakfast is my favorite meal of the day because I love the following foods so much:\n\nWaffles\nBacon\nEggs\nOatmeal\n\nI have worked at an animal clinic for 7 years! Before statistics, I was on a pre-vet track. I enjoy working with animals and helping out the veterinarians and vet techs, but I found statistics something that I was much better at. I hope I can continue to help people in the future in my work as a biostatistician. Below is a picture of me with one of the only sphinx cats I’ve seen during my stay there!"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-mfehr34/About_Me.html#career-plans",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-mfehr34/About_Me.html#career-plans",
-    "title": "About Me",
-    "section": "Career Plans",
-    "text": "Career Plans\nAs a Data Science major, my goal straight out of college is to become a Data Scientist in industry. Preferably, I would like to work in the Finance or Tech industries. Another one of my big interests is Machine Learning, specifically Artificial Intelligence, such as AI agents and automation, so getting a job in that area would also be amazing. After a few years full-time, I would like to get a master’s degree in Statistics, Data Analytics, or Data Science."
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html",
-    "title": "About_Me",
-    "section": "",
-    "text": "Hello! My name is Josephine (Josie) Browning, and I am a senior at the University of Nebraska-Lincoln. I am a double major in Statistics and Actuarial Science, and I am hoping to be an Actuarial Analyst post-grad. I have two SOA exams passed and I am beginning to study for my third exam, SRM. I am originally from Omaha, and have lived there my whole life with my parents and younger sister. We also have an old cat named Jackson!\n\n\n\n\n\n\nI have been using a lot of my free time in college to explore new hobbies and crafts! Some of my favorite include, but are not limited to:\n\nMaking beaded jewelry, mostly bracelets, necklaces, and charms\nPainting watercolors landscapes and turning them into reusable calenders\nMaking and designing press-on nail sets\nCanning and pickling home-grown veggies (taken from my parents garden)\nPlaying Stardew Valley and taking care of my pretend farm\n\n\n\n\nHere are some of my favorite movies, shows, and music! I would love to hear any and all opinions that people may have (even if it’s just to tell me how much they dislike it).\n\n\n\nWhiplash (2014)\nThe Last of Sheila (1973)\nHow to Train Your Dragon (2010)\nThe Fantastic Mr. Fox (2009)\nJojo Rabbit (2019)\nY Tu Mamá También (2001)\n\n\n\n\n\nBojack Horseman\nFleabag\nHannibal\nThe Bear"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html#hobbies",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html#hobbies",
-    "title": "About_Me",
-    "section": "",
-    "text": "I have been using a lot of my free time in college to explore new hobbies and crafts! Some of my favorite include, but are not limited to:\n\nMaking beaded jewelry, mostly bracelets, necklaces, and charms\nPainting watercolors landscapes and turning them into reusable calenders\nMaking and designing press-on nail sets\nCanning and pickling home-grown veggies (taken from my parents garden)\nPlaying Stardew Valley and taking care of my pretend farm"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html#media-favorites",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-josie-browning/About_Me.html#media-favorites",
-    "title": "About_Me",
-    "section": "",
-    "text": "Here are some of my favorite movies, shows, and music! I would love to hear any and all opinions that people may have (even if it’s just to tell me how much they dislike it).\n\n\n\nWhiplash (2014)\nThe Last of Sheila (1973)\nHow to Train Your Dragon (2010)\nThe Fantastic Mr. Fox (2009)\nJojo Rabbit (2019)\nY Tu Mamá También (2001)\n\n\n\n\n\nBojack Horseman\nFleabag\nHannibal\nThe Bear"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jcharbonneau2/About-Me.html",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jcharbonneau2/About-Me.html",
-    "title": "Stat 471",
-    "section": "",
-    "text": "Hi, I’m Jo Charbonneau and I’m currently a senior Statistics and Data Analytics student at UNL. I’m currently on the Pre-Law track and I want to go into criminal defense or immigration law. My hope is to start out with public defending and then move up, possibly getting into the politics in the future. Here is a little more about me:\n\n\nWhen I’m not doing schoolwork (or right now, studying for the LSAT), I enjoy cooking & baking, reading, and playing video games. Cookies are currently my specialty in terms of baking, but I’ve been trying to branch out into more things such as sweet breads and kolaches.\n\n\n\n\nHowl’s Moving Castle (2004)\n1917 (2019)\nSinners (2025)\nDarkest Hour (2017)\n\n\n\n\n\nModern Family\nAbbott Elementary\n\n\n\n\n\nMartyr! by Kaveh Akbar\nThe Sword of Kaigen by M.L. Wang\nThe Lies of Locke Lamora by Scott Lynch\nThe Poppy War by R.F. Kuang\n\nAlso, here’s my cat. His name is Odin (or “Omen”, as my friend’s nephew would call him). He’s four and really cute, but also a little bit evil depending on the day. We got him in 2021 when he was a kitten :)"
-  },
-  {
-    "objectID": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jcharbonneau2/About-Me.html#about-me",
-    "href": "homework-submissions/setup-a-introductions-to-github-submissions/setup-a-introductions-to-github-jcharbonneau2/About-Me.html#about-me",
-    "title": "Stat 471",
-    "section": "",
-    "text": "Hi, I’m Jo Charbonneau and I’m currently a senior Statistics and Data Analytics student at UNL. I’m currently on the Pre-Law track and I want to go into criminal defense or immigration law. My hope is to start out with public defending and then move up, possibly getting into the politics in the future. Here is a little more about me:\n\n\nWhen I’m not doing schoolwork (or right now, studying for the LSAT), I enjoy cooking & baking, reading, and playing video games. Cookies are currently my specialty in terms of baking, but I’ve been trying to branch out into more things such as sweet breads and kolaches.\n\n\n\n\nHowl’s Moving Castle (2004)\n1917 (2019)\nSinners (2025)\nDarkest Hour (2017)\n\n\n\n\n\nModern Family\nAbbott Elementary\n\n\n\n\n\nMartyr! by Kaveh Akbar\nThe Sword of Kaigen by M.L. Wang\nThe Lies of Locke Lamora by Scott Lynch\nThe Poppy War by R.F. Kuang\n\nAlso, here’s my cat. His name is Odin (or “Omen”, as my friend’s nephew would call him). He’s four and really cute, but also a little bit evil depending on the day. We got him in 2021 when he was a kitten :)"
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4          ✔ readr     2.1.5     \n✔ forcats   1.0.0          ✔ stringr   1.5.1     \n✔ ggplot2   3.5.2.9002     ✔ tibble    3.3.0     \n✔ lubridate 1.9.4          ✔ tidyr     1.3.1     \n✔ purrr     1.1.0          \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(patchwork)\n\n\nLoad data, create index file\nLoad the data with\n\nbrfss &lt;- readRDS(\"brfssNE2023.rds\")\n\n\n\nFind age distribution\n\nage_table &lt;- brfss |&gt; group_by(X_AGEG5YR) |&gt; summarise(\n  frequency = n(),\n  weighted = sum(X_LLCPWT2),\n  raw_percent = n()/nrow(brfss)*100,\n  weighted_percent = sum(X_LLCPWT2)/sum(brfss$X_LLCPWT2)*100\n)\n\nage_table |&gt; knitr::kable(digits = 2)\n\n\n\n\nX_AGEG5YR\nfrequency\nweighted\nraw_percent\nweighted_percent\n\n\n\n\n1\n952\n119104.94\n7.39\n7.89\n\n\n2\n683\n89356.68\n5.30\n5.92\n\n\n3\n815\n100169.22\n6.32\n6.63\n\n\n4\n898\n109292.57\n6.97\n7.24\n\n\n5\n971\n115425.70\n7.54\n7.64\n\n\n6\n844\n101053.42\n6.55\n6.69\n\n\n7\n936\n116399.63\n7.26\n7.71\n\n\n8\n902\n110708.72\n7.00\n7.33\n\n\n9\n1237\n139974.44\n9.60\n9.27\n\n\n10\n1266\n140808.88\n9.82\n9.33\n\n\n11\n1239\n139402.09\n9.62\n9.23\n\n\n12\n909\n99649.21\n7.05\n6.60\n\n\n13\n1101\n111183.52\n8.54\n7.36\n\n\n14\n133\n17405.96\n1.03\n1.15\n\n\n\n\n# weighted frequencies are estimates for all of Nebraska\n\n# shows frequencies, not a distribution\nbrfss |&gt; ggplot(aes(x = X_AGEG5YR)) + geom_bar()\n\n\n\n\n\n\n\n# from codebook: \ncodebook &lt;- data.frame(\n  Value = 1:14, \n  Value_Label = c(\"Age 18 to 24\", \"Age 25 to 29\", \"Age 30 to 34\", \n\"Age 35 to 39\", \"Age 40 to 44\", \"Age 45 to 49\", \"Age 50 to 54\", \n\"Age 55 to 59\", \"Age 60 to 64\", \"Age 65 to 69\", \"Age 70 to 74\", \n\"Age 75 to 79\", \"Age 80 or older\", \"Don't know/Refused/Missing\"\n))\n\np1 &lt;- brfss |&gt; ggplot(aes(x = codebook$Value_Label[X_AGEG5YR])) + \n  geom_bar(aes(y = after_stat(count/sum(count)*100))) + coord_flip() + \n  ggtitle(\"Raw Percentages\")\n\np2 &lt;- brfss |&gt; ggplot(aes(x = codebook$Value_Label[X_AGEG5YR], weight = X_LLCPWT2)) + \n  geom_bar(aes(y = after_stat(count/sum(count)*100))) + coord_flip() + \n  ggtitle(\"Weighted Percentages\")\n\np1+p2\n\n\n\n\n\n\n\n\n\nNon responses are included in the age distribution as a separate level.\n\n\nIs the age of Nebraskans distributed significantly different from the nationally reported age distribution? (You could run a Chi-square test of homogeneity using chisq.test) Make sure to interpret the results.\n\nNational sample from the codebook:\nUsing ellmer with anthropic and prompt: “from the file at path”USCODE23_LLCP_021924.HTML” in the working directory extract the table for _AGEG5YR”\n\n# no need to run this over and over again, just create the data set once\n# Load required libraries\nlibrary(rvest)\n\n# Read the HTML file\nhtml_content &lt;- read_html(\"USCODE23_LLCP_021924.HTML\")\n\n# Extract all tables from the HTML\ntables &lt;- html_content %&gt;% html_table(fill = TRUE)\n\n# Look for the table containing _AGEG5YR\nageg5yr_table &lt;- NULL\nfor(i in 1:length(tables)) {\n  if(any(grepl(\"_AGEG5YR|AGEG5YR\", tables[[i]], ignore.case = TRUE))) {\n    ageg5yr_table &lt;- tables[[i]]\n    break\n  }\n}\n\nwrite.csv(ageg5yr_table, \"national-age.csv\", row.names = FALSE)\n\nWriting the result in a file and reading it back in:\n\nnational_age &lt;- readr::read_csv(\"national-age.csv\", skip = 2)\n\nRows: 14 Columns: 5\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): Value Label\ndbl (3): Value, Percentage, Weighted Percentage\nnum (1): Frequency\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nnational_age &lt;- national_age |&gt; mutate(\n    `Value Label` = gsub(\"Age .*Notes: \", \"\", `Value Label`)\n)\nnational_age &lt;- national_age |&gt; mutate(\n    `Value Label` = ifelse(Value==14, NA, `Value Label`)\n)\nwrite.csv(\"national-age.csv\", row.names=FALSE)\n\n\"x\"\n\"national-age.csv\"\n\n\nIs there a difference between Nebraskans’ ages and the national age distribution (based on the BRFSS sample)?\n\na1 &lt;- age_table |&gt; \n  ggplot(aes(x = X_AGEG5YR, y = raw_percent)) + \n  geom_point(aes(colour = \"NE\")) + \n  geom_point(aes(x = Value, y = Percentage, colour = \"US\"), data = national_age) + \n  ggtitle(\"Raw Percentages\")\n\na2 &lt;- age_table |&gt; \n  ggplot(aes(x = X_AGEG5YR, y = weighted_percent)) + \n  geom_point(aes(colour = \"NE\")) + \n  geom_point(aes(x = Value, y = `Weighted Percentage`, colour = \"US\"), data = national_age) + \n  ggtitle(\"Weighted Percentages\")\na1 + a2\n\n\n\n\n\n\n\n\nThe weighted percentages seem quite a bit different in the national sample, the raw percentages seem fairly similar\n\nraw_frequencies &lt;- data.frame(\n  NE = age_table$frequency,\n  US = national_age$Frequency\n)\n\nchisq.test(raw_frequencies)\n\n\n    Pearson's Chi-squared test\n\ndata:  raw_frequencies\nX-squared = 157.1, df = 13, p-value &lt; 2.2e-16\n\nraw_percentages &lt;- data.frame(\n  NE = age_table$raw_percent,\n  US = national_age$Percentage\n)\n\nchisq.test(raw_percentages)\n\nWarning in chisq.test(raw_percentages): Chi-squared approximation may be\nincorrect\n\n\n\n    Pearson's Chi-squared test\n\ndata:  raw_percentages\nX-squared = 0.65857, df = 13, p-value = 1\n\nweighted_percentages &lt;- data.frame(\n  NE = age_table$weighted_percent,\n  US = national_age$`Weighted Percentage`\n)\n\nchisq.test(weighted_percentages)\n\nWarning in chisq.test(weighted_percentages): Chi-squared approximation may be\nincorrect\n\n\n\n    Pearson's Chi-squared test\n\ndata:  weighted_percentages\nX-squared = 3.3521, df = 13, p-value = 0.9963\n\n\n\n# Cramér's V (most common)\nv1 &lt;- sqrt(chisq.test(raw_frequencies)$statistic / nrow(brfss))\n\nv2 &lt;- sqrt(chisq.test(weighted_percentages)$statistic / 100)\n\nWarning in chisq.test(weighted_percentages): Chi-squared approximation may be\nincorrect\n\n# Guidelines for Cramér's V:\n# Small: 0.1, Medium: 0.3, Large: 0.5\n\n\n\nSubmission\n\nMake sure that your file index.qmd contains all the details needed for me to re-run your analysis.\nEnsure that the file renders without an error.\n\nAdd your file index.qmd to the repository, commit and push."
   },
   {
     "objectID": "about.html",
@@ -502,12 +404,5 @@
     "title": "Project Dataset and Topics",
     "section": "",
     "text": "Link to dataset\nThings you plan to investigate using this dataset:\n\nThing 1\nThing 2\nThing 3\n\nStat 251 topics you plan to cover during the analysis:\n\nTopic 1\nTopic 2\nTopic 3\nTopic 4"
-  },
-  {
-    "objectID": "homework-submissions/homework-1-reproducibility-submissions/homework-1-reproducibility-TylerJDavis/index.html",
-    "href": "homework-submissions/homework-1-reproducibility-submissions/homework-1-reproducibility-TylerJDavis/index.html",
-    "title": "index.qmd",
-    "section": "",
-    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nbrfss &lt;- readRDS(\"brfssNE2023.rds\")\n\ndata &lt;- brfss %&gt;%\n  filter(X_AGEG5YR != 14 & !is.na(X_AGEG5YR))\n\nhist(data$X_AGEG5YR)\n\n\n\n\n\n\n\nage &lt;- table(data$X_AGEG5YR)\nage\n\n\n   1    2    3    4    5    6    7    8    9   10   11   12   13 \n 952  683  815  898  971  844  936  902 1237 1266 1239  909 1101 \n\nage_1 &lt;- table(brfss$X_AGEG5YR)\n\nage_dist &lt;- data.frame(\n  Value = 1:13,\n  Label = c(\n    \"Age 18 to 24\",\n    \"Age 25 to 29\",\n    \"Age 30 to 34\",\n    \"Age 35 to 39\",\n    \"Age 40 to 44\",\n    \"Age 45 to 49\",\n    \"Age 50 to 54\",\n    \"Age 55 to 59\",\n    \"Age 60 to 64\",\n    \"Age 65 to 69\",\n    \"Age 70 to 74\",\n    \"Age 75 to 79\",\n    \"Age 80 or older\"\n  ),\n  Frequency = c(\n    26280, 21247, 24803, 27153, 28463, 27070, \n    31291, 34219, 41974, 46099, 43533, 34543, \n    38869\n  ),\n  Percentage = c(\n    6.06, 4.90, 5.72, 6.27, 6.57, 6.25,\n    7.22, 7.90, 9.69, 10.64, 10.05, 7.97,\n    8.97\n  ),\n  Weighted_Percentage = c(\n    12.37, 7.38, 9.11, 7.62, 8.47, 6.45,\n    7.83, 7.11, 8.60, 6.94, 6.48, 4.55,\n    5.24\n  )\n)\n\nThe histogram and table displayed above do not include the missing or non response value of 14. This is because the non response value for the data does not make much of an impact on the comparison of distributions are going to take place. This is not one of the age groups that we are looking at, and it is merely a ‘refused to answer’ variable.\n\ncomp &lt;- rbind(neb = age, nat = age_dist$Frequency)\n\nchisq.test(comp)\n\n\n    Pearson's Chi-squared test\n\ndata:  comp\nX-squared = 114.43, df = 12, p-value &lt; 2.2e-16\n\n\nHere we have the histogram for the national count data which was taken from the code book for the brfss data. Then we have a Chi Square test for homogeneity on the Nebraska data vs the national data. We get a significant p - value from our test saying that we should reject the null hypothesis. This allows us to say that the Nebraska age distribution is not the same as the national age distribution.\n\nlibrary(survey)\n\nLoading required package: grid\n\n\nLoading required package: Matrix\n\n\nLoading required package: survival\n\n\n\nAttaching package: 'survey'\n\n\nThe following object is masked from 'package:graphics':\n\n    dotchart\n\nne_design &lt;- svydesign(ids = ~1, data = data, weights = ~X_LLCPWT)\n\nweighted_age &lt;- svytable(~X_AGEG5YR, ne_design)\nweighted_age\n\nX_AGEG5YR\n        1         2         3         4         5         6         7         8 \n202637.00 112423.93 134334.07 122434.67 131675.83  95088.73 112483.35  99234.30 \n        9        10        11        12        13 \n128766.03 101287.10 102164.31  68874.42  80899.58 \n\nbarplot(weighted_age)\n\n\n\n\n\n\n\n\nHere we have the weighted age group totals for Nebraska, in both a table and a barplot.\n\nage_ct &lt;- rbind(Nebraska = weighted_age,\n                National = age_dist$Frequency)\n\nage_ct\n\n              1        2        3        4        5        6        7       8\nNebraska 202637 112423.9 134334.1 122434.7 131675.8 95088.73 112483.4 99234.3\nNational  26280  21247.0  24803.0  27153.0  28463.0 27070.00  31291.0 34219.0\n              9       10       11       12       13\nNebraska 128766 101287.1 102164.3 68874.42 80899.58\nNational  41974  46099.0  43533.0 34543.00 38869.00\n\nchisq.test(age_ct)\n\n\n    Pearson's Chi-squared test\n\ndata:  age_ct\nX-squared = 53896, df = 12, p-value &lt; 2.2e-16\n\n\nA Chi Square test was run to compare Nebraska’s weighted age distribution and the national age distribution. There is a significant p - value that allows us to reject the null hypothesis. This means that the weighted age group totals do not have the same distribution as the national age group totals."
   }
 ]

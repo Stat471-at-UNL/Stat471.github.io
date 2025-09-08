@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-11">
+<meta name="dcterms.date" content="2025-09-18">
 
-<title>Homework 2: Cleaning the weather – Stat 471</title>
+<title>Homework 3: Flights across the US – Stat 471</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -122,9 +157,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cleaning-the-weather-forecast" id="toc-cleaning-the-weather-forecast" class="nav-link active" data-scroll-target="#cleaning-the-weather-forecast">Cleaning the Weather Forecast</a></li>
+  <li><a href="#flights-across-the-us" id="toc-flights-across-the-us" class="nav-link active" data-scroll-target="#flights-across-the-us">Flights across the US</a></li>
   <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo">TODO</a>
   <ul class="collapse">
+  <li><a href="#prepping" id="toc-prepping" class="nav-link" data-scroll-target="#prepping">Prepping</a></li>
+  <li><a href="#to-do-items" id="toc-to-do-items" class="nav-link" data-scroll-target="#to-do-items">To Do Items</a></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul></li>
   </ul>
@@ -135,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homework 2: Cleaning the weather</h1>
+<h1 class="title">Homework 3: Flights across the US</h1>
   <div class="quarto-categories">
     <div class="quarto-category">HW</div>
     <div class="quarto-category">Week02</div>
@@ -150,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 11, 2025</p>
+      <p class="date">September 18, 2025</p>
     </div>
   </div>
   
@@ -163,67 +200,41 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Note: This assignment must be accepted in Canvas and submitted in github classroom.</p>
-<section id="cleaning-the-weather-forecast" class="level1">
-<h1>Cleaning the Weather Forecast</h1>
-<p>The National Weather Service provides an hour-by-hour forecast for the next seven days at the website <code>forecast.weather.gov</code>.</p>
-<p>The file <code>scraper.R</code> contains the function <code>get_forecast</code> which downloads hourly forecast for the specified location, and converts the xml format into an R data frame.</p>
-<pre><code>source("scraper.R", verbose=F)
-
-head(get_forecast)
-
-##                                                                                                      
-## 1 function (latitude, longitude)                                                                     
-## 2 {                                                                                                  
-## 3     url &lt;- sprintf("https://forecast.weather.gov/MapClick.php?lat=%f&amp;lon=%f&amp;FcstType=digitalDWML", 
-## 4         latitude, longitude)                                                                       
-## 5     xml_data &lt;- read_xml(url)                                                                      
-## 6     write_xml(xml_data, file = "download.xml")</code></pre>
-<p>The <code>get_forecast</code> function can be used to get data for Lincoln, NE or Ames, IA as shown below. Note that this code chunk is set to not autmoatically evaluate <code>eval = FALSE</code>, since we do not want to download new data every single time we render the current document. Instead, the results are saved in <code>rds</code> format and loaded in the next code chunk.</p>
-<pre><code>lincoln &lt;- get_forecast(40.8164, -96.6882)
-saveRDS(lincoln, "lincoln.rds")
-
-ames &lt;- get_forecast(42.04, -93.68)
-saveRDS(ames, "ames.rds")</code></pre>
-<p>Load previously saved data for Lincoln:</p>
-<pre><code>lincoln &lt;- readRDS("lincoln.rds")
-head(lincoln)
-
-## # A tibble: 6 × 9
-##   parameter   type   units values times     latitude longitude conditions source
-##   &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt; 
-## 1 temperature hourly &lt;NA&gt;  70     2025-08-… 40.8164… -96.6882… rain (cha… WFO O…
-## 2 temperature hourly &lt;NA&gt;  72     2025-08-… 40.8164… -96.6882… rain (cha… WFO O…
-## 3 temperature hourly &lt;NA&gt;  73     2025-08-… 40.8164… -96.6882… rain (cha… WFO O…
-## 4 temperature hourly &lt;NA&gt;  74     2025-08-… 40.8164… -96.6882… rain (cha… WFO O…
-## 5 temperature hourly &lt;NA&gt;  74     2025-08-… 40.8164… -96.6882… thunderst… WFO O…
-## 6 temperature hourly &lt;NA&gt;  74     2025-08-… 40.8164… -96.6882… thunderst… WFO O…</code></pre>
+<section id="flights-across-the-us" class="level1">
+<h1>Flights across the US</h1>
+<!-- badges: start -->
+<!-- badges: end -->
+<p>The department of transportation is tracking every flight taking off and landing on an airport in the US and publishing information through the TranStats system at <a href="https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr" class="uri">https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr</a>.</p>
+<p>Files for three months of flights have been added to the data folder. The flights for each month are contained in a compressed csv file each:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">"data"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2024_11.zip"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2024_12.zip"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2025_1.zip"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Information for each of the variables and explanations for each level can be found on the same website.</p>
 </section>
 <section id="todo" class="level1">
 <h1>TODO</h1>
-<p>Your job is to get a handle on the data structure.</p>
+<section id="prepping" class="level2">
+<h2 class="anchored" data-anchor-id="prepping">Prepping</h2>
 <ol type="1">
-<li><p>Create a Quarto document called <code>index.qmd</code>, add it to the repository and include all of your answers and code in that file. Make sure to structure it such that it is obvious, which question you are addressing in which section of the file.</p></li>
-<li><p>Pick a place of your choice in the US and identify its latitude and longitude. Use the function <code>get_forecast</code> to get the 7-day forecast for that location. Save the data you scraped in an <code>rds</code> file and add the file to the homework repo.</p></li>
-<li><p>Find examples in the data for violations of two different principles of tidy data. Describe which principle they violate and how.</p></li>
-<li><p>Is the set of variables <code>latitude, longitude, times, parameter</code> a key to the data? Show (with code) why or why not.</p></li>
-<li><p>You are charged with re-structuring the data set such that the variables <code>latitude, longitude,</code> and <code>times</code> are a key.</p>
-<ol type="1">
-<li>describe in words the format of the data set that has <code>latitude, longitude,</code> and <code>times</code> as key.</li>
-<li>write the code that reshapes the data set and execute it. Name the result <code>data_lat_long_times</code></li>
-<li>validate (with code) that <code>latitude, longitude,</code> and <code>times</code> are the key of the <code>data_lat_long_times</code> data set.</li>
-</ol></li>
-<li><p>Why is <code>data_lat_long_times</code> not in 2nd normal form? Find at least two problems with split keys.</p></li>
-<li><p>Address the split key problems by separating the <code>data_lat_long_times</code> data set into three:</p>
-<ol type="1">
-<li>pick suitable names for each of the three data sets and specify which variables should go into each.</li>
-<li>write the code to split the <code>data_lat_long_times</code> data into three data sets.</li>
-<li>discuss if the three data sets are in 2nd normal form.</li>
-</ol></li>
-<li><p>The choice of using <code>latitude</code> and <code>longitude</code> as part of the key is potentially problematic. Discuss why and suggest a solution.</p></li>
+<li>Accept the assignment in Canvas, follow the link to create a repository, and clone this repository to your local machine.</li>
+<li>Create a file named <code>index.qmd</code> and add it to the repository. This is the file that should contain your code, results, and interpretations. Make sure to include enough detail that your work is fully reproducible.</li>
 </ol>
+</section>
+<section id="to-do-items" class="level2">
+<h2 class="anchored" data-anchor-id="to-do-items">To Do Items</h2>
+<ol type="1">
+<li><p>Import flights for all three months into a single object <code>flights</code>. Report on the number of flights by months and the number of features reported for it.</p></li>
+<li><p>Determine a key for the data set. Make sure to show that it fulfills the requirements of a key.</p></li>
+<li><p>Give three different examples of transitive dependencies in the data.</p></li>
+<li><p>Airport information is included for both <code>Origin</code> and <code>Dest</code>. Create a new data set called <code>airports</code> in which you include the information once, then remove all but the required airport information from the <code>flights</code> object.</p></li>
+<li><p>Create a summary for the number of flights each day and plot it. Color the points by day of the week. Make sure to provide labels for the days of the week. Describe the general pattern for the number of flights you see. Which days do not follow this pattern?</p></li>
+<li><p>The variable <code>Cancelled</code> contains information about whether a flight was cancelled. Why can we not assume that flight cancellations occur completely randomly? Identify at least two factors contributing to non-random flight cancellations and visualize your findings.</p></li>
+</ol>
+</section>
 <section id="submission" class="level2">
 <h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p>Make sure that your file <code>index.qmd</code> includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!</p>
+<p>Ensure that the file <code>index.qmd</code> renders without errors. Read through the rendered document to check for consistency. Remove excessive printouts. Add all relevant(!) files to the repository, commit, and push!</p>
 
 
 </section>

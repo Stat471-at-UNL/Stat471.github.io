@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="dcterms.date" content="2025-09-09">
-  <title>Stat 471 – Resolution Strategies</title>
+  <title>Stat 471 – Homework: chi-square and large data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -127,95 +127,92 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Resolution Strategies</h1>
+  <h1 class="title">Homework: chi-square and large data</h1>
 
 <div class="quarto-title-authors">
 </div>
 
   <p class="date">2025-09-09</p>
 </section>
-<section id="there-are-inconsistencies---now-what" class="title-slide slide level1 center">
-<h1>There are inconsistencies - now what?</h1>
+<section id="homework-question" class="title-slide slide level1 center">
+<h1>Homework question</h1>
+<p>Is the age distribution for Nebraskans in the BRFSS sample in 2023 different from the national age distribution?</p>
 
+<img data-src="02c-chisquare_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+
+<section id="chi2---goodness-of-fit-test" class="title-slide slide level1 center">
+<h1><span class="math inline">\(\chi^2\)</span> - goodness of fit test</h1>
+<p>Test 1: Percentages</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  nebraska$Percentage
+X-squared = 1.2598, df = 13, p-value = 1</code></pre>
+</div>
+</div>
+<p>Test 2: Probabilities</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  nebraska$Percentage/100
+X-squared = 0.012598, df = 13, p-value = 1</code></pre>
+</div>
+</div>
 </section>
 
-<section id="immediate-actions" class="title-slide slide level1 center">
-<h1>Immediate Actions</h1>
-<ul>
-<li><strong>Document!</strong>: Record the inconsistency type, location, scope, and examples</li>
-<li><strong>Assess impact</strong>: Determine how it affects existing downstream processes and analyses</li>
-<li><strong>Quarantine affected data</strong>: don’t let problematic records go any further</li>
-</ul>
+<section id="chi2---goodness-of-fit-test-2" class="title-slide slide level1 center">
+<h1><span class="math inline">\(\chi^2\)</span> - goodness of fit test (2)</h1>
+<p>Test 3: Frequencies</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  nebraska$Frequency
+X-squared = 162.34, df = 13, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>No significant difference or hugely significant difference ???</p>
 </section>
 
-<section id="resolution-strategy" class="title-slide slide level1 center">
-<h1>Resolution Strategy</h1>
-<ul>
-<li><strong>Investigate root cause</strong>: Trace back to source systems or processes - where does the problem come from?</li>
-<li><strong>Consult domain experts</strong>: Is it a known problem?</li>
-<li><strong>Choose correction method</strong>: and document it!</li>
-</ul>
+<section id="chi-squared-test-and-sample-size" class="title-slide slide level1 center">
+<h1>Chi-squared test and sample size</h1>
+
+<img data-src="02c-chisquare_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+
+<section id="cramers-v" class="title-slide slide level1 center">
+<h1>Cramer’s V</h1>
+<p>Different approach - mitigate sample size by using normalized approach:</p>
+<p><span class="math display">\[
+V = \sqrt{\frac{\chi^2/n}{\min (r, c) - 1}}
+\]</span></p>
+<p><span class="math inline">\(n\)</span> is the overall sample size; <span class="math inline">\(r\)</span>, <span class="math inline">\(c\)</span> are the number of rows, columns.</p>
+<p>Here: <span class="math inline">\(\widehat{V}\)</span> = 0.0354939</p>
+<p>Heuristic: 0 &lt; negligible &lt; 0.1 &lt; weak &lt; 0.3 &lt; medium &lt; 0.5 &lt; strong</p>
 </section>
 
-<section id="correction-framework" class="title-slide slide level1 center">
-<h1>Correction Framework</h1>
-<ul>
-<li><strong>High confidence fixes</strong>: Automate corrections (e.g., standardize formats)</li>
-<li><strong>Medium confidence</strong>: Flag for review with suggested corrections (warning in code)</li>
-<li><strong>Low confidence</strong>: Escalate to subject matter experts (strong warning in code)</li>
-<li><strong>Cannot resolve</strong>: Document limitations and exclude from analysis (error message in code)</li>
-</ul>
+<section id="visual-inference" class="title-slide slide level1 center">
+<h1>Visual Inference</h1>
+<p>Assume that there is no difference (null hypothesis)</p>
+<p>Create samples from the US age distribution</p>
+<p>Compare visually</p>
 </section>
 
-<section id="implementation" class="title-slide slide level1 center">
-<h1>Implementation</h1>
-<ul>
-<li><strong>Create correction rules</strong> that can be reapplied</li>
-<li><strong>Validate fixes</strong> so you do not accidentally introduce new problems</li>
-<li><strong>Update documentation</strong> and data lineage</li>
-<li><strong>Communicate changes</strong> to stakeholders</li>
-<li><strong>Monitor</strong> for recurring issues</li>
-</ul>
-</section>
+<section id="which-of-these-panels-is-different" class="title-slide slide level1 center">
+<h1>Which of these panels is different?</h1>
 
-<section id="some-examples" class="title-slide slide level1 center">
-<h1>Some Examples</h1>
-<p><strong>Inconsistency Found:</strong> Customer names in different formats</p>
-<pre><code>"John Smith", "JOHN SMITH", "Smith, John", "J. Smith"</code></pre>
-<p><strong>Actions Taken:</strong></p>
-<ul>
-<li><strong>Document:</strong> “Name standardization needed - 4 different formats for same customer”</li>
-<li><strong>Solution:</strong> Create standardization rules (e.g.&nbsp;Title Case, “First Last” format) and apply</li>
-<li><strong>Result:</strong> All become “John Smith”</li>
-<li><strong>Prevention:</strong> add a customer ID to make sure that J. Smith isn’t confused with Jayden Smith.</li>
-</ul>
-</section>
+<img data-src="02c-chisquare_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 
-<section id="date-format-example" class="title-slide slide level1 center">
-<h1>Date Format Example</h1>
-<p><strong>Inconsistency Found:</strong> Mixed date formats</p>
-<pre><code>"01/02/2023", "2023-01-02", "Feb 1, 2023", "1-2-23"</code></pre>
-<p><strong>Actions Taken:</strong></p>
-<ul>
-<li><strong>High confidence:</strong> Convert obvious ISO dates automatically</li>
-<li><strong>Medium confidence:</strong> Flag ambiguous dates (01/02 - Jan 2 or Feb 1?)</li>
-<li><strong>Solution:</strong> Standardize to ISO format, manually review ambiguous cases</li>
-</ul>
-</section>
-
-<section id="address-example" class="title-slide slide level1 center">
-<h1>Address Example</h1>
-<p><strong>Inconsistency Found:</strong> Incomplete addresses</p>
-<pre><code>"123 Main", "123 Main St", "123 Main Street, Anytown"</code></pre>
-<p><strong>Actions Taken:</strong></p>
-<ul>
-<li><strong>Standardize:</strong> Use postal service abbreviations (“St”)</li>
-<li><strong>Geocode validation:</strong> Verify addresses exist</li>
-<li><strong>Flag incomplete:</strong> Missing city/state for manual review</li>
-</ul>
+<section id="weighted-percentages" class="title-slide slide level1 center">
+<h1>Weighted Percentages</h1>
 
 
-</section>
+
+<img data-src="02c-chisquare_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../N.svg" class="slide-logo"></p>
@@ -378,14 +375,14 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'none',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'fade',
+        backgroundTransition: 'none',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,
@@ -432,6 +429,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

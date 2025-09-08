@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-09-09">
+  <meta name="dcterms.date" content="2025-09-11">
   <title>Stat 471 – Data Formats</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -198,12 +198,91 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-09-09</p>
+  <p class="date">2025-09-11</p>
 </section>
 <section id="data-formatting" class="title-slide slide level1 center">
 <h1>Data Formatting</h1>
 <p>“Every column is a variable”</p>
 <p>All elements in a column are realizations of the same random variable, i.e.&nbsp;have the same data type and format</p>
+<p>We need to make sure that that data type/format is correct (and in the most usable form)</p>
+</section>
+
+<section id="example-nycflights13" class="title-slide slide level1 center">
+<h1>Example: <code>nycflights13</code></h1>
+<p>package contains data for US air travel in 2013.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb1-2"><a></a><span class="fu">head</span>(flights[,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
+1  2013     1     1      517            515         2      830            819
+2  2013     1     1      533            529         4      850            830
+3  2013     1     1      542            540         2      923            850
+4  2013     1     1      544            545        -1     1004           1022
+5  2013     1     1      554            600        -6      812            837
+6  2013     1     1      554            558        -4      740            728</code></pre>
+</div>
+</div>
+<p>Consider scheduled and actual departure time - how would we calculate the difference between them (to verify that <code>dep_delay</code> was calculated acurately)?</p>
+</section>
+
+<section id="flights---departure-times-as-integer" class="title-slide slide level1 center">
+<h1>Flights - Departure times as integer</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>flights <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb3-2"><a></a>  <span class="at">dep_delay_ours =</span> dep_time <span class="sc">-</span> sched_dep_time</span>
+<span id="cb3-3"><a></a>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Obviously, can’t use regular calculus:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">summary</span>(flights<span class="sc">$</span>dep_delay <span class="sc">-</span> flights<span class="sc">$</span>dep_delay_ours)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+-600.000    0.000    0.000    4.065    0.000 2360.000     8255 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">table</span>(flights<span class="sc">$</span>dep_delay <span class="sc">-</span> flights<span class="sc">$</span>dep_delay_ours <span class="sc">==</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ FALSE   TRUE 
+ 99777 228744 </code></pre>
+</div>
+</div>
+<blockquote>
+<p>Data type does not match the variable</p>
+</blockquote>
+</section>
+
+<section id="flights---departure-times-as-datetimes" class="title-slide slide level1 center">
+<h1>Flights - Departure times as datetimes</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>flights <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb8-2"><a></a>  <span class="at">dep_time_dttm =</span> <span class="fu">ymd_hm</span>(<span class="fu">sprintf</span>(<span class="st">"%d/%d/%d %d:%d"</span>, year, month, day, dep_time<span class="sc">%/%</span><span class="dv">100</span>, dep_time<span class="sc">%%</span><span class="dv">100</span>)),</span>
+<span id="cb8-3"><a></a>  <span class="at">sched_dep_time_dttm =</span> <span class="fu">ymd_hm</span>(<span class="fu">sprintf</span>(<span class="st">"%d/%d/%d %d:%d"</span>, year, month, day, sched_dep_time<span class="sc">%/%</span><span class="dv">100</span>, sched_dep_time<span class="sc">%%</span><span class="dv">100</span>)),</span>
+<span id="cb8-4"><a></a>  <span class="at">dep_delay_dttm =</span> <span class="fu">interval</span>(sched_dep_time_dttm, dep_time_dttm)<span class="sc">/</span><span class="fu">minutes</span>(<span class="dv">1</span>)</span>
+<span id="cb8-5"><a></a>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Much better (but doesn’t capture changes around midnight)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">summary</span>(flights<span class="sc">$</span>dep_delay <span class="sc">-</span> flights<span class="sc">$</span>dep_delay_dttm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+   0.000    0.000    0.000    5.291    0.000 1440.000     8255 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">table</span>(flights<span class="sc">$</span>dep_delay <span class="sc">-</span> flights<span class="sc">$</span>dep_delay_dttm <span class="sc">==</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ FALSE   TRUE 
+  1207 327314 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">table</span>(flights<span class="sc">$</span>dep_delay <span class="sc">-</span> flights<span class="sc">$</span>dep_delay_dttm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     0   1440 
+327314   1207 </code></pre>
+</div>
+</div>
 </section>
 
 <section id="types-of-data" class="title-slide slide level1 center">
@@ -217,8 +296,11 @@
 </ul>
 <p>Additional formats (<code>read_csv</code>):</p>
 <ul>
-<li>factor variables (hybrid of numeric and text),</li>
-<li>dates &amp; times (<code>lubridate</code> package),</li>
+<li>dates &amp; times (<code>lubridate</code> package)</li>
+</ul>
+<p>Also check:</p>
+<ul>
+<li>factor variables (hybrid of numeric and text)</li>
 </ul>
 </section>
 
@@ -232,8 +314,8 @@
 <h1>An example (2)</h1>
 <p>Download the file <code>state.zip</code> and unzip it:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">download.file</span>(<span class="st">'https://github.com/stat471-at-unl/materials-2025/raw/main/data/state.zip'</span>, <span class="at">destfile =</span> <span class="st">"state.zip"</span>)</span>
-<span id="cb1-2"><a></a><span class="fu">unzip</span>(<span class="st">"state.zip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">download.file</span>(<span class="st">'https://github.com/stat471-at-unl/materials-2025/raw/main/data/state.zip'</span>, <span class="at">destfile =</span> <span class="st">"state.zip"</span>)</span>
+<span id="cb15-2"><a></a><span class="fu">unzip</span>(<span class="st">"state.zip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This creates the folder <code>state</code> with the three files:</p>
 <pre><code>NIBRS_Table_27_Crimes_Against_Persons_Offenses_Offense_Category_by_State_2024.xlsx
@@ -251,9 +333,9 @@ NIBRS_Table_29_Crimes_Against_Society_Offenses_Offense_Category_by_State_2024.xl
 <h1>An Example (4)</h1>
 <p>We import the spreadsheet with <code>readxl::read_xlsx</code> and skipping the first couple of lines:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>property <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx"</span>, <span class="at">skip =</span> <span class="dv">4</span>)</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="fu">head</span>(property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>property <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx"</span>, <span class="at">skip =</span> <span class="dv">4</span>)</span>
+<span id="cb17-2"><a></a></span>
+<span id="cb17-3"><a></a><span class="fu">head</span>(property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 16
   State    Number of \r\nParticipa…¹ Population\r\nCovere…² `Total \r\nOffenses`
@@ -283,9 +365,9 @@ NIBRS_Table_29_Crimes_Against_Society_Offenses_Offense_Category_by_State_2024.xl
 <h1>The <code>janitor</code> package</h1>
 <p><code>janitor::clean_names</code> removes spaces and special symbols; original first line is also removed</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>prop_names <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx"</span>, <span class="at">skip =</span> <span class="dv">5</span>)</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>property <span class="ot">&lt;-</span> property <span class="sc">|&gt;</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>prop_names <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx"</span>, <span class="at">skip =</span> <span class="dv">5</span>)</span>
+<span id="cb19-2"><a></a></span>
+<span id="cb19-3"><a></a>property <span class="ot">&lt;-</span> property <span class="sc">|&gt;</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -293,7 +375,7 @@ NIBRS_Table_29_Crimes_Against_Society_Offenses_Offense_Category_by_State_2024.xl
 <h1>An example (6)</h1>
 <p>Some columns do not have the correct format:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">str</span>(property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">str</span>(property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [53 × 16] (S3: tbl_df/tbl/data.frame)
  $ state                           : chr [1:53] NA "Total" "Alabama" "Alaska" ...
@@ -315,7 +397,7 @@ NIBRS_Table_29_Crimes_Against_Society_Offenses_Offense_Category_by_State_2024.xl
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>property <span class="ot">&lt;-</span> property <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">16</span>, as.numeric))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>property <span class="ot">&lt;-</span> property <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">16</span>, as.numeric))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -323,7 +405,7 @@ NIBRS_Table_29_Crimes_Against_Society_Offenses_Offense_Category_by_State_2024.xl
 <h1>An example (7)</h1>
 <p>Is this dataset now tidy?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">head</span>(property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">head</span>(property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 16
   state    number_of_participating_agencies population_covered total_offenses
@@ -356,11 +438,11 @@ NIBRS_Table_29_Crimes_Against_Society_Offenses_Offense_Category_by_State_2024.xl
 <h1>Example: Box office data</h1>
 <p><code>The-Numbers.com</code> provides a weekly summary of box office numbers for movies currently in theatres:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(rvest)</span>
-<span id="cb11-2"><a></a>url <span class="ot">&lt;-</span> <span class="st">"https://www.the-numbers.com/box-office-chart/weekend/2025/08/22"</span></span>
-<span id="cb11-3"><a></a>doc <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
-<span id="cb11-4"><a></a>tables <span class="ot">&lt;-</span> doc <span class="sc">|&gt;</span> <span class="fu">html_table</span>()</span>
-<span id="cb11-5"><a></a>tables[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">library</span>(rvest)</span>
+<span id="cb25-2"><a></a>url <span class="ot">&lt;-</span> <span class="st">"https://www.the-numbers.com/box-office-chart/weekend/2025/08/22"</span></span>
+<span id="cb25-3"><a></a>doc <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb25-4"><a></a>tables <span class="ot">&lt;-</span> doc <span class="sc">|&gt;</span> <span class="fu">html_table</span>()</span>
+<span id="cb25-5"><a></a>tables[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 70 × 11
    ``    ``    `Movie Title`     Distributor Gross `%LW` Theaters TheatersChange
@@ -391,15 +473,15 @@ NIBRS_Table_29_Crimes_Against_Society_Offenses_Offense_Category_by_State_2024.xl
 <li><p><code>spec()</code> show the specification of a data set in <code>tibble</code> format</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">write.csv</span>(tables[[<span class="dv">2</span>]], <span class="st">"box-office.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb13-2"><a></a>box_office <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"box-office.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">write.csv</span>(tables[[<span class="dv">2</span>]], <span class="st">"box-office.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb27-2"><a></a>box_office <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"box-office.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
 <section id="current-column-specifications" class="title-slide slide level1 center">
 <h1>Current column specifications</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>box_office <span class="sc">|&gt;</span> readr<span class="sc">::</span><span class="fu">spec</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>box_office <span class="sc">|&gt;</span> readr<span class="sc">::</span><span class="fu">spec</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>cols(
   ...1 = col_character(),
@@ -422,17 +504,17 @@ NIBRS_Table_29_Crimes_Against_Society_Offenses_Offense_Category_by_State_2024.xl
 <h1>Set column specifications</h1>
 <p><code>col_number()</code> is lenient: ignores grouping mark, percent symbol, leading <code>$</code>, …</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(readr)</span>
-<span id="cb16-2"><a></a>box_office <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
-<span id="cb16-3"><a></a> <span class="st">"box-office.csv"</span>, </span>
-<span id="cb16-4"><a></a>  <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="fu">col_number</span>(),</span>
-<span id="cb16-5"><a></a>                   <span class="st">`</span><span class="at">Movie Title</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">col_character</span>(),</span>
-<span id="cb16-6"><a></a>                   <span class="at">Distributor =</span> <span class="fu">col_character</span>())</span>
-<span id="cb16-7"><a></a>)  </span>
-<span id="cb16-8"><a></a><span class="fu">names</span>(box_office)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Rank"</span>, <span class="st">"Rank_LW"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">library</span>(readr)</span>
+<span id="cb30-2"><a></a>box_office <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb30-3"><a></a> <span class="st">"box-office.csv"</span>, </span>
+<span id="cb30-4"><a></a>  <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="fu">col_number</span>(),</span>
+<span id="cb30-5"><a></a>                   <span class="st">`</span><span class="at">Movie Title</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">col_character</span>(),</span>
+<span id="cb30-6"><a></a>                   <span class="at">Distributor =</span> <span class="fu">col_character</span>())</span>
+<span id="cb30-7"><a></a>)  </span>
+<span id="cb30-8"><a></a><span class="fu">names</span>(box_office)[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Rank"</span>, <span class="st">"Rank_LW"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">head</span>(box_office)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">head</span>(box_office)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 11
    Rank Rank_LW `Movie Title`   Distributor  Gross `%LW` Theaters TheatersChange
@@ -474,14 +556,9 @@ NIBRS_Table_29_Crimes_Against_Society_Offenses_Offense_Category_by_State_2024.xl
 <p><code>vroom()</code> read a delimited data set and allows a compressed column specification using a combination of these characters</p>
 <p>‘?’ = guess ’_’ or ‘-’ = skip this column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>box <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(<span class="st">"box-office.csv"</span>, <span class="at">delim =</span> <span class="st">","</span>, </span>
-<span id="cb19-2"><a></a>                    <span class="at">col_types =</span> <span class="st">"iiccddiiddi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>box <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(<span class="st">"box-office.csv"</span>, <span class="at">delim =</span> <span class="st">","</span>, </span>
+<span id="cb33-2"><a></a>                    <span class="at">col_types =</span> <span class="st">"iiccddiiddi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-
-<section id="dates-and-times" class="title-slide slide level1 center">
-<h1>Dates and times</h1>
-<p>Dates and times: https://r4ds.hadley.nz/datetimes.html</p>
 
 
 </section>
