@@ -268,14 +268,14 @@
 </div>
 </div>
 <p>The average height of Nebraskans is 874.3???</p>
+<blockquote>
+<p>What would be a plausible height range?</p>
+</blockquote>
 </section>
 
 <section id="example-brfss-height3-1" class="title-slide slide level1 center">
 <h1>Example: BRFSS (<code>HEIGHT3</code>)</h1>
 <p>Problem is mix of (1) <em>unsuitable format</em> (ft/in &lt;-&gt; integer), (2) focus on <em>data collection by phone</em> (9 indicates metric height measurement), and (3) (government) <em>encoding conventions</em> (7777/9999 encode don’t know/missing)</p>
-<blockquote>
-<p>What would be a plausible height range?</p>
-</blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>brfss <span class="sc">|&gt;</span> <span class="fu">count</span>(HEIGHT3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -320,7 +320,7 @@
 <span id="cb7-2"><a></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>),</span>
 <span id="cb7-3"><a></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">45</span>, <span class="dv">200</span>),</span>
 <span id="cb7-4"><a></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>, <span class="st">"X"</span>),</span>
-<span id="cb7-5"><a></a>  <span class="at">income =</span> <span class="fu">c</span>(<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">70000</span>, <span class="dv">999999</span>),</span>
+<span id="cb7-5"><a></a>  <span class="at">salary =</span> <span class="fu">c</span>(<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">70000</span>, <span class="dv">999999</span>),</span>
 <span id="cb7-6"><a></a>  <span class="at">start_date =</span> <span class="fu">ymd</span>(<span class="fu">c</span>(<span class="st">"2020-01-01"</span>, <span class="st">"2021-02-01"</span>, <span class="st">"2020-03-01"</span>, <span class="st">"2020-01-15"</span>)),</span>
 <span id="cb7-7"><a></a>  <span class="at">end_date   =</span> <span class="fu">ymd</span>(<span class="fu">c</span>(<span class="st">"2020-12-31"</span>, <span class="st">"2020-03-01"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span>
 <span id="cb7-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -332,7 +332,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>numeric_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
 <span id="cb8-2"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"age"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">120</span>),</span>
-<span id="cb8-3"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"income"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">500000</span>)</span>
+<span id="cb8-3"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"salary"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">500000</span>)</span>
 <span id="cb8-4"><a></a>)</span>
 <span id="cb8-5"><a></a></span>
 <span id="cb8-6"><a></a>logic_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
@@ -431,7 +431,7 @@ Rule failed: start_date &lt;= end_date (1 cases)
 <h1>Making rules</h1>
 <p>Based on <code>testthat</code> package (for package development)</p>
 <p>Rules have the form <code>expect_XXX</code> where XXX specifies the expectation, e.g:</p>
-<pre><code>expect_equal(object, expected, tolerance)</code></pre>
+<p><code>expect_equal(object, expected, tolerance)</code></p>
 <p>More info on <code>testthat</code>: https://testthat.r-lib.org/</p>
 </section>
 
@@ -446,29 +446,84 @@ Rule failed: start_date &lt;= end_date (1 cases)
 </ul>
 </section>
 
+<section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<p>Make use of <code>testdat</code> functionality specified on the <a href="https://socialresearchcentre.github.io/testdat/reference/index.html">testdat website</a> to re-create the previously set expectations for the <code>employees</code> data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>numeric_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb11-2"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"age"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">120</span>),</span>
+<span id="cb11-3"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"salary"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">500000</span>)</span>
+<span id="cb11-4"><a></a>)</span>
+<span id="cb11-5"><a></a></span>
+<span id="cb11-6"><a></a>logic_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb11-7"><a></a>  <span class="st">"start_date &lt;= end_date"</span></span>
+<span id="cb11-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="run-the-checks" class="title-slide slide level1 center">
+<h1>Run the checks …</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">library</span>(testdat)</span>
+<span id="cb12-2"><a></a><span class="fu">set_testdata</span>(employees)</span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a><span class="fu">expect_range</span>(age, <span class="dv">0</span>, <span class="dv">120</span>)</span>
+<span id="cb12-5"><a></a><span class="fu">expect_range</span>(salary, <span class="dv">0</span>, <span class="dv">500000</span>)</span>
+<span id="cb12-6"><a></a><span class="fu">expect_cond</span>(<span class="sc">!</span><span class="fu">is.na</span>(end_date), end_date <span class="sc">&gt;</span> start_date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="good-practice" class="title-slide slide level1 center">
+<h1>Good Practice</h1>
+<p>Group sets of expectations based on functionality and give names</p>
+<p>e.g.&nbsp;“check for key”, “check for hard constraints”, “check for plausible data ranges”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">test_that</span>(<span class="st">"check for hard constraints"</span>, {</span>
+<span id="cb13-2"><a></a>  <span class="co"># both age and salary are non-negative values</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">expect_range</span>(age, <span class="dv">0</span>, <span class="cn">Inf</span>) </span>
+<span id="cb13-4"><a></a>  <span class="fu">expect_range</span>(salary, <span class="dv">0</span>, <span class="cn">Inf</span>)</span>
+<span id="cb13-5"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>── Error: check for hard constraints ───────────────────────────────────────────
+Error: A test data frame has not been specified. Use `set_testdata()` to set the data frame.
+Backtrace:
+    ▆
+ 1. └─testdat::expect_range(age, 0, Inf)
+ 2.   ├─testdat (local) `&lt;fn&gt;`(...)
+ 3.   │ └─testthat::quasi_label(enquo(data))
+ 4.   │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 5.   └─testdat::get_testdata()</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! Test failed</code></pre>
+</div>
+</div>
+</section>
+
 <section id="example-brfss-htin4" class="title-slide slide level1 center">
 <h1>Example: BRFSS (<code>HTIN4</code>)</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">summary</span>(brfss<span class="sc">$</span>HTIN4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">summary</span>(brfss<span class="sc">$</span>HTIN4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
   41.00   64.00   67.00   67.34   70.00   85.00     818 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">library</span>(testdat)</span>
-<span id="cb14-2"><a></a><span class="fu">with_testdata</span>(brfss, {</span>
-<span id="cb14-3"><a></a>  <span class="fu">test_that</span>(<span class="st">"id is unique"</span>, {</span>
-<span id="cb14-4"><a></a>    <span class="fu">expect_unique</span>(SEQNO)</span>
-<span id="cb14-5"><a></a>  })</span>
-<span id="cb14-6"><a></a>  </span>
-<span id="cb14-7"><a></a>  <span class="fu">test_that</span>(<span class="st">"sensible height ranges"</span>, {</span>
-<span id="cb14-8"><a></a>    <span class="fu">expect_range</span>(HTIN4, <span class="dv">10</span>, <span class="dv">100</span>)</span>
-<span id="cb14-9"><a></a>  })</span>
-<span id="cb14-10"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(testdat)</span>
+<span id="cb18-2"><a></a><span class="fu">with_testdata</span>(brfss, {</span>
+<span id="cb18-3"><a></a>  <span class="fu">test_that</span>(<span class="st">"id is unique"</span>, {</span>
+<span id="cb18-4"><a></a>    <span class="fu">expect_unique</span>(SEQNO)</span>
+<span id="cb18-5"><a></a>  })</span>
+<span id="cb18-6"><a></a>  </span>
+<span id="cb18-7"><a></a>  <span class="fu">test_that</span>(<span class="st">"plausible height ranges"</span>, {</span>
+<span id="cb18-8"><a></a>    <span class="fu">expect_range</span>(HTIN4, <span class="dv">10</span>, <span class="dv">100</span>)</span>
+<span id="cb18-9"><a></a>  })</span>
+<span id="cb18-10"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 😀
-Test passed 😸</code></pre>
+<pre><code>Test passed 🎊
+Test passed 🌈</code></pre>
 </div>
 </div>
 </section>
@@ -476,19 +531,19 @@ Test passed 😸</code></pre>
 <section id="test-fails" class="title-slide slide level1 center">
 <h1>Test fails</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(testdat)</span>
-<span id="cb16-2"><a></a><span class="fu">with_testdata</span>(brfss, {</span>
-<span id="cb16-3"><a></a>  <span class="fu">test_that</span>(<span class="st">"id is unique"</span>, {</span>
-<span id="cb16-4"><a></a>    <span class="fu">expect_unique</span>(SEQNO)</span>
-<span id="cb16-5"><a></a>  })</span>
-<span id="cb16-6"><a></a>  </span>
-<span id="cb16-7"><a></a>  <span class="fu">test_that</span>(<span class="st">"sensible height ranges"</span>, {</span>
-<span id="cb16-8"><a></a>    <span class="fu">expect_range</span>(HTIN4, <span class="dv">50</span>, <span class="dv">100</span>)</span>
-<span id="cb16-9"><a></a>  })</span>
-<span id="cb16-10"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">library</span>(testdat)</span>
+<span id="cb20-2"><a></a><span class="fu">with_testdata</span>(brfss, {</span>
+<span id="cb20-3"><a></a>  <span class="fu">test_that</span>(<span class="st">"check for key"</span>, {</span>
+<span id="cb20-4"><a></a>    <span class="fu">expect_unique</span>(SEQNO)</span>
+<span id="cb20-5"><a></a>  })</span>
+<span id="cb20-6"><a></a>  </span>
+<span id="cb20-7"><a></a>  <span class="fu">test_that</span>(<span class="st">"plausible height ranges"</span>, {</span>
+<span id="cb20-8"><a></a>    <span class="fu">expect_range</span>(HTIN4, <span class="dv">50</span>, <span class="dv">100</span>)</span>
+<span id="cb20-9"><a></a>  })</span>
+<span id="cb20-10"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 🎉
-── Failure: sensible height ranges ─────────────────────────────────────────────
+<pre><code>Test passed 🥇
+── Failure: plausible height ranges ────────────────────────────────────────────
 get_testdata() has 3 records failing range check on variable `HTIN4`.
 Variable set: `HTIN4`
 Filter: None
