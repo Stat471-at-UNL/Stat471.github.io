@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-09-25">
 
-<title>Outline – Stat 471</title>
+<title>Homework 4: Flights across the US – Stat 471</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -121,14 +157,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a>
+  <li><a href="#flights-across-the-us" id="toc-flights-across-the-us" class="nav-link active" data-scroll-target="#flights-across-the-us">Flights across the US</a></li>
+  <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo">TODO</a>
   <ul class="collapse">
-  <li><a href="#detection-strategies" id="toc-detection-strategies" class="nav-link" data-scroll-target="#detection-strategies">Detection Strategies</a></li>
-  <li><a href="#handling-missing-data" id="toc-handling-missing-data" class="nav-link" data-scroll-target="#handling-missing-data">Handling Missing Data</a></li>
-  <li><a href="#standardization" id="toc-standardization" class="nav-link" data-scroll-target="#standardization">Standardization</a></li>
-  <li><a href="#duplicate-handling" id="toc-duplicate-handling" class="nav-link" data-scroll-target="#duplicate-handling">Duplicate Handling</a></li>
-  <li><a href="#data-type-structure" id="toc-data-type-structure" class="nav-link" data-scroll-target="#data-type-structure">Data Type &amp; Structure</a></li>
-  <li><a href="#quality-improvement" id="toc-quality-improvement" class="nav-link" data-scroll-target="#quality-improvement">Quality Improvement</a></li>
+  <li><a href="#prepping" id="toc-prepping" class="nav-link" data-scroll-target="#prepping">Prepping</a></li>
+  <li><a href="#to-do-items" id="toc-to-do-items" class="nav-link" data-scroll-target="#to-do-items">To Do Items</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -138,14 +172,24 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Outline</h1>
-</div>
+<h1 class="title">Homework 4: Flights across the US</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">HW</div>
+    <div class="quarto-category">Week05</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 25, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -155,74 +199,42 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="outline" class="level1">
-<h1>Outline</h1>
+<p>Note: This assignment must be accepted in Canvas and submitted in github classroom.</p>
+<section id="flights-across-the-us" class="level1">
+<h1>Flights across the US</h1>
+<!-- badges: start -->
+<!-- badges: end -->
+<p>The department of transportation is tracking every flight taking off and landing on an airport in the US and publishing information through the TranStats system at <a href="https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr" class="uri">https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr</a>.</p>
+<p>Files for three months of flights have been added to the data folder. The flights for each month are contained in a compressed csv file each:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">"data"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2024_11.zip"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2024_12.zip"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2025_1.zip"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Information for each of the variables and explanations for each level can be found on the same website.</p>
+</section>
+<section id="todo" class="level1">
+<h1>TODO</h1>
+<section id="prepping" class="level2">
+<h2 class="anchored" data-anchor-id="prepping">Prepping</h2>
 <ol type="1">
-<li>Detection strategies</li>
+<li>Accept the assignment in Canvas, follow the link to create a repository, and clone this repository to your local machine.</li>
+<li>Create a file named <code>index.qmd</code> and add it to the repository. This is the file that should contain your code, results, and interpretations. Make sure to include enough detail that your work is fully reproducible.</li>
 </ol>
-<ul>
-<li>simple summary statistics</li>
-</ul>
-<section id="detection-strategies" class="level2">
-<h2 class="anchored" data-anchor-id="detection-strategies">Detection Strategies</h2>
-<ul>
-<li><strong>Data profiling</strong> - Automated scanning for patterns, anomalies, and quality issues</li>
-<li><strong>Statistical analysis</strong> - Outlier detection using z-scores, IQR, box plots</li>
-<li><strong>Rule-based validation</strong> - Business logic and constraint checking</li>
-<li><strong>Pattern matching</strong> - Regular expressions for format validation</li>
-<li><strong>Cross-field validation</strong> - Checking relationships between columns</li>
-</ul>
 </section>
-<section id="handling-missing-data" class="level2">
-<h2 class="anchored" data-anchor-id="handling-missing-data">Handling Missing Data</h2>
-<ul>
-<li><strong>Deletion</strong> - Remove rows/columns with missing values</li>
-<li><strong>Imputation</strong> - Fill with mean, median, mode, or predicted values</li>
-<li><strong>Forward/backward fill</strong> - Use previous/next valid values</li>
-<li><strong>Domain-specific rules</strong> - Business logic for missing value treatment</li>
-<li><strong>Flag creation</strong> - Create indicator variables for missingness</li>
-</ul>
+<section id="to-do-items" class="level2">
+<h2 class="anchored" data-anchor-id="to-do-items">To Do Items</h2>
+<ol type="1">
+<li><p>Import flights for all three months into a single object <code>flights</code>. Report on the number of flights by months and the number of features reported for it.</p></li>
+<li><p>Determine a key for the data set. Make sure to show that it fulfills the requirements of a key.</p></li>
+<li><p>Give three different examples of transitive dependencies in the data.</p></li>
+<li><p>Airport information is included for both <code>Origin</code> and <code>Dest</code>. Create a new data set called <code>airports</code> in which you include the information once, then remove all but the required airport information from the <code>flights</code> object.</p></li>
+<li><p>Create a summary for the number of flights each day and plot it. Color the points by day of the week. Make sure to provide labels for the days of the week. Describe the general pattern for the number of flights you see. Which days do not follow this pattern?</p></li>
+<li><p>The variable <code>Cancelled</code> contains information about whether a flight was cancelled. Why can we not assume that flight cancellations occur completely randomly? Identify at least two factors contributing to non-random flight cancellations and visualize your findings.</p></li>
+</ol>
 </section>
-<section id="standardization" class="level2">
-<h2 class="anchored" data-anchor-id="standardization">Standardization</h2>
-<ul>
-<li><strong>Format normalization</strong> - Consistent date formats, case, spacing</li>
-<li><strong>Value mapping</strong> - Standardize categories (“M/F” → “Male/Female”)</li>
-<li><strong>Unit conversion</strong> - Consistent measurement units</li>
-<li><strong>Encoding standardization</strong> - UTF-8, consistent character sets</li>
-<li><strong>Naming conventions</strong> - Consistent column names and values</li>
-</ul>
-</section>
-<section id="duplicate-handling" class="level2">
-<h2 class="anchored" data-anchor-id="duplicate-handling">Duplicate Handling</h2>
-<ul>
-<li><strong>Exact matching</strong> - Remove identical records</li>
-<li><strong>Fuzzy matching</strong> - Similar records with slight differences</li>
-<li><strong>Key-based deduplication</strong> - Remove based on unique identifiers</li>
-<li><strong>Record linkage</strong> - Merge related duplicate entries</li>
-<li><strong>Master data management</strong> - Establish single source of truth</li>
-</ul>
-</section>
-<section id="data-type-structure" class="level2">
-<h2 class="anchored" data-anchor-id="data-type-structure">Data Type &amp; Structure</h2>
-<ul>
-<li><strong>Type conversion</strong> - Ensure proper data types (numeric, date, categorical)</li>
-<li><strong>Schema validation</strong> - Verify structure matches expectations<br>
-</li>
-<li><strong>Constraint enforcement</strong> - Check ranges, lengths, formats</li>
-<li><strong>Normalization</strong> - Split compound fields, remove redundancy</li>
-</ul>
-</section>
-<section id="quality-improvement" class="level2">
-<h2 class="anchored" data-anchor-id="quality-improvement">Quality Improvement</h2>
-<ul>
-<li><strong>Outlier treatment</strong> - Remove, cap, or transform extreme values</li>
-<li><strong>Noise reduction</strong> - Smooth inconsistent measurements</li>
-<li><strong>Error correction</strong> - Fix typos, invalid entries</li>
-<li><strong>Enrichment</strong> - Add missing information from external sources</li>
-<li><strong>Validation against reference data</strong> - Check against authoritative sources</li>
-</ul>
-<p>The key is applying these systematically and documenting all decisions for reproducibility.</p>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>Ensure that the file <code>index.qmd</code> renders without errors. Read through the rendered document to check for consistency. Remove excessive printouts. Add all relevant(!) files to the repository, commit, and push!</p>
 
 
 </section>

@@ -7,298 +7,53 @@
     "text": "As an individual or in a team pick a topic and\n\ncreate a (cleanish) dataset\nchoose an appropriate analysis\ninterpret results\npublish your analysis and findings\nCreate a video highlighting your work\n\nMore information will be coming as we get closer to the start of the project work."
   },
   {
-    "objectID": "project/screencast-checklist.html",
-    "href": "project/screencast-checklist.html",
-    "title": "Screencast Checklist",
-    "section": "",
-    "text": "Screencast uploaded to YouTube/YuJa\n\nIf on YouTube, your screencast should be set so that anyone with the link can view the video.\n\nApproximate time index provided for each of the 4 techniques you’re demonstrating (examples) provided\n\nin the README of your github repository\nin the description of your video (if on YouTube)\n\nCommented code for your screencast uploaded to the github repository"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Stat 471: Analysis of Messy Data",
     "section": "",
-    "text": "Course Materials\nDates shown are due dates (for assignments and exams) and dates on which material was presented (for slides).\n\n\n\n\n\n\nModule 0: Setting up the work environment\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nAbout Stat 471\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nR, RStudio, git\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nHomework 0 Setup A: Git and Github\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nHomework 0 Setup B: Connecting RStudio and Git\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 1: Tidy forms of data\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nWhat is “Messy Data”?\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nMake it Tidy Data!\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nNormal Forms of data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nWorking through code: data summaries\n\n\ncode\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nHomework: chi-square and large data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nNormalizing Data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nYour Turn code for normalizing data\n\n\ncode\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nResolution Strategies\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nHomework 2: Cleaning the weather\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 2: Data Cleaning\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nData Formats\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nHomework 2: Cleaning the weather\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 16, 2025\n\n\nData Validation\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 18, 2025\n\n\nHomework 3: Flights across the US\n\n\nHomework\n\n\n\n\n\n\n\n\n\n \n\n\nRegular Expressions\n\n\n \n\n\n\n\n\n\n\n\n\n \n\n\nOutlier Detection\n\n\n \n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 3: Working with Missing Values\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 4: Record Linkage: joining data from different sources\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 5: Working with large data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items"
+    "text": "Course Materials\nDates shown are due dates (for assignments and exams) and dates on which material was presented (for slides).\n\n\n\n\n\n\nModule 0: Setting up the work environment\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nAbout Stat 471\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nR, RStudio, git\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nHomework 0 Setup A: Git and Github\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nHomework 0 Setup B: Connecting RStudio and Git\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 1: Tidy forms of data\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nWhat is “Messy Data”?\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nMake it Tidy Data!\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nNormal Forms of data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nWorking through code: data summaries\n\n\ncode\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nHomework: chi-square and large data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nNormalizing Data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nYour Turn code for normalizing data\n\n\ncode\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nResolution Strategies\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nHomework 2: Cleaning the weather\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 2: Data Cleaning\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nData Formats\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nHomework 2: Cleaning the weather\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 16, 2025\n\n\nData Validation\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 18, 2025\n\n\nHomework 3: Cleaning the weather … more\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 25, 2025\n\n\nHomework 4: Flights across the US\n\n\nHomework\n\n\n\n\n\n\n\n\n\n \n\n\nOutliers\n\n\n \n\n\n\n\n\n\n\n\n\n \n\n\nWorking with characters and text\n\n\n \n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 3: Working with Missing Values\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 4: Record Linkage: joining data from different sources\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 5: Working with large data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/hwk-2-clean-weather.html",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/hwk-2-clean-weather.html",
-    "title": "Homework 2: Cleaning the weather",
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/03b-yourturn-code.html",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/03b-yourturn-code.html",
+    "title": "Your Turn code for normalizing data",
     "section": "",
-    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nstudent_courses &lt;- data.frame(\n  student_id = c(101, 101, 102, 102, 103, 103),\n  course_id = c(\"CS101\", \"MATH201\", \"CS101\", \"PHYS101\", \"MATH201\", \"CS101\"),\n  semester = c(\"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\"),\n  instructor_name = c(\"Dr. Smith\", \"Dr. Johnson\", \"Dr. Smith\",   \"Dr. Johnson\", \"Dr. Brown\", \"Dr. Smith\"),\n  grade = c(\"A\", \"B+\", \"B\", \"A-\", \"A\", \"B+\")\n)\n\n# We don't have duplicates:\n!any(duplicated(student_courses))\n\n[1] TRUE\n\nstudent_courses |&gt; count(student_id, course_id) |&gt; filter(n &gt; 1)\n\n[1] student_id course_id  n         \n&lt;0 rows&gt; (or 0-length row.names)\n\nstudent_courses |&gt; count(student_id) |&gt; filter(n &gt; 1)\n\n  student_id n\n1        101 2\n2        102 2\n3        103 2\n\nstudent_courses |&gt; count(course_id) |&gt; filter(n &gt; 1)\n\n  course_id n\n1     CS101 3\n2   MATH201 2\n\n# yes, data set is in 1st normal form\n\ncourses &lt;- student_courses |&gt; group_by(course_id) |&gt;\n  summarize(\n    semester = unique(semester),\n    instructor_name = paste(unique(instructor_name), collapse=\", \")\n  )\n\n!any(duplicated(courses$course_id))\n\n[1] TRUE"
   },
   {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/hwk-2-clean-weather.html#submission",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/hwk-2-clean-weather.html#submission",
-    "title": "Homework 2: Cleaning the weather",
-    "section": "Submission",
-    "text": "Submission\nMake sure that your file index.qmd includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!"
-  },
-  {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02b-workday.html",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/02b-workday.html",
-    "title": "Working through code: data summaries",
-    "section": "",
-    "text": "#\n# What is the average grade in each subject?\n#\n#   How many courses does each student take?\n#\n#   How many students are enrolled in total?\n\nstudents &lt;- data.frame(\n  student_name = c(\"Alice\", \"Alice\", \"Bob\", \"Bob\", \"Alice\", \"Alice\"),\n  course = c(\"Math\", \"Science\", \"Math\", \"Science\", \"Math\", \"Science\"),\n  grade = c(85, 92, 78, 88, 82, 90),\n  student_id = rep(1:3, each = 2)\n)\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4          ✔ readr     2.1.5     \n✔ forcats   1.0.0          ✔ stringr   1.5.1     \n✔ ggplot2   3.5.2.9002     ✔ tibble    3.3.0     \n✔ lubridate 1.9.4          ✔ tidyr     1.3.1     \n✔ purrr     1.1.0          \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nduplicated(students |&gt; select(student_id, course))\n\n[1] FALSE FALSE FALSE FALSE FALSE FALSE\n\nstudents |&gt; group_by(course) |&gt;\n  summarise(\n    grade = mean(grade, na.rm=TRUE),\n    n = n(),\n    non_missing_grade = sum(is.na(grade))\n  )\n\n# A tibble: 2 × 4\n  course  grade     n non_missing_grade\n  &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt;             &lt;int&gt;\n1 Math     81.7     3                 0\n2 Science  90       3                 0\n\nstudents |&gt; group_by(student_id) |&gt;\n  summarise(\n    num_courses = length(unique(course)),\n    n = n(),\n  ) |&gt; ungroup()\n\n# A tibble: 3 × 3\n  student_id num_courses     n\n       &lt;int&gt;       &lt;int&gt; &lt;int&gt;\n1          1           2     2\n2          2           2     2\n3          3           2     2\n\nstudents |&gt; summarize(\n  num_enrolled = length(unique(student_id))\n)\n\n  num_enrolled\n1            3\n\nstudents |&gt; count(student_id) |&gt; nrow()\n\n[1] 3"
-  },
-  {
-    "objectID": "materials-2025/module 2 - don't show yet/00-outline.html",
-    "href": "materials-2025/module 2 - don't show yet/00-outline.html",
-    "title": "Outline",
-    "section": "",
-    "text": "Detection strategies\n\n\nsimple summary statistics\n\n\n\n\nData profiling - Automated scanning for patterns, anomalies, and quality issues\nStatistical analysis - Outlier detection using z-scores, IQR, box plots\nRule-based validation - Business logic and constraint checking\nPattern matching - Regular expressions for format validation\nCross-field validation - Checking relationships between columns\n\n\n\n\n\nDeletion - Remove rows/columns with missing values\nImputation - Fill with mean, median, mode, or predicted values\nForward/backward fill - Use previous/next valid values\nDomain-specific rules - Business logic for missing value treatment\nFlag creation - Create indicator variables for missingness\n\n\n\n\n\nFormat normalization - Consistent date formats, case, spacing\nValue mapping - Standardize categories (“M/F” → “Male/Female”)\nUnit conversion - Consistent measurement units\nEncoding standardization - UTF-8, consistent character sets\nNaming conventions - Consistent column names and values\n\n\n\n\n\nExact matching - Remove identical records\nFuzzy matching - Similar records with slight differences\nKey-based deduplication - Remove based on unique identifiers\nRecord linkage - Merge related duplicate entries\nMaster data management - Establish single source of truth\n\n\n\n\n\nType conversion - Ensure proper data types (numeric, date, categorical)\nSchema validation - Verify structure matches expectations\n\nConstraint enforcement - Check ranges, lengths, formats\nNormalization - Split compound fields, remove redundancy\n\n\n\n\n\nOutlier treatment - Remove, cap, or transform extreme values\nNoise reduction - Smooth inconsistent measurements\nError correction - Fix typos, invalid entries\nEnrichment - Add missing information from external sources\nValidation against reference data - Check against authoritative sources\n\nThe key is applying these systematically and documenting all decisions for reproducibility."
-  },
-  {
-    "objectID": "materials-2025/module 2 - don't show yet/00-outline.html#detection-strategies",
-    "href": "materials-2025/module 2 - don't show yet/00-outline.html#detection-strategies",
-    "title": "Outline",
-    "section": "",
-    "text": "Data profiling - Automated scanning for patterns, anomalies, and quality issues\nStatistical analysis - Outlier detection using z-scores, IQR, box plots\nRule-based validation - Business logic and constraint checking\nPattern matching - Regular expressions for format validation\nCross-field validation - Checking relationships between columns"
-  },
-  {
-    "objectID": "materials-2025/module 2 - don't show yet/00-outline.html#handling-missing-data",
-    "href": "materials-2025/module 2 - don't show yet/00-outline.html#handling-missing-data",
-    "title": "Outline",
-    "section": "",
-    "text": "Deletion - Remove rows/columns with missing values\nImputation - Fill with mean, median, mode, or predicted values\nForward/backward fill - Use previous/next valid values\nDomain-specific rules - Business logic for missing value treatment\nFlag creation - Create indicator variables for missingness"
-  },
-  {
-    "objectID": "materials-2025/module 2 - don't show yet/00-outline.html#standardization",
-    "href": "materials-2025/module 2 - don't show yet/00-outline.html#standardization",
-    "title": "Outline",
-    "section": "",
-    "text": "Format normalization - Consistent date formats, case, spacing\nValue mapping - Standardize categories (“M/F” → “Male/Female”)\nUnit conversion - Consistent measurement units\nEncoding standardization - UTF-8, consistent character sets\nNaming conventions - Consistent column names and values"
-  },
-  {
-    "objectID": "materials-2025/module 2 - don't show yet/00-outline.html#duplicate-handling",
-    "href": "materials-2025/module 2 - don't show yet/00-outline.html#duplicate-handling",
-    "title": "Outline",
-    "section": "",
-    "text": "Exact matching - Remove identical records\nFuzzy matching - Similar records with slight differences\nKey-based deduplication - Remove based on unique identifiers\nRecord linkage - Merge related duplicate entries\nMaster data management - Establish single source of truth"
-  },
-  {
-    "objectID": "materials-2025/module 2 - don't show yet/00-outline.html#data-type-structure",
-    "href": "materials-2025/module 2 - don't show yet/00-outline.html#data-type-structure",
-    "title": "Outline",
-    "section": "",
-    "text": "Type conversion - Ensure proper data types (numeric, date, categorical)\nSchema validation - Verify structure matches expectations\n\nConstraint enforcement - Check ranges, lengths, formats\nNormalization - Split compound fields, remove redundancy"
-  },
-  {
-    "objectID": "materials-2025/module 2 - don't show yet/00-outline.html#quality-improvement",
-    "href": "materials-2025/module 2 - don't show yet/00-outline.html#quality-improvement",
-    "title": "Outline",
-    "section": "",
-    "text": "Outlier treatment - Remove, cap, or transform extreme values\nNoise reduction - Smooth inconsistent measurements\nError correction - Fix typos, invalid entries\nEnrichment - Add missing information from external sources\nValidation against reference data - Check against authoritative sources\n\nThe key is applying these systematically and documenting all decisions for reproducibility."
-  },
-  {
-    "objectID": "materials-2025/module 2 - don't show yet/02-outlier-detection-and-mitigation.html",
-    "href": "materials-2025/module 2 - don't show yet/02-outlier-detection-and-mitigation.html",
-    "title": "02-outlier-detection-and-mitigation",
-    "section": "",
-    "text": "library(VIM)\nVIM::aggr(data)          # Missing data patterns\nVIM::marginplot(data)    # Missing vs observed\n\nlibrary(corrplot)\ncorrplot(cor(data, use = \"pairwise.complete.obs\"))\n\n\n\nlibrary(outliers)\nlibrary(MVN)\n# Multiple methods for identifying problematic observations"
-  },
-  {
-    "objectID": "materials-2025/module 2 - don't show yet/02-outlier-detection-and-mitigation.html#diagnostic-tools-for-messy-data",
-    "href": "materials-2025/module 2 - don't show yet/02-outlier-detection-and-mitigation.html#diagnostic-tools-for-messy-data",
-    "title": "02-outlier-detection-and-mitigation",
-    "section": "",
-    "text": "library(VIM)\nVIM::aggr(data)          # Missing data patterns\nVIM::marginplot(data)    # Missing vs observed\n\nlibrary(corrplot)\ncorrplot(cor(data, use = \"pairwise.complete.obs\"))\n\n\n\nlibrary(outliers)\nlibrary(MVN)\n# Multiple methods for identifying problematic observations"
-  },
-  {
-    "objectID": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html",
-    "href": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html",
-    "title": "Homework 0 Setup A: Git and Github",
-    "section": "",
-    "text": "Note: This assignment must be submitted in github classroom."
-  },
-  {
-    "objectID": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#todo-items",
-    "href": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#todo-items",
-    "title": "Homework 0 Setup A: Git and Github",
-    "section": "📝 Todo Items",
-    "text": "📝 Todo Items\n\nClone this repository to your local machine\nOn your local machine, create a new markdown file in this repository named ‘About_Me.md’.\nIn the file ‘About_Me.md’ include either a or b:\n\n\na short biography/introduction for yourself and use markdown formatting - Markdown Basics provides an overview of different formatting options in markdown. - You must use at least the following formatting elements: header, subheader, bold or italic, bulleted list, and an image.\nprovide a link to your portfolio (hosted on github) that includes all of the above items.\n\n\nCommit your changes to your new file locally and push them back to your github repository. Check on Github to make sure the new file appears."
-  },
-  {
-    "objectID": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#resources",
-    "href": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#resources",
-    "title": "Homework 0 Setup A: Git and Github",
-    "section": "📚 Resources",
-    "text": "📚 Resources\n\nA short video explaining what GitHub is\nGit and GitHub learning resources\nUnderstanding the GitHub flow\nInteractive Git training materials\nGitHub’s Learning Lab\nEducation community forum\nGitHub community forum"
-  },
-  {
-    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html",
-    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html",
-    "title": "Homework 3: Flights across the US",
-    "section": "",
-    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
-  },
-  {
-    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#prepping",
-    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#prepping",
-    "title": "Homework 3: Flights across the US",
-    "section": "Prepping",
-    "text": "Prepping\n\nAccept the assignment in Canvas, follow the link to create a repository, and clone this repository to your local machine.\nCreate a file named index.qmd and add it to the repository. This is the file that should contain your code, results, and interpretations. Make sure to include enough detail that your work is fully reproducible."
-  },
-  {
-    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#to-do-items",
-    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#to-do-items",
-    "title": "Homework 3: Flights across the US",
-    "section": "To Do Items",
-    "text": "To Do Items\n\nImport flights for all three months into a single object flights. Report on the number of flights by months and the number of features reported for it.\nDetermine a key for the data set. Make sure to show that it fulfills the requirements of a key.\nGive three different examples of transitive dependencies in the data.\nAirport information is included for both Origin and Dest. Create a new data set called airports in which you include the information once, then remove all but the required airport information from the flights object.\nCreate a summary for the number of flights each day and plot it. Color the points by day of the week. Make sure to provide labels for the days of the week. Describe the general pattern for the number of flights you see. Which days do not follow this pattern?\nThe variable Cancelled contains information about whether a flight was cancelled. Why can we not assume that flight cancellations occur completely randomly? Identify at least two factors contributing to non-random flight cancellations and visualize your findings."
-  },
-  {
-    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#submission",
-    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#submission",
-    "title": "Homework 3: Flights across the US",
-    "section": "Submission",
-    "text": "Submission\nEnsure that the file index.qmd renders without errors. Read through the rendered document to check for consistency. Remove excessive printouts. Add all relevant(!) files to the repository, commit, and push!"
-  },
-  {
-    "objectID": "gasbuddy.html",
-    "href": "gasbuddy.html",
-    "title": "Stat 471",
-    "section": "",
-    "text": "authorization: apikey 4mEsIM76saqF28IR638bWr:6XJHqxtklK7pw7haSU8wy9\nlibrary(httr2)\n\n# Set up base request with API key\ngas_request &lt;- request(\"https://api.collectapi.com/gasPrice\") |&gt;\n  req_headers(\"X-API-KEY\" = \"apikey 4mEsIM76saqF28IR638bWr:6XJHqxtklK7pw7haSU8wy9\")\n\n# Get gas prices for a specific country\nget_gas_prices &lt;- function(country = \"united-states\") {\n  gas_request |&gt;\n    req_url_path_append(\"fromCity\") |&gt;\n    req_url_query(country = country) |&gt;\n    req_perform() |&gt;\n    resp_body_json()\n}\n\n# Get all available countries\nget_countries &lt;- function() {\n  gas_request |&gt;\n    req_url_path_append(\"countries\") |&gt;\n    req_perform() |&gt;\n    resp_body_json()\n}\n\n# Usage examples\ncountries &lt;- get_countries()\nus_prices &lt;- get_gas_prices(\"united-states\")\nuk_prices &lt;- get_gas_prices(\"united-kingdom\")\nReplace \"YOUR_API_KEY_HERE\" with your actual CollectAPI key from their dashboard."
-  },
-  {
-    "objectID": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html",
-    "href": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html",
-    "title": "Homework 2: Cleaning the weather",
-    "section": "",
-    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
-  },
-  {
-    "objectID": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html#submission",
-    "href": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html#submission",
-    "title": "Homework 2: Cleaning the weather",
-    "section": "Submission",
-    "text": "Submission\nMake sure that your file index.qmd includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!"
-  },
-  {
-    "objectID": "materials-2025/Module 0 - Setting up/hwk-1-reproducibility.html",
-    "href": "materials-2025/Module 0 - Setting up/hwk-1-reproducibility.html",
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/hwk-1-reproducibility.html",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/hwk-1-reproducibility.html",
     "title": "Homework 1: Reproducibility",
     "section": "",
     "text": "Note: This assignment must be submitted in github classroom.\n\n\nAn example in reproducibility\n\n\nThis repository contains the Nebraskan subset from the 2023 Behavioral Risk Factor Surveillance System (BRFSS). The BRFSS is run annually by the Center for Disease control and prevention (CDC).\nYou can load the data with\nbrfss &lt;- readRDS(\"brfssNE2023.rds\")\nThe dataset contains 12886 observations on 350 variables.\nThe codebook for the full data is available from https://www.cdc.gov/brfss/annual_data/annual_2023.html. A copy of the site is included in the repo in the file USCODE23_LLCP_021924.HTML.\nVariables names starting with X_ in the R data are listed in the codebook without the starting X, i.e. the variable X_AGEG5YR can be found as _AGEG5YR in the codebook.\n\n\nTodo\n\nClone this repository to your local machine and open RStudio using the file reproducibility-brfss.Rproj.\nCreate a quarto document index.qmd. This is the file in which you should include all of your work.\nUse the brfss data described above to find an age distribution of all Nebraskans who participated in the BRFSS survey. Use the variable X_AGEG5YR and show the distribution in a barchart and a table. Make sure to address in a paragraph how you deal with non responses.\n\nIs the age of Nebraskans distributed significantly different from the nationally reported age distribution? (You could run a Chi-square test of homogeneity using chisq.test) Make sure to interpret the results.\nRe-do the analysis in questions 2 and 3 by considering the survey weights X_LLCPWT. Again, interpret the results. How do you explain the differences?\n\n\n\nSubmission\n\nMake sure that your file index.qmd contains all the details needed for me to re-run your analysis.\nEnsure that the file renders without an error.\n\nAdd your file index.qmd to the repository, commit and push."
   },
   {
-    "objectID": "materials-2025/Module 0 - Setting up/03-hwk-rstudio-git.html",
-    "href": "materials-2025/Module 0 - Setting up/03-hwk-rstudio-git.html",
-    "title": "Homework 0 Setup B: Connecting RStudio and Git",
-    "section": "",
-    "text": "Note: This assignment must be submitted in github classroom.\n\n\nConnecting-RStudio-and-Git-Github\n\nClone this repository to your local machine\nOpen RStudio using the project file Connecting-RStudio-and-Git-Github.Rproj\nOpen the file README.Rmd\nMake sure that the following code chunks run successfully\n\n\nLoad Packages …\nVersions\n\n\nInstallations found:\n  &lt; R version 4.5.1 (2025-06-13) &gt;\n  RStudio version: &lt; 2025.5.1.513 &gt;\n  &lt; git version 2.49.0 &gt;\n\nConnection to git\n\n\nRun the code chunk 'gitconnection' at least once successfully.\n✔ Setting active project to \"/Users/hofmann/Documents/Teaching/Stat\n  471/Stat471-Fall-2025/homework-repos/homework-0-setup-B\".\nProject Path:  /Users/hofmann/Documents/Teaching/Stat 471/Stat471-Fall-2025/homework-repos/homework-0-setup-B \nGit repository detected.\nGitHub Remote(s):\n[1] \"origin\"\n\nChecking pull access...\nPull rights: YES \n\nChecking push access...\nPush rights: YES \n\nCreate the README.md file by rendering the README.Rmd file\nCheck the resulting README.md file:\n\nis your version of R (relatively) current? (most current: 4.5.1)\nis your RStudio version from this year?\nis your version of git (relatively) current? (most current: 2.51.0)\n\nIf any of your answers above is ‘no’ install a newer version.\n\nDo you have push and pull access to the Git repository?\n\nIf not, make sure that you have followed all of the steps laid out in chapter 12 of Jenny Bryan’s “Happy Git and GitHub for the useR”\nCommit and push all changed files to Github classroom.\nYour done!"
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#biological-experiment",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#biological-experiment",
+    "title": "Normal Forms of data",
+    "section": "Biological experiment",
+    "text": "Biological experiment\nIn a study, RNA-seq expressions of 11k different genes are measured at 6 and 12 hours after seeds from two different gene lines have germinated.\nWhat is the key?"
   },
   {
-    "objectID": "materials-2025/Module 3 - Missing values/01-techniques.html",
-    "href": "materials-2025/Module 3 - Missing values/01-techniques.html",
-    "title": "01-techniques",
-    "section": "",
-    "text": "1. Missing Data Methods\n# Instead of just dropping missing values:\ndata_complete &lt;- na.omit(data)  # ??? Loses information\n\n# Use sophisticated imputation:\nlibrary(mice)  # Multiple imputation\nlibrary(VIM)   # Visualization of missing patterns\nlibrary(Hmisc) # Various imputation methods\nApproaches: - Multiple imputation (MICE) - Maximum likelihood estimation\n- Pattern-mixture models - Selection models\n\n\n2. Robust Statistics\nMethods that work well even with outliers/non-normal data:\n# Robust alternatives to standard methods:\nmedian(x)           # vs mean(x)\nmad(x)              # vs sd(x) \nMASS::rlm()         # vs lm() - robust regression\nrobustbase::ltsReg() # least trimmed squares\n\n\n3. Non-parametric Methods\nWhen distributional assumptions fail: - Rank-based tests (Wilcoxon, Kruskal-Wallis) - Bootstrap and permutation tests - Kernel density estimation - Spline regression"
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#weather-station",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#weather-station",
+    "title": "Normal Forms of data",
+    "section": "Weather station",
+    "text": "Weather station\nA weather station publishes monthly averages for the minimum and maximum temperature during each hour of the day.\nWhat is the key?"
   },
   {
-    "objectID": "materials-2025/leftovers.html",
-    "href": "materials-2025/leftovers.html",
-    "title": "Leftovers",
-    "section": "",
-    "text": "“Analysis of messy data” refers to the statistical methods and techniques specifically designed to handle data that violates the clean assumptions of standard statistical methods. This is different from “messy data analysis” (the process) - this is about the analytical techniques themselves."
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#tuberculosis",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#tuberculosis",
+    "title": "Normal Forms of data",
+    "section": "Tuberculosis",
+    "text": "Tuberculosis\nThe World Health Organization track the number of new incidences of tuberculosis by sex and age group in each country.\nWhat is the key?"
   },
   {
-    "objectID": "materials-2025/leftovers.html#what-makes-data-messy-statistically",
-    "href": "materials-2025/leftovers.html#what-makes-data-messy-statistically",
-    "title": "Leftovers",
-    "section": "What Makes Data “Messy” Statistically",
-    "text": "What Makes Data “Messy” Statistically\n\nCommon Messy Data Problems:\n\nMissing values (not at random)\nOutliers and anomalies\n\nNon-normal distributions"
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#best-practices-for-messy-data-analysis",
-    "href": "materials-2025/leftovers.html#best-practices-for-messy-data-analysis",
-    "title": "Leftovers",
-    "section": "Best Practices for Messy Data Analysis",
-    "text": "Best Practices for Messy Data Analysis\n\n1. Understand Your Messiness\n\nWhy is the data messy?\nIs it measurement error, missing by design, or data quality issues?\nDifferent causes require different solutions\n\n\n\n2. Don’t Rush to Clean\n\nSometimes the “mess” contains important information\nMissing patterns might be informative\nOutliers might be your most interesting observations\n\n\n\n3. Sensitivity Analysis\n\nTry multiple approaches\nSee if conclusions are robust across methods\nDocument what changes and what doesn’t\n\n\n\n4. Model the Mess\n\nInstead of cleaning first, model the messiness directly\nInclude missingness indicators as variables\nUse hierarchical models for complex structure\n\nWhat is messy data analysis\n“Messy data analysis” refers to the realistic, iterative, and often chaotic process of working with real-world data - as opposed to the clean, linear process often taught in textbooks."
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#what-makes-data-analysis-messy",
-    "href": "materials-2025/leftovers.html#what-makes-data-analysis-messy",
-    "title": "Leftovers",
-    "section": "What Makes Data Analysis “Messy”",
-    "text": "What Makes Data Analysis “Messy”\n\n1. Non-linear Process\n\nAnalysis rarely goes: collect ??? clean ??? analyze ??? report\nInstead: analyze ??? discover problems ??? go back ??? re-clean ??? re-analyze ??? repeat\nConstant backtracking and revision\n\n\n\n3. Unexpected Discoveries\n\nYour hypothesis was wrong\nThe “smoking gun” variable is actually data entry errors\nThe interesting pattern disappears when you fix a bug"
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#characteristics-of-messy-analysis",
-    "href": "materials-2025/leftovers.html#characteristics-of-messy-analysis",
-    "title": "Leftovers",
-    "section": "Characteristics of Messy Analysis",
-    "text": "Characteristics of Messy Analysis\n\nExploratory & Iterative\n\nStart without knowing exactly what you’re looking for\nFollow interesting leads that emerge\nDead ends and false starts are normal\n\n\n\nProblem-Driven\n\nQuestions evolve as you learn more about the data\nOriginal research question often changes completely\nAnalysis shaped by what’s actually possible with your data\n\n\n\nTool-Switching\n\nExcel for quick looks\nR/Python for analysis\n\nBack to Excel to check something\nMaybe some SQL, maybe some manual inspection\n\n\n\nDocumentation Challenges\n\nHard to document a non-linear process\nYour final clean code doesn’t show the messy exploration\nReproducibility becomes complex"
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#example-of-messy-analysis-flow",
-    "href": "materials-2025/leftovers.html#example-of-messy-analysis-flow",
-    "title": "Leftovers",
-    "section": "Example of Messy Analysis Flow",
-    "text": "Example of Messy Analysis Flow\n1. Load data ??? discover 50% missing values\n2. Investigate missingness ??? find it's not random\n3. Research data collection ??? learn about system change in 2019\n4. Split analysis by time period ??? find different patterns\n5. Discover outliers ??? some are errors, some are real\n6. Clean errors ??? realize you need domain expertise\n7. Consult with subject matter expert ??? learn your assumptions were wrong\n8. Start over with new understanding..."
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#messy-vs.-tidy",
-    "href": "materials-2025/leftovers.html#messy-vs.-tidy",
-    "title": "Leftovers",
-    "section": "Messy vs. Tidy",
-    "text": "Messy vs. Tidy\nHadley Wickham’s “Tidy Data” principles help organize the technical structure, but even with tidy data, the analysis process remains messy:\n\nTidy data: Structured format for easier manipulation\nMessy analysis: The human process of discovery and iteration"
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#embracing-the-mess",
-    "href": "materials-2025/leftovers.html#embracing-the-mess",
-    "title": "Leftovers",
-    "section": "Embracing the Mess",
-    "text": "Embracing the Mess\n\nGood Practices:\n\nKeep detailed lab notebooks/logs\nVersion control your code and data\nDocument dead ends (save future you time)\nExpect to throw away lots of work\nSeparate exploration from final analysis scripts\n\n\n\nTools for Messy Work:\n\nJupyter notebooks for exploration\nR Markdown for iterative analysis\nGit for tracking changes\nInformal plots and quick summaries\nCollaborative tools for team messiness"
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#why-this-matters",
-    "href": "materials-2025/leftovers.html#why-this-matters",
-    "title": "Leftovers",
-    "section": "Why This Matters",
-    "text": "Why This Matters\nUnderstanding that analysis is messy helps you: - Set realistic expectations for timelines - Budget time for exploration and dead ends - Communicate better with stakeholders about process - Feel normal when your analysis doesn’t go smoothly - Design better workflows that accommodate messiness\nBottom line: Real data analysis is messy, iterative, and full of surprises. The goal isn’t to eliminate the mess, but to manage it productively!\n“Messy data” refers to real-world datasets that don’t conform to the clean, structured format that statistical methods and analysis tools expect. It’s data that requires significant cleaning and preprocessing before analysis."
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#characteristics-of-messy-data",
-    "href": "materials-2025/leftovers.html#characteristics-of-messy-data",
-    "title": "Leftovers",
-    "section": "Characteristics of Messy Data",
-    "text": "Characteristics of Messy Data\n\n1. Structural Issues\n\nMultiple tables/sheets that should be combined\nVariables stored in rows instead of columns (or vice versa)\nMultiple variables crammed into one column\nHeaders and data mixed together\n\nExample:\nMessy format:\n┌─────────────────────────────────┐\n│        Sales Data 2023          │\n├─────────────────────────────────┤\n│ Q1: Jan=100, Feb=150, Mar=120   │\n│ Q2: Apr=200, May=180, Jun=220   │\n│ Total: 970                      │\n└─────────────────────────────────┘\n\nShould be:\n┌───────┬─────┬─────────┐\n│ Month │ Qtr │ Sales   │\n├───────┼─────┼─────────┤\n│ Jan   │ Q1  │ 100     │\n│ Feb   │ Q1  │ 150     │\n│ Mar   │ Q1  │ 120     │\n└───────┴─────┴─────────┘\n\n\n2. Data Quality Problems\n\nMissing values (blanks, “N/A”, “NULL”, -999, etc.)\nInconsistent formats (dates, currencies, addresses)\nTypos and spelling variations (“New York”, “NY”, “new york”)\nDuplicate records\nOutliers and impossible values (age = 150, negative prices)\n\n\n\n3. Encoding Issues\n\nDifferent data types in same column (numbers stored as text)\nCharacter encoding problems (ñ becomes Ã±)\nMixed units (some measurements in feet, others in meters)\nInconsistent categories (“Male/Female” vs “M/F” vs “1/0”)"
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#common-sources-of-messy-data",
-    "href": "materials-2025/leftovers.html#common-sources-of-messy-data",
-    "title": "Leftovers",
-    "section": "Common Sources of Messy Data",
-    "text": "Common Sources of Messy Data\n\nHuman Data Entry\nExpected:     Actual reality:\n┌──────┬────┐  ┌──────┬────────────┐\n│ Name │Age │  │ Name │ Age        │\n├──────┼────┤  ├──────┼────────────┤\n│ John │ 25 │  │ John │ 25         │\n│ Mary │ 30 │  │ mary │ thirty     │\n│ Bob  │ 22 │  │ Bob  │ 22 years   │\n└──────┴────┘  │      │ old        │\n               │ Rob  │ #N/A       │\n               └──────┴────────────┘\n\n\nSystem Integration\n\nData from multiple systems with different schemas\nLegacy systems with outdated formats\nAPIs that change structure over time\n\n\n\nExcel/Spreadsheet “Features”\n\nMerged cells\nFormulas mixed with data\n\nMultiple datasets in one sheet\nFormatting used to convey meaning\n\n\n\nWeb Scraping\n\nHTML tags mixed with content\nInconsistent page structures\nDynamic content that changes"
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#examples-of-messy-data",
-    "href": "materials-2025/leftovers.html#examples-of-messy-data",
-    "title": "Leftovers",
-    "section": "Examples of Messy Data",
-    "text": "Examples of Messy Data\n\nWide Format (Should be Long)\nMessy:\n┌─────────┬─────┬─────┬─────┬─────┐\n│ Country │2019 │2020 │2021 │2022 │\n├─────────┼─────┼─────┼─────┼─────┤\n│ USA     │ 100 │ 105 │ 103 │ 108 │\n│ Canada  │  80 │  82 │  79 │  85 │\n└─────────┴─────┴─────┴─────┴─────┘\n\nTidy:\n┌─────────┬──────┬───────┐\n│ Country │ Year │ Value │\n├─────────┼──────┼───────┤\n│ USA     │ 2019 │ 100   │\n│ USA     │ 2020 │ 105   │\n│ Canada  │ 2019 │  80   │\n└─────────┴──────┴───────┘\n\n\nMultiple Variables in One Column\nMessy:\n┌─────────────────────┐\n│ Name_Age_City       │\n├─────────────────────┤\n│ John_25_Boston      │\n│ Mary_30_Seattle     │\n└─────────────────────┘\n\nShould be:\n┌──────┬─────┬─────────┐\n│ Name │ Age │ City    │\n├──────┼─────┼─────────┤\n│ John │  25 │ Boston  │\n│ Mary │  30 │ Seattle │\n└──────┴─────┴─────────┘\n\n\nInconsistent Missing Value Codes\n┌──────┬─────┬────────┐\n│ Name │ Age │ Income │\n├──────┼─────┼────────┤\n│ John │  25 │ 50000  │\n│ Mary │ N/A │ -999   │\n│ Bob  │  30 │ NULL   │\n│ Sue  │   0 │        │\n└──────┴─────┴────────┘"
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#the-messy-vs-tidy-spectrum",
-    "href": "materials-2025/leftovers.html#the-messy-vs-tidy-spectrum",
-    "title": "Leftovers",
-    "section": "The Messy vs Tidy Spectrum",
-    "text": "The Messy vs Tidy Spectrum\nExtremely Messy: - PDF reports with embedded tables - Handwritten forms scanned as images - Audio/video that needs transcription\nModerately Messy: - Excel files with formatting and merged cells - CSVs with inconsistent column names - Databases with poor normalization\nSlightly Messy: - Clean structure but some missing values - Consistent format but needs type conversion - Good data with a few outliers\nTidy: - Each variable in its own column - Each observation in its own row - Each cell contains a single value - Consistent missing value handling"
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#tools-for-handling-messy-data",
-    "href": "materials-2025/leftovers.html#tools-for-handling-messy-data",
-    "title": "Leftovers",
-    "section": "Tools for Handling Messy Data",
-    "text": "Tools for Handling Messy Data\n\nR\nlibrary(tidyverse)  # dplyr, tidyr, stringr\nlibrary(janitor)    # clean_names(), get_dupes()\nlibrary(readxl)     # Excel files\nlibrary(VIM)        # Missing data visualization\nlibrary(OpenRefine) # GUI data cleaning\n\n\nPython\nimport pandas as pd\nimport numpy as np\nimport re  # Regular expressions\nfrom fuzzywuzzy import fuzz  # String matching\nimport missingno as msno  # Missing data viz\n\n\nSpecialized Tools\n\nOpenRefine: Interactive data cleaning\nTrifacta/Alteryx: Commercial data prep tools\nExcel Power Query: Built-in Excel cleaning tools"
-  },
-  {
-    "objectID": "materials-2025/leftovers.html#why-messy-data-matters",
-    "href": "materials-2025/leftovers.html#why-messy-data-matters",
-    "title": "Leftovers",
-    "section": "Why Messy Data Matters",
-    "text": "Why Messy Data Matters\n\nReality Check\n\n80% of data science is data cleaning\nReal data is almost always messy\nTextbook examples don’t prepare you for reality\n\n\n\nBusiness Impact\n\nBad data leads to bad decisions\nCleaning takes time and resources\nAutomation can help but isn’t always possible\n\n\n\nStatistical Validity\n\nMessy data can bias results\nWrong conclusions from poorly cleaned data\nNeed to understand messiness to trust analysis\n\nBottom Line: Messy data is the norm, not the exception. Learning to identify, understand, and systematically clean messy data is one of the most practical skills in data analysis. The goal is transforming messy reality into tidy, analyzable datasets while preserving the valuable information buried in the mess!"
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#french-fries",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#french-fries",
+    "title": "Normal Forms of data",
+    "section": "French Fries",
+    "text": "French Fries\nIn a 10 week sensory experiment, 12 individuals assess taste of french fries on several scales (how potato-y, buttery, grassy, rancid, paint-y do they taste?), fried in one of 3 different oils, replicated twice.\nWhat is the key?"
   },
   {
     "objectID": "materials-2025/Module 1 - Tidy Forms of Data/01-what-is-messy.html#cryptic-names",
@@ -343,53 +98,109 @@
     "text": "Gross on repeat\n10 week sensory experiment, 12 individuals assessed taste of french fries on several scales (how potato-y, buttery, grassy, rancid, paint-y do they taste?), fried in one of 3 different oils, replicated twice.\nFirst few rows:\n\n\n# A tibble: 4 × 9\n  time  treatment subject   rep potato buttery grassy rancid painty\n  &lt;fct&gt; &lt;fct&gt;     &lt;fct&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1 1     1         3           1    2.9     0      0      0      5.5\n2 1     1         3           2   14       0      0      1.1    0  \n3 1     1         10          1   11       6.4    0      0      0  \n4 1     1         10          2    9.9     5.9    2.9    2.2    0  \n\n\nWhat is the experimental unit? What are the factors of the experiment? What was measured? What do you want to know?"
   },
   {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#biological-experiment",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#biological-experiment",
-    "title": "Normal Forms of data",
-    "section": "Biological experiment",
-    "text": "Biological experiment\nIn a study, RNA-seq expressions of 11k different genes are measured at 6 and 12 hours after seeds from two different gene lines have germinated.\nWhat is the key?"
+    "objectID": "materials-2025/Module 0 - Setting up/03-hwk-rstudio-git.html",
+    "href": "materials-2025/Module 0 - Setting up/03-hwk-rstudio-git.html",
+    "title": "Homework 0 Setup B: Connecting RStudio and Git",
+    "section": "",
+    "text": "Note: This assignment must be submitted in github classroom.\n\n\nConnecting-RStudio-and-Git-Github\n\nClone this repository to your local machine\nOpen RStudio using the project file Connecting-RStudio-and-Git-Github.Rproj\nOpen the file README.Rmd\nMake sure that the following code chunks run successfully\n\n\nLoad Packages …\nVersions\n\n\nRun the code chunk 'versions' at least once successfully.\n\nConnection to git\n\n\nRun the code chunk 'gitconnection' at least once successfully.\n\nCreate the README.md file by rendering the README.Rmd file\nCheck the resulting README.md file:\n\nis your version of R (relatively) current? (most current: 4.5.1)\nis your RStudio version from this year?\nis your version of git (relatively) current? (most current: 2.51.0)\n\nIf any of your answers above is ‘no’ install a newer version.\n\nDo you have push and pull access to the Git repository?\n\nIf not, make sure that you have followed all of the steps laid out in chapter 12 of Jenny Bryan’s “Happy Git and GitHub for the useR”\nCommit and push all changed files to Github classroom.\nYour done!"
   },
   {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#weather-station",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#weather-station",
-    "title": "Normal Forms of data",
-    "section": "Weather station",
-    "text": "Weather station\nA weather station publishes monthly averages for the minimum and maximum temperature during each hour of the day.\nWhat is the key?"
-  },
-  {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#tuberculosis",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#tuberculosis",
-    "title": "Normal Forms of data",
-    "section": "Tuberculosis",
-    "text": "Tuberculosis\nThe World Health Organization track the number of new incidences of tuberculosis by sex and age group in each country.\nWhat is the key?"
-  },
-  {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#french-fries",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/02-normal-forms.html#french-fries",
-    "title": "Normal Forms of data",
-    "section": "French Fries",
-    "text": "French Fries\nIn a 10 week sensory experiment, 12 individuals assess taste of french fries on several scales (how potato-y, buttery, grassy, rancid, paint-y do they taste?), fried in one of 3 different oils, replicated twice.\nWhat is the key?"
-  },
-  {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/hwk-1-reproducibility.html",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/hwk-1-reproducibility.html",
+    "objectID": "materials-2025/Module 0 - Setting up/hwk-1-reproducibility.html",
+    "href": "materials-2025/Module 0 - Setting up/hwk-1-reproducibility.html",
     "title": "Homework 1: Reproducibility",
     "section": "",
     "text": "Note: This assignment must be submitted in github classroom.\n\n\nAn example in reproducibility\n\n\nThis repository contains the Nebraskan subset from the 2023 Behavioral Risk Factor Surveillance System (BRFSS). The BRFSS is run annually by the Center for Disease control and prevention (CDC).\nYou can load the data with\nbrfss &lt;- readRDS(\"brfssNE2023.rds\")\nThe dataset contains 12886 observations on 350 variables.\nThe codebook for the full data is available from https://www.cdc.gov/brfss/annual_data/annual_2023.html. A copy of the site is included in the repo in the file USCODE23_LLCP_021924.HTML.\nVariables names starting with X_ in the R data are listed in the codebook without the starting X, i.e. the variable X_AGEG5YR can be found as _AGEG5YR in the codebook.\n\n\nTodo\n\nClone this repository to your local machine and open RStudio using the file reproducibility-brfss.Rproj.\nCreate a quarto document index.qmd. This is the file in which you should include all of your work.\nUse the brfss data described above to find an age distribution of all Nebraskans who participated in the BRFSS survey. Use the variable X_AGEG5YR and show the distribution in a barchart and a table. Make sure to address in a paragraph how you deal with non responses.\n\nIs the age of Nebraskans distributed significantly different from the nationally reported age distribution? (You could run a Chi-square test of homogeneity using chisq.test) Make sure to interpret the results.\nRe-do the analysis in questions 2 and 3 by considering the survey weights X_LLCPWT. Again, interpret the results. How do you explain the differences?\n\n\n\nSubmission\n\nMake sure that your file index.qmd contains all the details needed for me to re-run your analysis.\nEnsure that the file renders without an error.\n\nAdd your file index.qmd to the repository, commit and push."
   },
   {
-    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/03b-yourturn-code.html",
-    "href": "materials-2025/Module 1 - Tidy Forms of Data/03b-yourturn-code.html",
-    "title": "Your Turn code for normalizing data",
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html",
+    "title": "Homework 2: Cleaning the weather",
     "section": "",
-    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nstudent_courses &lt;- data.frame(\n  student_id = c(101, 101, 102, 102, 103, 103),\n  course_id = c(\"CS101\", \"MATH201\", \"CS101\", \"PHYS101\", \"MATH201\", \"CS101\"),\n  semester = c(\"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\"),\n  instructor_name = c(\"Dr. Smith\", \"Dr. Johnson\", \"Dr. Smith\",   \"Dr. Johnson\", \"Dr. Brown\", \"Dr. Smith\"),\n  grade = c(\"A\", \"B+\", \"B\", \"A-\", \"A\", \"B+\")\n)\n\n# We don't have duplicates:\n!any(duplicated(student_courses))\n\n[1] TRUE\n\nstudent_courses |&gt; count(student_id, course_id) |&gt; filter(n &gt; 1)\n\n[1] student_id course_id  n         \n&lt;0 rows&gt; (or 0-length row.names)\n\nstudent_courses |&gt; count(student_id) |&gt; filter(n &gt; 1)\n\n  student_id n\n1        101 2\n2        102 2\n3        103 2\n\nstudent_courses |&gt; count(course_id) |&gt; filter(n &gt; 1)\n\n  course_id n\n1     CS101 3\n2   MATH201 2\n\n# yes, data set is in 1st normal form\n\ncourses &lt;- student_courses |&gt; group_by(course_id) |&gt;\n  summarize(\n    semester = unique(semester),\n    instructor_name = paste(unique(instructor_name), collapse=\", \")\n  )\n\n!any(duplicated(courses$course_id))\n\n[1] TRUE"
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
   },
   {
-    "objectID": "homework-repos/homework-1-reproducibility/index.html",
-    "href": "homework-repos/homework-1-reproducibility/index.html",
-    "title": "Homework #1",
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html#submission",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk-2-clean-weather.html#submission",
+    "title": "Homework 2: Cleaning the weather",
+    "section": "Submission",
+    "text": "Submission\nMake sure that your file index.qmd includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!"
+  },
+  {
+    "objectID": "gasbuddy.html",
+    "href": "gasbuddy.html",
+    "title": "Stat 471",
     "section": "",
-    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4          ✔ readr     2.1.5     \n✔ forcats   1.0.0          ✔ stringr   1.5.1     \n✔ ggplot2   3.5.2.9002     ✔ tibble    3.3.0     \n✔ lubridate 1.9.4          ✔ tidyr     1.3.1     \n✔ purrr     1.1.0          \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(patchwork)\n\n\nLoad data, create index file\nLoad the data with\n\nbrfss &lt;- readRDS(\"brfssNE2023.rds\")\n\n\n\nFind age distribution\n\nage_table &lt;- brfss |&gt; group_by(X_AGEG5YR) |&gt; summarise(\n  frequency = n(),\n  weighted = sum(X_LLCPWT2),\n  raw_percent = n()/nrow(brfss)*100,\n  weighted_percent = sum(X_LLCPWT2)/sum(brfss$X_LLCPWT2)*100\n)\n\nage_table |&gt; knitr::kable(digits = 2)\n\n\n\n\nX_AGEG5YR\nfrequency\nweighted\nraw_percent\nweighted_percent\n\n\n\n\n1\n952\n119104.94\n7.39\n7.89\n\n\n2\n683\n89356.68\n5.30\n5.92\n\n\n3\n815\n100169.22\n6.32\n6.63\n\n\n4\n898\n109292.57\n6.97\n7.24\n\n\n5\n971\n115425.70\n7.54\n7.64\n\n\n6\n844\n101053.42\n6.55\n6.69\n\n\n7\n936\n116399.63\n7.26\n7.71\n\n\n8\n902\n110708.72\n7.00\n7.33\n\n\n9\n1237\n139974.44\n9.60\n9.27\n\n\n10\n1266\n140808.88\n9.82\n9.33\n\n\n11\n1239\n139402.09\n9.62\n9.23\n\n\n12\n909\n99649.21\n7.05\n6.60\n\n\n13\n1101\n111183.52\n8.54\n7.36\n\n\n14\n133\n17405.96\n1.03\n1.15\n\n\n\n\n# weighted frequencies are estimates for all of Nebraska\n\n# shows frequencies, not a distribution\nbrfss |&gt; ggplot(aes(x = X_AGEG5YR)) + geom_bar()\n\n\n\n\n\n\n\n# from codebook: \ncodebook &lt;- data.frame(\n  Value = 1:14, \n  Value_Label = c(\"Age 18 to 24\", \"Age 25 to 29\", \"Age 30 to 34\", \n\"Age 35 to 39\", \"Age 40 to 44\", \"Age 45 to 49\", \"Age 50 to 54\", \n\"Age 55 to 59\", \"Age 60 to 64\", \"Age 65 to 69\", \"Age 70 to 74\", \n\"Age 75 to 79\", \"Age 80 or older\", \"Don't know/Refused/Missing\"\n))\n\np1 &lt;- brfss |&gt; ggplot(aes(x = codebook$Value_Label[X_AGEG5YR])) + \n  geom_bar(aes(y = after_stat(count/sum(count)*100))) + coord_flip() + \n  ggtitle(\"Raw Percentages\")\n\np2 &lt;- brfss |&gt; ggplot(aes(x = codebook$Value_Label[X_AGEG5YR], weight = X_LLCPWT2)) + \n  geom_bar(aes(y = after_stat(count/sum(count)*100))) + coord_flip() + \n  ggtitle(\"Weighted Percentages\")\n\np1+p2\n\n\n\n\n\n\n\n\n\nNon responses are included in the age distribution as a separate level.\n\n\nIs the age of Nebraskans distributed significantly different from the nationally reported age distribution? (You could run a Chi-square test of homogeneity using chisq.test) Make sure to interpret the results.\n\nNational sample from the codebook:\nUsing ellmer with anthropic and prompt: “from the file at path”USCODE23_LLCP_021924.HTML” in the working directory extract the table for _AGEG5YR”\n\n# no need to run this over and over again, just create the data set once\n# Load required libraries\nlibrary(rvest)\n\n# Read the HTML file\nhtml_content &lt;- read_html(\"USCODE23_LLCP_021924.HTML\")\n\n# Extract all tables from the HTML\ntables &lt;- html_content %&gt;% html_table(fill = TRUE)\n\n# Look for the table containing _AGEG5YR\nageg5yr_table &lt;- NULL\nfor(i in 1:length(tables)) {\n  if(any(grepl(\"_AGEG5YR|AGEG5YR\", tables[[i]], ignore.case = TRUE))) {\n    ageg5yr_table &lt;- tables[[i]]\n    break\n  }\n}\n\nwrite.csv(ageg5yr_table, \"national-age.csv\", row.names = FALSE)\n\nWriting the result in a file and reading it back in:\n\nnational_age &lt;- readr::read_csv(\"national-age.csv\", skip = 2)\n\nRows: 14 Columns: 5\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): Value Label\ndbl (3): Value, Percentage, Weighted Percentage\nnum (1): Frequency\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nnational_age &lt;- national_age |&gt; mutate(\n    `Value Label` = gsub(\"Age .*Notes: \", \"\", `Value Label`)\n)\nnational_age &lt;- national_age |&gt; mutate(\n    `Value Label` = ifelse(Value==14, NA, `Value Label`)\n)\nwrite.csv(\"national-age.csv\", row.names=FALSE)\n\n\"x\"\n\"national-age.csv\"\n\n\nIs there a difference between Nebraskans’ ages and the national age distribution (based on the BRFSS sample)?\n\na1 &lt;- age_table |&gt; \n  ggplot(aes(x = X_AGEG5YR, y = raw_percent)) + \n  geom_point(aes(colour = \"NE\")) + \n  geom_point(aes(x = Value, y = Percentage, colour = \"US\"), data = national_age) + \n  ggtitle(\"Raw Percentages\")\n\na2 &lt;- age_table |&gt; \n  ggplot(aes(x = X_AGEG5YR, y = weighted_percent)) + \n  geom_point(aes(colour = \"NE\")) + \n  geom_point(aes(x = Value, y = `Weighted Percentage`, colour = \"US\"), data = national_age) + \n  ggtitle(\"Weighted Percentages\")\na1 + a2\n\n\n\n\n\n\n\n\nThe weighted percentages seem quite a bit different in the national sample, the raw percentages seem fairly similar\n\nraw_frequencies &lt;- data.frame(\n  NE = age_table$frequency,\n  US = national_age$Frequency\n)\n\nchisq.test(raw_frequencies)\n\n\n    Pearson's Chi-squared test\n\ndata:  raw_frequencies\nX-squared = 157.1, df = 13, p-value &lt; 2.2e-16\n\nraw_percentages &lt;- data.frame(\n  NE = age_table$raw_percent,\n  US = national_age$Percentage\n)\n\nchisq.test(raw_percentages)\n\nWarning in chisq.test(raw_percentages): Chi-squared approximation may be\nincorrect\n\n\n\n    Pearson's Chi-squared test\n\ndata:  raw_percentages\nX-squared = 0.65857, df = 13, p-value = 1\n\nweighted_percentages &lt;- data.frame(\n  NE = age_table$weighted_percent,\n  US = national_age$`Weighted Percentage`\n)\n\nchisq.test(weighted_percentages)\n\nWarning in chisq.test(weighted_percentages): Chi-squared approximation may be\nincorrect\n\n\n\n    Pearson's Chi-squared test\n\ndata:  weighted_percentages\nX-squared = 3.3521, df = 13, p-value = 0.9963\n\n\n\n# Cramér's V (most common)\nv1 &lt;- sqrt(chisq.test(raw_frequencies)$statistic / nrow(brfss))\n\nv2 &lt;- sqrt(chisq.test(weighted_percentages)$statistic / 100)\n\nWarning in chisq.test(weighted_percentages): Chi-squared approximation may be\nincorrect\n\n# Guidelines for Cramér's V:\n# Small: 0.1, Medium: 0.3, Large: 0.5\n\n\n\nSubmission\n\nMake sure that your file index.qmd contains all the details needed for me to re-run your analysis.\nEnsure that the file renders without an error.\n\nAdd your file index.qmd to the repository, commit and push."
+    "text": "authorization: apikey 4mEsIM76saqF28IR638bWr:6XJHqxtklK7pw7haSU8wy9\nlibrary(httr2)\n\n# Set up base request with API key\ngas_request &lt;- request(\"https://api.collectapi.com/gasPrice\") |&gt;\n  req_headers(\"X-API-KEY\" = \"apikey 4mEsIM76saqF28IR638bWr:6XJHqxtklK7pw7haSU8wy9\")\n\n# Get gas prices for a specific country\nget_gas_prices &lt;- function(country = \"united-states\") {\n  gas_request |&gt;\n    req_url_path_append(\"fromCity\") |&gt;\n    req_url_query(country = country) |&gt;\n    req_perform() |&gt;\n    resp_body_json()\n}\n\n# Get all available countries\nget_countries &lt;- function() {\n  gas_request |&gt;\n    req_url_path_append(\"countries\") |&gt;\n    req_perform() |&gt;\n    resp_body_json()\n}\n\n# Usage examples\ncountries &lt;- get_countries()\nus_prices &lt;- get_gas_prices(\"united-states\")\nuk_prices &lt;- get_gas_prices(\"united-kingdom\")\nReplace \"YOUR_API_KEY_HERE\" with your actual CollectAPI key from their dashboard."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html",
+    "title": "Homework 3: Flights across the US",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#prepping",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#prepping",
+    "title": "Homework 3: Flights across the US",
+    "section": "Prepping",
+    "text": "Prepping\n\nAccept the assignment in Canvas, follow the link to create a repository, and clone this repository to your local machine.\nCreate a file named index.qmd and add it to the repository. This is the file that should contain your code, results, and interpretations. Make sure to include enough detail that your work is fully reproducible."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#to-do-items",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#to-do-items",
+    "title": "Homework 3: Flights across the US",
+    "section": "To Do Items",
+    "text": "To Do Items\n\nImport flights for all three months into a single object flights. Report on the number of flights by months and the number of features reported for it.\nDetermine a key for the data set. Make sure to show that it fulfills the requirements of a key.\nGive three different examples of transitive dependencies in the data.\nAirport information is included for both Origin and Dest. Create a new data set called airports in which you include the information once, then remove all but the required airport information from the flights object.\nCreate a summary for the number of flights each day and plot it. Color the points by day of the week. Make sure to provide labels for the days of the week. Describe the general pattern for the number of flights you see. Which days do not follow this pattern?\nThe variable Cancelled contains information about whether a flight was cancelled. Why can we not assume that flight cancellations occur completely randomly? Identify at least two factors contributing to non-random flight cancellations and visualize your findings."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#submission",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk3-us-flights.html#submission",
+    "title": "Homework 3: Flights across the US",
+    "section": "Submission",
+    "text": "Submission\nEnsure that the file index.qmd renders without errors. Read through the rendered document to check for consistency. Remove excessive printouts. Add all relevant(!) files to the repository, commit, and push!"
+  },
+  {
+    "objectID": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html",
+    "href": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html",
+    "title": "Homework 0 Setup A: Git and Github",
+    "section": "",
+    "text": "Note: This assignment must be submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#todo-items",
+    "href": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#todo-items",
+    "title": "Homework 0 Setup A: Git and Github",
+    "section": "📝 Todo Items",
+    "text": "📝 Todo Items\n\nClone this repository to your local machine\nOn your local machine, create a new markdown file in this repository named ‘About_Me.md’.\nIn the file ‘About_Me.md’ include either a or b:\n\n\na short biography/introduction for yourself and use markdown formatting - Markdown Basics provides an overview of different formatting options in markdown. - You must use at least the following formatting elements: header, subheader, bold or italic, bulleted list, and an image.\nprovide a link to your portfolio (hosted on github) that includes all of the above items.\n\n\nCommit your changes to your new file locally and push them back to your github repository. Check on Github to make sure the new file appears."
+  },
+  {
+    "objectID": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#resources",
+    "href": "materials-2025/Module 0 - Setting up/02-hwk-git-github.html#resources",
+    "title": "Homework 0 Setup A: Git and Github",
+    "section": "📚 Resources",
+    "text": "📚 Resources\n\nA short video explaining what GitHub is\nGit and GitHub learning resources\nUnderstanding the GitHub flow\nInteractive Git training materials\nGitHub’s Learning Lab\nEducation community forum\nGitHub community forum"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/02b-workday.html",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/02b-workday.html",
+    "title": "Working through code: data summaries",
+    "section": "",
+    "text": "#\n# What is the average grade in each subject?\n#\n#   How many courses does each student take?\n#\n#   How many students are enrolled in total?\n\nstudents &lt;- data.frame(\n  student_name = c(\"Alice\", \"Alice\", \"Bob\", \"Bob\", \"Alice\", \"Alice\"),\n  course = c(\"Math\", \"Science\", \"Math\", \"Science\", \"Math\", \"Science\"),\n  grade = c(85, 92, 78, 88, 82, 90),\n  student_id = rep(1:3, each = 2)\n)\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4          ✔ readr     2.1.5     \n✔ forcats   1.0.0          ✔ stringr   1.5.1     \n✔ ggplot2   3.5.2.9002     ✔ tibble    3.3.0     \n✔ lubridate 1.9.4          ✔ tidyr     1.3.1     \n✔ purrr     1.1.0          \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nduplicated(students |&gt; select(student_id, course))\n\n[1] FALSE FALSE FALSE FALSE FALSE FALSE\n\nstudents |&gt; group_by(course) |&gt;\n  summarise(\n    grade = mean(grade, na.rm=TRUE),\n    n = n(),\n    non_missing_grade = sum(is.na(grade))\n  )\n\n# A tibble: 2 × 4\n  course  grade     n non_missing_grade\n  &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt;             &lt;int&gt;\n1 Math     81.7     3                 0\n2 Science  90       3                 0\n\nstudents |&gt; group_by(student_id) |&gt;\n  summarise(\n    num_courses = length(unique(course)),\n    n = n(),\n  ) |&gt; ungroup()\n\n# A tibble: 3 × 3\n  student_id num_courses     n\n       &lt;int&gt;       &lt;int&gt; &lt;int&gt;\n1          1           2     2\n2          2           2     2\n3          3           2     2\n\nstudents |&gt; summarize(\n  num_enrolled = length(unique(student_id))\n)\n\n  num_enrolled\n1            3\n\nstudents |&gt; count(student_id) |&gt; nrow()\n\n[1] 3"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/hwk-2-clean-weather.html",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/hwk-2-clean-weather.html",
+    "title": "Homework 2: Cleaning the weather",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/hwk-2-clean-weather.html#submission",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/hwk-2-clean-weather.html#submission",
+    "title": "Homework 2: Cleaning the weather",
+    "section": "Submission",
+    "text": "Submission\nMake sure that your file index.qmd includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!"
   },
   {
     "objectID": "about.html",
@@ -399,17 +210,73 @@
     "text": "Fall 2025\nTR 3:30 - 4:45 pm, Canvas\nOffice Hours: by appointment\nInstructor: Heike Hofmann, hhofmann4 at unl dot edu\n\n\n\nCourse description\n\nAnalysis of complex, real-world data sets. Analysis techniques will vary depending on interest and availability of data sets.\n\nNot all data lives in nice, clean spreadsheets, not all data fits in a computer’s main memory. As statisticians we cannot always rely on other people and sciences to get the data into formats that we can deal with: we will discuss aspects of statistical computing as they are relevant for data analysis. Elements of literate programming help us with making our workflow transparent and analyses reproducible. We will discuss communication of results in form of web sites and interactive web applications.\n\n\nLearn how to …\n\ncompute with data to check the quality,\nimpute missing values, wrangle data formats, and join data sources.\nwrite efficient and reproducible code so others are able to replicate the analysis.\npull data together to solve a contemporary problem.\nuse LLM bots to assess their helpfulness in different situations\npublish reports on the web\n\n\n\nMore Info …\nThe course organization on GitHub: https://github.com/stat471-at-UNL/stat471-at-UNL.github.io\nRepo that creates this website: https://github.com/stat471-at-UNL/materials-2025"
   },
   {
-    "objectID": "project/index.html",
-    "href": "project/index.html",
-    "title": "Project: Screencast",
+    "objectID": "materials-2025/checking-for-split-key.html",
+    "href": "materials-2025/checking-for-split-key.html",
+    "title": "Untitled",
     "section": "",
-    "text": "Project Description\nFor your final project (which will take the place of the final exam), you will be recording a screencast in the style of David Robinson’s TidyTuesday screencasts.\nYou can find time-stamped, catalogued versions of some of David Robinson’s screencasts here.\nRequirements:\n\nYour screencast should be approximately 45 minutes long.\nYour screencast should show your analysis of a TidyTuesday dataset from 2023\nYou should showcase at least 4 different techniques you’ve learned in Stat 251. Some examples include:\n\ndata cleaning (dplyr) verbs\nreshaping data (tidyr)\nworking with dates and times (lubridate)\nworking with strings (stringr)\nwriting functions to modularize your code\nvisualizing your data effectively\n\n\nUnlike David Robinson’s screencasts, you will write a rough pseudocode “script” before you start recording. This will give you a rough outline of how to do the analysis and what things you intend to cover.\nYour goal is to help a future Stat 251 student understand some of the topics covered in this class. So while David Robinson and others who record their screencasts live might not fully explain what he’s doing, you should take the time to explain each technique you decide to use in a way that will help someone else understand.\nThere will be three deliverables for this project:\n\nPlan your dataset and topics\nPseudocode script uploaded to github repository\nScreencast + github repository\n\nScreencast uploaded to YouTube/YuJa\nApproximate time index provided for each of the 4 techniques you’re demonstrating (examples)\nCode uploaded to github repository\n\n\nIn lieu of the final exam, you will peer review two classmates’ screencasts."
+    "text": "library(dplyr)\n\n# Find duplicate keys and their counts\ndf %&gt;% \n  count(key1, key2) %&gt;% \n  filter(n &gt; 1)\n\n# Check if any duplicates exist\ndf %&gt;% \n  add_count(key1, key2) %&gt;% \n  summarise(has_split_key = any(n &gt; 1))"
   },
   {
-    "objectID": "project/Dataset-Topics.html",
-    "href": "project/Dataset-Topics.html",
-    "title": "Project Dataset and Topics",
+    "objectID": "materials-2025/checking-for-split-key.html#using-dplyr-for-analysis",
+    "href": "materials-2025/checking-for-split-key.html#using-dplyr-for-analysis",
+    "title": "Untitled",
     "section": "",
-    "text": "Link to dataset\nThings you plan to investigate using this dataset:\n\nThing 1\nThing 2\nThing 3\n\nStat 251 topics you plan to cover during the analysis:\n\nTopic 1\nTopic 2\nTopic 3\nTopic 4"
+    "text": "library(dplyr)\n\n# Find duplicate keys and their counts\ndf %&gt;% \n  count(key1, key2) %&gt;% \n  filter(n &gt; 1)\n\n# Check if any duplicates exist\ndf %&gt;% \n  add_count(key1, key2) %&gt;% \n  summarise(has_split_key = any(n &gt; 1))"
+  },
+  {
+    "objectID": "materials-2025/checking-for-split-key.html#comprehensive-function",
+    "href": "materials-2025/checking-for-split-key.html#comprehensive-function",
+    "title": "Untitled",
+    "section": "4. Comprehensive Function",
+    "text": "4. Comprehensive Function\ncheck_split_key &lt;- function(df, key_cols) {\n  if (any(duplicated(df[, key_cols, drop = FALSE]))) {\n    dupes &lt;- df[duplicated(df[, key_cols, drop = FALSE]) | \n               duplicated(df[, key_cols, drop = FALSE], fromLast = TRUE), ]\n    list(has_split_key = TRUE, duplicate_rows = dupes)\n  } else {\n    list(has_split_key = FALSE, duplicate_rows = NULL)\n  }\n}\n\n# Usage\nresult &lt;- check_split_key(df, c(\"id\", \"date\"))"
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk4-us-flights.html",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk4-us-flights.html",
+    "title": "Homework 4: Flights across the US",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk4-us-flights.html#prepping",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk4-us-flights.html#prepping",
+    "title": "Homework 4: Flights across the US",
+    "section": "Prepping",
+    "text": "Prepping\n\nAccept the assignment in Canvas, follow the link to create a repository, and clone this repository to your local machine.\nCreate a file named index.qmd and add it to the repository. This is the file that should contain your code, results, and interpretations. Make sure to include enough detail that your work is fully reproducible."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk4-us-flights.html#to-do-items",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk4-us-flights.html#to-do-items",
+    "title": "Homework 4: Flights across the US",
+    "section": "To Do Items",
+    "text": "To Do Items\n\nImport flights for all three months into a single object flights. Report on the number of flights by months and the number of features reported for it.\nDetermine a key for the data set. Make sure to show that it fulfills the requirements of a key.\nGive three different examples of transitive dependencies in the data.\nAirport information is included for both Origin and Dest. Create a new data set called airports in which you include the information once, then remove all but the required airport information from the flights object.\nCreate a summary for the number of flights each day and plot it. Color the points by day of the week. Make sure to provide labels for the days of the week. Describe the general pattern for the number of flights you see. Which days do not follow this pattern?\nThe variable Cancelled contains information about whether a flight was cancelled. Why can we not assume that flight cancellations occur completely randomly? Identify at least two factors contributing to non-random flight cancellations and visualize your findings."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk4-us-flights.html#submission",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk4-us-flights.html#submission",
+    "title": "Homework 4: Flights across the US",
+    "section": "Submission",
+    "text": "Submission\nEnsure that the file index.qmd renders without errors. Read through the rendered document to check for consistency. Remove excessive printouts. Add all relevant(!) files to the repository, commit, and push!"
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk-3-cleaner-weather.html",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk-3-cleaner-weather.html",
+    "title": "Homework 3: Cleaning the weather … more",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/Module 2 - Data cleaning/hwk-3-cleaner-weather.html#submission",
+    "href": "materials-2025/Module 2 - Data cleaning/hwk-3-cleaner-weather.html#submission",
+    "title": "Homework 3: Cleaning the weather … more",
+    "section": "Submission",
+    "text": "Submission\nMake sure that your file index.qmd includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!"
+  },
+  {
+    "objectID": "materials-2025/Module 1 - Tidy Forms of Data/03-normalizing-data.html",
+    "href": "materials-2025/Module 1 - Tidy Forms of Data/03-normalizing-data.html",
+    "title": "Normalizing Data",
+    "section": "",
+    "text": "Why do we care about normal forms?\nNormal forms help (force?) us to\n\nlook for formal structure in datasets\nthink about functions/purpose of variables\n\nNormalizing is a formal way of checking data quality\n\n\nNormalization strategies\n\nCheck whether there are (and how many) duplicate rows in the data\nIdentify or create a key\nNormalize from 1st to 2nd NF\nNormalize from 2nd to 3rd NF\n\n\n\nDuplicate rows\n\n# Check uniqueness\n!any(duplicated(&lt;data set&gt;))\n\nIf there are duplicates, there is either no key or some rows were accidentally duplicated - count what proportion of lines is duplicated\n\n# What is the ratio of duplicated rows?\ntable(duplicated(&lt;data set&gt;))\n\n\n\nIdentify candidate keys\n\nKeys have to uniquely identify a row\n\nIf variables cand1, cand2 are a key candidate, the following line will result in zero output:\n\n# Check for unique combinations\n&lt;data set&gt; %&gt;% \n  count(cand1, cand2) %&gt;% \n  filter(n &gt; 1)\n\n\n\nYour Turn\nConsider the following data set capturing University records for student exam scores:\n\nstudent_courses &lt;- data.frame(\n  student_id = c(101, 101, 102, 102, 103, 103),\n  course_id = c(\"CS101\", \"MATH201\", \"CS101\", \"PHYS101\", \"MATH201\", \"CS101\"),\n  semester = c(\"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\"),\n  instructor_name = c(\"Dr. Smith\", \"Dr. Johnson\", \"Dr. Smith\", \"Dr. Johnson\", \"Dr. Brown\", \"Dr. Smith\"),\n  grade = c(\"A\", \"B+\", \"B\", \"A-\", \"A\", \"B+\")\n)\n\n\nIs this dataset in 1st normal form?\nIs this dataset in 2nd normal form?\n\n\n\nChecking for a split key\n\n\nNormalizing from 1st to 2nd NF\n\nFixing a split key requires to split the data\nThe set of non-key variables depending on a part of the key need to be summarized. This process can reveal inconsistencies\n\n\nIdea: all variables depending on a part of the key should have the same repeated data. A group-wise summary of unique should only result in one value:\n\nnew_table &lt;- old_table |&gt; group_by(&lt;partial key&gt;) |&gt; summarize(\n  variable1 = unique(variable1),\n  variable2 = unique(variable2),\n  variable3 = unique(variable3)\n)\n\n\n\n\nNormalizing from 1st to 2nd NF\nIn case of errors (because of different lengths in unique), we can use paste\n\nnew_table &lt;- old_table |&gt; group_by(&lt;partial key&gt;) |&gt; summarize(\n  variable1 = unique(variable1),\n  variable2 = unique(variable2),\n  variable3 = unique(variable3)\n)\n\n\n\nNormalizing from 1st to 2nd NF\nIn case of errors (because of different lengths in unique), we can use paste\n\nnew_table &lt;- old_table |&gt; group_by(&lt;partial key&gt;) |&gt; summarize(\n  variable1 = paste(unique(variable1), collapse = \", \"),\n  variable2 = unique(variable2),\n  variable3 = unique(variable3)\n)\n\n\n\nYour Turn\nBring the student_courses dataset into 2nd normal form:\n\nstudent_courses &lt;- data.frame(\n  student_id = c(101, 101, 102, 102, 103, 103),\n  course_id = c(\"CS101\", \"MATH201\", \"CS101\", \"PHYS101\", \"MATH201\", \"CS101\"),\n  semester = c(\"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\", \"Fall2023\"),\n  instructor_name = c(\"Dr. Smith\", \"Dr. Johnson\", \"Dr. Smith\", \"Dr. Johnson\", \"Dr. Brown\", \"Dr. Smith\"),\n  grade = c(\"A\", \"B+\", \"B\", \"A-\", \"A\", \"B+\")\n)\n\n\n\nHow much normalization?\nRule of thumb: Normalize to eliminate anomalies, denormalize for performance. Find the sweet spot for your use case."
   }
 ]
