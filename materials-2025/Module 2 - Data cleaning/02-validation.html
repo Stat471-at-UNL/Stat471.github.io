@@ -320,7 +320,7 @@
 <span id="cb7-2"><a></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>),</span>
 <span id="cb7-3"><a></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">45</span>, <span class="dv">200</span>),</span>
 <span id="cb7-4"><a></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>, <span class="st">"X"</span>),</span>
-<span id="cb7-5"><a></a>  <span class="at">income =</span> <span class="fu">c</span>(<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">70000</span>, <span class="dv">999999</span>),</span>
+<span id="cb7-5"><a></a>  <span class="at">salary =</span> <span class="fu">c</span>(<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">70000</span>, <span class="dv">999999</span>),</span>
 <span id="cb7-6"><a></a>  <span class="at">start_date =</span> <span class="fu">ymd</span>(<span class="fu">c</span>(<span class="st">"2020-01-01"</span>, <span class="st">"2021-02-01"</span>, <span class="st">"2020-03-01"</span>, <span class="st">"2020-01-15"</span>)),</span>
 <span id="cb7-7"><a></a>  <span class="at">end_date   =</span> <span class="fu">ymd</span>(<span class="fu">c</span>(<span class="st">"2020-12-31"</span>, <span class="st">"2020-03-01"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span>
 <span id="cb7-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -332,7 +332,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>numeric_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
 <span id="cb8-2"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"age"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">120</span>),</span>
-<span id="cb8-3"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"income"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">500000</span>)</span>
+<span id="cb8-3"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"salary"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">500000</span>)</span>
 <span id="cb8-4"><a></a>)</span>
 <span id="cb8-5"><a></a></span>
 <span id="cb8-6"><a></a>logic_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
@@ -351,17 +351,17 @@
  $ id        : num  1 2 2 4
  $ age       : num  25 -3 45 200
  $ gender    : chr  "M" "F" "F" "X"
- $ income    : num  5e+04 6e+04 7e+04 1e+06
+ $ salary    : num  5e+04 6e+04 7e+04 1e+06
  $ start_date: Date, format: "2020-01-01" "2021-02-01" ...
  $ end_date  : Date, format: "2020-12-31" "2020-03-01" ...
 NULL
 
 ==== Variable Types ====
-         id         age      gender      income  start_date    end_date 
+         id         age      gender      salary  start_date    end_date 
   "numeric"   "numeric" "character"   "numeric"      "Date"      "Date" 
 
 ==== Missing Values ====
-        id        age     gender     income start_date   end_date 
+        id        age     gender     salary start_date   end_date 
          0          0          0          0          0          2 
 
 ==== Summary Statistics ====
@@ -394,7 +394,7 @@ Group variables            None
   skim_variable n_missing complete_rate      mean        sd    p0      p25   p50
 1 id                    0             1      2.25      1.26     1     1.75     2
 2 age                   0             1     66.8      91.0     -3    18       35
-3 income                0             1 295000.   470070.   50000 57500    65000
+3 salary                0             1 295000.   470070.   50000 57500    65000
        p75   p100 hist 
 1      2.5      4 ▃▇▁▁▃
 2     83.8    200 ▇▃▁▁▃
@@ -416,7 +416,7 @@ Variable: gender
 ==== Numeric Rules Check ====
 Checking rule: age in [0, 120]
   -&gt; Found 2 violations.
-Checking rule: income in [0, 5e+05]
+Checking rule: salary in [0, 5e+05]
   -&gt; Found 1 violations.
 
 ==== Logical Rules Check ====
@@ -446,13 +446,13 @@ Rule failed: start_date &lt;= end_date (1 cases)
 </ul>
 </section>
 
-<section id="your-turn" class="title-slide slide level1 center">
+<section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
 <h1>Your Turn</h1>
 <p>Make use of the <code>testdat</code> functionality specified on the <a href="https://socialresearchcentre.github.io/testdat/reference/index.html">testdat website</a> to recreate the previously set expectations for the <code>employees</code> data:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>numeric_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
 <span id="cb12-2"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"age"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">120</span>),</span>
-<span id="cb12-3"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"income"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">500000</span>)</span>
+<span id="cb12-3"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"salary"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">500000</span>)</span>
 <span id="cb12-4"><a></a>)</span>
 <span id="cb12-5"><a></a></span>
 <span id="cb12-6"><a></a>logic_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
@@ -476,9 +476,10 @@ Arguments: `min = 0, max = 120`</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">expect_range</span>(salary, <span class="dv">0</span>, <span class="dv">500000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in `select()`:
-! Can't select columns that don't exist.
-✖ Column `salary` doesn't exist.</code></pre>
+<pre><code>Error: get_testdata() has 1 records failing range check on variable `salary`.
+Variable set: `salary`
+Filter: None
+Arguments: `min = 0, max = 5e+05`</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">expect_cond</span>(<span class="sc">!</span><span class="fu">is.na</span>(end_date), end_date <span class="sc">&gt;</span> start_date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
@@ -503,43 +504,7 @@ Arguments: `min = 0, max = 120`</code></pre>
 get_testdata() has 1 records failing range check on variable `age`.
 Variable set: `age`
 Filter: None
-Arguments: `min = 0, max = Inf`
-
-── Error: check for hard constraints ───────────────────────────────────────────
-&lt;vctrs_error_subscript_oob/vctrs_error_subscript/rlang_error/error/condition&gt;
-Error in `select(., {
-    {
-        vars
-    }
-})`: Can't select columns that don't exist.
-✖ Column `salary` doesn't exist.
-Backtrace:
-     ▆
-  1. ├─testdat::expect_range(salary, 0, Inf)
-  2. │ └─testdat (local) `&lt;fn&gt;`(...)
-  3. │   └─testdat::chk_filter(...)
-  4. │     └─... %&gt;% ...
-  5. ├─dplyr::mutate(., across(everything(), ~ifelse(flt$.cond, ., NA)))
-  6. ├─dplyr::mutate(...)
-  7. ├─dplyr::select(...)
-  8. ├─dplyr:::select.data.frame(...)
-  9. │ └─tidyselect::eval_select(expr(c(...)), data = .data, error_call = error_call)
- 10. │   └─tidyselect:::eval_select_impl(...)
- 11. │     ├─tidyselect:::with_subscript_errors(...)
- 12. │     │ └─base::withCallingHandlers(...)
- 13. │     └─tidyselect:::vars_select_eval(...)
- 14. │       └─tidyselect:::walk_data_tree(expr, data_mask, context_mask)
- 15. │         └─tidyselect:::eval_c(expr, data_mask, context_mask)
- 16. │           └─tidyselect:::reduce_sels(node, data_mask, context_mask, init = init)
- 17. │             └─tidyselect:::walk_data_tree(new, data_mask, context_mask)
- 18. │               └─tidyselect:::as_indices_sel_impl(...)
- 19. │                 └─tidyselect:::as_indices_impl(...)
- 20. │                   └─tidyselect:::chr_as_locations(x, vars, call = call, arg = arg)
- 21. │                     └─vctrs::vec_as_location(...)
- 22. └─vctrs (local) `&lt;fn&gt;`()
- 23.   └─vctrs:::stop_subscript_oob(...)
- 24.     └─vctrs:::stop_subscript(...)
- 25.       └─rlang::abort(...)</code></pre>
+Arguments: `min = 0, max = Inf`</code></pre>
 </div>
 <div class="cell-output cell-output-error">
 <pre><code>Error:
@@ -569,8 +534,8 @@ Backtrace:
 <span id="cb24-9"><a></a>  })</span>
 <span id="cb24-10"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 😸
-Test passed 🌈</code></pre>
+<pre><code>Test passed 😀
+Test passed 🥇</code></pre>
 </div>
 </div>
 </section>
