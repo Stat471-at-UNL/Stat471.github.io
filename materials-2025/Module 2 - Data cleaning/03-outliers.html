@@ -9,8 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-09-16">
-  <title>Stat 471 – Outliers</title>
+  <meta name="dcterms.date" content="2025-09-23">
+  <title>Stat 471 – Univariate Outliers</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,12 +193,12 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Outliers</h1>
+  <h1 class="title">Univariate Outliers</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-09-16</p>
+  <p class="date">2025-09-23</p>
 </section>
 <section id="an-outlier-is" class="title-slide slide level1 center">
 <h1>An Outlier is …</h1>
@@ -206,6 +206,7 @@
 <p>… a data point that is extremely different from other data points in a set, mostly due to a legitimate extreme event or a mistake</p>
 </blockquote>
 <p>outliers can occur in one or more dimensions</p>
+<p>is it a ‘true’ outlier or just an extreme observation?</p>
 
 <img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
 
@@ -223,9 +224,14 @@
 <p>For a sample <span class="math inline">\(x\)</span> of numeric values let <span class="math inline">\(x_{(i)}\)</span> denote the <span class="math inline">\(i\)</span>th value of the sorted sample, i.e.&nbsp;<span class="math inline">\(x_{(1)} \le x_{(2)} \le ... \le x_{(n)}\)</span> for sample size <span class="math inline">\(n\)</span>.</p>
 <p>The depth <span class="math inline">\(d\)</span> of <span class="math inline">\(x_(i)\)</span> is defined as the minimum of <span class="math inline">\(i\)</span> and <span class="math inline">\(n-i+1\)</span>, i.e.&nbsp;“What is the minimum number of data points (including myself) that have to be overtaken to get out of the data set?”</p>
 <p>Depth is a measure of centrality - with larger depths indicating higher centrality</p>
-<p>Examples:</p>
+</section>
+
+<section id="example-depths" class="title-slide slide level1 center">
+<h1>Example Depths</h1>
 <p>Minimum and maximum have depth 1 (the smallest depth possible)</p>
 <p>Median has a depth of <span class="math inline">\(\lceil n/2  \rceil\)</span>.</p>
+<p>What depth do the first and third quartile have?</p>
+<p>Note: depth is only associated with data value, i.e.&nbsp;in general the mean of a sample does not have an associated depth</p>
 </section>
 
 <section id="visual-outlier-detection" class="title-slide slide level1 center">
@@ -233,7 +239,11 @@
 <ul>
 <li>Boxplot (JW Tukey, “Exploratory Data Analysis”, 1977)</li>
 </ul>
-<p><img data-src="https://lsc.studysixsigma.com/wp-content/uploads/sites/6/2015/12/1435.png"> # Boxplots</p>
+
+<img data-src="https://lsc.studysixsigma.com/wp-content/uploads/sites/6/2015/12/1435.png" class="r-stretch"></section>
+
+<section id="boxplots" class="title-slide slide level1 center">
+<h1>Boxplots</h1>
 <p>Based on <em>depth</em> statistics: sort the data.</p>
 <p>Outliers are defined to be outside of <span class="math inline">\([Q_1 - 1.5 \times \text{IQR}, Q_3 + 1.5 \times \text{IQR}]\)</span></p>
 <p>Extreme outliers are defined to be outside of <span class="math inline">\([Q_1 - 3 \times \text{IQR}, Q_3 + 3 \times \text{IQR}]\)</span></p>
@@ -258,60 +268,118 @@
 </div>
 </section>
 
-<section id="outliers" class="title-slide slide level1 center">
-<h1>Outliers</h1>
+<section id="z-scores" class="title-slide slide level1 center">
+<h1>Z-scores</h1>
 <ul>
-<li>all large samples will have</li>
+<li>“Three sigma rule”: an outlier is defined as being outside an interval of <span class="math inline">\(\mu \pm 3 \sigma\)</span></li>
+</ul>
+<p>Probability for a normally distributed value to be outside that range: 0.002700</p>
+<p>Daily event is outside of that range about once a year.</p>
+<ul>
+<li>Better be safe? use the 6<span class="math inline">\(\sigma\)</span> rule!</li>
+</ul>
+<p>Probability for a normally distributed value to be outside that range: <span class="math inline">\(1.973 \times 10^{−9} = 1.973\)</span> ppb (or about 1 in 506,797,346 )</p>
+<p>Every 1.38 million years (twice in history of humankind)</p>
+</section>
+
+<section id="outlier-detection-1" class="title-slide slide level1 center">
+<h1>Outlier detection</h1>
+<ul>
+<li><p>different cutoffs for small/large samples</p></li>
+<li><p>all large samples will have outliers</p></li>
+<li><p>but we want tests to be powerful enough to also detect outliers in small samples</p></li>
+</ul>
+</section>
+
+<section id="example-brfss" class="title-slide slide level1 center">
+<h1>Example: BRFSS</h1>
+<p>Grubbs test (more in homework) tests difference between Max/Min and median:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(stat471)</span>
+<span id="cb2-2"><a></a><span class="fu">library</span>(outliers)</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Grubbs test for one outlier
+
+data:  brfss$HEIGHT3
+G = 5.35991, U = 0.99772, p-value = 0.0005156
+alternative hypothesis: highest value 9999 is an outlier</code></pre>
+</div>
+</div>
+<p>Correctly detects 9999 as an outlier</p>
+</section>
+
+<section id="example-brfss-1" class="title-slide slide level1 center">
+<h1>Example: BRFSS</h1>
+<p>But also detects 9200 as an outlier</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3[(brfss<span class="sc">$</span>HEIGHT3<span class="sc">!=</span><span class="dv">9999</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Grubbs test for one outlier
+
+data:  brfss$HEIGHT3[(brfss$HEIGHT3 != 9999)]
+G = 6.08173, U = 0.99703, p-value = 7.195e-06
+alternative hypothesis: highest value 9200 is an outlier</code></pre>
+</div>
+</div>
+<p>… and keeps going:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3[(brfss<span class="sc">$</span>HEIGHT3<span class="sc">&lt;</span><span class="dv">7777</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Grubbs test for one outlier
+
+data:  brfss$HEIGHT3[(brfss$HEIGHT3 &lt; 7777)]
+G = 5.47905, U = 0.99751, p-value = 0.0002533
+alternative hypothesis: lowest value 305 is an outlier</code></pre>
+</div>
+</div>
+</section>
+
+<section id="visual-detection-brfss" class="title-slide slide level1 center">
+<h1>Visual Detection: BRFSS</h1>
+<ul>
+<li><p>Gaps &amp; modes: histograms and (jittered) dot plots</p></li>
+<li><p>(formal) deviation from center: boxplots</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Install needed packages (if not already installed)</span></span>
-<span id="cb2-2"><a></a><span class="co"># install.packages(c("outliers", "dbscan", "isotree"))</span></span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a><span class="fu">library</span>(outliers)</span>
-<span id="cb2-5"><a></a><span class="fu">library</span>(dbscan)</span>
-<span id="cb2-6"><a></a><span class="fu">library</span>(isotree)</span>
-<span id="cb2-7"><a></a></span>
-<span id="cb2-8"><a></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb2-9"><a></a></span>
-<span id="cb2-10"><a></a><span class="co"># ---- Create dataset ----</span></span>
-<span id="cb2-11"><a></a>X_normal <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">200</span><span class="sc">*</span><span class="dv">2</span>, <span class="at">sd =</span> <span class="fl">0.5</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb2-12"><a></a>X_outliers <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">10</span><span class="sc">*</span><span class="dv">2</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">max =</span> <span class="dv">4</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb2-13"><a></a>X <span class="ot">&lt;-</span> <span class="fu">rbind</span>(X_normal, X_outliers)</span>
-<span id="cb2-14"><a></a><span class="fu">colnames</span>(X) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)</span>
-<span id="cb2-15"><a></a></span>
-<span id="cb2-16"><a></a><span class="co"># ---- Method 1: Grubbs/Z-score (on x-dimension) ----</span></span>
-<span id="cb2-17"><a></a>z_scores <span class="ot">&lt;-</span> <span class="fu">scale</span>(X[,<span class="dv">1</span>])</span>
-<span id="cb2-18"><a></a>grubbs_flags <span class="ot">&lt;-</span> <span class="fu">abs</span>(z_scores) <span class="sc">&gt;</span> <span class="dv">3</span></span>
-<span id="cb2-19"><a></a></span>
-<span id="cb2-20"><a></a><span class="co"># ---- Method 2: Local Outlier Factor ----</span></span>
-<span id="cb2-21"><a></a>lof_scores <span class="ot">&lt;-</span> <span class="fu">lof</span>(X, <span class="at">minPts =</span> <span class="dv">20</span>)</span>
-<span id="cb2-22"><a></a>lof_flags <span class="ot">&lt;-</span> lof_scores <span class="sc">&gt;</span> <span class="fl">1.5</span></span>
-<span id="cb2-23"><a></a></span>
-<span id="cb2-24"><a></a><span class="co"># ---- Method 3: Isolation Forest ----</span></span>
-<span id="cb2-25"><a></a>iso <span class="ot">&lt;-</span> <span class="fu">isolation.forest</span>(X, <span class="at">ntrees =</span> <span class="dv">100</span>)</span>
-<span id="cb2-26"><a></a>iso_scores <span class="ot">&lt;-</span> <span class="fu">predict</span>(iso, X)</span>
-<span id="cb2-27"><a></a>iso_flags <span class="ot">&lt;-</span> iso_scores <span class="sc">&gt;</span> <span class="fl">0.6</span></span>
-<span id="cb2-28"><a></a></span>
-<span id="cb2-29"><a></a><span class="co"># ---- Visualization ----</span></span>
-<span id="cb2-30"><a></a>opar <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb2-31"><a></a></span>
-<span id="cb2-32"><a></a><span class="fu">plot</span>(X, <span class="at">col =</span> <span class="fu">ifelse</span>(grubbs_flags, <span class="st">"red"</span>, <span class="st">"black"</span>), <span class="at">pch=</span><span class="dv">19</span>,</span>
-<span id="cb2-33"><a></a>     <span class="at">main=</span><span class="st">"Grubbs/Z-score (x-axis)"</span>)</span>
-<span id="cb2-34"><a></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>, <span class="at">v=</span><span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">"gray"</span>)</span>
-<span id="cb2-35"><a></a></span>
-<span id="cb2-36"><a></a><span class="fu">plot</span>(X, <span class="at">col =</span> <span class="fu">ifelse</span>(lof_flags, <span class="st">"red"</span>, <span class="st">"black"</span>), <span class="at">pch=</span><span class="dv">19</span>,</span>
-<span id="cb2-37"><a></a>     <span class="at">main=</span><span class="st">"Local Outlier Factor"</span>)</span>
-<span id="cb2-38"><a></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>, <span class="at">v=</span><span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">"gray"</span>)</span>
-<span id="cb2-39"><a></a></span>
-<span id="cb2-40"><a></a><span class="fu">plot</span>(X, <span class="at">col =</span> <span class="fu">ifelse</span>(iso_flags, <span class="st">"red"</span>, <span class="st">"black"</span>), <span class="at">pch=</span><span class="dv">19</span>,</span>
-<span id="cb2-41"><a></a>     <span class="at">main=</span><span class="st">"Isolation Forest"</span>)</span>
-<span id="cb2-42"><a></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>, <span class="at">v=</span><span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">"gray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(stat471)</span>
+<span id="cb8-2"><a></a><span class="fu">data</span>(brfss)</span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a>brfss <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HEIGHT3)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">par</span>(opar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+
+<section id="visual-outlier-detection-1" class="title-slide slide level1 center">
+<h1>Visual outlier detection</h1>
+<ul>
+<li>visualizations also detect other problems in the data</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>brfss <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a></a>  <span class="fu">filter</span>(HEIGHT3 <span class="sc">&lt;</span> <span class="dv">7777</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HEIGHT3)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-8-1.png" width="480" class="r-stretch"></section>
+
+<section id="visual-outlier-detection-2" class="title-slide slide level1 center">
+<h1>Visual outlier detection</h1>
+<ul>
+<li>while also allowing for outlier detection</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>brfss <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HTM4)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 
 
-<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-9-1.png" width="480" class="r-stretch"></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../N.svg" class="slide-logo"></p>
