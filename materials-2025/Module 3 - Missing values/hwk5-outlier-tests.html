@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Heike Hofmann">
-<meta name="dcterms.date" content="2025-09-18">
+<meta name="dcterms.date" content="2025-10-01">
 
-<title>Homework – Stat 471</title>
+<title>Homework 5: Outlier Tests – Stat 471</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,23 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Stat 471</span>
     </a>
   </div>
@@ -92,15 +91,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../project.html"> 
+    <a class="nav-link" href="../../project.html"> 
 <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
@@ -123,12 +122,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#homework-dataset-and-problems-for-record-linkage-assignment-advanced-version" id="toc-homework-dataset-and-problems-for-record-linkage-assignment-advanced-version" class="nav-link active" data-scroll-target="#homework-dataset-and-problems-for-record-linkage-assignment-advanced-version">Homework Dataset and Problems for Record Linkage Assignment (Advanced Version)</a></li>
-  <li><a href="#create-larger-dataset-a-200-employee-records" id="toc-create-larger-dataset-a-200-employee-records" class="nav-link" data-scroll-target="#create-larger-dataset-a-200-employee-records">Create larger Dataset A: 200 employee records</a></li>
-  <li><a href="#create-dataset-b-similar-employees-with-typos-missing-values-duplicates-and-swapped-fields" id="toc-create-dataset-b-similar-employees-with-typos-missing-values-duplicates-and-swapped-fields" class="nav-link" data-scroll-target="#create-dataset-b-similar-employees-with-typos-missing-values-duplicates-and-swapped-fields">Create Dataset B: similar employees with typos, missing values, duplicates, and swapped fields</a></li>
-  <li><a href="#introduce-duplicates" id="toc-introduce-duplicates" class="nav-link" data-scroll-target="#introduce-duplicates">Introduce duplicates</a></li>
-  <li><a href="#save-datasets-for-homework" id="toc-save-datasets-for-homework" class="nav-link" data-scroll-target="#save-datasets-for-homework">Save datasets for homework</a></li>
-  <li><a href="#advanced-homework-problems" id="toc-advanced-homework-problems" class="nav-link" data-scroll-target="#advanced-homework-problems">Advanced Homework Problems</a></li>
+  <li><a href="#its-an-outlier-or-is-it" id="toc-its-an-outlier-or-is-it" class="nav-link active" data-scroll-target="#its-an-outlier-or-is-it">It’s an outlier! Or is it?</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo">TODO</a>
+  <ul class="collapse">
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -137,24 +138,22 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homework</h1>
-</div>
+<h1 class="title">Homework 5: Outlier Tests</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">HW</div>
+    <div class="quarto-category">Week06</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Heike Hofmann </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 18, 2025</p>
+      <p class="date">October 1, 2025</p>
     </div>
   </div>
   
@@ -166,34 +165,57 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="homework-dataset-and-problems-for-record-linkage-assignment-advanced-version" class="level1">
-<h1>Homework Dataset and Problems for Record Linkage Assignment (Advanced Version)</h1>
-<p>library(tidyverse) library(lubridate)</p>
-<p>set.seed(789)</p>
+<p>Note: This assignment must be accepted in Canvas and submitted in github classroom.</p>
+<section id="its-an-outlier-or-is-it" class="level1">
+<h1>It’s an outlier! Or is it?</h1>
+<p>The R package <code>outliers</code> contains two different tests for outliers in samples: the Grubbs test (Grubbs 1950) and the Dixon test (Dixon 1951).</p>
+<p>Both of the tests assume that the sample <code>x</code> has an (approximate) normal distribution. The Grubbs test is based on the <em>maximum absolute deviation</em> defined as |<em>x</em><sub><em>i</em></sub> − <em>M</em>| for all <em>i</em> = 1, …, <em>n</em>. <em>M</em> is the median of the sample <em>x</em>. In contrast to that, the Dixon test is based on the gap between the suspected outlier and its closest neighbor compared to the range of the data.</p>
+<pre><code>set.seed(20250917) # setting the seed makes a random sample reproducible
+x &lt;- rnorm(n = 30)</code></pre>
+<p>Make sure to install the <code>outliers</code> package. <code>type</code> specifies the number of outliers to check for 10 stands for 1 outlier on one side, 11 stands for one outlier each on either side:</p>
+<pre><code># install.packages("outliers")
+library(outliers)
+dixon.test(x, type = 10)
+
+## 
+##  Dixon test for outliers
+## 
+## data:  x
+## Q = 0.23315, p-value = 0.1527
+## alternative hypothesis: lowest value -1.90956999415621 is an outlier
+
+grubbs.test(x, type = 10, two.sided = FALSE)
+
+## 
+##  Grubbs test for one outlier
+## 
+## data:  x
+## G = 2.65111, U = 0.74928, p-value = 0.07244
+## alternative hypothesis: lowest value -1.90956999415621 is an outlier</code></pre>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Dixon, W.J. (1951). Ratios involving extreme values. Ann. Math. Stat. 22, 1, 68-78.</p>
+<p>Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.</p>
 </section>
-<section id="create-larger-dataset-a-200-employee-records" class="level1">
-<h1>Create larger Dataset A: 200 employee records</h1>
-<p>n &lt;- 200 first_names &lt;- c(“John”,“Jane”,“Michael”,“Michelle”,“David”,“Diana”, “Robert”,“Rebecca”,“William”,“Wendy”,“Thomas”,“Tina”, “Kevin”,“Karen”,“Steven”,“Stephanie”,“Mark”,“Mary”,“Paul”,“Paula”) last_names &lt;- c(“Smith”,“Johnson”,“Brown”,“Williams”,“Jones”,“Miller”, “Davis”,“Garcia”,“Rodriguez”,“Wilson”,“Martinez”,“Anderson”, “Taylor”,“Thomas”,“Moore”,“Jackson”,“Martin”,“Lee”,“Perez”,“Thompson”)</p>
-<p>employees_A &lt;- tibble( emp_id = 1:n, first_name = sample(first_names, n, replace = TRUE), last_name = sample(last_names, n, replace = TRUE), dob = sample(seq(as.Date(‘1970/01/01’), as.Date(‘2000/12/31’), by=“day”), n, replace = TRUE) )</p>
 </section>
-<section id="create-dataset-b-similar-employees-with-typos-missing-values-duplicates-and-swapped-fields" class="level1">
-<h1>Create Dataset B: similar employees with typos, missing values, duplicates, and swapped fields</h1>
-<p>employees_B &lt;- employees_A %&gt;% mutate( emp_id = emp_id + 1000, first_name = ifelse(runif(n) &lt; 0.1, NA, first_name), last_name = ifelse(runif(n) &lt; 0.1, NA, last_name), dob = ifelse(runif(n) &lt; 0.05, NA, dob), first_name = ifelse(runif(n) &lt; 0.1, str_replace(first_name, “a”, “e”), first_name), last_name = ifelse(runif(n) &lt; 0.1, str_replace(last_name, “o”, “u”), last_name) )</p>
-</section>
-<section id="introduce-duplicates" class="level1">
-<h1>Introduce duplicates</h1>
-<p>employees_B &lt;- bind_rows(employees_B, employees_B[sample(1:n, 10), ])</p>
-</section>
-<section id="save-datasets-for-homework" class="level1">
-<h1>Save datasets for homework</h1>
-<p>write_csv(employees_A, “employees_A_large.csv”) write_csv(employees_B, “employees_B_large.csv”)</p>
-</section>
-<section id="advanced-homework-problems" class="level1">
-<h1>Advanced Homework Problems</h1>
-<p>homework_problems &lt;- c( “1. Load the datasets employees_A_large.csv and employees_B_large.csv. Explore missingness, duplicates, and errors in the data.”, “2. Perform deterministic record linkage using ‘dob’ and ‘last_name’. Report matches and unmatched records.”, “3. Use fuzzy string matching to link records based on ‘first_name’ and ‘last_name’. Experiment with multiple distance thresholds and justify your choice.”, “4. Apply a probabilistic linkage method using the RecordLinkage package. Use the EM algorithm, classify record pairs, and compare results with deterministic and fuzzy methods.”, “5. Use the fastLink package to compute Bayesian posterior match probabilities. Identify and analyze pairs with uncertain matches.”, “6. Design and implement a blocking strategy to improve computational efficiency on this larger dataset. Compare results with and without blocking.”, “7. Investigate the impact of duplicates and missing data on linkage performance. Propose strategies to mitigate errors.”, “8. Reflect on which method or combination of methods would be most appropriate for real-world large-scale employee data and justify your reasoning.”, “9. Optional challenge: Create a combined pipeline using tidyverse tools to automate data cleaning, blocking, and probabilistic linkage for large datasets.” )</p>
-<p>homework_problems</p>
+<section id="todo" class="level1">
+<h1>TODO</h1>
+<p>Your job is to see which of these tests has the better controlled type 1 error rate. For that, we are setting up a simulation study based on data under the null hypothesis (there is no outlier).</p>
+<ol type="1">
+<li><p>Create a Quarto document called <code>index.qmd</code>, add it to the repository and include all of your answers and code in that file. Make sure to structure it such that it is obvious, which question you are addressing in which section of the file.</p></li>
+<li><p>Run both tests on the sample samples of size 5 <em>N</em>=1000 times. Keep track of both the <em>p</em>-values of the Grubbs test and the Dixon test. Create a data set in first normal form that allows you to compare the p-values from the simulated samples directly. Save this data set and add it to the repository as file <code>outlier-test-simulations.csv</code> in a folder called <code>results</code>.</p></li>
+<li><p>Statistics question: What is the expected distribution for the p-values of any statistical test under the null hypothesis? Explain.</p></li>
+<li><p>Draw histograms for the p-values from either test. Make sure that the results are comparable (i.e.&nbsp;same number of bins, same range on the x axis, same scale on the y axis). What do the resulting histograms look like? Compare the two tests to each other and to the theoretical expectation. What would your conclusion be based on this simulation?</p></li>
+<li><p>Re-run the simulation (with a different seed) and compare the resulting distributions visually and numerically. Summarize your findings in 2-3 sentences. Make sure to integrate the results from your second run of the simulation into your dataset and save that to the repository.</p></li>
+<li><p>What is the impact of the sample size <em>n</em> on the p-values? Expand your study to include larger sample sizes <em>n</em> = 10, 15, 20, 30. Run the tests and incorporate the results in your data set.</p></li>
+<li><p>Summarize the results of your study visually by showing the performance of the tests for different sample sizes under the null hypothesis for p-values in (0,.15]. Don’t forget to include the theoretical expectation. Write a paragraph summarizing the results shown in the chart.</p></li>
+</ol>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>Make sure that your file <code>index.qmd</code> includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
