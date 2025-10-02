@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-09-30">
+  <meta name="dcterms.date" content="2025-10-02">
   <title>Stat 471 – Working with Missing Values - Overview</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -198,7 +198,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-09-30</p>
+  <p class="date">2025-10-02</p>
 </section>
 <section id="introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
@@ -564,7 +564,7 @@
 <ul>
 <li><p>Evaluate the number and frequency of missing value patterns</p></li>
 <li><p>Let <span class="math inline">\(y \in R^{n \times p}\)</span> be the data and <span class="math inline">\(r \in \{0,1\}^{n \times p}\)</span> the corresponding shadow matrix, i.e.&nbsp;<span class="math inline">\(r_{ij} = 1\)</span> iff <span class="math inline">\(y_{ij}\)</span> is missing.</p></li>
-<li><p>Identify all <span class="math inline">\(J\)</span> patterns of missing values <span class="math inline">\((1 \le J \le 2^p)\)</span> with the corresponding frequencies <span class="math inline">\(n_j\)</span>. The fully observed sample is one of the patterns, i.e.&nbsp;<span class="math inline">\(\sum_{j=1}^J n_j = n\)</span>.</p></li>
+<li><p>Identify all <span class="math inline">\(J\)</span> patterns of missing values <span class="math inline">\((1 \le |J| \le 2^p)\)</span> with the corresponding frequencies <span class="math inline">\(n_j\)</span>. The fully observed sample is one of the patterns, i.e.&nbsp;<span class="math inline">\(\sum_{j=1}^J n_j = n\)</span>.</p></li>
 <li><p>For each pattern count the number of observed variables <span class="math inline">\(p_j, (0 \le p_j \le p, 1 \le j \le J).\)</span></p></li>
 </ul>
 </section>
@@ -573,7 +573,7 @@
 <h1>Little’s MCAR test (2)</h1>
 <p>Consider the scaled deviation from the means as Test statistic:</p>
 <p><span class="math display">\[
-T^2 = \sum_{j=1}^J n_j (\bar{y}_{obs, j} - \mu_{obs})^t \Sigma^{-1}_{obs, j} (\bar{y}_{obs, j} - \mu_{obs})
+T^2 = \sum_{j=1}^J n_j (\bar{y}_{obs, j} - \mu_{obs, j})^t \Sigma^{-1}_{obs, j} (\bar{y}_{obs, j} - \mu_{obs, j})
 \]</span></p>
 <p>If the observed data <span class="math inline">\(y\)</span> are multivariate normal with mean <span class="math inline">\(\mu\)</span> and variance-covariance <span class="math inline">\(\Sigma\)</span>, the following holds</p>
 <p><span class="math display">\[

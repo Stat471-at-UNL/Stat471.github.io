@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-10-01">
+  <meta name="dcterms.date" content="2025-10-07">
   <title>Stat 471 – Imputing Missing Values</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -198,7 +198,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-10-01</p>
+  <p class="date">2025-10-07</p>
 </section>
 <section id="how-do-we-fix-datasets-with-missing-values" class="title-slide slide level1 center">
 <h1>How do we ‘fix’ datasets with missing values?</h1>
@@ -274,23 +274,37 @@
    1.00   18.00   31.50   42.13   63.25  168.00      37 </code></pre>
 </div>
 </div>
+<p>Little’s test shows that we reject the hypothesis of MCAR:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">mcar_test</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  statistic    df p.value missing.patterns
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;            &lt;int&gt;
+1      35.1    14 0.00142                4</code></pre>
+</div>
+</div>
+</section>
+
+<section id="section" class="title-slide slide level1 center">
+<h1></h1>
 <p>How should we impute the Ozone values?</p>
 </section>
 
 <section id="airquality-overview" class="title-slide slide level1 center">
 <h1>Airquality overview</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">library</span>(GGally)</span>
-<span id="cb15-2"><a></a><span class="fu">ggpairs</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(GGally)</span>
+<span id="cb17-2"><a></a><span class="fu">ggpairs</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="02-imputation-techniques_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<img data-src="02-imputation-techniques_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
 
 <section id="model-ozone" class="title-slide slide level1 center">
 <h1>Model Ozone</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>ozone_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone<span class="sc">~</span>Temp <span class="sc">+</span> Wind, <span class="at">data =</span> airquality)</span>
-<span id="cb16-2"><a></a><span class="fu">summary</span>(ozone_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>ozone_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone<span class="sc">~</span>Temp <span class="sc">+</span> Wind, <span class="at">data =</span> airquality)</span>
+<span id="cb18-2"><a></a><span class="fu">summary</span>(ozone_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -320,93 +334,233 @@ F-statistic:  74.5 on 2 and 113 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h1>Predict Ozone</h1>
 <p>Use a linear model to predict Ozone values based on covariates</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>airquality_imp <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb18-2"><a></a>  <span class="at">Ozone_pred =</span> <span class="fu">predict</span>(ozone_lm, <span class="at">newdata =</span> airquality),</span>
-<span id="cb18-3"><a></a>  <span class="at">imputed =</span> <span class="fu">is.na</span>(Ozone),</span>
-<span id="cb18-4"><a></a>  <span class="at">Ozone_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Ozone), Ozone_pred, Ozone)</span>
-<span id="cb18-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>airquality_imp <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb20-2"><a></a>  <span class="at">Ozone_pred =</span> <span class="fu">predict</span>(ozone_lm, <span class="at">newdata =</span> airquality),</span>
+<span id="cb20-3"><a></a>  <span class="at">imputed =</span> <span class="fu">is.na</span>(Ozone),</span>
+<span id="cb20-4"><a></a>  <span class="at">Ozone_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Ozone), Ozone_pred, Ozone)</span>
+<span id="cb20-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
 <section id="predict-ozone-1" class="title-slide slide level1 center">
 <h1>Predict Ozone</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">ggpairs</span>(<span class="at">data =</span> airquality_imp <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>Ozone_pred, <span class="sc">-</span>Ozone), </span>
-<span id="cb19-2"><a></a>        <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">colour =</span> imputed)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggpairs</span>(<span class="at">data =</span> airquality_imp <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>Ozone_pred, <span class="sc">-</span>Ozone), </span>
+<span id="cb21-2"><a></a>        <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">colour =</span> imputed)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="02-imputation-techniques_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<img data-src="02-imputation-techniques_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+
+<section id="but---variability-is-still-affected" class="title-slide slide level1 center">
+<h1>But - Variability is still affected</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">mean</span>(airquality<span class="sc">$</span>Ozone, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42.12931</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">mean</span>(airquality_imp<span class="sc">$</span>Ozone_imp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 41.85913</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">sd</span>(airquality<span class="sc">$</span>Ozone, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 32.98788</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">sd</span>(airquality_imp<span class="sc">$</span>Ozone_imp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30.7584</code></pre>
+</div>
+</div>
+<p>… increase by using samples from the linear model rather than predictions</p>
+</section>
 
 <section id="idea-for-predictive-mean-matching" class="title-slide slide level1 center">
 <h1>Idea for Predictive Mean Matching</h1>
-
+<p>Assume Y is variable with missing values, X are covariates with observed data</p>
+<ul>
+<li><p>Fit regression <span class="math inline">\(Y = X\beta + \epsilon\)</span>.</p></li>
+<li><p>Predict missing values <span class="math inline">\(\widehat{Y}_i\)</span> from the model.</p></li>
+<li><p>Get predictions <span class="math inline">\(\widehat{Y}_i\)</span> for observed values <span class="math inline">\(Y_i\)</span>.</p></li>
+<li><p>Find nearest neighbors: for each missing value find <span class="math inline">\(k\)</span> closest neighbors based on prediction.</p></li>
+<li><p>Randomly draw one of the <span class="math inline">\(k\)</span> observed values <span class="math inline">\(Y\)</span> for the missing value.</p></li>
+</ul>
 </section>
 
 <section id="multiple-imputation-with-mice" class="title-slide slide level1 center">
 <h1>Multiple Imputation with <code>mice</code></h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Run multiple imputation</span></span>
-<span id="cb20-2"><a></a>imp <span class="ot">&lt;-</span> <span class="fu">mice</span>(df, <span class="at">m =</span> <span class="dv">5</span>, <span class="at">method =</span> <span class="st">"pmm"</span>, <span class="at">seed =</span> <span class="dv">202509</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="co"># Run multiple imputation</span></span>
+<span id="cb30-2"><a></a>air_imp <span class="ot">&lt;-</span> <span class="fu">mice</span>(airquality, <span class="at">m =</span> <span class="dv">5</span>, <span class="at">method =</span> <span class="st">"pmm"</span>, <span class="at">seed =</span> <span class="dv">202509</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  iter imp variable
-  1   1  age  income  score
-  1   2  age  income  score
-  1   3  age  income  score
-  1   4  age  income  score
-  1   5  age  income  score
-  2   1  age  income  score
-  2   2  age  income  score
-  2   3  age  income  score
-  2   4  age  income  score
-  2   5  age  income  score
-  3   1  age  income  score
-  3   2  age  income  score
-  3   3  age  income  score
-  3   4  age  income  score
-  3   5  age  income  score
-  4   1  age  income  score
-  4   2  age  income  score
-  4   3  age  income  score
-  4   4  age  income  score
-  4   5  age  income  score
-  5   1  age  income  score
-  5   2  age  income  score
-  5   3  age  income  score
-  5   4  age  income  score
-  5   5  age  income  score</code></pre>
+  1   1  Ozone  Solar.R
+  1   2  Ozone  Solar.R
+  1   3  Ozone  Solar.R
+  1   4  Ozone  Solar.R
+  1   5  Ozone  Solar.R
+  2   1  Ozone  Solar.R
+  2   2  Ozone  Solar.R
+  2   3  Ozone  Solar.R
+  2   4  Ozone  Solar.R
+  2   5  Ozone  Solar.R
+  3   1  Ozone  Solar.R
+  3   2  Ozone  Solar.R
+  3   3  Ozone  Solar.R
+  3   4  Ozone  Solar.R
+  3   5  Ozone  Solar.R
+  4   1  Ozone  Solar.R
+  4   2  Ozone  Solar.R
+  4   3  Ozone  Solar.R
+  4   4  Ozone  Solar.R
+  4   5  Ozone  Solar.R
+  5   1  Ozone  Solar.R
+  5   2  Ozone  Solar.R
+  5   3  Ozone  Solar.R
+  5   4  Ozone  Solar.R
+  5   5  Ozone  Solar.R</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># Completed datasets</span></span>
-<span id="cb22-2"><a></a>completed_list <span class="ot">&lt;-</span> <span class="fu">complete</span>(imp, <span class="st">"all"</span>) <span class="sc">|&gt;</span> <span class="fu">map</span>(as_tibble)</span>
-<span id="cb22-3"><a></a></span>
-<span id="cb22-4"><a></a><span class="co"># Example: regression model</span></span>
-<span id="cb22-5"><a></a>models <span class="ot">&lt;-</span> <span class="fu">map</span>(completed_list, <span class="sc">~</span> <span class="fu">lm</span>(income <span class="sc">~</span> age <span class="sc">+</span> group, <span class="at">data =</span> .x))</span>
-<span id="cb22-6"><a></a></span>
-<span id="cb22-7"><a></a><span class="co"># Pool results</span></span>
-<span id="cb22-8"><a></a>pooled <span class="ot">&lt;-</span> <span class="fu">pool</span>(models)</span>
-<span id="cb22-9"><a></a><span class="fu">summary</span>(pooled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>         term    estimate std.error  statistic       df      p.value
-1 (Intercept) 470791.8482 65283.197  7.2115318 8.696633 5.990158e-05
-2         age    559.2458  1617.975  0.3456455 8.407079 7.380997e-01
-3      groupB -14630.8597 55358.971 -0.2642907 5.313991 8.015024e-01</code></pre>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="co"># Completed datasets</span></span>
+<span id="cb32-2"><a></a>completed_list <span class="ot">&lt;-</span> <span class="fu">complete</span>(air_imp, <span class="st">"all"</span>) <span class="sc">|&gt;</span> <span class="fu">map</span>(as_tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+<p>All analysis are done on each of the data sets, results are then pooled across.</p>
 </section>
 
-<section id="sensitivity-analysis" class="title-slide slide level1 center">
-<h1>Sensitivity Analysis</h1>
+<section id="analyse-airquality" class="title-slide slide level1 center">
+<h1>Analyse airquality</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="co"># Complete case mean</span></span>
-<span id="cb24-2"><a></a>cc_mean <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(income) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">mean_income =</span> <span class="fu">mean</span>(income))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="co"># Example: regression model</span></span>
+<span id="cb33-2"><a></a>models <span class="ot">&lt;-</span> <span class="fu">map</span>(completed_list, <span class="sc">~</span> <span class="fu">lm</span>(Ozone <span class="sc">~</span> Wind <span class="sc">+</span> Temp, <span class="at">data =</span> .x))</span>
+<span id="cb33-3"><a></a></span>
+<span id="cb33-4"><a></a><span class="co"># Pool results</span></span>
+<span id="cb33-5"><a></a>pooled <span class="ot">&lt;-</span> <span class="fu">pool</span>(models)</span>
+<span id="cb33-6"><a></a><span class="fu">summary</span>(pooled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         term   estimate  std.error statistic        df      p.value
+1 (Intercept) -66.066482 20.9554669 -3.152709 124.82760 2.026157e-03
+2        Wind  -3.167401  0.6354004 -4.984890  71.10809 4.212568e-06
+3        Temp   1.795645  0.2288760  7.845495 100.78998 4.684550e-12</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">summary</span>(<span class="fu">lm</span>(Ozone <span class="sc">~</span> Wind <span class="sc">+</span> Temp, <span class="at">data =</span> airquality))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Ozone ~ Wind + Temp, data = airquality)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-41.251 -13.695  -2.856  11.390 100.367 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -71.0332    23.5780  -3.013   0.0032 ** 
+Wind         -3.0555     0.6633  -4.607 1.08e-05 ***
+Temp          1.8402     0.2500   7.362 3.15e-11 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 21.85 on 113 degrees of freedom
+  (37 observations deleted due to missingness)
+Multiple R-squared:  0.5687,    Adjusted R-squared:  0.5611 
+F-statistic:  74.5 on 2 and 113 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
 </div>
 </section>
 
-<section id="exercises" class="title-slide slide level1 center">
-<h1>Exercises</h1>
+<section id="choice-of-k" class="title-slide slide level1 center">
+<h1>Choice of <span class="math inline">\(k\)</span></h1>
+<p>The choice of <span class="math inline">\(k\)</span> (number of neighbors) affects variability:</p>
+<ul>
+<li><p>Small <span class="math inline">\(k\)</span> result in closer matches, less variance.</p></li>
+<li><p>Larger <span class="math inline">\(k\)</span> result in more randomness, higher variance.</p></li>
+</ul>
+</section>
+
+<section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<p>Use the NHANES data to try out predictive matching for imputing missing values.</p>
+<p>The variable <code>AgeMonths</code> in the data set is not recorded in one of the Survey years except for infants. Use <code>mice</code> to use predictive matching to impute missing values in all of the age variables</p>
+<p>For one of the complete datasets, plot Age against the age at which the participant had their first baby (<code>Age1stBaby</code>). What do you find?</p>
+<p>Set up a linear model of <code>AgeMonths</code> in <code>Age</code> and summarize the results. Do those results make sense?</p>
+</section>
+
+<section id="section-1" class="title-slide slide level1 center">
+<h1></h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">library</span>(NHANES)</span>
+<span id="cb37-2"><a></a>imp_age <span class="ot">&lt;-</span> <span class="fu">mice</span>(NHANES <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"Age"</span>)), <span class="at">m=</span><span class="dv">5</span>, <span class="at">method=</span> <span class="st">"pmm"</span>, <span class="at">seed =</span> <span class="dv">202510</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ iter imp variable
+  1   1  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  1   2  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  1   3  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  1   4  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  1   5  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  2   1  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  2   2  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  2   3  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  2   4  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  2   5  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  3   1  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  3   2  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  3   3  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  3   4  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  3   5  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  4   1  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  4   2  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  4   3  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  4   4  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  4   5  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  5   1  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  5   2  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  5   3  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  5   4  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge
+  5   5  AgeDecade  DiabetesAge  Age1stBaby  SmokeAge  AgeFirstMarij  AgeRegMarij  SexAge</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="co"># Completed datasets</span></span>
+<span id="cb39-2"><a></a>completed_list <span class="ot">&lt;-</span> <span class="fu">complete</span>(imp_age, <span class="st">"all"</span>) <span class="sc">|&gt;</span> <span class="fu">map</span>(as_tibble)</span>
+<span id="cb39-3"><a></a></span>
+<span id="cb39-4"><a></a>NHANES <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Age1stBaby)) <span class="sc">+</span> <span class="fu">geom_jitter</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="02-imputation-techniques_files/figure-revealjs/miceNHANES-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>NHANES <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Age1stBaby)) <span class="sc">+</span> <span class="fu">geom_jitter</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Gender) <span class="sc">+</span> </span>
+<span id="cb40-2"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"Imputed"</span>), <span class="at">data =</span> completed_list[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="02-imputation-techniques_files/figure-revealjs/miceNHANES-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="co"># Now check: is AgeMonths about 12 x Age?</span></span>
+<span id="cb41-2"><a></a>models <span class="ot">&lt;-</span> <span class="fu">map</span>(completed_list, <span class="sc">~</span> <span class="fu">lm</span>(AgeMonths <span class="sc">~</span> Age, <span class="at">data =</span> .x))</span>
+<span id="cb41-3"><a></a></span>
+<span id="cb41-4"><a></a><span class="co"># Pool the models</span></span>
+<span id="cb41-5"><a></a>pooled <span class="ot">&lt;-</span> <span class="fu">pool</span>(models)</span>
+<span id="cb41-6"><a></a><span class="fu">summary</span>(pooled) <span class="co"># yes :)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         term  estimate   std.error  statistic       df p.value
+1 (Intercept)  5.423961 0.092877671   58.39897 4957.444       0
+2         Age 12.001431 0.002279798 5264.25079 4957.444       0</code></pre>
+</div>
+</div>
+</section>
+
+<section id="your-turn-1" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<p>For the <code>NHANES</code> data:</p>
 <ol type="1">
-<li>Explore missingness patterns in the <code>NHANES</code> dataset. Which variables are most affected?</li>
-<li>Compare results of a regression model (<code>BMI ~ Age + Gender</code>) under:</li>
+<li>Compare results of a (polynomial of degree 2) regression model (<code>BMI ~ Age + Gender</code>) under:</li>
 </ol>
 <ul>
 <li>complete-case analysis,</li>
@@ -416,6 +570,32 @@ F-statistic:  74.5 on 2 and 113 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ol start="3" type="1">
 <li>Discuss: What assumptions are you making under each approach?</li>
 </ol>
+</section>
+
+<section id="section-2" class="title-slide slide level1 center">
+<h1></h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>bmi_complete <span class="ot">&lt;-</span> <span class="fu">lm</span>(BMI <span class="sc">~</span> <span class="fu">poly</span>(Age,<span class="dv">2</span>)<span class="sc">*</span>Gender, <span class="at">data =</span> NHANES)</span>
+<span id="cb43-2"><a></a>dframe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">expand.grid</span>(<span class="at">Age =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">80</span>, <span class="at">Gender=</span><span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>)))</span>
+<span id="cb43-3"><a></a>dframe<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(bmi_complete, <span class="at">newdata =</span> dframe)</span>
+<span id="cb43-4"><a></a>NHANES <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> BMI)) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Gender) <span class="sc">+</span> </span>
+<span id="cb43-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb43-6"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> pred), <span class="at">colour =</span> <span class="st">"#d00000"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>, <span class="at">data =</span> dframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="02-imputation-techniques_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"><div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>NHANES <span class="sc">|&gt;</span> <span class="fu">select</span>(BMI, Age) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      BMI             Age       
+ Min.   :12.88   Min.   : 0.00  
+ 1st Qu.:21.58   1st Qu.:17.00  
+ Median :25.98   Median :36.00  
+ Mean   :26.66   Mean   :36.74  
+ 3rd Qu.:30.89   3rd Qu.:54.00  
+ Max.   :81.25   Max.   :80.00  
+ NA's   :366                    </code></pre>
+</div>
+</div>
 </section>
 
 <section id="conclusion" class="title-slide slide level1 center">
