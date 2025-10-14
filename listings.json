@@ -2,6 +2,11 @@
   {
     "listing": "/index.html",
     "items": [
+      "/materials-2025/00-setting-up/00-about.html",
+      "/materials-2025/00-setting-up/01-installations.html",
+      "/materials-2025/00-setting-up/02-hwk-git-github.html",
+      "/materials-2025/00-setting-up/03-hwk-rstudio-git.html",
+      "/materials-2025/00-setting-up/hwk-1-reproducibility.html",
       "/materials-2025/01-tidy-forms-of-data/01-what-is-messy.html",
       "/materials-2025/01-tidy-forms-of-data/01b-make-it-tidy.html",
       "/materials-2025/01-tidy-forms-of-data/02-normal-forms.html",
@@ -14,7 +19,9 @@
       "/materials-2025/01-tidy-forms-of-data/hwk-2-clean-weather.html",
       "/materials-2025/03-missing-values/01-missing-values.html",
       "/materials-2025/03-missing-values/02-imputation-techniques.html",
-      "/materials-2025/03-missing-values/hwk5-outlier-tests.html"
+      "/materials-2025/03-missing-values/hwk5-outliers.html",
+      "/materials-2025/03-missing-values/03-imputing-example.html",
+      "/materials-2025/03-missing-values/hwk6-imputing-missing-values.html"
     ]
   }
 ]
