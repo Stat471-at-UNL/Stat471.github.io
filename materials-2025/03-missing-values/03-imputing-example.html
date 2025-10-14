@@ -299,7 +299,7 @@ E[y_i \mid y_i \text{ observed}] &amp;=&amp; E[y_i \mid r^*_i &gt; 0]\\
 &amp;=&amp; x_i\beta + E[\varepsilon_i \mid  u_i &gt; - z_i\gamma]\\
 &amp;=&amp; x_i\beta + \rho\sigma \underbrace{\frac{\phi(w_i\gamma)}{\Phi(w_i\gamma)}}_{\text{inverse Mills ratio}}
 \end{eqnarray*}
-\]</span> i.e.&nbsp;only if <span class="math inline">\(\rho &gt; 0\)</span>, the expectation of <span class="math inline">\(Y\)</span> is affected by missing values.</p>
+\]</span> i.e.&nbsp;only if <span class="math inline">\(\rho \neg 0\)</span>, the expectation of <span class="math inline">\(Y\)</span> is affected by missing values.</p>
 <p>Then use ML Estimates for jointly estimating <span class="math inline">\(\beta, \rho, \sigma, \gamma\)</span>.</p>
 </section>
 
