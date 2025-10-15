@@ -4,7 +4,28 @@
     "href": "project.html",
     "title": "Project",
     "section": "",
-    "text": "As an individual or in a team pick a topic and\n\ncreate a (cleanish) dataset\nchoose an appropriate analysis\ninterpret results\npublish your analysis and findings\nCreate a video highlighting your work\n\nMore information will be coming as we get closer to the start of the project work."
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+  },
+  {
+    "objectID": "project.html#choice-of-topic",
+    "href": "project.html#choice-of-topic",
+    "title": "Project",
+    "section": "Choice of Topic",
+    "text": "Choice of Topic\nCreate a file topic.qmd that includes\n\na motivation of your topic,\na description of your plan of work. Please provide as much detail as you can,\na team name and a list of all members on your team\n\nFor the submission, push the file topic.qmd to the github repository and include a submission link in Canvas."
+  },
+  {
+    "objectID": "project.html#draft",
+    "href": "project.html#draft",
+    "title": "Project",
+    "section": "Draft",
+    "text": "Draft\nCreate a file draft.qmd that includes all of the items of the Choice of Topic (potentially in a different order). Change the Plan of work to an outline and fill in details. For any code chunk decide, whether you want to show the code (that should happen sparingly). Provide comments in the code about what each code chunk is supposed to do. Describe and interpret results. Include visuals (not so sparingly :))\nFor the submission, push the file draft.qmd to the github repository and include a submission link in Canvas."
+  },
+  {
+    "objectID": "project.html#final-writeupshow",
+    "href": "project.html#final-writeupshow",
+    "title": "Project",
+    "section": "Final writeup/show",
+    "text": "Final writeup/show\nFor the final work, create a file index.qmd. Make sure that this file renders its output into a folder called docs.\nUse Github pages for the repo to create publicly visible website showcasing your work.\nProvide links to all of the elements you have created (such as data sets, functions, R package, video, presentation slides, …).\nFor the submission, push the index file, the docs folder and any of your creations to the repository, and include a submission link in Canvas."
   },
   {
     "objectID": "index.html",

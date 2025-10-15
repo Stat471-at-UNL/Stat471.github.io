@@ -299,7 +299,7 @@ E[y_i \mid y_i \text{ observed}] &amp;=&amp; E[y_i \mid r^*_i &gt; 0]\\
 &amp;=&amp; x_i\beta + E[\varepsilon_i \mid  u_i &gt; - z_i\gamma]\\
 &amp;=&amp; x_i\beta + \rho\sigma \underbrace{\frac{\phi(w_i\gamma)}{\Phi(w_i\gamma)}}_{\text{inverse Mills ratio}}
 \end{eqnarray*}
-\]</span> i.e.&nbsp;only if <span class="math inline">\(\rho \neg 0\)</span>, the expectation of <span class="math inline">\(Y\)</span> is affected by missing values.</p>
+\]</span> i.e.&nbsp;only if <span class="math inline">\(\rho \neq 0\)</span>, the expectation of <span class="math inline">\(Y\)</span> is affected by missing values.</p>
 <p>Then use ML Estimates for jointly estimating <span class="math inline">\(\beta, \rho, \sigma, \gamma\)</span>.</p>
 </section>
 
@@ -435,59 +435,54 @@ F-statistic: 132.1 on 1 and 4912 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="impact-of-age-on-non-reports" class="title-slide slide level1 center">
 <h1>Impact of Age on Non-reports</h1>
 <p>Low age: high non-reports; higher non-reports with increase in Age</p>
+
+<img data-src="03-imputing-example_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"><p>Model as linear term - we expect a negative parameter</p>
+</section>
+
+<section id="impact-of-testosterone-on-non-reports" class="title-slide slide level1 center">
+<h1>Impact of Testosterone on Non-reports</h1>
+<p>Low age: high non-reports; higher non-reports with increase in Age</p>
+
+<img data-src="03-imputing-example_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"><p>Model as linear term - we expect a positive parameter</p>
+</section>
+
+<section id="selection-outcome-model" class="title-slide slide level1 center">
+<h1>Selection &amp; Outcome Model</h1>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="03-imputing-example_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>model <span class="ot">&lt;-</span> <span class="fu">selection</span>(</span>
+<span id="cb6-2"><a></a>  <span class="at">selection =</span> ADnonmissing <span class="sc">~</span>  Age <span class="sc">+</span> BMI <span class="sc">+</span> Testosterone <span class="sc">+</span> TotChol,</span>
+<span id="cb6-3"><a></a>  <span class="at">outcome   =</span> AlcoholDay <span class="sc">~</span> Underage,</span>
+<span id="cb6-4"><a></a>  <span class="at">data =</span> NHANES)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="03-imputing-example_files/figure-revealjs/unnamed-chunk-9-2.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Model as linear term with interaction of <code>Underage</code></p>
 </section>
 
 <section id="section-1" class="title-slide slide level1 center">
-<h1></h1>
-
-</section>
-
-<section id="section-2" class="title-slide slide level1 center">
 <h1></h1>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>--------------------------------------------
 Tobit 2 model (sample selection model)
 Maximum Likelihood estimation
-Newton-Raphson maximisation, 6 iterations
+Newton-Raphson maximisation, 15 iterations
 Return code 8: successive function values within relative tolerance limit (reltol)
-Log-Likelihood: -15918.56 
-6529 observations (1733 censored and 4796 observed)
-11 free parameters (df = 6518)
+Log-Likelihood: -8296.125 
+3412 observations (1077 censored and 2335 observed)
+9 free parameters (df = 3403)
 Probit selection equation:
-                  Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)       1.309990   0.149503   8.762  &lt; 2e-16 ***
-poly(Age, 2)1   -15.540511   1.490716 -10.425  &lt; 2e-16 ***
-poly(Age, 2)2   -17.389755   1.451158 -11.983  &lt; 2e-16 ***
-Pulse            -0.002547   0.001452  -1.754   0.0794 .  
-BMI              -0.019560   0.002516  -7.774 8.79e-15 ***
-SleepHrsNight     0.014796   0.012745   1.161   0.2457    
-DaysMentHlthBad  -0.003305   0.002160  -1.530   0.1261    
+               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   0.6530601  0.1580146   4.133 3.67e-05 ***
+Age          -0.0108867  0.0013472  -8.081 8.82e-16 ***
+BMI          -0.0103824  0.0034632  -2.998  0.00274 ** 
+Testosterone  0.0007576  0.0001051   7.205 7.11e-13 ***
+TotChol       0.0955220  0.0218354   4.375 1.25e-05 ***
 Outcome equation:
              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   2.93289    0.06588   44.52   &lt;2e-16 ***
-UnderageTRUE  2.23048    0.19575   11.39   &lt;2e-16 ***
+(Intercept)    3.0883     0.1076  28.710   &lt;2e-16 ***
+UnderageTRUE   2.4417     0.2838   8.605   &lt;2e-16 ***
    Error terms:
       Estimate Std. Error t value Pr(&gt;|t|)    
-sigma  3.15382    0.03283  96.078  &lt; 2e-16 ***
-rho   -0.11236    0.03432  -3.274  0.00107 ** 
+sigma  3.53068    0.05427  65.055  &lt; 2e-16 ***
+rho   -0.18739    0.04184  -4.479 7.75e-06 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 --------------------------------------------</code></pre>
