@@ -9,8 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-10-14">
-  <title>Stat 471 – MAR or MNAR?</title>
+  <meta name="dcterms.date" content="2025-10-23">
+  <title>Stat 471 – Sensitivity Analysis with mice</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,316 +193,99 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">MAR or MNAR?</h1>
+  <h1 class="title">Sensitivity Analysis with <code>mice</code></h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-10-14</p>
+  <p class="date">2025-10-23</p>
 </section>
-<section id="practical-clues-for-mnar" class="title-slide slide level1 center">
-<h1>Practical clues for MNAR</h1>
+<section id="sensitivity-analysis-mar-vs-mnar" class="title-slide slide level1 center">
+<h1>Sensitivity Analysis: MAR vs MNAR</h1>
+<p>Idea of <span class="math inline">\(\delta\)</span>-method: provide controlled way to simulate MNAR conditions by shifting imputed values systematically by <span class="math inline">\(\delta\)</span>:</p>
+<p><span class="math display">\[
+Y_{\text{imp, }\delta} = Y_\text{pmm} + \delta
+\]</span> Positive <span class="math inline">\(\delta\)</span>: assume that missing values correspond to systematically higher values</p>
+<p>Negative <span class="math inline">\(\delta\)</span>: assume that missing values correspond to systematically lower values</p>
+</section>
+
+<section id="investigate-impact" class="title-slide slide level1 center">
+<h1>Investigate Impact</h1>
 <ol type="1">
-<li>Suspicious dependence on the missing variable itself</li>
+<li><p>Run your analysis under MAR (<span class="math inline">\(\delta\)</span> = 0).</p></li>
+<li><p>Run analysis again under plausible MNAR scenarios (e.g., <span class="math inline">\(\delta = −1, −2, +1\)</span>).</p></li>
+<li><p>Conclude potential MNAR concern, if key conclusions change a lot.</p></li>
 </ol>
-<ul>
-<li><p>Example: Higher-income respondents tend not to report income.</p>
-<p>Raises suspicion:</p>
-<p>The variable’s missing rate increases with values of related proxies (e.g., luxury spending, occupation).</p>
-<p>Conditioning on observed covariates doesn’t resolve all missingness patterns</p></li>
-</ul>
 </section>
 
-<section id="practical-clues-for-mnar-2" class="title-slide slide level1 center">
-<h1>Practical clues for MNAR (2)</h1>
-<ol start="2" type="1">
-<li>Strong deviations from expected distributions</li>
-</ol>
-<p>Compare distributions of observed vs imputed (under MAR) values.</p>
-<p>If imputed values under MAR seem implausible (e.g., unrealistically low variance), MNAR might be at play.</p>
-<ol start="3" type="1">
-<li>External knowledge or theory</li>
-</ol>
-<p>You often detect MNAR based on domain expertise — e.g., people tend to underreport sensitive information.</p>
-</section>
-
-<section id="statistical-approaches-to-determine-mnar" class="title-slide slide level1 center">
-<h1>Statistical Approaches to determine MNAR</h1>
-<ol start="4" type="1">
-<li>Patterns in the missingness indicator</li>
-</ol>
-<p>Create Indicator variable <span class="math inline">\(R_i\)</span></p>
-<p>Model R as a function of other variables using logistic regression:</p>
-<p><span class="math display">\[
-\text{logit } P(R = 1 \mid X) = X\beta
-\]</span> ‘unexplained’ pattern in residual may signal MNAR.</p>
-</section>
-
-<section id="statistical-strategies-to-probe-mnar" class="title-slide slide level1 center">
-<h1>Statistical strategies to probe MNAR</h1>
-<ol type="1">
-<li>Sensitivity analysis</li>
-</ol>
-<p>Fit models assuming MAR, then perturb the imputation model (e.g., add a shift to imputed values) to see if results change substantially.</p>
-<p>Large sensitivity signals MNAR</p>
-<ol start="2" type="1">
-<li>Selection models (Heckman-type)</li>
-</ol>
-<p>Jointly model the outcome and the missingness indicator.</p>
-</section>
-
-<section id="heckman-type-selection-models" class="title-slide slide level1 center">
-<h1>Heckman-type Selection Models</h1>
-<p>Situation:</p>
-<p><span class="math display">\[
-Y = X\beta + \varepsilon
-\]</span> Assume that ther <em>might</em> be some individuals that choose not to answer <span class="math inline">\(Y\)</span>, i.e.&nbsp;the probability for a missing value in <span class="math inline">\(Y\)</span> <em>might</em> depend on its value.</p>
-<p>This introduce a <strong>selection bias</strong> into the observed sample.</p>
-<p>Heckman selection model corrects for this bias by modelling (1) the selection process <em>and</em> (2) the outcome simultaneously.</p>
-</section>
-
-<section id="selection-model" class="title-slide slide level1 center">
-<h1>Selection Model</h1>
-<p>Let <span class="math inline">\(R\)</span> be the shadow variable of <span class="math inline">\(Y\)</span>, i.e.&nbsp;<span class="math inline">\(R_i = 1\)</span> if <span class="math inline">\(Y\)</span> is observed and <span class="math inline">\(R_i = 0\)</span> if <span class="math inline">\(Y\)</span> is missing.</p>
-<p>Let us assume that <span class="math inline">\(R^*\)</span> is a latent process with <span class="math inline">\(R^* &gt; 0 \Rightarrow R=1\)</span> and <span class="math inline">\(R^* &lt; 0 \Rightarrow R=0\)</span>.<br>
-Assume that we can model <span class="math inline">\(R^*\)</span> as</p>
-<p><span class="math display">\[
-R^* = Z\gamma + u
-\]</span> For some covariate <span class="math inline">\(Z\)</span> and error <span class="math inline">\(u\)</span>. We assume <span class="math inline">\(u \sim N(0,1)\)</span></p>
-</section>
-
-<section id="outcome-model" class="title-slide slide level1 center">
-<h1>Outcome Model</h1>
-<p>Consider the original model in question</p>
-<p><span class="math display">\[
-Y = X\beta + \varepsilon
-\]</span> <span class="math inline">\(Y\)</span> is only observed when <span class="math inline">\(R=1\)</span>, i.e.&nbsp;<span class="math inline">\(R^* &gt; 0\)</span></p>
-<p>Assume <span class="math inline">\(\varepsilon\)</span> and <span class="math inline">\(u\)</span> are jointly normal:</p>
-<p><span class="math display">\[\begin{pmatrix} \varepsilon \\u\end{pmatrix}\sim N\left(
-\begin{pmatrix}
-0 \\0
-\end{pmatrix},
-\begin{pmatrix}
-\sigma^{2} &amp; \rho\sigma \\
-\rho\sigma &amp; 1
-\end{pmatrix}
-\right)\]</span></p>
-</section>
-
-<section id="relationship-of-selection-outcome-model" class="title-slide slide level1 center">
-<h1>Relationship of Selection &amp; Outcome Model</h1>
-<p>Then conditional expectation of <span class="math inline">\(Y\)</span> is:</p>
-<p><span class="math display">\[
-\begin{eqnarray*}
-E[y_i \mid y_i \text{ observed}] &amp;=&amp; E[y_i \mid r^*_i &gt; 0]\\
-&amp;=&amp;E[y_i \mid u_i &gt; - z_i\gamma]\\
-&amp;=&amp; x_i\beta + E[\varepsilon_i \mid  u_i &gt; - z_i\gamma]\\
-&amp;=&amp; x_i\beta + \rho\sigma \underbrace{\frac{\phi(w_i\gamma)}{\Phi(w_i\gamma)}}_{\text{inverse Mills ratio}}
-\end{eqnarray*}
-\]</span> i.e.&nbsp;only if <span class="math inline">\(\rho \neq 0\)</span>, the expectation of <span class="math inline">\(Y\)</span> is affected by missing values.</p>
-<p>Then use ML Estimates for jointly estimating <span class="math inline">\(\beta, \rho, \sigma, \gamma\)</span>.</p>
-</section>
-
-<section id="simulation-example" class="title-slide slide level1 center">
-<h1>Simulation example</h1>
-<div class="columns">
-<div class="column" style="width:48%;">
+<section id="example" class="title-slide slide level1 center">
+<h1>Example</h1>
+<p>NHANES data from <code>NHANES</code> package:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">set.seed</span>(<span class="dv">202510</span>)</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="co"># Simulate data</span></span>
-<span id="cb1-4"><a></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb1-5"><a></a>rho <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a>dframe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-8"><a></a> <span class="at">x1 =</span> <span class="fu">rnorm</span>(n), </span>
-<span id="cb1-9"><a></a> <span class="at">x2 =</span> <span class="fu">rnorm</span>(n),</span>
-<span id="cb1-10"><a></a> <span class="at">u =</span> <span class="fu">rnorm</span>(n),</span>
-<span id="cb1-11"><a></a> <span class="at">eps =</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb1-12"><a></a>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>( <span class="co"># correlate the errors</span></span>
-<span id="cb1-13"><a></a>  <span class="at">eps =</span> rho<span class="sc">*</span>u <span class="sc">+</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> rho<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>eps</span>
-<span id="cb1-14"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Load packages</span></span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(mice)</span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(NHANES)</span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a><span class="co"># Only consider records for age 18 and higher:</span></span>
+<span id="cb1-7"><a></a>NHANES <span class="ot">&lt;-</span> NHANES <span class="sc">|&gt;</span> <span class="fu">filter</span>(Age <span class="sc">&gt;=</span> <span class="dv">18</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-8"><a></a>  <span class="fu">mutate</span>(<span class="at">Age =</span> Age <span class="sc">-</span> <span class="dv">18</span>)</span>
+<span id="cb1-9"><a></a></span>
+<span id="cb1-10"><a></a><span class="co"># Create missingness indicator </span></span>
+<span id="cb1-11"><a></a>NHANES<span class="sc">$</span>miss_alcdays <span class="ot">&lt;-</span> <span class="fu">is.na</span>(NHANES<span class="sc">$</span>AlcoholDay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:4%;">
-<!-- empty column to create gap -->
-</div><div class="column" style="width:48%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Selection model</span></span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a>dframe <span class="ot">&lt;-</span> dframe <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb2-4"><a></a>  <span class="at">r_star =</span> <span class="fl">0.5</span> <span class="sc">*</span> x1 <span class="sc">+</span> <span class="fl">0.8</span> <span class="sc">*</span> x2 <span class="sc">+</span> u,</span>
-<span id="cb2-5"><a></a>  <span class="at">r =</span> <span class="fu">ifelse</span>(r_star <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb2-6"><a></a>)</span>
-<span id="cb2-7"><a></a></span>
-<span id="cb2-8"><a></a><span class="co"># Outcome model (only observed if r==1)</span></span>
-<span id="cb2-9"><a></a>dframe <span class="ot">&lt;-</span> dframe <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb2-10"><a></a>  <span class="at">y =</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.7</span><span class="sc">*</span>x1 <span class="sc">+</span> eps,</span>
-<span id="cb2-11"><a></a>  <span class="at">y_obs =</span> <span class="fu">ifelse</span>(r <span class="sc">==</span> <span class="dv">1</span>, y, <span class="cn">NA</span>), <span class="co"># censored values</span></span>
-<span id="cb2-12"><a></a>  <span class="at">type =</span> <span class="fu">ifelse</span>(r<span class="sc">==</span><span class="dv">0</span>, <span class="st">"Unobserved"</span>, <span class="st">"Observed"</span>)</span>
-<span id="cb2-13"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div></div>
 </section>
 
-<section id="selection-and-outcome" class="title-slide slide level1 center">
-<h1>Selection and Outcome</h1>
-
-<img data-src="03-imputing-example_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-
-<section id="fit-parameters-varepsilon-u-rho-sigma" class="title-slide slide level1 center">
-<h1>Fit Parameters <span class="math inline">\(\varepsilon, u, \rho, \sigma\)</span></h1>
+<section id="sensitivity-analysis-under-mar-vs-mnar-assumptions" class="title-slide slide level1 center">
+<h1>Sensitivity analysis under MAR vs MNAR assumptions</h1>
+<p>Imputation under MAR:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(sampleSelection)</span>
-<span id="cb3-2"><a></a><span class="co"># Fit Heckman selection model</span></span>
-<span id="cb3-3"><a></a>model <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">selection =</span> r <span class="sc">~</span> x1 <span class="sc">+</span> x2,</span>
-<span id="cb3-4"><a></a>                   <span class="at">outcome   =</span> y_obs <span class="sc">~</span> x1,</span>
-<span id="cb3-5"><a></a>                   <span class="at">data =</span> dframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              term    estimate   std.error statistic        df       p.value
+1     Genderfemale  3.19554944 0.093707009  34.10150 694.61930 1.641541e-150
+2       Gendermale  5.08319091 0.107545002  47.26571  51.12272  7.348620e-44
+3 Genderfemale:Age -0.03392936 0.002857205 -11.87502 203.68752  4.662454e-25
+4   Gendermale:Age -0.05730303 0.003494059 -16.40013  33.58201  1.347614e-17</code></pre>
+</div>
 </div>
 </section>
 
 <section id="section" class="title-slide slide level1 center">
 <h1></h1>
+<p>Imputation under MNAR assumption:</p>
+<p>Suppose missing AlcoholDay values are 2 units <em>higher</em> than predicted</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>delta[<span class="st">"AlcoholDay"</span>] <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># shift imputed values upward</span></span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a>imp_mnar <span class="ot">&lt;-</span> <span class="fu">mice</span>(NHANES <span class="sc">|&gt;</span> <span class="fu">select</span>(AlcoholDay, Gender, SurveyYr, BMI, Age, HHIncomeMid, TotChol, Testosterone),</span>
+<span id="cb3-4"><a></a>                 <span class="at">method =</span> method, <span class="at">delta =</span> delta, <span class="at">seed =</span> <span class="dv">123</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>--------------------------------------------
-Tobit 2 model (sample selection model)
-Maximum Likelihood estimation
-Newton-Raphson maximisation, 3 iterations
-Return code 1: gradient close to zero (gradtol)
-Log-Likelihood: -1199.5 
-1000 observations (486 censored and 514 observed)
-7 free parameters (df = 993)
-Probit selection equation:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -0.002738   0.045142  -0.061    0.952    
-x1           0.535494   0.050703  10.561   &lt;2e-16 ***
-x2           0.794989   0.054436  14.604   &lt;2e-16 ***
-Outcome equation:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  1.95495    0.07906   24.73   &lt;2e-16 ***
-x1           0.67387    0.05186   12.99   &lt;2e-16 ***
-   Error terms:
-      Estimate Std. Error t value Pr(&gt;|t|)    
-sigma  1.03469    0.04277  24.191  &lt; 2e-16 ***
-rho    0.62813    0.07874   7.977 4.11e-15 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
---------------------------------------------</code></pre>
+<pre><code>              term    estimate   std.error statistic        df      p.value
+1     Genderfemale  3.20105771 0.103434900  30.94756 105.72607 8.193699e-55
+2       Gendermale  5.12276769 0.122753380  41.73219  23.32556 2.008934e-23
+3 Genderfemale:Age -0.03402306 0.002898567 -11.73789 302.96157 1.778550e-26
+4   Gendermale:Age -0.05793213 0.003765616 -15.38450  24.69098 3.718958e-14</code></pre>
 </div>
 </div>
 </section>
 
-<section id="nhanes-data-example" class="title-slide slide level1 center">
-<h1>NHANES Data Example</h1>
-<p>Consider the NHANES data from the R package <code>NHANES</code>. The variable <code>AlcoholDay</code> is the number of average drinks US adults (age 18 and older) report drinking</p>
-<p>Underage drinking is associated with increased non-response rates. What can we say about the extent of underage drinking?</p>
-
-<img data-src="03-imputing-example_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-
-<section id="extent-of-underage-drinking" class="title-slide slide level1 center">
-<h1>Extent of Underage Drinking</h1>
-<p>Model based on observed data only:</p>
+<section id="compare-results" class="title-slide slide level1 center">
+<h1>Compare Results</h1>
+<p>large differences between MAR and MNAR estimates suggest sensitivity to MNAR assumption.</p>
+<p>provides indirect evidence that MNAR may be present.</p>
+<p>In the example: not much evidence for MNAR</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = AlcoholDay ~ Underage, data = NHANES)
-
-Residuals:
-   Min     1Q Median     3Q    Max 
--3.989 -1.786 -0.786  0.214 79.214 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   2.78635    0.04617   60.35   &lt;2e-16 ***
-UnderageTRUE  2.20313    0.19170   11.49   &lt;2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 3.141 on 4912 degrees of freedom
-  (2567 observations deleted due to missingness)
-Multiple R-squared:  0.02618,   Adjusted R-squared:  0.02599 
-F-statistic: 132.1 on 1 and 4912 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre><code>  Term Estimate_MAR Estimate_MNAR Difference Log.Rel.Diff
+1    1        3.196         3.201      0.006        0.002
+2    2        5.083         5.123      0.040        0.008
+3    3       -0.034        -0.034      0.000        0.003
+4    4       -0.057        -0.058     -0.001        0.011</code></pre>
 </div>
 </div>
-</section>
-
-<section id="extent-of-underage-drinking-1" class="title-slide slide level1 center">
-<h1>Extent of Underage Drinking</h1>
-<p>Heckman Selection Model: what factors impact non-report of alcohol days?</p>
-</section>
-
-<section id="impact-of-age-on-non-reports" class="title-slide slide level1 center">
-<h1>Impact of Age on Non-reports</h1>
-<p>Low age: high non-reports; higher non-reports with increase in Age</p>
-
-<img data-src="03-imputing-example_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"><p>Model as linear term - we expect a negative parameter</p>
-</section>
-
-<section id="code-for-making-histogramspinogram" class="title-slide slide level1 center">
-<h1>Code for making Histogram/Spinogram</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb6-2"><a></a>gg1 <span class="ot">&lt;-</span> NHANES <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(Age, <span class="at">fill =</span> <span class="fu">is.na</span>(AlcoholDay))) <span class="sc">+</span> </span>
-<span id="cb6-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span>
-<span id="cb6-4"><a></a></span>
-<span id="cb6-5"><a></a>gg2 <span class="ot">&lt;-</span> NHANES <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(Age, <span class="at">fill =</span> <span class="fu">is.na</span>(AlcoholDay))) <span class="sc">+</span> </span>
-<span id="cb6-6"><a></a>    <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">position =</span> <span class="st">"fill"</span>)</span>
-<span id="cb6-7"><a></a></span>
-<span id="cb6-8"><a></a><span class="co"># place plots on top of each other (this uses patchwork)</span></span>
-<span id="cb6-9"><a></a>gg1<span class="sc">/</span>gg2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="impact-of-testosterone-on-non-reports" class="title-slide slide level1 center">
-<h1>Impact of Testosterone on Non-reports</h1>
-<p>Low age: high non-reports; higher non-reports with increase in Age</p>
-
-<img data-src="03-imputing-example_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"><p>Model as linear term - we expect a positive parameter</p>
-</section>
-
-<section id="selection-outcome-model" class="title-slide slide level1 center">
-<h1>Selection &amp; Outcome Model</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>model <span class="ot">&lt;-</span> <span class="fu">selection</span>(</span>
-<span id="cb7-2"><a></a>  <span class="at">selection =</span> ADnonmissing <span class="sc">~</span>  Age <span class="sc">+</span> BMI <span class="sc">+</span> Testosterone <span class="sc">+</span> TotChol,</span>
-<span id="cb7-3"><a></a>  <span class="at">outcome   =</span> AlcoholDay <span class="sc">~</span> Underage,</span>
-<span id="cb7-4"><a></a>  <span class="at">data =</span> NHANES)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="section-1" class="title-slide slide level1 center">
-<h1></h1>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>--------------------------------------------
-Tobit 2 model (sample selection model)
-Maximum Likelihood estimation
-Newton-Raphson maximisation, 15 iterations
-Return code 8: successive function values within relative tolerance limit (reltol)
-Log-Likelihood: -8296.125 
-3412 observations (1077 censored and 2335 observed)
-9 free parameters (df = 3403)
-Probit selection equation:
-               Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   0.6530601  0.1580146   4.133 3.67e-05 ***
-Age          -0.0108867  0.0013472  -8.081 8.82e-16 ***
-BMI          -0.0103824  0.0034632  -2.998  0.00274 ** 
-Testosterone  0.0007576  0.0001051   7.205 7.11e-13 ***
-TotChol       0.0955220  0.0218354   4.375 1.25e-05 ***
-Outcome equation:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)    3.0883     0.1076  28.710   &lt;2e-16 ***
-UnderageTRUE   2.4417     0.2838   8.605   &lt;2e-16 ***
-   Error terms:
-      Estimate Std. Error t value Pr(&gt;|t|)    
-sigma  3.53068    0.05427  65.055  &lt; 2e-16 ***
-rho   -0.18739    0.04184  -4.479 7.75e-06 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
---------------------------------------------</code></pre>
-</div>
-</div>
+<p>```</p>
 
 
 </section>
