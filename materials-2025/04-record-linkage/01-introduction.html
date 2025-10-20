@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="dcterms.date" content="2025-10-23">
-  <title>Stat 471 – Sensitivity Analysis with mice</title>
+  <title>Stat 471 – Deterministic Record Linkage</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,96 +193,288 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Sensitivity Analysis with <code>mice</code></h1>
+  <h1 class="title">Deterministic Record Linkage</h1>
 
 <div class="quarto-title-authors">
 </div>
 
   <p class="date">2025-10-23</p>
 </section>
-<section id="sensitivity-analysis-mar-vs-mnar" class="title-slide slide level1 center">
-<h1>Sensitivity Analysis: MAR vs MNAR</h1>
-<p>Idea of <span class="math inline">\(\delta\)</span>-method: provide controlled way to simulate MNAR conditions by shifting imputed values systematically by <span class="math inline">\(\delta\)</span>:</p>
-<p><span class="math display">\[
-Y_{\text{imp, }\delta} = Y_\text{pmm} + \delta
-\]</span> Positive <span class="math inline">\(\delta\)</span>: assume that missing values correspond to systematically higher values</p>
-<p>Negative <span class="math inline">\(\delta\)</span>: assume that missing values correspond to systematically lower values</p>
+<section id="intro-to-statistical-record-linkage" class="title-slide slide level1 center">
+<h1>Intro to Statistical Record Linkage</h1>
+<p><strong>Record linkage</strong>: identify records that refer to the same entity across different datasets</p>
+<p><strong>Deterministic linkage</strong>: Exact matches on one or more key fields (e.g., SSN)</p>
+<p><strong>Probabilistic linkage</strong>: Uses statistical models and similarity scores</p>
 </section>
 
-<section id="investigate-impact" class="title-slide slide level1 center">
-<h1>Investigate Impact</h1>
-<ol type="1">
-<li><p>Run your analysis under MAR (<span class="math inline">\(\delta\)</span> = 0).</p></li>
-<li><p>Run analysis again under plausible MNAR scenarios (e.g., <span class="math inline">\(\delta = −1, −2, +1\)</span>).</p></li>
-<li><p>Conclude potential MNAR concern, if key conclusions change a lot.</p></li>
-</ol>
+<section id="examples" class="title-slide slide level1 center">
+<h1>Examples</h1>
+<ul>
+<li>Linking records from hospital and insurance for the same patient<br>
+</li>
+<li>Match voter registrations across states<br>
+</li>
+<li>Combine data from different sources where names are noisy or incomplete</li>
+</ul>
 </section>
 
-<section id="example" class="title-slide slide level1 center">
-<h1>Example</h1>
-<p>NHANES data from <code>NHANES</code> package:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Load packages</span></span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(mice)</span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(NHANES)</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a><span class="co"># Only consider records for age 18 and higher:</span></span>
-<span id="cb1-7"><a></a>NHANES <span class="ot">&lt;-</span> NHANES <span class="sc">|&gt;</span> <span class="fu">filter</span>(Age <span class="sc">&gt;=</span> <span class="dv">18</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-8"><a></a>  <span class="fu">mutate</span>(<span class="at">Age =</span> Age <span class="sc">-</span> <span class="dv">18</span>)</span>
-<span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a><span class="co"># Create missingness indicator </span></span>
-<span id="cb1-11"><a></a>NHANES<span class="sc">$</span>miss_alcdays <span class="ot">&lt;-</span> <span class="fu">is.na</span>(NHANES<span class="sc">$</span>AlcoholDay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="deterministic-linkage" class="title-slide slide level1 center">
+<h1>Deterministic Linkage</h1>
+<p>If entities are recorded with the same IDs (e.g.&nbsp;country codes, license plates, SSNs) we can join by those values.</p>
+<p>Normalized data bases often include IDs</p>
+<p>Use joins (<code>join_left</code>, <code>join_inner</code>, <code>join_full</code>) to combine these data sets</p>
 </section>
 
-<section id="sensitivity-analysis-under-mar-vs-mnar-assumptions" class="title-slide slide level1 center">
-<h1>Sensitivity analysis under MAR vs MNAR assumptions</h1>
-<p>Imputation under MAR:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>              term    estimate   std.error statistic        df       p.value
-1     Genderfemale  3.19554944 0.093707009  34.10150 694.61930 1.641541e-150
-2       Gendermale  5.08319091 0.107545002  47.26571  51.12272  7.348620e-44
-3 Genderfemale:Age -0.03392936 0.002857205 -11.87502 203.68752  4.662454e-25
-4   Gendermale:Age -0.05730303 0.003494059 -16.40013  33.58201  1.347614e-17</code></pre>
-</div>
-</div>
+<section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<p>The package <code>Lahman</code> is an R data package consisting of 27 data sets detailing different aspects of baseball.</p>
+<ul>
+<li><p>Identify the players inducted into the Hall of Fame in 2025 by name</p></li>
+<li><p>How often was each of the inductees on the ballot before?</p></li>
+</ul>
 </section>
 
 <section id="section" class="title-slide slide level1 center">
 <h1></h1>
-<p>Imputation under MNAR assumption:</p>
-<p>Suppose missing AlcoholDay values are 2 units <em>higher</em> than predicted</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>delta[<span class="st">"AlcoholDay"</span>] <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># shift imputed values upward</span></span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>imp_mnar <span class="ot">&lt;-</span> <span class="fu">mice</span>(NHANES <span class="sc">|&gt;</span> <span class="fu">select</span>(AlcoholDay, Gender, SurveyYr, BMI, Age, HHIncomeMid, TotChol, Testosterone),</span>
-<span id="cb3-4"><a></a>                 <span class="at">method =</span> method, <span class="at">delta =</span> delta, <span class="at">seed =</span> <span class="dv">123</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>              term    estimate   std.error statistic        df      p.value
-1     Genderfemale  3.20105771 0.103434900  30.94756 105.72607 8.193699e-55
-2       Gendermale  5.12276769 0.122753380  41.73219  23.32556 2.008934e-23
-3 Genderfemale:Age -0.03402306 0.002898567 -11.73789 302.96157 1.778550e-26
-4   Gendermale:Age -0.05793213 0.003765616 -15.38450  24.69098 3.718958e-14</code></pre>
+<pre><code>   playerID yearID              votedBy ballots needed votes inducted category
+1 allendi01   2025 Classic Baseball Era      16     12    13        Y   Player
+2 parkeda01   2025 Classic Baseball Era      16     12    14        Y   Player
+3 sabatcc01   2025                BBWAA     394    296   342        Y   Player
+4 suzukic01   2025                BBWAA     394    296   393        Y   Player
+5 wagnebi02   2025                BBWAA     394    296   325        Y   Player
+  needed_note nameFirst nameLast
+1        &lt;NA&gt;      Dick    Allen
+2        &lt;NA&gt;      Dave   Parker
+3        &lt;NA&gt;        CC Sabathia
+4        &lt;NA&gt;    Ichiro   Suzuki
+5        &lt;NA&gt;     Billy   Wagner</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+# Groups:   playerID [5]
+  playerID      n
+  &lt;chr&gt;     &lt;int&gt;
+1 allendi01    21
+2 parkeda01    19
+3 wagnebi02    10
+4 sabatcc01     1
+5 suzukic01     1</code></pre>
 </div>
 </div>
 </section>
 
-<section id="compare-results" class="title-slide slide level1 center">
-<h1>Compare Results</h1>
-<p>large differences between MAR and MNAR estimates suggest sensitivity to MNAR assumption.</p>
-<p>provides indirect evidence that MNAR may be present.</p>
-<p>In the example: not much evidence for MNAR</p>
+<section id="fuzzy-matching" class="title-slide slide level1 center">
+<h1>Fuzzy Matching</h1>
+<p>approximate matching of strings <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span></p>
+<p>Different algorithms based around type of errors: e.g.&nbsp;Jaro-Winkler, Jaccard (common elements), Levenshtein (insertions, deletions), Damerau–Levenshtein (also transpositions), Hammond (needs strings of equal length)</p>
+<p>choose based on which errors most likely occur</p>
+</section>
+
+<section id="jaro-winkler-string-similarity" class="title-slide slide level1 center">
+<h1>Jaro-Winkler String similarity</h1>
+<p>For two (character) strings <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span> the <em>Jaro</em> similarity is defined as</p>
+<p><span class="math display">\[
+J(s_1,s_2) = \frac{1}{3} \left( \frac{m}{|s_1|} + \frac{m}{|s_2|} + \frac{m-t}{m}\right),
+\]</span> if there are at least <span class="math inline">\(m &gt; 0\)</span> matching characters between <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span>;</p>
+<p><span class="math inline">\(|s_i|\)</span> is the number of the characters in string <span class="math inline">\(s_i\)</span>.</p>
+<p><span class="math inline">\(t\)</span> is the number of transpositions (characters that are at most <span class="math inline">\(\left\lfloor {\frac {\max(|s_{1}|,|s_{2}|)}{2}}\right\rfloor -1\)</span> positions apart)</p>
+</section>
+
+<section id="winkler-adjustment" class="title-slide slide level1 center">
+<h1>Winkler adjustment</h1>
+<p>Emphasize beginning of words</p>
+<p><span class="math display">\[
+JW(s_1, s_2) = J(s_1, s_2) + \ell p \left (1 - J(s_1, s_2) \right)
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\ell\)</span> is length of common prefix at the start (up to 4 characters)</p></li>
+<li><p><span class="math inline">\(p\)</span> scaling factor for upwards adjustment of score for common prefixes (should not exceed <span class="math inline">\(1/\ell\)</span>); usually set to <span class="math inline">\(p=0.1\)</span>.</p></li>
+</ul>
+<p>Note that JW distance is not a proper distance (no triangle property)</p>
+</section>
+
+<section id="jaro-winkler-properties" class="title-slide slide level1 center">
+<h1>Jaro-Winkler Properties</h1>
+<p><span class="math inline">\(JW(s,t) \in [0,1]\)</span>; larger values indicate higher similarity</p>
+<p>Implemented in package <code>stringdist</code> as <code>stringdist</code> with <code>method = "jw"</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="dv">1</span> <span class="sc">-</span> stringdist<span class="sc">::</span><span class="fu">stringdist</span>(<span class="st">"Halo"</span>, <span class="st">"Hello"</span>, <span class="at">method =</span> <span class="st">"jw"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7833333</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="dv">1</span> <span class="sc">-</span> stringdist<span class="sc">::</span><span class="fu">stringdist</span>(<span class="st">"frist"</span>, <span class="st">"first"</span>, <span class="at">method =</span> <span class="st">"jw"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9333333</code></pre>
+</div>
+</div>
+</section>
+
+<section id="first-example" class="title-slide slide level1 center">
+<h1>First Example</h1>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p>Census type data</p>
+<div class="cell" data-code-block-border-left="#31BAE9">
+<div class="cell-output cell-output-stdout">
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource small number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a># A tibble: 6 × 5</span>
+<span id="cb7-2"><a></a>   id_a first     last   birth_year city        </span>
+<span id="cb7-3"><a></a>  &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;       </span>
+<span id="cb7-4"><a></a>1     1 John      Smith        1985 Lincoln     </span>
+<span id="cb7-5"><a></a>2     2 Katherine Jones        1978 Omaha       </span>
+<span id="cb7-6"><a></a>3     3 Robert    Brown        1990 Grand Island</span>
+<span id="cb7-7"><a></a>4     4 Maria     Lopez        1988 Kearney     </span>
+<span id="cb7-8"><a></a>5     5 William   Chen         1983 Norfolk     </span>
+<span id="cb7-9"><a></a>6     6 Alicia    Mendez       1991 Lincoln     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:48%;">
+<p>Voter registration type data</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>  Term Estimate_MAR Estimate_MNAR Difference Log.Rel.Diff
-1    1        3.196         3.201      0.006        0.002
-2    2        5.083         5.123      0.040        0.008
-3    3       -0.034        -0.034      0.000        0.003
-4    4       -0.057        -0.058     -0.001        0.011</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource small number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a># A tibble: 8 × 5</span>
+<span id="cb8-2"><a></a>   id_b first  last   birth_year city        </span>
+<span id="cb8-3"><a></a>  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;       </span>
+<span id="cb8-4"><a></a>1   101 Jon    Smyth        1985 Lincon      </span>
+<span id="cb8-5"><a></a>2   102 Kathy  Jones        1978 Omaha       </span>
+<span id="cb8-6"><a></a>3   103 Rob    Brown        1990 Grand Island</span>
+<span id="cb8-7"><a></a>4   104 Maria  Lopes        1988 Kearny      </span>
+<span id="cb8-8"><a></a>5   105 Will   Chen         1983 Norfolk     </span>
+<span id="cb8-9"><a></a>6   106 Alisha Mendez       1991 Lincoln     </span>
+<span id="cb8-10"><a></a>7   107 Laura  King         1992 Omaha       </span>
+<span id="cb8-11"><a></a>8   108 Robert Brown        1990 Grand Island</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div></div>
+</section>
+
+<section id="create-pairs-of-records-for-each-variable" class="title-slide slide level1 center">
+<h1>Create Pairs of Records for each Variable</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>pairs_first <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">expand.grid</span>(<span class="at">first_a =</span> <span class="fu">unique</span>(df_a<span class="sc">$</span>first), <span class="at">first_b =</span> <span class="fu">unique</span>(df_b<span class="sc">$</span>first)))</span>
+<span id="cb9-2"><a></a>pairs_last <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">expand.grid</span>(<span class="at">last_a =</span> <span class="fu">unique</span>(df_a<span class="sc">$</span>last), <span class="at">last_b =</span> <span class="fu">unique</span>(df_b<span class="sc">$</span>last)))</span>
+<span id="cb9-3"><a></a>pairs_city <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">expand.grid</span>(<span class="at">city_a =</span> <span class="fu">unique</span>(df_a<span class="sc">$</span>city), <span class="at">city_b =</span> <span class="fu">unique</span>(df_b<span class="sc">$</span>city), <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb9-4"><a></a>pairs_years <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">expand.grid</span>(<span class="at">birth_year_a =</span> <span class="fu">unique</span>(df_a<span class="sc">$</span>birth_year), <span class="at">birth_year_b =</span> <span class="fu">unique</span>(df_b<span class="sc">$</span>birth_year)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="calculate-distance-between-pairs" class="title-slide slide level1 center">
+<h1>Calculate distance between pairs</h1>
+<p>Jaro-Winkler in package <code>stringdist</code> as <code>stringdist</code> with <code>method = "jw"</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>pairs_first <span class="ot">&lt;-</span> pairs_first <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb10-2"><a></a>  <span class="at">sim =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">stringdist</span>(first_a, first_b, <span class="at">method =</span> <span class="st">"jw"</span>)</span>
+<span id="cb10-3"><a></a>)</span>
+<span id="cb10-4"><a></a>pairs_first <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(sim))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     first_a first_b       sim
+1      Maria   Maria 1.0000000
+2     Robert  Robert 1.0000000
+3       John     Jon 0.9166667
+4    William    Will 0.8571429
+5     Robert     Rob 0.8333333
+6     Alicia  Alisha 0.7777778
+7  Katherine   Kathy 0.7481481
+8      Maria   Laura 0.7333333
+9  Katherine   Maria 0.6444444
+10    Alicia   Maria 0.5777778
+11     Maria  Alisha 0.5777778
+12   William   Maria 0.5619048
+13 Katherine   Laura 0.5407407
+14   William  Alisha 0.5317460
+15      John     Rob 0.5277778
+16    Robert     Jon 0.5000000
+17      John   Kathy 0.4833333
+18      John  Alisha 0.4722222
+19      John  Robert 0.4722222
+20     Maria   Kathy 0.4666667
+21    Robert   Maria 0.4555556
+22    Robert   Laura 0.4555556
+23    Alicia   Laura 0.4555556
+24     Maria  Robert 0.4555556
+25   William   Laura 0.4476190
+26    Alicia    Will 0.4444444
+27 Katherine  Robert 0.4444444
+28 Katherine  Alisha 0.4259259
+29 Katherine     Jon 0.0000000
+30     Maria     Jon 0.0000000
+31   William     Jon 0.0000000
+32    Alicia     Jon 0.0000000
+33    Robert   Kathy 0.0000000
+34   William   Kathy 0.0000000
+35    Alicia   Kathy 0.0000000
+36 Katherine     Rob 0.0000000
+37     Maria     Rob 0.0000000
+38   William     Rob 0.0000000
+39    Alicia     Rob 0.0000000
+40      John   Maria 0.0000000
+41      John    Will 0.0000000
+42 Katherine    Will 0.0000000
+43    Robert    Will 0.0000000
+44     Maria    Will 0.0000000
+45    Robert  Alisha 0.0000000
+46      John   Laura 0.0000000
+47   William  Robert 0.0000000
+48    Alicia  Robert 0.0000000</code></pre>
+</div>
+</div>
+</section>
+
+<section id="introduce-thresholds" class="title-slide slide level1 center">
+<h1>Introduce Thresholds</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>pairs_last <span class="ot">&lt;-</span> pairs_last <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb12-2"><a></a>  <span class="at">sim =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">stringdist</span>(last_a, last_b, <span class="at">method =</span> <span class="st">"jw"</span>)</span>
+<span id="cb12-3"><a></a>)</span>
+<span id="cb12-4"><a></a></span>
+<span id="cb12-5"><a></a>pairs_city <span class="ot">&lt;-</span> pairs_city <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb12-6"><a></a>  <span class="at">sim =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">stringdist</span>(city_a, city_b, <span class="at">method =</span> <span class="st">"jw"</span>)</span>
+<span id="cb12-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and introduce thresholds:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>pairs_first <span class="ot">&lt;-</span> pairs_first <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">match =</span> sim <span class="sc">&gt;</span> <span class="fl">0.6</span>)</span>
+<span id="cb13-2"><a></a>pairs_last <span class="ot">&lt;-</span> pairs_last <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">match =</span> sim <span class="sc">&gt;</span> <span class="fl">0.8</span>)</span>
+<span id="cb13-3"><a></a>pairs_city <span class="ot">&lt;-</span> pairs_city <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">match =</span> sim <span class="sc">&gt;</span> <span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="example-apply-thresholds-to-combined-data" class="title-slide slide level1 center">
+<h1>Example: apply thresholds to combined data</h1>
+<p>Stratify on birth year:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>df_ab <span class="ot">&lt;-</span> df_a <span class="sc">|&gt;</span> <span class="fu">full_join</span>(df_b, <span class="at">by=</span><span class="st">"birth_year"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_a"</span>, <span class="st">"_b"</span>))</span>
+<span id="cb14-2"><a></a>df_ab <span class="ot">&lt;-</span> df_ab <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a></a>  <span class="fu">left_join</span>(pairs_first <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>sim, <span class="at">match_first =</span> match))  <span class="sc">|&gt;</span></span>
+<span id="cb14-4"><a></a>  <span class="fu">left_join</span>(pairs_last <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>sim, <span class="at">match_last =</span> match))  <span class="sc">|&gt;</span></span>
+<span id="cb14-5"><a></a>  <span class="fu">left_join</span>(pairs_city <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>sim, <span class="at">match_city =</span> match))  <span class="sc">|&gt;</span></span>
+<span id="cb14-6"><a></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
+<span id="cb14-7"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-8"><a></a>    <span class="at">overall =</span> <span class="fu">sum</span>(match_first <span class="sc">+</span> match_last <span class="sc">+</span> match_city)</span>
+<span id="cb14-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="section-1" class="title-slide slide level1 center">
+<h1></h1>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 13
+# Rowwise: 
+   id_a first_a last_a birth_year city_a  id_b first_b last_b city_b match_first
+  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;lgl&gt;      
+1     1 John    Smith        1985 Linco…   101 Jon     Smyth  Lincon TRUE       
+2     2 Kather… Jones        1978 Omaha    102 Kathy   Jones  Omaha  TRUE       
+3     3 Robert  Brown        1990 Grand…   103 Rob     Brown  Grand… TRUE       
+4     3 Robert  Brown        1990 Grand…   108 Robert  Brown  Grand… TRUE       
+5     4 Maria   Lopez        1988 Kearn…   104 Maria   Lopes  Kearny TRUE       
+6     5 William Chen         1983 Norfo…   105 Will    Chen   Norfo… TRUE       
+7     6 Alicia  Mendez       1991 Linco…   106 Alisha  Mendez Linco… TRUE       
+8    NA &lt;NA&gt;    &lt;NA&gt;         1992 &lt;NA&gt;     107 Laura   King   Omaha  NA         
+# ℹ 3 more variables: match_last &lt;lgl&gt;, match_city &lt;lgl&gt;, overall &lt;int&gt;</code></pre>
 </div>
 </div>
 

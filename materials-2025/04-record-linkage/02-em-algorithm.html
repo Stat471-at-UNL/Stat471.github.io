@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="dcterms.date" content="2025-10-23">
-  <title>Stat 471 – Sensitivity Analysis with mice</title>
+  <title>Stat 471 – Probabilistic Record Linkage</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,96 +193,161 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Sensitivity Analysis with <code>mice</code></h1>
+  <h1 class="title">Probabilistic Record Linkage</h1>
 
 <div class="quarto-title-authors">
 </div>
 
   <p class="date">2025-10-23</p>
 </section>
-<section id="sensitivity-analysis-mar-vs-mnar" class="title-slide slide level1 center">
-<h1>Sensitivity Analysis: MAR vs MNAR</h1>
-<p>Idea of <span class="math inline">\(\delta\)</span>-method: provide controlled way to simulate MNAR conditions by shifting imputed values systematically by <span class="math inline">\(\delta\)</span>:</p>
-<p><span class="math display">\[
-Y_{\text{imp, }\delta} = Y_\text{pmm} + \delta
-\]</span> Positive <span class="math inline">\(\delta\)</span>: assume that missing values correspond to systematically higher values</p>
-<p>Negative <span class="math inline">\(\delta\)</span>: assume that missing values correspond to systematically lower values</p>
+<section id="probabilistic-matching" class="title-slide slide level1 center">
+<h1>Probabilistic Matching</h1>
+<p>Two main issues:</p>
+<ol type="1">
+<li><p>Inconsistencies e.g., “Katherine Smith” vs.&nbsp;“K. Smith” vs “Kate Smith”</p></li>
+<li><p>Errors and missing data e.g., typos, formatting differences, or incomplete fields.</p></li>
+</ol>
+<p>Goal:</p>
+<p>For each pair of records, determine: (1) <strong>Match</strong> (same entity), (2) <strong>Do not match</strong>, or (3) <strong>uncertain</strong></p>
 </section>
 
-<section id="investigate-impact" class="title-slide slide level1 center">
-<h1>Investigate Impact</h1>
+<section id="fellegi-and-sunter" class="title-slide slide level1 center">
+<h1>Fellegi and Sunter</h1>
 <ol type="1">
-<li><p>Run your analysis under MAR (<span class="math inline">\(\delta\)</span> = 0).</p></li>
-<li><p>Run analysis again under plausible MNAR scenarios (e.g., <span class="math inline">\(\delta = −1, −2, +1\)</span>).</p></li>
-<li><p>Conclude potential MNAR concern, if key conclusions change a lot.</p></li>
+<li>Comparison of fields</li>
+<li>Model match probabilities</li>
+<li>Use Thresholds to determine matches</li>
 </ol>
 </section>
 
-<section id="example" class="title-slide slide level1 center">
-<h1>Example</h1>
-<p>NHANES data from <code>NHANES</code> package:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Load packages</span></span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(mice)</span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(NHANES)</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a><span class="co"># Only consider records for age 18 and higher:</span></span>
-<span id="cb1-7"><a></a>NHANES <span class="ot">&lt;-</span> NHANES <span class="sc">|&gt;</span> <span class="fu">filter</span>(Age <span class="sc">&gt;=</span> <span class="dv">18</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-8"><a></a>  <span class="fu">mutate</span>(<span class="at">Age =</span> Age <span class="sc">-</span> <span class="dv">18</span>)</span>
-<span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a><span class="co"># Create missingness indicator </span></span>
-<span id="cb1-11"><a></a>NHANES<span class="sc">$</span>miss_alcdays <span class="ot">&lt;-</span> <span class="fu">is.na</span>(NHANES<span class="sc">$</span>AlcoholDay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="step-1.-comparison-of-fields" class="title-slide slide level1 center">
+<h1>Step 1. Comparison of fields</h1>
+<p>For each pair of records, we compare corresponding fields (e.g., name, date of birth, ZIP code) and create <strong>comparison vectors</strong>:</p>
+<p><span class="math display">\[
+\gamma = (\gamma_1, \gamma_2, ..., \gamma_k)
+\]</span></p>
+<p>Each <span class="math inline">\(\gamma_i\)</span> measures the level of agreement for field <span class="math inline">\(i\)</span>.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Record A</th>
+<th>Record B</th>
+<th>Comparison</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First name</td>
+<td>“Jon”</td>
+<td>“John”</td>
+<td>Partial</td>
+</tr>
+<tr class="even">
+<td>Last name</td>
+<td>“Doe”</td>
+<td>“Doe”</td>
+<td>Exact</td>
+</tr>
+<tr class="odd">
+<td>Birth year</td>
+<td>1982</td>
+<td>2010</td>
+<td>Disagree</td>
+</tr>
+</tbody>
+</table>
 </section>
 
-<section id="sensitivity-analysis-under-mar-vs-mnar-assumptions" class="title-slide slide level1 center">
-<h1>Sensitivity analysis under MAR vs MNAR assumptions</h1>
-<p>Imputation under MAR:</p>
+<section id="step-2.-model-match-probabilities" class="title-slide slide level1 center">
+<h1>Step 2. Model match probabilities</h1>
+<p>Each pair of records belongs to one of two latent groups: <span class="math inline">\(M\)</span>: the <strong>match set</strong>, <span class="math inline">\(U\)</span>: the <strong>non-match set</strong></p>
+<p><span class="math display">\[
+P(\gamma) = P(\gamma \mid M) P(M) + P(\gamma \mid U) P(U)
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(P(\gamma \mid M)\)</span>: probability of observing agreements among <em>true matches</em><br>
+</li>
+<li><span class="math inline">\(P(\gamma \mid U)\)</span>: probability of observing agreements among <em>non-matches</em><br>
+</li>
+<li><span class="math inline">\(P(M)\)</span> and <span class="math inline">\(P(U) = 1 - P(M)\)</span>: prior probabilities of match / non-match.</li>
+</ul>
+</section>
+
+<section id="em-algorithm" class="title-slide slide level1 center">
+<h1>EM Algorithm</h1>
+<p>True match status is unobserved; use Expectation–Maximization (EM) algorithm:</p>
+<ol type="1">
+<li><p><strong>E-step:</strong><br>
+Estimate match memberships <span class="math inline">\(P(M \mid \gamma)\)</span> for each pair given current parameters.</p></li>
+<li><p><strong>M-step:</strong><br>
+Update <span class="math inline">\(m_j = P(\gamma_j \mid M), u_j = P(\gamma_j \mid U), P(M)\)</span> based on expected match memberships.</p></li>
+</ol>
+<p>Iterate until convergence.</p>
+</section>
+
+<section id="step-3-posterior-probabilities-and-thresholding" class="title-slide slide level1 center">
+<h1>Step 3: Posterior Probabilities and Thresholding</h1>
+<p>Posterior match probabilities for each pair:</p>
+<p><span class="math display">\[
+P(M \mid \gamma) = \frac{P(\gamma \mid M) P(M)}{P(\gamma \mid M) P(M) + P(\gamma \mid U) P(U)}
+\]</span></p>
+<p>Use decision threshold to classify matches, e.g.&nbsp;any records with <span class="math inline">\(P(\gamma \mid M)\)</span> above <span class="math inline">\(T_U\)</span> are matches, any records below <span class="math inline">\(T_L\)</span> are non-matches.</p>
+<p>Quantify uncertainty: e.g.&nbsp;trigger manual review for pairs that have posterior probabilities in <span class="math inline">\([T_L, Y_U]\)</span>.</p>
+</section>
+
+<section id="example-with-fastlink" class="title-slide slide level1 center">
+<h1>Example with <code>fastLink</code></h1>
+<p>The <code>fastLink</code> package output provides <strong>posterior probabilities</strong> for all record pairs.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(fastLink)</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>fl_out <span class="ot">&lt;-</span> <span class="fu">fastLink</span>(</span>
+<span id="cb1-4"><a></a>  <span class="at">dfA =</span> df_a,</span>
+<span id="cb1-5"><a></a>  <span class="at">dfB =</span> df_b,</span>
+<span id="cb1-6"><a></a>  <span class="at">varnames =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"birth_year"</span>, <span class="st">"city"</span>),</span>
+<span id="cb1-7"><a></a>  <span class="at">stringdist.match =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"city"</span>),</span>
+<span id="cb1-8"><a></a>  <span class="at">numeric.match =</span> <span class="fu">c</span>(<span class="st">"birth_year"</span>),</span>
+<span id="cb1-9"><a></a>  <span class="at">partial.match =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"city"</span>,<span class="st">"birth_year"</span>)</span>
+<span id="cb1-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>              term    estimate   std.error statistic        df       p.value
-1     Genderfemale  3.19554944 0.093707009  34.10150 694.61930 1.641541e-150
-2       Gendermale  5.08319091 0.107545002  47.26571  51.12272  7.348620e-44
-3 Genderfemale:Age -0.03392936 0.002857205 -11.87502 203.68752  4.662454e-25
-4   Gendermale:Age -0.05730303 0.003494059 -16.40013  33.58201  1.347614e-17</code></pre>
+<pre><code>
+==================== 
+fastLink(): Fast Probabilistic Record Linkage
+==================== 
+
+If you set return.all to FALSE, you will not be able to calculate a confusion table as a summary statistic.
+Calculating matches for each variable.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Getting counts for parameter estimation.
+Running the EM algorithm.
+Getting the indices of estimated matches.
+Deduping the estimated matches.
+Getting the match patterns for each estimated match.</code></pre>
 </div>
 </div>
 </section>
 
 <section id="section" class="title-slide slide level1 center">
 <h1></h1>
-<p>Imputation under MNAR assumption:</p>
-<p>Suppose missing AlcoholDay values are 2 units <em>higher</em> than predicted</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>delta[<span class="st">"AlcoholDay"</span>] <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># shift imputed values upward</span></span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>imp_mnar <span class="ot">&lt;-</span> <span class="fu">mice</span>(NHANES <span class="sc">|&gt;</span> <span class="fu">select</span>(AlcoholDay, Gender, SurveyYr, BMI, Age, HHIncomeMid, TotChol, Testosterone),</span>
-<span id="cb3-4"><a></a>                 <span class="at">method =</span> method, <span class="at">delta =</span> delta, <span class="at">seed =</span> <span class="dv">123</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>              term    estimate   std.error statistic        df      p.value
-1     Genderfemale  3.20105771 0.103434900  30.94756 105.72607 8.193699e-55
-2       Gendermale  5.12276769 0.122753380  41.73219  23.32556 2.008934e-23
-3 Genderfemale:Age -0.03402306 0.002898567 -11.73789 302.96157 1.778550e-26
-4   Gendermale:Age -0.05793213 0.003765616 -15.38450  24.69098 3.718958e-14</code></pre>
-</div>
-</div>
-</section>
-
-<section id="compare-results" class="title-slide slide level1 center">
-<h1>Compare Results</h1>
-<p>large differences between MAR and MNAR estimates suggest sensitivity to MNAR assumption.</p>
-<p>provides indirect evidence that MNAR may be present.</p>
-<p>In the example: not much evidence for MNAR</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  Term Estimate_MAR Estimate_MNAR Difference Log.Rel.Diff
-1    1        3.196         3.201      0.006        0.002
-2    2        5.083         5.123      0.040        0.008
-3    3       -0.034        -0.034      0.000        0.003
-4    4       -0.057        -0.058     -0.001        0.011</code></pre>
+<pre><code>  id_b  first   last birth_year         city dfB.match[, names.dfB] gamma.1
+1  101    Jon  Smyth       1985       Lincon                      1       1
+2  104  Maria  Lopes       1988       Kearny                      4       2
+3  105   Will   Chen       1983      Norfolk                      5       1
+4  103    Rob  Brown       1990 Grand Island                     NA       2
+5  102  Kathy  Jones       1978        Omaha                      2       0
+6  106 Alisha Mendez       1991      Lincoln                      6       0
+  gamma.2 gamma.3 gamma.4          posterior
+1       1       2       2 1.0000000000000000
+2       1       2       2 1.0000000000000000
+3       2       2       2 1.0000000000000000
+4       2       2       2 1.0000000000000000
+5       2       2       2 0.9999999999946603
+6       2       2       2 0.9999999999946603</code></pre>
 </div>
 </div>
 
