@@ -9,8 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-10-23">
-  <title>Stat 471 – Probabilistic Record Linkage</title>
+  <meta name="dcterms.date" content="2025-10-28">
+  <title>Stat 471 – The EM Algorithm — Example and Theory</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -193,163 +127,271 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Probabilistic Record Linkage</h1>
+  <h1 class="title">The EM Algorithm — Example and Theory</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-10-23</p>
+  <p class="date">2025-10-28</p>
 </section>
-<section id="probabilistic-matching" class="title-slide slide level1 center">
-<h1>Probabilistic Matching</h1>
-<p>Two main issues:</p>
-<ol type="1">
-<li><p>Inconsistencies e.g., “Katherine Smith” vs.&nbsp;“K. Smith” vs “Kate Smith”</p></li>
-<li><p>Errors and missing data e.g., typos, formatting differences, or incomplete fields.</p></li>
-</ol>
-<p>Goal:</p>
-<p>For each pair of records, determine: (1) <strong>Match</strong> (same entity), (2) <strong>Do not match</strong>, or (3) <strong>uncertain</strong></p>
-</section>
-
-<section id="fellegi-and-sunter" class="title-slide slide level1 center">
-<h1>Fellegi and Sunter</h1>
-<ol type="1">
-<li>Comparison of fields</li>
-<li>Model match probabilities</li>
-<li>Use Thresholds to determine matches</li>
-</ol>
-</section>
-
-<section id="step-1.-comparison-of-fields" class="title-slide slide level1 center">
-<h1>Step 1. Comparison of fields</h1>
-<p>For each pair of records, we compare corresponding fields (e.g., name, date of birth, ZIP code) and create <strong>comparison vectors</strong>:</p>
-<p><span class="math display">\[
-\gamma = (\gamma_1, \gamma_2, ..., \gamma_k)
-\]</span></p>
-<p>Each <span class="math inline">\(\gamma_i\)</span> measures the level of agreement for field <span class="math inline">\(i\)</span>.</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Field</th>
-<th>Record A</th>
-<th>Record B</th>
-<th>Comparison</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>First name</td>
-<td>“Jon”</td>
-<td>“John”</td>
-<td>Partial</td>
-</tr>
-<tr class="even">
-<td>Last name</td>
-<td>“Doe”</td>
-<td>“Doe”</td>
-<td>Exact</td>
-</tr>
-<tr class="odd">
-<td>Birth year</td>
-<td>1982</td>
-<td>2010</td>
-<td>Disagree</td>
-</tr>
-</tbody>
-</table>
-</section>
-
-<section id="step-2.-model-match-probabilities" class="title-slide slide level1 center">
-<h1>Step 2. Model match probabilities</h1>
-<p>Each pair of records belongs to one of two latent groups: <span class="math inline">\(M\)</span>: the <strong>match set</strong>, <span class="math inline">\(U\)</span>: the <strong>non-match set</strong></p>
-<p><span class="math display">\[
-P(\gamma) = P(\gamma \mid M) P(M) + P(\gamma \mid U) P(U)
-\]</span></p>
-<p>where</p>
+<section id="the-em-algorithm" class="title-slide slide level1 center">
+<h1>The EM Algorithm</h1>
 <ul>
-<li><span class="math inline">\(P(\gamma \mid M)\)</span>: probability of observing agreements among <em>true matches</em><br>
-</li>
-<li><span class="math inline">\(P(\gamma \mid U)\)</span>: probability of observing agreements among <em>non-matches</em><br>
-</li>
-<li><span class="math inline">\(P(M)\)</span> and <span class="math inline">\(P(U) = 1 - P(M)\)</span>: prior probabilities of match / non-match.</li>
+<li>example</li>
+<li>bit more theoretical</li>
 </ul>
 </section>
 
-<section id="em-algorithm" class="title-slide slide level1 center">
-<h1>EM Algorithm</h1>
-<p>True match status is unobserved; use Expectation–Maximization (EM) algorithm:</p>
-<ol type="1">
-<li><p><strong>E-step:</strong><br>
-Estimate match memberships <span class="math inline">\(P(M \mid \gamma)\)</span> for each pair given current parameters.</p></li>
-<li><p><strong>M-step:</strong><br>
-Update <span class="math inline">\(m^{(i+1)} = P(\gamma \mid M), u^{(i+1)} = P(\gamma \mid U), P(M)\)</span> based on expected match memberships.</p></li>
-</ol>
-<p>Iterate until convergence.</p>
-</section>
+<section id="example-two-component-gaussian-mixture" class="title-slide slide level1 center">
+<h1>Example: Two-component Gaussian mixture</h1>
+<p>The scores we observe from pairwise comparisons of data from two sources seems to come from two (normal?) distributions:</p>
 
-<section id="step-3-posterior-probabilities-and-thresholding" class="title-slide slide level1 center">
-<h1>Step 3: Posterior Probabilities and Thresholding</h1>
-<p>Posterior match probabilities for each pair:</p>
+<img data-src="03-em_algorithm_example_and_theory_files/figure-revealjs/simulate-data-1.png" width="960" class="r-stretch"></section>
+
+<section id="model-assumption" class="title-slide slide level1 center">
+<h1>Model Assumption</h1>
+<p>We assume that the underlying model is</p>
 <p><span class="math display">\[
-P(M \mid \gamma) = \frac{P(\gamma \mid M) P(M)}{P(\gamma \mid M) P(M) + P(\gamma \mid U) P(U)}
+X_i \sim \pi\,N(\mu_1,\sigma_1^2) + (1-\pi)\,N(\mu_2,\sigma_2^2),\quad i=1,\dots,n.
 \]</span></p>
-<p>Use decision threshold to classify matches, e.g.&nbsp;any records with <span class="math inline">\(P(\gamma \mid M)\)</span> above <span class="math inline">\(T_U\)</span> are matches, any records below <span class="math inline">\(T_L\)</span> are non-matches.</p>
-<p>Quantify uncertainty: e.g.&nbsp;trigger manual review for pairs that have posterior probabilities in <span class="math inline">\([T_L, T_U]\)</span>.</p>
+<p>Here the <em>latent</em> variable is the component indicator <span class="math inline">\(Z_i\in\{1,2\}\)</span> with</p>
+<p><span class="math display">\[P(Z_i=1)=\pi,\quad P(Z_i=2)=1-\pi.\]</span></p>
+<p>Unfortunately, <span class="math inline">\(Z_i\)</span> is not observed.</p>
 </section>
 
-<section id="example-with-fastlink" class="title-slide slide level1 center">
-<h1>Example with <code>fastLink</code></h1>
-<p>The <code>fastLink</code> package output provides <strong>posterior probabilities</strong> for all record pairs.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(fastLink)</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>fl_out <span class="ot">&lt;-</span> <span class="fu">fastLink</span>(</span>
-<span id="cb1-4"><a></a>  <span class="at">dfA =</span> df_b,</span>
-<span id="cb1-5"><a></a>  <span class="at">dfB =</span> df_a,</span>
-<span id="cb1-6"><a></a>  <span class="at">varnames =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"birth_year"</span>, <span class="st">"city"</span>),</span>
-<span id="cb1-7"><a></a>  <span class="at">stringdist.match =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"city"</span>),</span>
-<span id="cb1-8"><a></a>  <span class="at">numeric.match =</span> <span class="fu">c</span>(<span class="st">"birth_year"</span>),</span>
-<span id="cb1-9"><a></a>  <span class="at">partial.match =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"city"</span>,<span class="st">"birth_year"</span>)</span>
-<span id="cb1-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-==================== 
-fastLink(): Fast Probabilistic Record Linkage
-==================== 
+<section id="model-parameters" class="title-slide slide level1 center">
+<h1>Model Parameters</h1>
+<p>A two-component model has parameters</p>
+<p><span class="math inline">\(\theta=(\pi,\mu_1,\mu_2,\sigma_1^2,\sigma_2^2)\)</span>.</p>
+<p>If the labels <span class="math inline">\(Z_i\)</span> were observed, parameter estimation would be straightforward.</p>
+<p>Since <span class="math inline">\(Z_i\)</span> is not observed, we use some heuristics to get started:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\mu_1 &lt; \mu_2\)</span> (we will assume that <span class="math inline">\(Z=1\)</span> will translate to ‘not a match’ and <span class="math inline">\(Z=2\)</span> will be ‘match’)</p></li>
+<li><p><span class="math inline">\(\pi^{(1)} = 1/2\)</span>;<br>
+<span class="math inline">\(\mu_1^{(1)}, \mu_2^{(1)}\)</span> means of lower and upper halves of scores; <span class="math inline">\(\sigma_1^{(1)}, \sigma_2^{(1)}\)</span> sds of lower and upper half</p></li>
+</ol>
+</section>
 
-If you set return.all to FALSE, you will not be able to calculate a confusion table as a summary statistic.
-Calculating matches for each variable.</code></pre>
-</div>
+<section id="initial-step" class="title-slide slide level1 center">
+<h1>Initial Step</h1>
+
+<img data-src="03-em_algorithm_example_and_theory_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+
+<section id="expectation-step" class="title-slide slide level1 center">
+<h1>Expectation Step</h1>
+<p>Based on estimate <span class="math inline">\({\hat\theta}^{(t)}\)</span>, we calculate the probabilities:</p>
+<p><span class="math display">\[
+P(Z_i=1\mid x_i,\theta^{(t)}) = \frac{\pi^{(t)}\,\phi(x_i;\mu_1^{(t)},\sigma_1^{2(t)})}{\sum_{k=1}^2 \pi_k^{(t)}\,\phi(x_i;\mu_k^{(t)},\sigma_k^{2(t)})}
+\]</span> and</p>
+<p><span class="math display">\[
+P(Z_i=2\mid x_i,\theta^{(t)}) = \frac{(1- \pi^{(t)})\,\phi(x_i;\mu_2^{(t)},\sigma_2^{2(t)})}{\sum_{k=1}^2 \pi_k^{(t)}\,\phi(x_i;\mu_k^{(t)},\sigma_k^{2(t)})}
+\]</span></p>
+</section>
+
+<section id="maximization-step" class="title-slide slide level1 center">
+<h1>Maximization step</h1>
+<p>We get updated values <span class="math inline">\({\hat\theta}^{(t+1)}\)</span> as</p>
+<p><span class="math display">\[
+\mu_k^{(t+1)} = \frac{\sum_i k \cdot P(Z_i = k \mid x_i,\theta^{(t)})}{\sum_i P(Z_i = k \mid x_i,\theta^{(t)})}
+\]</span> <span class="math display">\[
+\sigma_k^{(t+1)} = \frac{\sum_i (x_i - \mu_j^{(t)})^2 \cdot P(Z_i = k \mid x_i,\theta^{(t)})}{\sum_i P(Z_i = k \mid x_i,\theta^{(t)})}
+\]</span> <span class="math display">\[
+\pi^{(t+1)} = \frac{1}{n}\sum_i P(Z_i = 1 \mid x_i,\theta^{(t)})
+\]</span></p>
+</section>
+
+<section id="run-until-convergence" class="title-slide slide level1 center">
+<h1>Run until convergence</h1>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Getting counts for parameter estimation.
-Running the EM algorithm.
-Getting the indices of estimated matches.
-Deduping the estimated matches.
-Getting the match patterns for each estimated match.</code></pre>
+<pre><code>Initialize: 
+pi = 0.500000, mu_1 = -1.804556, mu_2 = 1.299319, sigma_1 = 2.170121, sigma_2 = 2.170121
+Iteration 1: 
+pi = 0.513579, mu_1 = -1.452977, mu_2 = 1.021019, sigma_1 = 1.508890, sigma_2 = 2.027382
+Iteration 2: 
+pi = 0.511131, mu_1 = -1.649551, mu_2 = 1.214156, sigma_1 = 1.223416, sigma_2 = 1.962810
+Iteration 3: 
+pi = 0.510756, mu_1 = -1.864417, mu_2 = 1.436274, sigma_1 = 0.898038, sigma_2 = 1.787585
+Iteration 4: 
+pi = 0.523272, mu_1 = -1.985462, mu_2 = 1.655792, sigma_1 = 0.685328, sigma_2 = 1.549351
+Iteration 5: 
+pi = 0.539953, mu_1 = -2.014110, mu_2 = 1.821443, sigma_1 = 0.636488, sigma_2 = 1.338752
+Iteration 6: 
+pi = 0.554587, mu_1 = -2.004785, mu_2 = 1.935851, sigma_1 = 0.636896, sigma_2 = 1.195700
+Iteration 7: 
+pi = 0.564860, mu_1 = -1.988832, mu_2 = 2.008172, sigma_1 = 0.646324, sigma_2 = 1.108705
+Iteration 8: 
+pi = 0.570641, mu_1 = -1.977248, mu_2 = 2.046598, sigma_1 = 0.655227, sigma_2 = 1.063504
+Iteration 9: 
+pi = 0.573534, mu_1 = -1.970567, mu_2 = 2.064913, sigma_1 = 0.661230, sigma_2 = 1.042708
+Iteration 10: 
+pi = 0.574914, mu_1 = -1.967120, mu_2 = 2.073345, sigma_1 = 0.664600, sigma_2 = 1.033444
+Iteration 11: 
+pi = 0.575559, mu_1 = -1.965440, mu_2 = 2.077213, sigma_1 = 0.666314, sigma_2 = 1.029282
+Iteration 12: 
+pi = 0.575860, mu_1 = -1.964643, mu_2 = 2.078994, sigma_1 = 0.667143, sigma_2 = 1.027388
+Iteration 13: 
+pi = 0.575999, mu_1 = -1.964270, mu_2 = 2.079815, sigma_1 = 0.667534, sigma_2 = 1.026519
+Iteration 14: 
+pi = 0.576063, mu_1 = -1.964097, mu_2 = 2.080195, sigma_1 = 0.667718, sigma_2 = 1.026118
+Iteration 15: 
+pi = 0.576093, mu_1 = -1.964016, mu_2 = 2.080371, sigma_1 = 0.667803, sigma_2 = 1.025933
+Iteration 16: 
+pi = 0.576107, mu_1 = -1.963979, mu_2 = 2.080452, sigma_1 = 0.667842, sigma_2 = 1.025848
+Iteration 17: 
+pi = 0.576114, mu_1 = -1.963962, mu_2 = 2.080490, sigma_1 = 0.667861, sigma_2 = 1.025808
+Iteration 18: 
+pi = 0.576117, mu_1 = -1.963954, mu_2 = 2.080507, sigma_1 = 0.667869, sigma_2 = 1.025790
+Iteration 19: 
+pi = 0.576118, mu_1 = -1.963950, mu_2 = 2.080516, sigma_1 = 0.667873, sigma_2 = 1.025781
+Iteration 20: 
+pi = 0.576119, mu_1 = -1.963948, mu_2 = 2.080519, sigma_1 = 0.667875, sigma_2 = 1.025777</code></pre>
 </div>
 </div>
 </section>
 
 <section id="section" class="title-slide slide level1 center">
 <h1></h1>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  id_b  first   last birth_year         city dfB.match[, names.dfB] gamma.1
-1  101    Jon  Smyth       1985       Lincon                      1       1
-2  104  Maria  Lopes       1988       Kearny                      4       2
-3  105   Will   Chen       1983      Norfolk                      5       1
-4  103    Rob  Brown       1990 Grand Island                     NA       2
-5  102  Kathy  Jones       1978        Omaha                      2       0
-6  106 Alisha Mendez       1991      Lincoln                      6       0
-  gamma.2 gamma.3 gamma.4          posterior
-1       1       2       2 1.0000000000000000
-2       1       2       2 1.0000000000000000
-3       2       2       2 1.0000000000000000
-4       2       2       2 1.0000000000000000
-5       2       2       2 0.9999999999946603
-6       2       2       2 0.9999999999946603</code></pre>
-</div>
-</div>
+<pre><code>Iteration 5: 
+pi = 0.539953, mu_1 = -2.014110, mu_2 = 1.821443, sigma_1 = 0.636488, sigma_2 = 1.338752
+Iteration 6: 
+pi = 0.554587, mu_1 = -2.004785, mu_2 = 1.935851, sigma_1 = 0.636896, sigma_2 = 1.195700
+Iteration 7: 
+pi = 0.564860, mu_1 = -1.988832, mu_2 = 2.008172, sigma_1 = 0.646324, sigma_2 = 1.108705
+Iteration 8: 
+pi = 0.570641, mu_1 = -1.977248, mu_2 = 2.046598, sigma_1 = 0.655227, sigma_2 = 1.063504
+Iteration 9: 
+pi = 0.573534, mu_1 = -1.970567, mu_2 = 2.064913, sigma_1 = 0.661230, sigma_2 = 1.042708</code></pre>
+</section>
+
+<section id="section-1" class="title-slide slide level1 center">
+<h1></h1>
+<pre><code>Iteration 10: 
+pi = 0.574914, mu_1 = -1.967120, mu_2 = 2.073345, sigma_1 = 0.664600, sigma_2 = 1.033444
+Iteration 11: 
+pi = 0.575559, mu_1 = -1.965440, mu_2 = 2.077213, sigma_1 = 0.666314, sigma_2 = 1.029282
+Iteration 12: 
+pi = 0.575860, mu_1 = -1.964643, mu_2 = 2.078994, sigma_1 = 0.667143, sigma_2 = 1.027388
+Iteration 13: 
+pi = 0.575999, mu_1 = -1.964270, mu_2 = 2.079815, sigma_1 = 0.667534, sigma_2 = 1.026519
+Iteration 14: 
+pi = 0.576063, mu_1 = -1.964097, mu_2 = 2.080195, sigma_1 = 0.667718, sigma_2 = 1.026118</code></pre>
+</section>
+
+<section id="section-2" class="title-slide slide level1 center">
+<h1></h1>
+<pre><code>Iteration 15: 
+pi = 0.576093, mu_1 = -1.964016, mu_2 = 2.080371, sigma_1 = 0.667803, sigma_2 = 1.025933
+Iteration 16: 
+pi = 0.576107, mu_1 = -1.963979, mu_2 = 2.080452, sigma_1 = 0.667842, sigma_2 = 1.025848
+Iteration 17: 
+pi = 0.576114, mu_1 = -1.963962, mu_2 = 2.080490, sigma_1 = 0.667861, sigma_2 = 1.025808
+Iteration 18: 
+pi = 0.576117, mu_1 = -1.963954, mu_2 = 2.080507, sigma_1 = 0.667869, sigma_2 = 1.025790
+Iteration 19: 
+pi = 0.576118, mu_1 = -1.963950, mu_2 = 2.080516, sigma_1 = 0.667873, sigma_2 = 1.025781
+Iteration 20: 
+pi = 0.576119, mu_1 = -1.963948, mu_2 = 2.080519, sigma_1 = 0.667875, sigma_2 = 1.025777</code></pre>
+</section>
+
+<section id="results" class="title-slide slide level1 center">
+<h1>Results</h1>
+<p><span class="math inline">\(\hat{\pi} =\)</span> 0.5761186 <br> <span class="math inline">\(\hat\mu_1 =\)</span> -1.9639484, <span class="math inline">\(\hat\mu_2 =\)</span> 2.0805192 <br> <span class="math inline">\(\hat\sigma_1 =\)</span> 0.6678748, <span class="math inline">\(\hat\sigma_2 =\)</span> 1.0257773 <br></p>
+
+<img data-src="03-em_algorithm_example_and_theory_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+
+<section id="inspect-fitted-mixture" class="title-slide slide level1 center">
+<h1>Inspect fitted mixture</h1>
+
+<img data-src="03-em_algorithm_example_and_theory_files/figure-revealjs/plot-fit-1.png" width="960" class="r-stretch"></section>
+
+<section id="statistical-foundation-of-em-algorithm" class="title-slide slide level1 center">
+<h1>Statistical Foundation of EM Algorithm</h1>
+<p>Let the observed data be <span class="math inline">\(X = (X_1,\dots,X_n)\)</span> and let the latent (missing) data be <span class="math inline">\(Z = (Z_1,\dots,Z_n)\)</span>. The complete-data log-likelihood is</p>
+<p><span class="math display">\[
+\ell_c(\theta) = \log p(X,Z\mid\theta),
+\]</span></p>
+<p>while the observed-data log-likelihood is</p>
+<p><span class="math display">\[
+\ell_o(\theta) = \log p(X\mid\theta) = \log \int p(X,Z\mid\theta)\,dZ.\]</span></p>
+<p>Direct maximization of <span class="math inline">\(\ell_o(\theta)\)</span> is often difficult.</p>
+</section>
+
+<section id="e-step-and-m-step-concept" class="title-slide slide level1 center">
+<h1>E-step and M-step (concept)</h1>
+<p>EM constructs an iterative scheme. Given current parameter value <span class="math inline">\(\theta^{(t)}\)</span>:</p>
+<ul>
+<li><p>E-step: compute the expected complete-data log-likelihood under the conditional distribution of the missing data given observed data and current parameters:</p></li>
+<li><p>M-step: choose the next iterate as maximum of this expected complete-data log-likelihood</p></li>
+</ul>
+</section>
+
+<section id="e-step-and-m-step-formula" class="title-slide slide level1 center">
+<h1>E-step and M-step (formula)</h1>
+<p>Iterate until convergence</p>
+<ul>
+<li>E-step:</li>
+</ul>
+<p><span class="math display">\[
+Q(\theta\mid\theta^{(t)}) = E_{Z\mid X,\theta^{(t)}}\left[ \ell_c(\theta) \right].
+\]</span></p>
+<ul>
+<li>M-step:</li>
+</ul>
+<p><span class="math display">\[
+\theta^{(t+1)} = \arg\max_{\theta} Q(\theta\mid\theta^{(t)}).
+\]</span></p>
+</section>
+
+<section id="why-does-em-work" class="title-slide slide level1 center">
+<h1>Why does EM work?</h1>
+<p>For any <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\theta^{(t)}\)</span>:</p>
+<p><span class="math display">\[
+\ell_o(\theta) - \ell_o(\theta^{(t)}) = \log\frac{p(X\mid\theta)}{p(X\mid\theta^{(t)})} = \log E_{Z\mid X,\theta^{(t)}}\left[ \frac{p(X,Z\mid\theta)}{p(X,Z\mid\theta^{(t)})} \right].
+\]</span></p>
+<p>Using Jensen’s inquality, <span class="math inline">\(\log E[W] \ge E[\log W]\)</span>. Rearranging yields</p>
+<p><span class="math display">\[
+\ell_o(\theta) \ge Q(\theta\mid\theta^{(t)}) - H(\theta^{(t)}),
+\]</span></p>
+<p>where <span class="math inline">\(H(\theta^{(t)}) = E_{Z\mid X,\theta^{(t)}}[\log p(Z\mid X,\theta^{(t)})]\)</span> does not depend on <span class="math inline">\(\theta\)</span>.</p>
+</section>
+
+<section id="why-does-em-work-2" class="title-slide slide level1 center">
+<h1>Why does EM work? (2)</h1>
+<p>Choosing <span class="math inline">\(\theta = \theta^{(t+1)}\)</span> that maximizes <span class="math inline">\(Q\)</span> ensures</p>
+<p><span class="math display">\[
+\ell_o(\theta^{(t+1)}) \ge \ell_o(\theta^{(t)}),
+\]</span></p>
+<p>so the observed-data log-likelihood is non-decreasing across iterations.</p>
+</section>
+
+<section id="convergence-properties-and-limitations" class="title-slide slide level1 center">
+<h1>Convergence properties and limitations</h1>
+<ul>
+<li><strong>Monotonicity</strong>: EM never decreases the observed-data log-likelihood.</li>
+<li><strong>Fixed points</strong>: Any limit point of EM is a stationary point (often a local maximum or saddle point) of the observed-data log-likelihood. EM can converge to local maxima.</li>
+<li><strong>Speed</strong>: EM can be slow near the maximum — it typically has linear convergence.</li>
+<li><strong>Identifiability</strong>: For mixture models, label switching means component labels are not identifiable — EM will converge to one labeling.</li>
+</ul>
+</section>
+
+<section id="practical-tips-and-diagnostics" class="title-slide slide level1 center">
+<h1>Practical tips and diagnostics</h1>
+<ul>
+<li>Initialize EM multiple times with different random starts to avoid poor local maxima.</li>
+<li>Monitor the observed log-likelihood; watch for plateaus.</li>
+<li>Plot fitted densities to check fit.</li>
+<li>For mixtures, consider penalized likelihoods or Bayesian approaches to handle overfitting and component proliferation.</li>
+</ul>
+</section>
+
+<section id="references" class="title-slide slide level1 center">
+<h1>References</h1>
+<ul>
+<li>Dempster, A. P., Laird, N. M., &amp; Rubin, D. B. (1977). Maximum likelihood from incomplete data via the EM algorithm. <em>Journal of the Royal Statistical Society: Series B (Methodological)</em>.</li>
+<li>McLachlan, G., &amp; Peel, D. (2000). <em>Finite Mixture Models</em>. Wiley.</li>
+<li>Bishop, C. M. (2006). <em>Pattern Recognition and Machine Learning</em> — Chapter 9 (mixture models and EM).</li>
+</ul>
 
 
 </section>

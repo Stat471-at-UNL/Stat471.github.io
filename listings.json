@@ -17,6 +17,15 @@
       "/materials-2025/01-tidy-forms-of-data/03b-yourturn-code.html",
       "/materials-2025/01-tidy-forms-of-data/04-resolution-strategy.html",
       "/materials-2025/01-tidy-forms-of-data/hwk-2-clean-weather.html",
+      "/materials-2025/02-data-cleaning/01-data-formats.html",
+      "/materials-2025/02-data-cleaning/hwk-2-clean-weather.html",
+      "/materials-2025/02-data-cleaning/01b-code.html",
+      "/materials-2025/02-data-cleaning/02-validation.html",
+      "/materials-2025/02-data-cleaning/02b-code.html",
+      "/materials-2025/02-data-cleaning/hwk-3-cleaner-weather.html",
+      "/materials-2025/02-data-cleaning/03-outliers.html",
+      "/materials-2025/02-data-cleaning/04-multivariate-outliers.html",
+      "/materials-2025/02-data-cleaning/hwk4-us-flights.html",
       "/materials-2025/03-missing-values/01-missing-values.html",
       "/materials-2025/03-missing-values/02-imputation-techniques.html",
       "/materials-2025/03-missing-values/hwk5-outliers.html",
@@ -25,7 +34,14 @@
       "/materials-2025/03-missing-values/04-mice-shift-check-mnar.html",
       "/materials-2025/04-record-linkage/01-introduction.html",
       "/materials-2025/04-record-linkage/02-em-algorithm.html",
-      "/materials-2025/04-record-linkage/hwk7-linkage.html"
+      "/materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html",
+      "/materials-2025/04-record-linkage/hwk7-linkage.html",
+      "/project/project.html",
+      "/project/01-choose-team-and-topic.html",
+      "/project/02-draft.html",
+      "/project/03-report.html",
+      "/project/04-video.html",
+      "/project/05-peer-review.html"
     ]
   }
 ]

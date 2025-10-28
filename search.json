@@ -2,28 +2,28 @@
   {
     "objectID": "project.html",
     "href": "project.html",
-    "title": "Project",
+    "title": "General Instructions",
     "section": "",
     "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
   },
   {
     "objectID": "project.html#choice-of-topic",
     "href": "project.html#choice-of-topic",
-    "title": "Project",
+    "title": "General Instructions",
     "section": "Choice of Topic",
     "text": "Choice of Topic\nCreate a file topic.qmd that includes\n\na motivation of your topic,\na description of your plan of work. Please provide as much detail as you can,\na team name and a list of all members on your team\n\nFor the submission, push the file topic.qmd to the github repository and include a submission link in Canvas."
   },
   {
     "objectID": "project.html#draft",
     "href": "project.html#draft",
-    "title": "Project",
+    "title": "General Instructions",
     "section": "Draft",
     "text": "Draft\nCreate a file draft.qmd that includes all of the items of the Choice of Topic (potentially in a different order). Change the Plan of work to an outline and fill in details. For any code chunk decide, whether you want to show the code (that should happen sparingly). Provide comments in the code about what each code chunk is supposed to do. Describe and interpret results. Include visuals (not so sparingly :))\nFor the submission, push the file draft.qmd to the github repository and include a submission link in Canvas."
   },
   {
     "objectID": "project.html#final-writeupshow",
     "href": "project.html#final-writeupshow",
-    "title": "Project",
+    "title": "General Instructions",
     "section": "Final writeup/show",
     "text": "Final writeup/show\nFor the final work, create a file index.qmd. Make sure that this file renders its output into a folder called docs.\nUse Github pages for the repo to create publicly visible website showcasing your work.\nProvide links to all of the elements you have created (such as data sets, functions, R package, video, presentation slides, …).\nFor the submission, push the index file, the docs folder and any of your creations to the repository, and include a submission link in Canvas."
   },
@@ -32,7 +32,7 @@
     "href": "index.html",
     "title": "Stat 471: Analysis of Messy Data",
     "section": "",
-    "text": "Course Materials\nDates shown are due dates (for assignments and exams) and dates on which material was presented (for slides).\n\n\n\n\n\n\nModule 0: Setting up the work environment\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nAbout Stat 471\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nR, RStudio, git\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nHomework 0 Setup A: Git and Github\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nHomework 0 Setup B: Connecting RStudio and Git\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 1: Tidy forms of data\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nWhat is “Messy Data”?\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nMake it Tidy Data!\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nNormal Forms of data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nWorking through code: data summaries\n\n\ncode\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nHomework: chi-square and large data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nNormalizing Data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nYour Turn code for normalizing data\n\n\ncode\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nResolution Strategies\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nHomework 2: Cleaning the weather\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 2: Data Cleaning\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 3: Working with Missing Values\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nOct 2, 2025\n\n\nWorking with Missing Values - Overview\n\n\nslides\n\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\nImputing Missing Values\n\n\nslides\n\n\n\n\n\n\n\n\n\nOct 9, 2025\n\n\nHomework 5: Outlier Tests\n\n\nHomework\n\n\n\n\n\n\n\n\n\nOct 14, 2025\n\n\nMAR or MNAR?\n\n\nslides\n\n\n\n\n\n\n\n\n\nOct 16, 2025\n\n\nHomework 6: Imputing Missing Values\n\n\nHomework\n\n\n\n\n\n\n\n\n\nOct 23, 2025\n\n\nSensitivity Analysis with mice\n\n\nslides\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 4: Record Linkage: joining data from different sources\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nOct 23, 2025\n\n\nDeterministic Record Linkage\n\n\nslides\n\n\n\n\n\n\n\n\n\nOct 23, 2025\n\n\nProbabilistic Record Linkage\n\n\nslides\n\n\n\n\n\n\n\n\n\nOct 30, 2025\n\n\nHomework 7: Linking Records\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 5: Working with large data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items"
+    "text": "Course Materials\nDates shown are due dates (for assignments and exams) and dates on which material was presented (for slides).\n\n\n\n\n\n\nFinal Project\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nOct 16, 2025\n\n\nGeneral Instructions\n\n\nProject\n\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\nChoose Team and Topic\n\n\nProject\n\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\nDraft\n\n\nProject\n\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\nFinal Report\n\n\nProject\n\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\nVideo - Screencast - Your Choice\n\n\nProject\n\n\n\n\n\n\n\n\n\nDec 18, 2025\n\n\nPeer Review\n\n\nProject\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 0: Setting up the work environment\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nAbout Stat 471\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nR, RStudio, git\n\n\nslides\n\n\n\n\n\n\n\n\n\nAug 28, 2025\n\n\nHomework 0 Setup A: Git and Github\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nHomework 0 Setup B: Connecting RStudio and Git\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 1: Tidy forms of data\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nWhat is “Messy Data”?\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nMake it Tidy Data!\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 2, 2025\n\n\nNormal Forms of data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nWorking through code: data summaries\n\n\ncode\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nHomework 1: Reproducibility\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nHomework: chi-square and large data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nNormalizing Data\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nYour Turn code for normalizing data\n\n\ncode\n\n\n\n\n\n\n\n\n\nSep 9, 2025\n\n\nResolution Strategies\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nHomework 2: Cleaning the weather\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 2: Data Cleaning\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nData Formats\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 11, 2025\n\n\nHomework 2: Cleaning the weather\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 16, 2025\n\n\nReviewing Normalizing for 2nd Normal Form\n\n\ncode\n\n\n\n\n\n\n\n\n\nSep 18, 2025\n\n\nData Validation\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 18, 2025\n\n\nCode for Your Turn - Data Rules\n\n\ncode\n\n\n\n\n\n\n\n\n\nSep 18, 2025\n\n\nHomework 3: Cleaning the weather … more\n\n\nHomework\n\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\nUnivariate Outliers\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\nMultivariate Outlier Detection\n\n\nslides\n\n\n\n\n\n\n\n\n\nSep 25, 2025\n\n\nHomework 4: Flights across the US\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 3: Working with Missing Values\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nOct 2, 2025\n\n\nWorking with Missing Values - Overview\n\n\nslides\n\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\nImputing Missing Values\n\n\nslides\n\n\n\n\n\n\n\n\n\nOct 9, 2025\n\n\nHomework 5: Outlier Tests\n\n\nHomework\n\n\n\n\n\n\n\n\n\nOct 14, 2025\n\n\nMAR or MNAR?\n\n\nslides\n\n\n\n\n\n\n\n\n\nOct 16, 2025\n\n\nHomework 6: Imputing Missing Values\n\n\nHomework\n\n\n\n\n\n\n\n\n\nOct 23, 2025\n\n\nSensitivity Analysis with mice\n\n\nslides\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 4: Record Linkage: joining data from different sources\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nType\n\n\n\n \n\n\n\n\n\n\n\n\nOct 23, 2025\n\n\nDeterministic Record Linkage\n\n\nslides\n\n\n\n\n\n\n\n\n\nOct 23, 2025\n\n\nProbabilistic Record Linkage\n\n\nslides\n\n\n\n\n\n\n\n\n\nOct 28, 2025\n\n\nThe EM Algorithm — Example and Theory\n\n\nslides\n\n\n\n\n\n\n\n\n\nOct 30, 2025\n\n\nHomework 7: Linking Records\n\n\nHomework\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nModule 5: Working with large data\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nDate\nTitle\nType\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "homework-repos/homework-6-imputing-nhanes/LICENSE.html",
@@ -369,5 +369,236 @@
     "title": "Homework 7: Linking Records",
     "section": "Submission",
     "text": "Submission\nMake sure that your file index.qmd includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!"
+  },
+  {
+    "objectID": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html",
+    "href": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html",
+    "title": "The EM Algorithm — Example and Theory",
+    "section": "",
+    "text": "example\nbit more theoretical"
+  },
+  {
+    "objectID": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#simulate-data",
+    "href": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#simulate-data",
+    "title": "The EM Algorithm — Example and Theory",
+    "section": "1.1 Simulate data",
+    "text": "1.1 Simulate data"
+  },
+  {
+    "objectID": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#em-algorithm-implementation-brief",
+    "href": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#em-algorithm-implementation-brief",
+    "title": "The EM Algorithm — Example and Theory",
+    "section": "1.2 EM algorithm implementation (brief)",
+    "text": "1.2 EM algorithm implementation (brief)\nWe’ll implement a simple EM for the mixture. Use responsibilities\n\\[w_{i1}^{(t)} = P(Z_i=1\\mid X_i,\\theta^{(t)}) = \\frac{\\pi^{(t)}\\,\\phi(X_i;\\mu_1^{(t)},\\sigma_1^{2(t)})}{\\sum_{k=1}^2 \\pi_k^{(t)}\\,\\phi(X_i;\\mu_k^{(t)},\\sigma_k^{2(t)})},\\]\nand then update the parameters by weighted moments (M-step)."
+  },
+  {
+    "objectID": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#inspect-responsibilities-and-fitted-mixture",
+    "href": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#inspect-responsibilities-and-fitted-mixture",
+    "title": "The EM Algorithm — Example and Theory",
+    "section": "1.3 Inspect responsibilities and fitted mixture",
+    "text": "1.3 Inspect responsibilities and fitted mixture\n\n\n\n              [,1]         [,2]\n [1,] 6.037086e-07 0.9999993963\n [2,] 2.497434e-02 0.9750256563\n [3,] 1.525814e-03 0.9984741860\n [4,] 9.998829e-01 0.0001171485\n [5,] 9.870081e-10 0.9999999990\n [6,] 5.712083e-15 1.0000000000\n [7,] 2.160946e-11 1.0000000000\n [8,] 9.159559e-01 0.0840441439\n [9,] 1.413190e-10 0.9999999999\n[10,] 9.998669e-01 0.0001331403"
+  },
+  {
+    "objectID": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#complete-vs.-observed-data-likelihood",
+    "href": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#complete-vs.-observed-data-likelihood",
+    "title": "The EM Algorithm — Example and Theory",
+    "section": "2.1 Complete vs. observed data likelihood",
+    "text": "2.1 Complete vs. observed data likelihood\nLet the observed data be \\(X = (X_1,\\dots,X_n)\\) and let the latent (missing) data be \\(Z = (Z_1,\\dots,Z_n)\\). The complete-data log-likelihood is\n\\[\n\\ell_c(\\theta) = \\log p(X,Z\\mid\\theta),\n\\]\nwhile the observed-data log-likelihood is\n\\[\n\\ell_o(\\theta) = \\log p(X\\mid\\theta) = \\log \\int p(X,Z\\mid\\theta)\\,dZ.\\]\nDirect maximization of \\(\\ell_o(\\theta)\\) is often difficult."
+  },
+  {
+    "objectID": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#the-em-algorithm-e-step-and-m-step",
+    "href": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#the-em-algorithm-e-step-and-m-step",
+    "title": "The EM Algorithm — Example and Theory",
+    "section": "2.2 The EM algorithm: E-step and M-step",
+    "text": "2.2 The EM algorithm: E-step and M-step\nEM constructs an iterative scheme. Given current parameter value \\(\\theta^{(t)}\\):\n\nE-step: compute the expected complete-data log-likelihood under the conditional distribution of the missing data given observed data and current parameters:\n\n\\[\nQ(\\theta\\mid\\theta^{(t)}) = E_{Z\\mid X,\\theta^{(t)}}\\left[ \\ell_c(\\theta) \\right].\n\\]\n\nM-step: choose the next iterate as a maximizer of this expected complete-data log-likelihood:\n\n\\[\n\\theta^{(t+1)} = \\arg\\max_{\\theta} Q(\\theta\\mid\\theta^{(t)}).\n\\]\nThis simple recipe reduces difficult marginal optimization to alternating expectation (under current parameters) and maximization (as if data were complete)."
+  },
+  {
+    "objectID": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#why-does-em-increase-the-observed-data-likelihood",
+    "href": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#why-does-em-increase-the-observed-data-likelihood",
+    "title": "The EM Algorithm — Example and Theory",
+    "section": "2.3 Why does EM increase the observed-data likelihood?",
+    "text": "2.3 Why does EM increase the observed-data likelihood?\nA short proof uses Jensen’s inequality. For any \\(\\theta\\) and \\(\\theta^{(t)}\\):\n\\[\n\\ell_o(\\theta) - \\ell_o(\\theta^{(t)}) = \\log\\frac{p(X\\mid\\theta)}{p(X\\mid\\theta^{(t)})} = \\log E_{Z\\mid X,\\theta^{(t)}}\\left[ \\frac{p(X,Z\\mid\\theta)}{p(X,Z\\mid\\theta^{(t)})} \\right].\n\\]\nBy Jensen, \\(\\log E[W] \\ge E[\\log W]\\). Rearranging yields\n\\[\n\\ell_o(\\theta) \\ge Q(\\theta\\mid\\theta^{(t)}) - H(\\theta^{(t)}),\n\\]\nwhere \\(H(\\theta^{(t)}) = E_{Z\\mid X,\\theta^{(t)}}[\\log p(Z\\mid X,\\theta^{(t)})]\\) does not depend on \\(\\theta\\). Choosing \\(\\theta = \\theta^{(t+1)}\\) that maximizes \\(Q\\) ensures\n\\[\n\\ell_o(\\theta^{(t+1)}) \\ge \\ell_o(\\theta^{(t)}),\n\\]\nso the observed-data log-likelihood is non-decreasing across iterations.\n(This is often summarized by the identity \\(\\ell_o(\\theta) = Q(\\theta\\mid\\theta^{(t)}) - R(\\theta,\\theta^{(t)})\\) where \\(R\\) is a Kullback–Leibler divergence term.)"
+  },
+  {
+    "objectID": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#em-as-coordinate-ascent-on-a-lower-bound",
+    "href": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#em-as-coordinate-ascent-on-a-lower-bound",
+    "title": "The EM Algorithm — Example and Theory",
+    "section": "2.4 EM as coordinate ascent on a lower bound",
+    "text": "2.4 EM as coordinate ascent on a lower bound\nDefine the marginal posterior of the missing data under \\(\\theta^{(t)}\\):\n\\[p(Z\\mid X,\\theta^{(t)})\\equiv w^{(t)}(Z).\n\\]\nThen by the decomposition (variational lower bound)\n\\[\n\\ell_o(\\theta) = \\mathcal{F}(w,\\theta) + KL(w \\,\\|\\, p(Z\\mid X,\\theta)),\n\\]\nwhere\n\\[\n\\mathcal{F}(w,\\theta) = E_w[\\log p(X,Z\\mid\\theta)] + H(w).\n\\]\nEM alternates between setting \\(w = p(Z\\mid X,\\theta^{(t)})\\) (maximizing \\(\\mathcal{F}\\) w.r.t. \\(w\\)) and maximizing \\(\\mathcal{F}\\) w.r.t. \\(\\theta\\). Thus EM performs coordinate ascent on the free-energy \\(\\mathcal{F}\\), guaranteeing non-decreasing \\(\\mathcal{F}\\) and hence non-decreasing observed log-likelihood."
+  },
+  {
+    "objectID": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#convergence-properties-and-caveats",
+    "href": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#convergence-properties-and-caveats",
+    "title": "The EM Algorithm — Example and Theory",
+    "section": "2.5 Convergence properties and caveats",
+    "text": "2.5 Convergence properties and caveats\n\nMonotonicity: EM never decreases the observed-data log-likelihood. That follows from the discussion above.\nFixed points: Any limit point of EM is a stationary point (often a local maximum or saddle point) of the observed-data log-likelihood. EM can converge to local maxima.\nSpeed: EM can be slow near the maximum — it typically has linear convergence; acceleration methods (Aitken, quasi-Newton, or Expectation Conditional Maximization (ECM) variants) are often used.\nIdentifiability: For mixture models, label switching means component labels are not identifiable — EM will converge to one labeling."
+  },
+  {
+    "objectID": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#em-and-missing-data",
+    "href": "materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html#em-and-missing-data",
+    "title": "The EM Algorithm — Example and Theory",
+    "section": "2.6 EM and missing data",
+    "text": "2.6 EM and missing data\nEM is not limited to mixture models — it is a general method for maximum likelihood when data are incomplete (missing values, censored data, latent variables). The E-step computes expectations of sufficient statistics under the conditional distribution of the missing data; the M-step updates parameters as if those expectations were actual sufficient statistics."
+  },
+  {
+    "objectID": "materials-2025/03-missing-values/04-mice-shift-check-mnar.html",
+    "href": "materials-2025/03-missing-values/04-mice-shift-check-mnar.html",
+    "title": "Sensitivity Analysis with mice",
+    "section": "",
+    "text": "Sensitivity Analysis: MAR vs MNAR\nIdea of \\(\\delta\\)-method: provide controlled way to simulate MNAR conditions by shifting imputed values systematically by \\(\\delta\\):\n\\[\nY_{\\text{imp, }\\delta} = Y_\\text{pmm} + \\delta\n\\] Positive \\(\\delta\\): assume that missing values correspond to systematically higher values\nNegative \\(\\delta\\): assume that missing values correspond to systematically lower values\n\n\nInvestigate Impact\n\nRun your analysis under MAR (\\(\\delta\\) = 0).\nRun analysis again under plausible MNAR scenarios (e.g., \\(\\delta = −1, −2, +1\\)).\nConclude potential MNAR concern, if key conclusions change a lot.\n\n\n\nExample\nNHANES data from NHANES package:\n\n# Load packages\nlibrary(tidyverse)\nlibrary(mice)\nlibrary(NHANES)\n\n# Only consider records for age 18 and higher:\nNHANES &lt;- NHANES |&gt; filter(Age &gt;= 18) |&gt;\n  mutate(Age = Age - 18)\n\n# Create missingness indicator \nNHANES$miss_alcdays &lt;- is.na(NHANES$AlcoholDay)\n\n\n\nSensitivity analysis under MAR vs MNAR assumptions\nImputation under MAR:\n\n\n              term    estimate   std.error statistic        df       p.value\n1     Genderfemale  3.19554944 0.093707009  34.10150 694.61930 1.641541e-150\n2       Gendermale  5.08319091 0.107545002  47.26571  51.12272  7.348620e-44\n3 Genderfemale:Age -0.03392936 0.002857205 -11.87502 203.68752  4.662454e-25\n4   Gendermale:Age -0.05730303 0.003494059 -16.40013  33.58201  1.347614e-17\n\n\n\n\n\nImputation under MNAR assumption:\nSuppose missing AlcoholDay values are 2 units higher than predicted\n\ndelta[\"AlcoholDay\"] &lt;- 2  # shift imputed values upward\n\nimp_mnar &lt;- mice(NHANES |&gt; select(AlcoholDay, Gender, SurveyYr, BMI, Age, HHIncomeMid, TotChol, Testosterone),\n                 method = method, delta = delta, seed = 123)\n\n\n\n              term    estimate   std.error statistic        df      p.value\n1     Genderfemale  3.20105771 0.103434900  30.94756 105.72607 8.193699e-55\n2       Gendermale  5.12276769 0.122753380  41.73219  23.32556 2.008934e-23\n3 Genderfemale:Age -0.03402306 0.002898567 -11.73789 302.96157 1.778550e-26\n4   Gendermale:Age -0.05793213 0.003765616 -15.38450  24.69098 3.718958e-14\n\n\n\n\nCompare Results\nlarge differences between MAR and MNAR estimates suggest sensitivity to MNAR assumption.\nprovides indirect evidence that MNAR may be present.\nIn the example: not much evidence for MNAR\n\n\n  Term Estimate_MAR Estimate_MNAR Difference Log.Rel.Diff\n1    1        3.196         3.201      0.006        0.002\n2    2        5.083         5.123      0.040        0.008\n3    3       -0.034        -0.034      0.000        0.003\n4    4       -0.057        -0.058     -0.001        0.011"
+  },
+  {
+    "objectID": "project/01-choose-team-and-topic.html",
+    "href": "project/01-choose-team-and-topic.html",
+    "title": "Choose Team and Topic",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom.\nTLDR; Create a file topic.qmd, include motivation, plan of work, team members & title"
+  },
+  {
+    "objectID": "project/01-choose-team-and-topic.html#choice-of-topic",
+    "href": "project/01-choose-team-and-topic.html#choice-of-topic",
+    "title": "Choose Team and Topic",
+    "section": "Choice of Topic",
+    "text": "Choice of Topic\nCreate a file topic.qmd that includes\n\na motivation of your topic,\na description of your plan of work. Please provide as much detail as you can,\na team name and a list of all members on your team\n\nFor the submission, push the file topic.qmd to the github repository and include a submission link in Canvas."
+  },
+  {
+    "objectID": "project/01-choose-team-and-topic.html#draft",
+    "href": "project/01-choose-team-and-topic.html#draft",
+    "title": "Choose Team and Topic",
+    "section": "Draft",
+    "text": "Draft\nCreate a file draft.qmd that includes all of the items of the Choice of Topic (potentially in a different order). Change the Plan of work to an outline and fill in details. For any code chunk decide, whether you want to show the code (that should happen sparingly). Provide comments in the code about what each code chunk is supposed to do. Describe and interpret results. Include visuals (not so sparingly :))\nFor the submission, push the file draft.qmd to the github repository and include a submission link in Canvas."
+  },
+  {
+    "objectID": "project/01-choose-team-and-topic.html#final-writeupshow",
+    "href": "project/01-choose-team-and-topic.html#final-writeupshow",
+    "title": "Choose Team and Topic",
+    "section": "Final writeup/show",
+    "text": "Final writeup/show\nFor the final work, create a file index.qmd. Make sure that this file renders its output into a folder called docs.\nUse Github pages for the repo to create publicly visible website showcasing your work.\nProvide links to all of the elements you have created (such as data sets, functions, R package, video, presentation slides, …).\nFor the submission, push the index file, the docs folder and any of your creations to the repository, and include a submission link in Canvas."
+  },
+  {
+    "objectID": "project/02-draft.html",
+    "href": "project/02-draft.html",
+    "title": "Draft",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom.\nTLDR; Create a file draft.qmd, make outline from plan of work, fill in details, include visuals"
+  },
+  {
+    "objectID": "project/02-draft.html#choice-of-topic",
+    "href": "project/02-draft.html#choice-of-topic",
+    "title": "Draft",
+    "section": "Choice of Topic",
+    "text": "Choice of Topic\nCreate a file topic.qmd that includes\n\na motivation of your topic,\na description of your plan of work. Please provide as much detail as you can,\na team name and a list of all members on your team\n\nFor the submission, push the file topic.qmd to the github repository and include a submission link in Canvas."
+  },
+  {
+    "objectID": "project/02-draft.html#draft",
+    "href": "project/02-draft.html#draft",
+    "title": "Draft",
+    "section": "Draft",
+    "text": "Draft\nCreate a file draft.qmd that includes all of the items of the Choice of Topic (potentially in a different order). Change the Plan of work to an outline and fill in details. For any code chunk decide, whether you want to show the code (that should happen sparingly). Provide comments in the code about what each code chunk is supposed to do. Describe and interpret results. Include visuals (not so sparingly :))\nFor the submission, push the file draft.qmd to the github repository and include a submission link in Canvas."
+  },
+  {
+    "objectID": "project/02-draft.html#final-writeupshow",
+    "href": "project/02-draft.html#final-writeupshow",
+    "title": "Draft",
+    "section": "Final writeup/show",
+    "text": "Final writeup/show\nFor the final work, create a file index.qmd. Make sure that this file renders its output into a folder called docs.\nUse Github pages for the repo to create publicly visible website showcasing your work.\nProvide links to all of the elements you have created (such as data sets, functions, R package, video, presentation slides, …).\nFor the submission, push the index file, the docs folder and any of your creations to the repository, and include a submission link in Canvas."
+  },
+  {
+    "objectID": "project/project.html",
+    "href": "project/project.html",
+    "title": "General Instructions",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+  },
+  {
+    "objectID": "project/project.html#choice-of-topic",
+    "href": "project/project.html#choice-of-topic",
+    "title": "General Instructions",
+    "section": "Choice of Topic",
+    "text": "Choice of Topic\nCreate a file topic.qmd that includes\n\na motivation of your topic,\na description of your plan of work. Please provide as much detail as you can,\na team name and a list of all members on your team\n\nFor the submission, push the file topic.qmd to the github repository and include a submission link in Canvas."
+  },
+  {
+    "objectID": "project/project.html#draft",
+    "href": "project/project.html#draft",
+    "title": "General Instructions",
+    "section": "Draft",
+    "text": "Draft\nCreate a file draft.qmd that includes all of the items of the Choice of Topic (potentially in a different order). Change the Plan of work to an outline and fill in details. For any code chunk decide, whether you want to show the code (that should happen sparingly). Provide comments in the code about what each code chunk is supposed to do. Describe and interpret results. Include visuals (not so sparingly :))\nFor the submission, push the file draft.qmd to the github repository and include a submission link in Canvas."
+  },
+  {
+    "objectID": "project/project.html#final-writeupshow",
+    "href": "project/project.html#final-writeupshow",
+    "title": "General Instructions",
+    "section": "Final writeup/show",
+    "text": "Final writeup/show\nFor the final work, create a file index.qmd. Make sure that this file renders its output into a folder called docs.\nUse Github pages for the repo to create publicly visible website showcasing your work.\nProvide links to all of the elements you have created (such as data sets, functions, R package, video, presentation slides, …).\nFor the submission, push the index file, the docs folder and any of your creations to the repository, and include a submission link in Canvas."
+  },
+  {
+    "objectID": "materials-2025/02-data-cleaning/hwk-2-clean-weather.html",
+    "href": "materials-2025/02-data-cleaning/hwk-2-clean-weather.html",
+    "title": "Homework 2: Cleaning the weather",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/02-data-cleaning/hwk-2-clean-weather.html#submission",
+    "href": "materials-2025/02-data-cleaning/hwk-2-clean-weather.html#submission",
+    "title": "Homework 2: Cleaning the weather",
+    "section": "Submission",
+    "text": "Submission\nMake sure that your file index.qmd includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!"
+  },
+  {
+    "objectID": "materials-2025/02-data-cleaning/hwk-3-cleaner-weather.html",
+    "href": "materials-2025/02-data-cleaning/hwk-3-cleaner-weather.html",
+    "title": "Homework 3: Cleaning the weather … more",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/02-data-cleaning/hwk-3-cleaner-weather.html#submission",
+    "href": "materials-2025/02-data-cleaning/hwk-3-cleaner-weather.html#submission",
+    "title": "Homework 3: Cleaning the weather … more",
+    "section": "Submission",
+    "text": "Submission\nMake sure that your file index.qmd includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!"
+  },
+  {
+    "objectID": "materials-2025/02-data-cleaning/hwk4-us-flights.html",
+    "href": "materials-2025/02-data-cleaning/hwk4-us-flights.html",
+    "title": "Homework 4: Flights across the US",
+    "section": "",
+    "text": "Note: This assignment must be accepted in Canvas and submitted in github classroom."
+  },
+  {
+    "objectID": "materials-2025/02-data-cleaning/hwk4-us-flights.html#prepping",
+    "href": "materials-2025/02-data-cleaning/hwk4-us-flights.html#prepping",
+    "title": "Homework 4: Flights across the US",
+    "section": "Prepping",
+    "text": "Prepping\n\nAccept the assignment in Canvas, follow the link to create a repository, and clone this repository to your local machine.\nCreate a file named index.qmd and add it to the repository. This is the file that should contain your code, results, and interpretations. Make sure to include enough detail that your work is fully reproducible."
+  },
+  {
+    "objectID": "materials-2025/02-data-cleaning/hwk4-us-flights.html#to-do-items",
+    "href": "materials-2025/02-data-cleaning/hwk4-us-flights.html#to-do-items",
+    "title": "Homework 4: Flights across the US",
+    "section": "To Do Items",
+    "text": "To Do Items\n\nImport flights for all three months into a single object flights. Report on the number of flights by months and the number of features reported for it.\nDetermine a key for the data set. Make sure to show that it fulfills the requirements of a key.\nGive three different examples of transitive dependencies in the data.\nAirport information is included for both Origin and Dest. Create a new data set called airports in which you include the information once, then remove all but the required airport information from the flights object.\nCreate a summary for the number of flights each day and plot it. Color the points by day of the week. Make sure to provide labels for the days of the week. Describe the general pattern for the number of flights you see. Which days do not follow this pattern?\nThe variable Cancelled contains information about whether a flight was cancelled. Why can we not assume that flight cancellations occur completely randomly? Identify at least two factors contributing to non-random flight cancellations and visualize your findings."
+  },
+  {
+    "objectID": "materials-2025/02-data-cleaning/hwk4-us-flights.html#submission",
+    "href": "materials-2025/02-data-cleaning/hwk4-us-flights.html#submission",
+    "title": "Homework 4: Flights across the US",
+    "section": "Submission",
+    "text": "Submission\nEnsure that the file index.qmd renders without errors. Read through the rendered document to check for consistency. Remove excessive printouts. Add all relevant(!) files to the repository, commit, and push!"
+  },
+  {
+    "objectID": "materials-2025/02-data-cleaning/01b-code.html",
+    "href": "materials-2025/02-data-cleaning/01b-code.html",
+    "title": "Reviewing Normalizing for 2nd Normal Form",
+    "section": "",
+    "text": "property &lt;- readxl::read_xlsx(\"../data/state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx\",\n                              skip=4)\n\nNew names:\n• `` -&gt; `...6`\n• `` -&gt; `...7`\n• `` -&gt; `...8`\n• `` -&gt; `...9`\n• `` -&gt; `...10`\n• `` -&gt; `...11`\n• `` -&gt; `...12`\n• `` -&gt; `...13`\n• `` -&gt; `...14`\n• `` -&gt; `...15`\n• `` -&gt; `...16`\n\nproperty_names &lt;- readxl::read_xlsx(\"../data/state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx\",\n                              skip=5)\n\nNew names:\n• `` -&gt; `...1`\n• `` -&gt; `...2`\n• `` -&gt; `...3`\n• `` -&gt; `...4`\n\n#values_only &lt;- readxl::read_xlsx(\"../data/state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx\",\n#                                    skip=6)\n\nnames(property)[-(1:4)] &lt;- names(property_names)[-(1:4)]\nnames(property)\n\n [1] \"State\"                                  \n [2] \"Number of \\r\\nParticipating\\r\\nAgencies\"\n [3] \"Population\\r\\nCovered\"                  \n [4] \"Total \\r\\nOffenses\"                     \n [5] \"Arson\"                                  \n [6] \"Bribery\"                                \n [7] \"Burglary/\\r\\nBreaking &\\r\\nEntering\"    \n [8] \"Counterfeiting/\\r\\nForgery\"             \n [9] \"Destruction/\\r\\nDamage/\\r\\nVandalism\"   \n[10] \"Embezzlement\"                           \n[11] \"Extortion/\\r\\nBlackmail\"                \n[12] \"Fraud \\r\\nOffenses\"                     \n[13] \"Larceny/\\r\\nTheft\\r\\nOffenses\"          \n[14] \"Motor\\r\\nVehicle\\r\\nTheft\"              \n[15] \"Robbery\"                                \n[16] \"Stolen \\r\\nProperty \\r\\nOffenses\"       \n\nproperty &lt;- janitor::clean_names(property)\n\n\nlibrary(rvest)\nurl &lt;- \"https://www.the-numbers.com/box-office-chart/weekend/2025/09/05\"\ndoc &lt;- read_html(url)\ntables &lt;- doc |&gt; html_table()\ntables[[2]]\n\n# A tibble: 70 × 11\n   ``    ``    `Movie Title`     Distributor Gross `%LW` Theaters TheatersChange\n   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;         \n 1 1     N     The Conjuring: L… Warner Bro… $84,… \"\"    3,802    \"\"            \n 2 2     N     Hamilton          Walt Disney $10,… \"\"    1,825    \"\"            \n 3 3     (1)   Weapons           Warner Bro… $5,2… \"-50… 3,284    \"-132\"        \n 4 4     (4)   Freakier Friday   Walt Disney $3,8… \"-43… 3,125    \"-350\"        \n 5 5     (3)   Caught Stealing   Sony Pictu… $3,1… \"-59… 3,578    \"n/c\"         \n 6 6     (6)   The Fantastic Fo… Walt Disney $2,8… \"-43… 2,385    \"-400\"        \n 7 7     (5)   The Roses         Searchligh… $2,7… \"-56… 2,700    \"n/c\"         \n 8 8     (7)   The Bad Guys 2    Universal   $2,5… \"-47… 2,602    \"-422\"        \n 9 9     N     Light of the Wor… Salvation … $2,4… \"\"    2,075    \"\"            \n10 10    (8)   Superman          Warner Bro… $972… \"-62… 1,187    \"-637\"        \n# ℹ 60 more rows\n# ℹ 3 more variables: PerTheater &lt;chr&gt;, TotalGross &lt;chr&gt;,\n#   `Weekends InRelease` &lt;chr&gt;\n\nproperty &lt;- property |&gt; dplyr::slice(-1)\n\n\nsummary(property)\n\n    state           number_of_participating_agencies population_covered \n Length:52          Min.   :    2.0                  Min.   :   450712  \n Class :character   1st Qu.:  109.5                  1st Qu.:  1678399  \n Mode  :character   Median :  233.0                  Median :  4404134  \n                    Mean   :  561.6                  Mean   : 11404923  \n                    3rd Qu.:  403.2                  3rd Qu.:  7143264  \n                    Max.   :14601.0                  Max.   :296527998  \n total_offenses       arson             bribery         \n Min.   :   8934   Length:52          Length:52         \n 1st Qu.:  34589   Class :character   Class :character  \n Median : 118888   Mode  :character   Mode  :character  \n Mean   : 316845                                        \n 3rd Qu.: 232338                                        \n Max.   :8237977                                        \n burglary_breaking_entering counterfeiting_forgery destruction_damage_vandalism\n Length:52                  Length:52              Length:52                   \n Class :character           Class :character       Class :character            \n Mode  :character           Mode  :character       Mode  :character            \n                                                                               \n                                                                               \n                                                                               \n embezzlement       extortion_blackmail fraud_offenses    \n Length:52          Length:52           Length:52         \n Class :character   Class :character    Class :character  \n Mode  :character   Mode  :character    Mode  :character  \n                                                          \n                                                          \n                                                          \n larceny_theft_offenses motor_vehicle_theft   robbery         \n Length:52              Length:52           Length:52         \n Class :character       Class :character    Class :character  \n Mode  :character       Mode  :character    Mode  :character  \n                                                              \n                                                              \n                                                              \n stolen_property_offenses\n Length:52               \n Class :character        \n Mode  :character"
+  },
+  {
+    "objectID": "materials-2025/02-data-cleaning/02b-code.html",
+    "href": "materials-2025/02-data-cleaning/02b-code.html",
+    "title": "Code for Your Turn - Data Rules",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4          ✔ readr     2.1.5     \n✔ forcats   1.0.0          ✔ stringr   1.5.1     \n✔ ggplot2   3.5.2.9002     ✔ tibble    3.3.0     \n✔ lubridate 1.9.4          ✔ tidyr     1.3.1     \n✔ purrr     1.1.0          \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(stat471)\ndata(brfss)\nsummary(brfss$HEIGHT3)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n  305.0   504.0   507.0   874.3   511.0  9999.0     297 \n\nbrfss |&gt; ggplot(aes( x= HEIGHT3)) + geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\nWarning: Removed 297 rows containing non-finite outside the scale range\n(`stat_bin()`).\n\n\n\n\n\n\n\n\nemployees &lt;- data.frame(\n  id = c(1, 2, 3, 4),\n  age = c(25, -3, 45, 200),\n  gender = c(\"M\", \"F\", \"F\", \"X\"),\n  salary = c(50000, 60000, 70000, 999999),\n  start_date = ymd(c(\"2020-01-01\", \"2021-02-01\", \"2020-03-01\", \"2020-01-15\")),\n  end_date   = ymd(c(\"2020-12-31\", \"2020-03-01\", NA, NA))\n)\n\nlibrary(testdat)\n\nLoading required package: testthat\n\nAttaching package: 'testthat'\n\nThe following object is masked from 'package:dplyr':\n\n    matches\n\nThe following object is masked from 'package:purrr':\n\n    is_null\n\nThe following objects are masked from 'package:readr':\n\n    edition_get, local_edition\n\nThe following object is masked from 'package:tidyr':\n\n    matches\n\n\nAttaching package: 'testdat'\n\nThe following object is masked from 'package:testthat':\n\n    matches\n\nset_testdata(employees)\n\nexpect_unique(id)\n\nexpect_range(age, 0, 120)\n\nError: get_testdata() has 2 records failing range check on variable `age`.\nVariable set: `age`\nFilter: None\nArguments: `min = 0, max = 120`\n\nexpect_range(salary, 0, 500000)\n\nError: get_testdata() has 1 records failing range check on variable `salary`.\nVariable set: `salary`\nFilter: None\nArguments: `min = 0, max = 5e+05`\n\nexpect_cond(is.na(end_date), start_date &lt;= end_date)\n\nError: get_testdata() failed consistency check. 2 cases have `is.na(end_date)` but not `start_date &lt;= end_date`.\n\nexpect_cond(TRUE, start_date &lt;= end_date)\n\nError: get_testdata() failed consistency check. 3 cases have `TRUE` but not `start_date &lt;= end_date`.\n\nwith_testdata(data, code, quosure = TRUE)\n\nError: object 'code' not found"
   }
 ]

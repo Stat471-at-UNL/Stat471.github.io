@@ -9,8 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-10-23">
-  <title>Stat 471 – Probabilistic Record Linkage</title>
+  <meta name="dcterms.date" content="2025-09-18">
+  <title>Stat 471 – Data Validation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,161 +193,375 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Probabilistic Record Linkage</h1>
+  <h1 class="title">Data Validation</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-10-23</p>
+  <p class="date">2025-09-18</p>
 </section>
-<section id="probabilistic-matching" class="title-slide slide level1 center">
-<h1>Probabilistic Matching</h1>
-<p>Two main issues:</p>
-<ol type="1">
-<li><p>Inconsistencies e.g., “Katherine Smith” vs.&nbsp;“K. Smith” vs “Kate Smith”</p></li>
-<li><p>Errors and missing data e.g., typos, formatting differences, or incomplete fields.</p></li>
-</ol>
-<p>Goal:</p>
-<p>For each pair of records, determine: (1) <strong>Match</strong> (same entity), (2) <strong>Do not match</strong>, or (3) <strong>uncertain</strong></p>
-</section>
-
-<section id="fellegi-and-sunter" class="title-slide slide level1 center">
-<h1>Fellegi and Sunter</h1>
-<ol type="1">
-<li>Comparison of fields</li>
-<li>Model match probabilities</li>
-<li>Use Thresholds to determine matches</li>
-</ol>
-</section>
-
-<section id="step-1.-comparison-of-fields" class="title-slide slide level1 center">
-<h1>Step 1. Comparison of fields</h1>
-<p>For each pair of records, we compare corresponding fields (e.g., name, date of birth, ZIP code) and create <strong>comparison vectors</strong>:</p>
-<p><span class="math display">\[
-\gamma = (\gamma_1, \gamma_2, ..., \gamma_k)
-\]</span></p>
-<p>Each <span class="math inline">\(\gamma_i\)</span> measures the level of agreement for field <span class="math inline">\(i\)</span>.</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Field</th>
-<th>Record A</th>
-<th>Record B</th>
-<th>Comparison</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>First name</td>
-<td>“Jon”</td>
-<td>“John”</td>
-<td>Partial</td>
-</tr>
-<tr class="even">
-<td>Last name</td>
-<td>“Doe”</td>
-<td>“Doe”</td>
-<td>Exact</td>
-</tr>
-<tr class="odd">
-<td>Birth year</td>
-<td>1982</td>
-<td>2010</td>
-<td>Disagree</td>
-</tr>
-</tbody>
-</table>
-</section>
-
-<section id="step-2.-model-match-probabilities" class="title-slide slide level1 center">
-<h1>Step 2. Model match probabilities</h1>
-<p>Each pair of records belongs to one of two latent groups: <span class="math inline">\(M\)</span>: the <strong>match set</strong>, <span class="math inline">\(U\)</span>: the <strong>non-match set</strong></p>
-<p><span class="math display">\[
-P(\gamma) = P(\gamma \mid M) P(M) + P(\gamma \mid U) P(U)
-\]</span></p>
-<p>where</p>
+<section id="data-validation-work-flow" class="title-slide slide level1 center">
+<h1>Data validation work flow</h1>
+<p>Algorithmic approach to document and ensure consistency in checks of:</p>
 <ul>
-<li><span class="math inline">\(P(\gamma \mid M)\)</span>: probability of observing agreements among <em>true matches</em><br>
-</li>
-<li><span class="math inline">\(P(\gamma \mid U)\)</span>: probability of observing agreements among <em>non-matches</em><br>
-</li>
-<li><span class="math inline">\(P(M)\)</span> and <span class="math inline">\(P(U) = 1 - P(M)\)</span>: prior probabilities of match / non-match.</li>
+<li><p>data structure (keys)</p></li>
+<li><p>data types (and units)</p></li>
+<li><p><em>data ranges</em></p></li>
+<li><p>missing values (later)</p></li>
 </ul>
 </section>
 
-<section id="em-algorithm" class="title-slide slide level1 center">
-<h1>EM Algorithm</h1>
-<p>True match status is unobserved; use Expectation–Maximization (EM) algorithm:</p>
-<ol type="1">
-<li><p><strong>E-step:</strong><br>
-Estimate match memberships <span class="math inline">\(P(M \mid \gamma)\)</span> for each pair given current parameters.</p></li>
-<li><p><strong>M-step:</strong><br>
-Update <span class="math inline">\(m^{(i+1)} = P(\gamma \mid M), u^{(i+1)} = P(\gamma \mid U), P(M)\)</span> based on expected match memberships.</p></li>
-</ol>
-<p>Iterate until convergence.</p>
+<section id="checking-data-ranges" class="title-slide slide level1 center">
+<h1>Checking Data Ranges</h1>
+<ul>
+<li><p>Domain specific constraints</p>
+<ul>
+<li><strong>Hard limits</strong>: Age 0-150, latitude -90°/+90°, percentage 0-100%</li>
+<li><strong>Temporal bounds</strong>: Future dates for birth dates, historical limits</li>
+<li><strong>Check against codebook</strong></li>
+</ul></li>
+<li><p>Dynamic Range Setting</p>
+<ul>
+<li><strong>Rolling windows</strong>: ranges from recent historical data</li>
+<li><strong>Seasonal adjustment</strong>: Monthly/quarterly range recalibration</li>
+<li><strong>Cohort-based</strong>: Age-specific ranges</li>
+</ul></li>
+</ul>
 </section>
 
-<section id="step-3-posterior-probabilities-and-thresholding" class="title-slide slide level1 center">
-<h1>Step 3: Posterior Probabilities and Thresholding</h1>
-<p>Posterior match probabilities for each pair:</p>
-<p><span class="math display">\[
-P(M \mid \gamma) = \frac{P(\gamma \mid M) P(M)}{P(\gamma \mid M) P(M) + P(\gamma \mid U) P(U)}
-\]</span></p>
-<p>Use decision threshold to classify matches, e.g.&nbsp;any records with <span class="math inline">\(P(\gamma \mid M)\)</span> above <span class="math inline">\(T_U\)</span> are matches, any records below <span class="math inline">\(T_L\)</span> are non-matches.</p>
-<p>Quantify uncertainty: e.g.&nbsp;trigger manual review for pairs that have posterior probabilities in <span class="math inline">\([T_L, T_U]\)</span>.</p>
+<section id="checking-variable-content-2" class="title-slide slide level1 center">
+<h1>Checking Variable Content (2)</h1>
+<ul>
+<li><p>Statistical Methods</p>
+<ul>
+<li>e.g.&nbsp;tests for normality, flag large deviations from mean</li>
+<li>more robust: flag large deviations from the median</li>
+<li>flag most extreme values (e.g.&nbsp;top 1%, …)</li>
+</ul></li>
+<li><p>Multivariate approach</p>
+<ul>
+<li><strong>Conditional/Contextual ranges</strong>: Temperature by geographic region/season; Income ranges by education/location</li>
+<li><strong>Cross-field checks</strong>: BMI vs.&nbsp;height/weight consistency (checking transitive dependencies)</li>
+<li><strong>Ratio validation</strong>: Debt-to-income plausibility</li>
+</ul></li>
+</ul>
 </section>
 
-<section id="example-with-fastlink" class="title-slide slide level1 center">
-<h1>Example with <code>fastLink</code></h1>
-<p>The <code>fastLink</code> package output provides <strong>posterior probabilities</strong> for all record pairs.</p>
+<section id="example-brfss" class="title-slide slide level1 center">
+<h1>Example: BRFSS</h1>
+<p>Install (mini package) <code>stat471</code> from github to access the <code>brfss</code> data set:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(fastLink)</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>fl_out <span class="ot">&lt;-</span> <span class="fu">fastLink</span>(</span>
-<span id="cb1-4"><a></a>  <span class="at">dfA =</span> df_b,</span>
-<span id="cb1-5"><a></a>  <span class="at">dfB =</span> df_a,</span>
-<span id="cb1-6"><a></a>  <span class="at">varnames =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"birth_year"</span>, <span class="st">"city"</span>),</span>
-<span id="cb1-7"><a></a>  <span class="at">stringdist.match =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"city"</span>),</span>
-<span id="cb1-8"><a></a>  <span class="at">numeric.match =</span> <span class="fu">c</span>(<span class="st">"birth_year"</span>),</span>
-<span id="cb1-9"><a></a>  <span class="at">partial.match =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"city"</span>,<span class="st">"birth_year"</span>)</span>
-<span id="cb1-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-==================== 
-fastLink(): Fast Probabilistic Record Linkage
-==================== 
-
-If you set return.all to FALSE, you will not be able to calculate a confusion table as a summary statistic.
-Calculating matches for each variable.</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># remotes::install_github("heike/stat471")</span></span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(stat471)</span>
+<span id="cb1-3"><a></a><span class="fu">data</span>(brfss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Consider variable <code>HEIGHT3</code> - what would we expect for its values?</p>
+</section>
+
+<section id="example-brfss-height3" class="title-slide slide level1 center">
+<h1>Example: BRFSS (<code>HEIGHT3</code>)</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">summary</span>(brfss<span class="sc">$</span>HEIGHT3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Getting counts for parameter estimation.
-Running the EM algorithm.
-Getting the indices of estimated matches.
-Deduping the estimated matches.
-Getting the match patterns for each estimated match.</code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  305.0   504.0   507.0   874.3   511.0  9999.0     297 </code></pre>
+</div>
+</div>
+<p>The average height of Nebraskans is 874.3???</p>
+<blockquote>
+<p>What would be a plausible height range?</p>
+</blockquote>
+</section>
+
+<section id="example-brfss-height3-1" class="title-slide slide level1 center">
+<h1>Example: BRFSS (<code>HEIGHT3</code>)</h1>
+<p>Problem is mix of (1) <em>unsuitable format</em> (ft/in &lt;-&gt; integer), (2) focus on <em>data collection by phone</em> (9 indicates metric height measurement), and (3) (government) <em>encoding conventions</em> (7777/9999 encode don’t know/missing)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>brfss <span class="sc">|&gt;</span> <span class="fu">count</span>(HEIGHT3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 85 × 2
+   HEIGHT3     n
+     &lt;dbl&gt; &lt;int&gt;
+ 1     305     2
+ 2     400     1
+ 3     403     1
+ 4     405     7
+ 5     407     4
+ 6     408     7
+ 7     409    19
+ 8     410    46
+ 9     411    85
+10     500   335
+# ℹ 75 more rows</code></pre>
 </div>
 </div>
 </section>
 
-<section id="section" class="title-slide slide level1 center">
-<h1></h1>
+<section id="setting-ground-rules" class="title-slide slide level1 center">
+<h1>Setting ground rules</h1>
+<p>Idea:</p>
+<ul>
+<li>write checks in form of <code>TRUE</code>/<code>FALSE</code> test statements with <code>FALSE</code> indicating non-compliant data</li>
+</ul>
+<p>Implementation:</p>
+<ul>
+<li><p>could write data checker from scratch, e.g.&nbsp;<a href="../code/data-check.R">data-check.R</a></p></li>
+<li><p>better: use existing package (e.g.&nbsp;<code>testthat</code>, <code>testdat</code>)</p></li>
+</ul>
+</section>
+
+<section id="example-for-data-checking" class="title-slide slide level1 center">
+<h1>Example for Data Checking</h1>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">source</span>(<span class="st">"../code/data-check.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>employees <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-2"><a></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>),</span>
+<span id="cb7-3"><a></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">45</span>, <span class="dv">200</span>),</span>
+<span id="cb7-4"><a></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>, <span class="st">"X"</span>),</span>
+<span id="cb7-5"><a></a>  <span class="at">salary =</span> <span class="fu">c</span>(<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">70000</span>, <span class="dv">999999</span>),</span>
+<span id="cb7-6"><a></a>  <span class="at">start_date =</span> <span class="fu">ymd</span>(<span class="fu">c</span>(<span class="st">"2020-01-01"</span>, <span class="st">"2021-02-01"</span>, <span class="st">"2020-03-01"</span>, <span class="st">"2020-01-15"</span>)),</span>
+<span id="cb7-7"><a></a>  <span class="at">end_date   =</span> <span class="fu">ymd</span>(<span class="fu">c</span>(<span class="st">"2020-12-31"</span>, <span class="st">"2020-03-01"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span>
+<span id="cb7-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="define-some-rules" class="title-slide slide level1 center">
+<h1>Define (some) rules</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>numeric_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb8-2"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"age"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">120</span>),</span>
+<span id="cb8-3"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"salary"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">500000</span>)</span>
+<span id="cb8-4"><a></a>)</span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a>logic_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb8-7"><a></a>  <span class="st">"start_date &lt;= end_date"</span></span>
+<span id="cb8-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="run-checker" class="title-slide slide level1 center">
+<h1>Run checker</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">check_data</span>(employees, <span class="at">id_var =</span> <span class="st">"id"</span>, <span class="at">numeric_rules =</span> numeric_rules, <span class="at">logic_rules =</span> logic_rules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id_b  first   last birth_year         city dfB.match[, names.dfB] gamma.1
-1  101    Jon  Smyth       1985       Lincon                      1       1
-2  104  Maria  Lopes       1988       Kearny                      4       2
-3  105   Will   Chen       1983      Norfolk                      5       1
-4  103    Rob  Brown       1990 Grand Island                     NA       2
-5  102  Kathy  Jones       1978        Omaha                      2       0
-6  106 Alisha Mendez       1991      Lincoln                      6       0
-  gamma.2 gamma.3 gamma.4          posterior
-1       1       2       2 1.0000000000000000
-2       1       2       2 1.0000000000000000
-3       2       2       2 1.0000000000000000
-4       2       2       2 1.0000000000000000
-5       2       2       2 0.9999999999946603
-6       2       2       2 0.9999999999946603</code></pre>
+<pre><code>==== Structure ====
+'data.frame':   4 obs. of  6 variables:
+ $ id        : num  1 2 2 4
+ $ age       : num  25 -3 45 200
+ $ gender    : chr  "M" "F" "F" "X"
+ $ salary    : num  5e+04 6e+04 7e+04 1e+06
+ $ start_date: Date, format: "2020-01-01" "2021-02-01" ...
+ $ end_date  : Date, format: "2020-12-31" "2020-03-01" ...
+NULL
+
+==== Variable Types ====
+         id         age      gender      salary  start_date    end_date 
+  "numeric"   "numeric" "character"   "numeric"      "Date"      "Date" 
+
+==== Missing Values ====
+        id        age     gender     salary start_date   end_date 
+         0          0          0          0          0          2 
+
+==== Summary Statistics ====
+── Data Summary ────────────────────────
+                           Values
+Name                       df    
+Number of rows             4     
+Number of columns          6     
+_______________________          
+Column type frequency:           
+  character                1     
+  Date                     2     
+  numeric                  3     
+________________________         
+Group variables            None  
+
+── Variable type: character ────────────────────────────────────────────────────
+  skim_variable n_missing complete_rate min max empty n_unique whitespace
+1 gender                0             1   1   1     0        3          0
+
+── Variable type: Date ─────────────────────────────────────────────────────────
+  skim_variable n_missing complete_rate min        max        median    
+1 start_date            0           1   2020-01-01 2021-02-01 2020-02-07
+2 end_date              2           0.5 2020-03-01 2020-12-31 2020-07-31
+  n_unique
+1        4
+2        2
+
+── Variable type: numeric ──────────────────────────────────────────────────────
+  skim_variable n_missing complete_rate      mean        sd    p0      p25   p50
+1 id                    0             1      2.25      1.26     1     1.75     2
+2 age                   0             1     66.8      91.0     -3    18       35
+3 salary                0             1 295000.   470070.   50000 57500    65000
+       p75   p100 hist 
+1      2.5      4 ▃▇▁▁▃
+2     83.8    200 ▇▃▁▁▃
+3 302500.  999999 ▇▁▁▁▂
+
+==== Uniqueness Check ====
+WARNING: Duplicate IDs found!
+
+==== Frequency Tables (Categoricals) ====
+
+Variable: gender
+ df[[v]] n percent
+       F 2    0.50
+       M 1    0.25
+       X 1    0.25
+
+==== Outlier Detection (Numeric Variables) ====
+
+==== Numeric Rules Check ====
+Checking rule: age in [0, 120]
+  -&gt; Found 2 violations.
+Checking rule: salary in [0, 5e+05]
+  -&gt; Found 1 violations.
+
+==== Logical Rules Check ====
+Rule failed: start_date &lt;= end_date (1 cases)
+
+==== Done. ====</code></pre>
+</div>
+</div>
+</section>
+
+<section id="making-rules" class="title-slide slide level1 center">
+<h1>Making rules</h1>
+<p>Based on <code>testthat</code> package (for package development)</p>
+<p>Rules have the form <code>expect_XXX</code> where XXX specifies the expectation, e.g:</p>
+<pre><code>expect_equal(object, expected, tolerance)</code></pre>
+<p>More info on <code>testthat</code>: https://testthat.r-lib.org/</p>
+</section>
+
+<section id="the-testdat-package" class="title-slide slide level1 center">
+<h1>The <code>testdat</code> package</h1>
+<p>Set a test dataset with <code>set_testdata</code> or use <code>with_testdata()</code> environment</p>
+<p>Additionally defined expectations:</p>
+<ul>
+<li><p><code>expect_unique(vars)</code> fails if a (set of) variable(s) is not a key</p></li>
+<li><p><code>expect_range(vars, min, max,)</code> fails if values of <code>vars</code> are outside the specified range (use <code>-Inf</code> and <code>Inf</code> for no restrictions)</p></li>
+<li><p>conditional expectations, proportion expectations, …</p></li>
+</ul>
+</section>
+
+<section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<p>Make use of the <code>testdat</code> functionality specified on the <a href="https://socialresearchcentre.github.io/testdat/reference/index.html">testdat website</a> to recreate the previously set expectations for the <code>employees</code> data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>numeric_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb12-2"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"age"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">120</span>),</span>
+<span id="cb12-3"><a></a>  <span class="fu">list</span>(<span class="at">var =</span> <span class="st">"salary"</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">500000</span>)</span>
+<span id="cb12-4"><a></a>)</span>
+<span id="cb12-5"><a></a></span>
+<span id="cb12-6"><a></a>logic_rules <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb12-7"><a></a>  <span class="st">"start_date &lt;= end_date"</span></span>
+<span id="cb12-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="run-the-checks" class="title-slide slide level1 center">
+<h1>Run the checks</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(testdat)</span>
+<span id="cb13-2"><a></a><span class="fu">set_testdata</span>(employees)</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a><span class="fu">expect_range</span>(age, <span class="dv">0</span>, <span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: get_testdata() has 2 records failing range check on variable `age`.
+Variable set: `age`
+Filter: None
+Arguments: `min = 0, max = 120`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">expect_range</span>(salary, <span class="dv">0</span>, <span class="dv">500000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: get_testdata() has 1 records failing range check on variable `salary`.
+Variable set: `salary`
+Filter: None
+Arguments: `min = 0, max = 5e+05`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">expect_cond</span>(<span class="sc">!</span><span class="fu">is.na</span>(end_date), end_date <span class="sc">&gt;</span> start_date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: get_testdata() failed consistency check. 1 cases have `!is.na(end_date)` but not `end_date &gt; start_date`.</code></pre>
+</div>
+</div>
+</section>
+
+<section id="good-practice" class="title-slide slide level1 center">
+<h1>Good Practice</h1>
+<p>Group sets of expectations based on functionality and give names</p>
+<p>e.g.&nbsp;“check for key”, “check for hard constraints”, “check for plausible data ranges”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">set_testdata</span>(employees)</span>
+<span id="cb19-2"><a></a><span class="fu">test_that</span>(<span class="st">"check for hard constraints"</span>, {</span>
+<span id="cb19-3"><a></a>  <span class="co"># both age and salary are non-negative values</span></span>
+<span id="cb19-4"><a></a>  <span class="fu">expect_range</span>(age, <span class="dv">0</span>, <span class="cn">Inf</span>) </span>
+<span id="cb19-5"><a></a>  <span class="fu">expect_range</span>(salary, <span class="dv">0</span>, <span class="cn">Inf</span>)</span>
+<span id="cb19-6"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>── Failure: check for hard constraints ─────────────────────────────────────────
+get_testdata() has 1 records failing range check on variable `age`.
+Variable set: `age`
+Filter: None
+Arguments: `min = 0, max = Inf`</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! Test failed</code></pre>
+</div>
+</div>
+</section>
+
+<section id="example-brfss-htin4" class="title-slide slide level1 center">
+<h1>Example: BRFSS (<code>HTIN4</code>)</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">summary</span>(brfss<span class="sc">$</span>HTIN4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  41.00   64.00   67.00   67.34   70.00   85.00     818 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">library</span>(testdat)</span>
+<span id="cb24-2"><a></a><span class="fu">with_testdata</span>(brfss, {</span>
+<span id="cb24-3"><a></a>  <span class="fu">test_that</span>(<span class="st">"check for key"</span>, {</span>
+<span id="cb24-4"><a></a>    <span class="fu">expect_unique</span>(SEQNO)</span>
+<span id="cb24-5"><a></a>  })</span>
+<span id="cb24-6"><a></a>  </span>
+<span id="cb24-7"><a></a>  <span class="fu">test_that</span>(<span class="st">"hard height constraints"</span>, {</span>
+<span id="cb24-8"><a></a>    <span class="fu">expect_range</span>(HTIN4, <span class="dv">0</span>, <span class="cn">Inf</span>)</span>
+<span id="cb24-9"><a></a>  })</span>
+<span id="cb24-10"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test passed 😀
+Test passed 🥇</code></pre>
+</div>
+</div>
+</section>
+
+<section id="test-fails" class="title-slide slide level1 center">
+<h1>Test fails</h1>
+<blockquote>
+<p>How should we determine plausible values?</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">library</span>(testdat)</span>
+<span id="cb26-2"><a></a><span class="fu">with_testdata</span>(brfss, {</span>
+<span id="cb26-3"><a></a>  <span class="fu">test_that</span>(<span class="st">"plausible height ranges"</span>, {</span>
+<span id="cb26-4"><a></a>    <span class="fu">expect_range</span>(HTIN4, <span class="dv">50</span>, <span class="dv">100</span>)</span>
+<span id="cb26-5"><a></a>  })</span>
+<span id="cb26-6"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>── Failure: plausible height ranges ────────────────────────────────────────────
+get_testdata() has 3 records failing range check on variable `HTIN4`.
+Variable set: `HTIN4`
+Filter: None
+Arguments: `min = 50, max = 100`</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! Test failed</code></pre>
 </div>
 </div>
 

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-09-18">
 
-<title>General Instructions – Stat 471</title>
+<title>Homework 3: Cleaning the weather … more – Stat 471</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -79,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Stat 471</span>
     </a>
   </div>
@@ -90,15 +91,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./project.html" aria-current="page"> 
+    <a class="nav-link" href="../../project.html"> 
 <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
@@ -121,11 +122,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#final-project" id="toc-final-project" class="nav-link active" data-scroll-target="#final-project">Final Project</a>
+  <li><a href="#cleaning-the-weather-forecast-more" id="toc-cleaning-the-weather-forecast-more" class="nav-link active" data-scroll-target="#cleaning-the-weather-forecast-more">Cleaning the Weather Forecast … more</a></li>
+  <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo">TODO</a>
   <ul class="collapse">
-  <li><a href="#choice-of-topic" id="toc-choice-of-topic" class="nav-link" data-scroll-target="#choice-of-topic">Choice of Topic</a></li>
-  <li><a href="#draft" id="toc-draft" class="nav-link" data-scroll-target="#draft">Draft</a></li>
-  <li><a href="#final-writeupshow" id="toc-final-writeupshow" class="nav-link" data-scroll-target="#final-writeupshow">Final writeup/show</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -135,14 +135,24 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">General Instructions</h1>
-</div>
+<h1 class="title">Homework 3: Cleaning the weather … more</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">HW</div>
+    <div class="quarto-category">Week03</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 18, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -153,44 +163,63 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Note: This assignment must be accepted in Canvas and submitted in github classroom.</p>
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-<section id="final-project" class="level1">
-<h1>Final Project</h1>
-<p>The general premise of the final project for this class is that is supposed to showcase some aspects of the techniques we discussed.</p>
-<p>Given the far-reaching extent of what can be considered ‘messy data analysis’, you could focus on any one of these aspects. Examples of potential routes your project could cover are:</p>
-<ol type="1">
-<li><p><strong>Create a tidy dataset</strong> from one or more (messy) sources. Document (a) the provenance of the data, (b) the tidying process, (c) the tidy data, and (d) make the data available, and (e) document a good use case.</p></li>
-<li><p><strong>Solve a problem</strong> by starting with a motivating question. Document (a) data sources suitable for answering the question, (b) the data collection process, (c) the tidying process, (d) the suitability of the analysis, and (e) make your analytic writeup available together with the documentation necessary for reproducing the results.</p></li>
-<li><p><strong>Assess an analytic tool</strong> using a simulation. Document (a) the theoretical basis, (b) the (tidy) simulation setup under various scenarios, (c) an in-depth analysis of the results. (d) Discuss potential alternatives and limitations, and (e) make your writeup available together with code and documentation for reproducing the results.</p></li>
-</ol>
-<p>As an individual or in a team pick a topic and</p>
-<ol type="1">
-<li>work on a topic of your choice</li>
-<li>publish your analysis and findings</li>
-<li>create a video highlighting your work</li>
-</ol>
-<p>There are multiple submission stages for the project:</p>
-<section id="choice-of-topic" class="level2">
-<h2 class="anchored" data-anchor-id="choice-of-topic">Choice of Topic</h2>
-<p>Create a file <code>topic.qmd</code> that includes</p>
-<ol type="1">
-<li>a motivation of your topic,</li>
-<li>a description of your plan of work. Please provide as much detail as you can,</li>
-<li>a team name and a list of all members on your team</li>
-</ol>
-<p>For the submission, push the file <code>topic.qmd</code> to the github repository and include a submission link in Canvas.</p>
+<section id="cleaning-the-weather-forecast-more" class="level1">
+<h1>Cleaning the Weather Forecast … more</h1>
+<p>The National Weather Service provides an hour-by-hour forecast for the next seven days at the website <code>forecast.weather.gov</code>.</p>
+<p>The file <code>scraper.R</code> contains the function <code>get_forecast_wide</code> which downloads hourly forecast for the specified location, and converts the xml format into an R data frame.</p>
+<pre><code>source("scraper.R", verbose=F)
+
+head(get_forecast_wide)
+
+##                                                                                                      
+## 1 function (latitude, longitude)                                                                     
+## 2 {                                                                                                  
+## 3     url &lt;- sprintf("https://forecast.weather.gov/MapClick.php?lat=%f&amp;lon=%f&amp;FcstType=digitalDWML", 
+## 4         latitude, longitude)                                                                       
+## 5     xml_data &lt;- read_xml(url)                                                                      
+## 6     write_xml(xml_data, file = "download.xml")</code></pre>
+<p>The <code>get_forecast_wide</code> function can be used to get data for Lincoln, NE or Ames, IA as shown below. Note that this code chunk is set to not automatically evaluate <code>eval = FALSE</code>, since we do not want to download new data every single time we render the current document. Instead, the results are saved in <code>rds</code> format and loaded in the next code chunk.</p>
+<pre><code>lincoln &lt;- get_forecast_wide(40.8164, -96.6882)
+
+saveRDS(lincoln, "lincoln.rds")
+
+ames &lt;- get_forecast_wide(42.04, -93.68)
+saveRDS(ames, "ames.rds")</code></pre>
+<p>Load previously saved data for Lincoln:</p>
+<pre><code>lincoln &lt;- readRDS("lincoln.rds")
+head(lincoln)
+
+## # A tibble: 6 × 15
+##   times         temperature_hourly temperature_dew poin…¹ temperature_heat ind…²
+##   &lt;chr&gt;         &lt;chr&gt;              &lt;chr&gt;                  &lt;chr&gt;                 
+## 1 2025-09-10T2… 71                 65                     ""                    
+## 2 2025-09-11T0… 69                 64                     ""                    
+## 3 2025-09-11T0… 67                 64                     ""                    
+## 4 2025-09-11T0… 67                 63                     ""                    
+## 5 2025-09-11T0… 66                 63                     ""                    
+## 6 2025-09-11T0… 65                 62                     ""                    
+## # ℹ abbreviated names: ¹​`temperature_dew point`, ²​`temperature_heat index`
+## # ℹ 11 more variables: `probability-of-precipitation_floating` &lt;chr&gt;,
+## #   `wind-speed_sustained` &lt;chr&gt;, `wind-speed_gust` &lt;chr&gt;,
+## #   direction_wind &lt;chr&gt;, `cloud-amount_total` &lt;chr&gt;, humidity_relative &lt;chr&gt;,
+## #   `hourly-qpf_floating` &lt;chr&gt;, latitude &lt;chr&gt;, longitude &lt;chr&gt;,
+## #   conditions &lt;chr&gt;, source &lt;chr&gt;</code></pre>
 </section>
-<section id="draft" class="level2">
-<h2 class="anchored" data-anchor-id="draft">Draft</h2>
-<p>Create a file <code>draft.qmd</code> that includes all of the items of the Choice of Topic (potentially in a different order). Change the Plan of work to an outline and fill in details. For any code chunk decide, whether you want to show the code (that should happen sparingly). Provide comments in the code about what each code chunk is supposed to do. Describe and interpret results. Include visuals (not so sparingly :))</p>
-<p>For the submission, push the file <code>draft.qmd</code> to the github repository and include a submission link in Canvas.</p>
-</section>
-<section id="final-writeupshow" class="level2">
-<h2 class="anchored" data-anchor-id="final-writeupshow">Final writeup/show</h2>
-<p>For the final work, create a file <code>index.qmd</code>. Make sure that this file renders its output into a folder called <code>docs</code>.</p>
-<p>Use Github pages for the repo to create publicly visible website showcasing your work.</p>
-<p>Provide links to all of the elements you have created (such as data sets, functions, R package, video, presentation slides, …).</p>
-<p>For the submission, push the index file, the docs folder and any of your creations to the repository, and include a submission link in Canvas.</p>
+<section id="todo" class="level1">
+<h1>TODO</h1>
+<p>Your job is to ensure correct data formats and write rules for checking data.</p>
+<ol type="1">
+<li><p>Create a Quarto document called <code>index.qmd</code>, add it to the repository and include all of your answers and code in that file. Make sure to structure it such that it is obvious, which question you are addressing in which section of the file.</p></li>
+<li><p>For a place of your choice in the US use the function <code>get_forecast_wide</code> to get the 7-day forecast for that location. Save the data you scraped in an <code>rds</code> file and add the file to the homework repo.</p></li>
+<li><p>Use functionality from the <code>testdat</code> package to show that the variables <code>latitude, longitude,</code> and <code>times</code> are a key for the data set.</p></li>
+<li><p>The function <code>get_forecast_wide</code> returns character variables only. Change the type of each variable to the most appropriate format to analyse the data. In case of ambiguity, the variable names contain the unit in brackets.</p></li>
+<li><p>Write a set of at least three <em>different</em> checks of hard constraints on ranges (checking that percentages are between 0 and 100 counts for one check, regardless of how many of the variables are reported in percentages).</p></li>
+<li><p>Write a set of at least three different checks of plausible constraints on ranges.</p></li>
+<li><p>Explore some of the relationships and create one conditional check involving at least two variables.</p></li>
+</ol>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>Make sure that your file <code>index.qmd</code> includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!</p>
 
 
 </section>

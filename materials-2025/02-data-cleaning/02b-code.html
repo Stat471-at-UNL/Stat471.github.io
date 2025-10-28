@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-09-18">
 
-<title>General Instructions – Stat 471</title>
+<title>Code for Your Turn - Data Rules – Stat 471</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +21,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -79,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Stat 471</span>
     </a>
   </div>
@@ -90,15 +126,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./project.html" aria-current="page"> 
+    <a class="nav-link" href="../../project.html"> 
 <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
@@ -116,33 +152,32 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#final-project" id="toc-final-project" class="nav-link active" data-scroll-target="#final-project">Final Project</a>
-  <ul class="collapse">
-  <li><a href="#choice-of-topic" id="toc-choice-of-topic" class="nav-link" data-scroll-target="#choice-of-topic">Choice of Topic</a></li>
-  <li><a href="#draft" id="toc-draft" class="nav-link" data-scroll-target="#draft">Draft</a></li>
-  <li><a href="#final-writeupshow" id="toc-final-writeupshow" class="nav-link" data-scroll-target="#final-writeupshow">Final writeup/show</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">General Instructions</h1>
-</div>
+<h1 class="title">Code for Your Turn - Data Rules</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Code</div>
+    <div class="quarto-category">Week03</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 18, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -152,49 +187,113 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Note: This assignment must be accepted in Canvas and submitted in github classroom.</p>
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-<section id="final-project" class="level1">
-<h1>Final Project</h1>
-<p>The general premise of the final project for this class is that is supposed to showcase some aspects of the techniques we discussed.</p>
-<p>Given the far-reaching extent of what can be considered ‘messy data analysis’, you could focus on any one of these aspects. Examples of potential routes your project could cover are:</p>
-<ol type="1">
-<li><p><strong>Create a tidy dataset</strong> from one or more (messy) sources. Document (a) the provenance of the data, (b) the tidying process, (c) the tidy data, and (d) make the data available, and (e) document a good use case.</p></li>
-<li><p><strong>Solve a problem</strong> by starting with a motivating question. Document (a) data sources suitable for answering the question, (b) the data collection process, (c) the tidying process, (d) the suitability of the analysis, and (e) make your analytic writeup available together with the documentation necessary for reproducing the results.</p></li>
-<li><p><strong>Assess an analytic tool</strong> using a simulation. Document (a) the theoretical basis, (b) the (tidy) simulation setup under various scenarios, (c) an in-depth analysis of the results. (d) Discuss potential alternatives and limitations, and (e) make your writeup available together with code and documentation for reproducing the results.</p></li>
-</ol>
-<p>As an individual or in a team pick a topic and</p>
-<ol type="1">
-<li>work on a topic of your choice</li>
-<li>publish your analysis and findings</li>
-<li>create a video highlighting your work</li>
-</ol>
-<p>There are multiple submission stages for the project:</p>
-<section id="choice-of-topic" class="level2">
-<h2 class="anchored" data-anchor-id="choice-of-topic">Choice of Topic</h2>
-<p>Create a file <code>topic.qmd</code> that includes</p>
-<ol type="1">
-<li>a motivation of your topic,</li>
-<li>a description of your plan of work. Please provide as much detail as you can,</li>
-<li>a team name and a list of all members on your team</li>
-</ol>
-<p>For the submission, push the file <code>topic.qmd</code> to the github repository and include a submission link in Canvas.</p>
-</section>
-<section id="draft" class="level2">
-<h2 class="anchored" data-anchor-id="draft">Draft</h2>
-<p>Create a file <code>draft.qmd</code> that includes all of the items of the Choice of Topic (potentially in a different order). Change the Plan of work to an outline and fill in details. For any code chunk decide, whether you want to show the code (that should happen sparingly). Provide comments in the code about what each code chunk is supposed to do. Describe and interpret results. Include visuals (not so sparingly :))</p>
-<p>For the submission, push the file <code>draft.qmd</code> to the github repository and include a submission link in Canvas.</p>
-</section>
-<section id="final-writeupshow" class="level2">
-<h2 class="anchored" data-anchor-id="final-writeupshow">Final writeup/show</h2>
-<p>For the final work, create a file <code>index.qmd</code>. Make sure that this file renders its output into a folder called <code>docs</code>.</p>
-<p>Use Github pages for the repo to create publicly visible website showcasing your work.</p>
-<p>Provide links to all of the elements you have created (such as data sets, functions, R package, video, presentation slides, …).</p>
-<p>For the submission, push the index file, the docs folder and any of your creations to the repository, and include a submission link in Canvas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4          ✔ readr     2.1.5     
+✔ forcats   1.0.0          ✔ stringr   1.5.1     
+✔ ggplot2   3.5.2.9002     ✔ tibble    3.3.0     
+✔ lubridate 1.9.4          ✔ tidyr     1.3.1     
+✔ purrr     1.1.0          
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stat471)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(brfss)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(brfss<span class="sc">$</span>HEIGHT3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  305.0   504.0   507.0   874.3   511.0  9999.0     297 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>brfss <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>( <span class="at">x=</span> HEIGHT3)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 297 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02b-code_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>employees <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">45</span>, <span class="dv">200</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">c</span>(<span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>, <span class="st">"X"</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">salary =</span> <span class="fu">c</span>(<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">70000</span>, <span class="dv">999999</span>),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">start_date =</span> <span class="fu">ymd</span>(<span class="fu">c</span>(<span class="st">"2020-01-01"</span>, <span class="st">"2021-02-01"</span>, <span class="st">"2020-03-01"</span>, <span class="st">"2020-01-15"</span>)),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">end_date   =</span> <span class="fu">ymd</span>(<span class="fu">c</span>(<span class="st">"2020-12-31"</span>, <span class="st">"2020-03-01"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testdat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: testthat
+
+Attaching package: 'testthat'
+
+The following object is masked from 'package:dplyr':
+
+    matches
+
+The following object is masked from 'package:purrr':
+
+    is_null
+
+The following objects are masked from 'package:readr':
+
+    edition_get, local_edition
+
+The following object is masked from 'package:tidyr':
+
+    matches
 
 
-</section>
-</section>
+Attaching package: 'testdat'
+
+The following object is masked from 'package:testthat':
+
+    matches</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_testdata</span>(employees)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">expect_unique</span>(id)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">expect_range</span>(age, <span class="dv">0</span>, <span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: get_testdata() has 2 records failing range check on variable `age`.
+Variable set: `age`
+Filter: None
+Arguments: `min = 0, max = 120`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">expect_range</span>(salary, <span class="dv">0</span>, <span class="dv">500000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: get_testdata() has 1 records failing range check on variable `salary`.
+Variable set: `salary`
+Filter: None
+Arguments: `min = 0, max = 5e+05`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">expect_cond</span>(<span class="fu">is.na</span>(end_date), start_date <span class="sc">&lt;=</span> end_date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: get_testdata() failed consistency check. 2 cases have `is.na(end_date)` but not `start_date &lt;= end_date`.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">expect_cond</span>(<span class="cn">TRUE</span>, start_date <span class="sc">&lt;=</span> end_date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: get_testdata() failed consistency check. 3 cases have `TRUE` but not `start_date &lt;= end_date`.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with_testdata</span>(data, code, <span class="at">quosure =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'code' not found</code></pre>
+</div>
+</div>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

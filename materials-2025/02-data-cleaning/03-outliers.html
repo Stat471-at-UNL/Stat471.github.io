@@ -9,8 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-10-23">
-  <title>Stat 471 – Probabilistic Record Linkage</title>
+  <meta name="dcterms.date" content="2025-09-23">
+  <title>Stat 471 – Univariate Outliers</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,166 +193,193 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Probabilistic Record Linkage</h1>
+  <h1 class="title">Univariate Outliers</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-10-23</p>
+  <p class="date">2025-09-23</p>
 </section>
-<section id="probabilistic-matching" class="title-slide slide level1 center">
-<h1>Probabilistic Matching</h1>
-<p>Two main issues:</p>
-<ol type="1">
-<li><p>Inconsistencies e.g., “Katherine Smith” vs.&nbsp;“K. Smith” vs “Kate Smith”</p></li>
-<li><p>Errors and missing data e.g., typos, formatting differences, or incomplete fields.</p></li>
-</ol>
-<p>Goal:</p>
-<p>For each pair of records, determine: (1) <strong>Match</strong> (same entity), (2) <strong>Do not match</strong>, or (3) <strong>uncertain</strong></p>
-</section>
+<section id="an-outlier-is" class="title-slide slide level1 center">
+<h1>An Outlier is …</h1>
+<blockquote>
+<p>… a data point that is extremely different from other data points in a set, mostly due to a legitimate extreme event or a mistake</p>
+</blockquote>
+<p>outliers can occur in one or more dimensions</p>
+<p>is it a ‘true’ outlier or just an extreme observation?</p>
 
-<section id="fellegi-and-sunter" class="title-slide slide level1 center">
-<h1>Fellegi and Sunter</h1>
-<ol type="1">
-<li>Comparison of fields</li>
-<li>Model match probabilities</li>
-<li>Use Thresholds to determine matches</li>
-</ol>
-</section>
+<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
 
-<section id="step-1.-comparison-of-fields" class="title-slide slide level1 center">
-<h1>Step 1. Comparison of fields</h1>
-<p>For each pair of records, we compare corresponding fields (e.g., name, date of birth, ZIP code) and create <strong>comparison vectors</strong>:</p>
-<p><span class="math display">\[
-\gamma = (\gamma_1, \gamma_2, ..., \gamma_k)
-\]</span></p>
-<p>Each <span class="math inline">\(\gamma_i\)</span> measures the level of agreement for field <span class="math inline">\(i\)</span>.</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Field</th>
-<th>Record A</th>
-<th>Record B</th>
-<th>Comparison</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>First name</td>
-<td>“Jon”</td>
-<td>“John”</td>
-<td>Partial</td>
-</tr>
-<tr class="even">
-<td>Last name</td>
-<td>“Doe”</td>
-<td>“Doe”</td>
-<td>Exact</td>
-</tr>
-<tr class="odd">
-<td>Birth year</td>
-<td>1982</td>
-<td>2010</td>
-<td>Disagree</td>
-</tr>
-</tbody>
-</table>
-</section>
-
-<section id="step-2.-model-match-probabilities" class="title-slide slide level1 center">
-<h1>Step 2. Model match probabilities</h1>
-<p>Each pair of records belongs to one of two latent groups: <span class="math inline">\(M\)</span>: the <strong>match set</strong>, <span class="math inline">\(U\)</span>: the <strong>non-match set</strong></p>
-<p><span class="math display">\[
-P(\gamma) = P(\gamma \mid M) P(M) + P(\gamma \mid U) P(U)
-\]</span></p>
-<p>where</p>
+<section id="outlier-detection" class="title-slide slide level1 center">
+<h1>Outlier detection</h1>
 <ul>
-<li><span class="math inline">\(P(\gamma \mid M)\)</span>: probability of observing agreements among <em>true matches</em><br>
-</li>
-<li><span class="math inline">\(P(\gamma \mid U)\)</span>: probability of observing agreements among <em>non-matches</em><br>
-</li>
-<li><span class="math inline">\(P(M)\)</span> and <span class="math inline">\(P(U) = 1 - P(M)\)</span>: prior probabilities of match / non-match.</li>
+<li><p>visually</p></li>
+<li><p>statistical tests</p></li>
+<li><p>data context</p></li>
 </ul>
 </section>
 
-<section id="em-algorithm" class="title-slide slide level1 center">
-<h1>EM Algorithm</h1>
-<p>True match status is unobserved; use Expectation–Maximization (EM) algorithm:</p>
-<ol type="1">
-<li><p><strong>E-step:</strong><br>
-Estimate match memberships <span class="math inline">\(P(M \mid \gamma)\)</span> for each pair given current parameters.</p></li>
-<li><p><strong>M-step:</strong><br>
-Update <span class="math inline">\(m^{(i+1)} = P(\gamma \mid M), u^{(i+1)} = P(\gamma \mid U), P(M)\)</span> based on expected match memberships.</p></li>
-</ol>
-<p>Iterate until convergence.</p>
+<section id="depth-statistics" class="title-slide slide level1 center">
+<h1>Depth Statistics</h1>
+<p>For a sample <span class="math inline">\(x\)</span> of numeric values let <span class="math inline">\(x_{(i)}\)</span> denote the <span class="math inline">\(i\)</span>th value of the sorted sample, i.e.&nbsp;<span class="math inline">\(x_{(1)} \le x_{(2)} \le ... \le x_{(n)}\)</span> for sample size <span class="math inline">\(n\)</span>.</p>
+<p>The depth <span class="math inline">\(d\)</span> of <span class="math inline">\(x_(i)\)</span> is defined as the minimum of <span class="math inline">\(i\)</span> and <span class="math inline">\(n-i+1\)</span>, i.e.&nbsp;“What is the minimum number of data points (including myself) that have to be overtaken to get out of the data set?”</p>
+<p>Depth is a measure of centrality - with larger depths indicating higher centrality</p>
 </section>
 
-<section id="step-3-posterior-probabilities-and-thresholding" class="title-slide slide level1 center">
-<h1>Step 3: Posterior Probabilities and Thresholding</h1>
-<p>Posterior match probabilities for each pair:</p>
-<p><span class="math display">\[
-P(M \mid \gamma) = \frac{P(\gamma \mid M) P(M)}{P(\gamma \mid M) P(M) + P(\gamma \mid U) P(U)}
-\]</span></p>
-<p>Use decision threshold to classify matches, e.g.&nbsp;any records with <span class="math inline">\(P(\gamma \mid M)\)</span> above <span class="math inline">\(T_U\)</span> are matches, any records below <span class="math inline">\(T_L\)</span> are non-matches.</p>
-<p>Quantify uncertainty: e.g.&nbsp;trigger manual review for pairs that have posterior probabilities in <span class="math inline">\([T_L, T_U]\)</span>.</p>
+<section id="example-depths" class="title-slide slide level1 center">
+<h1>Example Depths</h1>
+<p>Minimum and maximum have depth 1 (the smallest depth possible)</p>
+<p>Median has a depth of <span class="math inline">\(\lceil n/2  \rceil\)</span>.</p>
+<p>What depth do the first and third quartile have?</p>
+<p>Note: depth is only associated with data value, i.e.&nbsp;in general the mean of a sample does not have an associated depth</p>
 </section>
 
-<section id="example-with-fastlink" class="title-slide slide level1 center">
-<h1>Example with <code>fastLink</code></h1>
-<p>The <code>fastLink</code> package output provides <strong>posterior probabilities</strong> for all record pairs.</p>
+<section id="visual-outlier-detection" class="title-slide slide level1 center">
+<h1>Visual Outlier Detection</h1>
+<ul>
+<li>Boxplot (JW Tukey, “Exploratory Data Analysis”, 1977)</li>
+</ul>
+
+<img data-src="https://lsc.studysixsigma.com/wp-content/uploads/sites/6/2015/12/1435.png" class="r-stretch"></section>
+
+<section id="boxplots" class="title-slide slide level1 center">
+<h1>Boxplots</h1>
+<p>Based on <em>depth</em> statistics: sort the data.</p>
+<p>Outliers are defined to be outside of <span class="math inline">\([Q_1 - 1.5 \times \text{IQR}, Q_3 + 1.5 \times \text{IQR}]\)</span></p>
+<p>Extreme outliers are defined to be outside of <span class="math inline">\([Q_1 - 3 \times \text{IQR}, Q_3 + 3 \times \text{IQR}]\)</span></p>
+</section>
+
+<section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<p>Write a function (or find a function) in R that calculates the Inter-Quartile Range of a sample <span class="math inline">\(x\)</span>.</p>
+<p>With that function, calculate the number of outliers or extreme outliers of a sample <span class="math inline">\(x\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(fastLink)</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>fl_out <span class="ot">&lt;-</span> <span class="fu">fastLink</span>(</span>
-<span id="cb1-4"><a></a>  <span class="at">dfA =</span> df_b,</span>
-<span id="cb1-5"><a></a>  <span class="at">dfB =</span> df_a,</span>
-<span id="cb1-6"><a></a>  <span class="at">varnames =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"birth_year"</span>, <span class="st">"city"</span>),</span>
-<span id="cb1-7"><a></a>  <span class="at">stringdist.match =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"city"</span>),</span>
-<span id="cb1-8"><a></a>  <span class="at">numeric.match =</span> <span class="fu">c</span>(<span class="st">"birth_year"</span>),</span>
-<span id="cb1-9"><a></a>  <span class="at">partial.match =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"city"</span>,<span class="st">"birth_year"</span>)</span>
-<span id="cb1-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>outliers <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, {</span>
+<span id="cb1-2"><a></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb1-3"><a></a>  </span>
+<span id="cb1-4"><a></a>  <span class="co"># determine the number of outliers</span></span>
+<span id="cb1-5"><a></a>  </span>
+<span id="cb1-6"><a></a>  <span class="co"># determine the number of extreme outliers</span></span>
+<span id="cb1-7"><a></a>  </span>
+<span id="cb1-8"><a></a>  <span class="co"># report both numbers back</span></span>
+<span id="cb1-9"><a></a>})</span>
+<span id="cb1-10"><a></a></span>
+<span id="cb1-11"><a></a><span class="co"># find the proportion of outliers across the samples</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="z-scores" class="title-slide slide level1 center">
+<h1>Z-scores</h1>
+<ul>
+<li>“Three sigma rule”: an outlier is defined as being outside an interval of <span class="math inline">\(\mu \pm 3 \sigma\)</span></li>
+</ul>
+<p>Probability for a normally distributed value to be outside that range: 0.002700</p>
+<p>Daily event is outside of that range about once a year.</p>
+<ul>
+<li>Better be safe? use the 6<span class="math inline">\(\sigma\)</span> rule!</li>
+</ul>
+<p>Probability for a normally distributed value to be outside that range: <span class="math inline">\(1.973 \times 10^{−9} = 1.973\)</span> ppb (or about 1 in 506,797,346 )</p>
+<p>Every 1.38 million years (twice in history of humankind)</p>
+</section>
+
+<section id="outlier-detection-1" class="title-slide slide level1 center">
+<h1>Outlier detection</h1>
+<ul>
+<li><p>different cutoffs for small/large samples</p></li>
+<li><p>all large samples will have outliers</p></li>
+<li><p>but we want tests to be powerful enough to also detect outliers in small samples</p></li>
+</ul>
+</section>
+
+<section id="example-brfss" class="title-slide slide level1 center">
+<h1>Example: BRFSS</h1>
+<p>Grubbs test (more in homework) tests difference between Max/Min and median:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(stat471)</span>
+<span id="cb2-2"><a></a><span class="fu">library</span>(outliers)</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-==================== 
-fastLink(): Fast Probabilistic Record Linkage
-==================== 
+    Grubbs test for one outlier
 
-If you set return.all to FALSE, you will not be able to calculate a confusion table as a summary statistic.
-Calculating matches for each variable.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Getting counts for parameter estimation.
-Running the EM algorithm.
-Getting the indices of estimated matches.
-Deduping the estimated matches.
-Getting the match patterns for each estimated match.</code></pre>
+data:  brfss$HEIGHT3
+G = 5.35991, U = 0.99772, p-value = 0.0005156
+alternative hypothesis: highest value 9999 is an outlier</code></pre>
 </div>
 </div>
+<p>Correctly detects 9999 as an outlier</p>
 </section>
 
-<section id="section" class="title-slide slide level1 center">
-<h1></h1>
+<section id="example-brfss-1" class="title-slide slide level1 center">
+<h1>Example: BRFSS</h1>
+<p>But also detects 9200 as an outlier</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3[(brfss<span class="sc">$</span>HEIGHT3<span class="sc">!=</span><span class="dv">9999</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id_b  first   last birth_year         city dfB.match[, names.dfB] gamma.1
-1  101    Jon  Smyth       1985       Lincon                      1       1
-2  104  Maria  Lopes       1988       Kearny                      4       2
-3  105   Will   Chen       1983      Norfolk                      5       1
-4  103    Rob  Brown       1990 Grand Island                     NA       2
-5  102  Kathy  Jones       1978        Omaha                      2       0
-6  106 Alisha Mendez       1991      Lincoln                      6       0
-  gamma.2 gamma.3 gamma.4          posterior
-1       1       2       2 1.0000000000000000
-2       1       2       2 1.0000000000000000
-3       2       2       2 1.0000000000000000
-4       2       2       2 1.0000000000000000
-5       2       2       2 0.9999999999946603
-6       2       2       2 0.9999999999946603</code></pre>
+<pre><code>
+    Grubbs test for one outlier
+
+data:  brfss$HEIGHT3[(brfss$HEIGHT3 != 9999)]
+G = 6.08173, U = 0.99703, p-value = 7.195e-06
+alternative hypothesis: highest value 9200 is an outlier</code></pre>
 </div>
 </div>
+<p>… and keeps going:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3[(brfss<span class="sc">$</span>HEIGHT3<span class="sc">&lt;</span><span class="dv">7777</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Grubbs test for one outlier
 
-
+data:  brfss$HEIGHT3[(brfss$HEIGHT3 &lt; 7777)]
+G = 5.47905, U = 0.99751, p-value = 0.0002533
+alternative hypothesis: lowest value 305 is an outlier</code></pre>
+</div>
+</div>
 </section>
+
+<section id="visual-detection-brfss" class="title-slide slide level1 center">
+<h1>Visual Detection: BRFSS</h1>
+<ul>
+<li><p>Gaps &amp; modes: histograms and (jittered) dot plots</p></li>
+<li><p>(formal) deviation from center: boxplots</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(stat471)</span>
+<span id="cb8-2"><a></a><span class="fu">data</span>(brfss)</span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a>brfss <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HEIGHT3)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+
+<section id="visual-outlier-detection-1" class="title-slide slide level1 center">
+<h1>Visual outlier detection</h1>
+<ul>
+<li>visualizations also detect other problems in the data</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>brfss <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a></a>  <span class="fu">filter</span>(HEIGHT3 <span class="sc">&lt;</span> <span class="dv">7777</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HEIGHT3)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-8-1.png" width="480" class="r-stretch"></section>
+
+<section id="visual-outlier-detection-2" class="title-slide slide level1 center">
+<h1>Visual outlier detection</h1>
+<ul>
+<li>while also allowing for outlier detection</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>brfss <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HTM4)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+
+
+<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-9-1.png" width="480" class="r-stretch"></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../N.svg" class="slide-logo"></p>
