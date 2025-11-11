@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-16">
+<meta name="dcterms.date" content="2025-11-25">
 
-<title>Reviewing Normalizing for 2nd Normal Form – Stat 471</title>
+<title>Final Report – Stat 471</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,61 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -115,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Stat 471</span>
     </a>
   </div>
@@ -126,15 +91,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../project.html"> 
+    <a class="nav-link" href="../project.html"> 
 <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
@@ -152,18 +117,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#final-project" id="toc-final-project" class="nav-link active" data-scroll-target="#final-project">Final Project</a>
+  <ul class="collapse">
+  <li><a href="#choice-of-topic" id="toc-choice-of-topic" class="nav-link" data-scroll-target="#choice-of-topic">Choice of Topic</a></li>
+  <li><a href="#draft" id="toc-draft" class="nav-link" data-scroll-target="#draft">Draft</a></li>
+  <li><a href="#final-writeupshow" id="toc-final-writeupshow" class="nav-link" data-scroll-target="#final-writeupshow">Final writeup/show</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reviewing Normalizing for 2nd Normal Form</h1>
+<h1 class="title">Final Report</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Code</div>
-    <div class="quarto-category">Week03</div>
+    <div class="quarto-category">Project</div>
+    <div class="quarto-category">Week11</div>
   </div>
   </div>
 
@@ -175,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 16, 2025</p>
+      <p class="date">November 25, 2025</p>
     </div>
   </div>
   
@@ -187,132 +163,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>property <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"../data/state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx"</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">skip=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-• `` -&gt; `...6`
-• `` -&gt; `...7`
-• `` -&gt; `...8`
-• `` -&gt; `...9`
-• `` -&gt; `...10`
-• `` -&gt; `...11`
-• `` -&gt; `...12`
-• `` -&gt; `...13`
-• `` -&gt; `...14`
-• `` -&gt; `...15`
-• `` -&gt; `...16`</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>property_names <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"../data/state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx"</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">skip=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-• `` -&gt; `...1`
-• `` -&gt; `...2`
-• `` -&gt; `...3`
-• `` -&gt; `...4`</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#values_only &lt;- readxl::read_xlsx("../data/state/NIBRS_Table_28_Crimes_Against_Property_Offenses_Offense_Category_by_State_2024.xlsx",</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                                    skip=6)</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(property)[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)] <span class="ot">&lt;-</span> <span class="fu">names</span>(property_names)[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)]</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "State"                                  
- [2] "Number of \r\nParticipating\r\nAgencies"
- [3] "Population\r\nCovered"                  
- [4] "Total \r\nOffenses"                     
- [5] "Arson"                                  
- [6] "Bribery"                                
- [7] "Burglary/\r\nBreaking &amp;\r\nEntering"    
- [8] "Counterfeiting/\r\nForgery"             
- [9] "Destruction/\r\nDamage/\r\nVandalism"   
-[10] "Embezzlement"                           
-[11] "Extortion/\r\nBlackmail"                
-[12] "Fraud \r\nOffenses"                     
-[13] "Larceny/\r\nTheft\r\nOffenses"          
-[14] "Motor\r\nVehicle\r\nTheft"              
-[15] "Robbery"                                
-[16] "Stolen \r\nProperty \r\nOffenses"       </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>property <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(property)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://www.the-numbers.com/box-office-chart/weekend/2025/09/05"</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>tables <span class="ot">&lt;-</span> doc <span class="sc">|&gt;</span> <span class="fu">html_table</span>()</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>tables[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 70 × 11
-   ``    ``    `Movie Title`     Distributor Gross `%LW` Theaters TheatersChange
-   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;         
- 1 1     N     The Conjuring: L… Warner Bro… $84,… ""    3,802    ""            
- 2 2     N     Hamilton          Walt Disney $10,… ""    1,825    ""            
- 3 3     (1)   Weapons           Warner Bro… $5,2… "-50… 3,284    "-132"        
- 4 4     (4)   Freakier Friday   Walt Disney $3,8… "-43… 3,125    "-350"        
- 5 5     (3)   Caught Stealing   Sony Pictu… $3,1… "-59… 3,578    "n/c"         
- 6 6     (6)   The Fantastic Fo… Walt Disney $2,8… "-43… 2,385    "-400"        
- 7 7     (5)   The Roses         Searchligh… $2,7… "-56… 2,700    "n/c"         
- 8 8     (7)   The Bad Guys 2    Universal   $2,5… "-47… 2,602    "-422"        
- 9 9     N     Light of the Wor… Salvation … $2,4… ""    2,075    ""            
-10 10    (8)   Superman          Warner Bro… $972… "-62… 1,187    "-637"        
-# ℹ 60 more rows
-# ℹ 3 more variables: PerTheater &lt;chr&gt;, TotalGross &lt;chr&gt;,
-#   `Weekends InRelease` &lt;chr&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>property <span class="ot">&lt;-</span> property <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    state           number_of_participating_agencies population_covered 
- Length:52          Min.   :    2.0                  Min.   :   450712  
- Class :character   1st Qu.:  109.5                  1st Qu.:  1678399  
- Mode  :character   Median :  233.0                  Median :  4404134  
-                    Mean   :  561.6                  Mean   : 11404923  
-                    3rd Qu.:  403.2                  3rd Qu.:  7143264  
-                    Max.   :14601.0                  Max.   :296527998  
- total_offenses       arson             bribery         
- Min.   :   8934   Length:52          Length:52         
- 1st Qu.:  34589   Class :character   Class :character  
- Median : 118888   Mode  :character   Mode  :character  
- Mean   : 316845                                        
- 3rd Qu.: 232338                                        
- Max.   :8237977                                        
- burglary_breaking_entering counterfeiting_forgery destruction_damage_vandalism
- Length:52                  Length:52              Length:52                   
- Class :character           Class :character       Class :character            
- Mode  :character           Mode  :character       Mode  :character            
-                                                                               
-                                                                               
-                                                                               
- embezzlement       extortion_blackmail fraud_offenses    
- Length:52          Length:52           Length:52         
- Class :character   Class :character    Class :character  
- Mode  :character   Mode  :character    Mode  :character  
-                                                          
-                                                          
-                                                          
- larceny_theft_offenses motor_vehicle_theft   robbery         
- Length:52              Length:52           Length:52         
- Class :character       Class :character    Class :character  
- Mode  :character       Mode  :character    Mode  :character  
-                                                              
-                                                              
-                                                              
- stolen_property_offenses
- Length:52               
- Class :character        
- Mode  :character        
-                         
-                         
-                         </code></pre>
-</div>
-</div>
+<p>Note: This assignment must be accepted in Canvas and submitted in github classroom.</p>
+<p><strong>TLDR; Create a file <code>draft.qmd</code>, make outline from plan of work, fill in details, include visuals</strong></p>
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<section id="final-project" class="level1">
+<h1>Final Project</h1>
+<p>The general premise of the final project for this class is that is supposed to showcase some aspects of the techniques we discussed.</p>
+<p>Given the far-reaching extent of what can be considered ‘messy data analysis’, you could focus on any one of these aspects. Examples of potential routes your project could cover are:</p>
+<ol type="1">
+<li><p><strong>Create a tidy dataset</strong> from one or more (messy) sources. Document (a) the provenance of the data, (b) the tidying process, (c) the tidy data, and (d) make the data available, and (e) document a good use case.</p></li>
+<li><p><strong>Solve a problem</strong> by starting with a motivating question. Document (a) data sources suitable for answering the question, (b) the data collection process, (c) the tidying process, (d) the suitability of the analysis, and (e) make your analytic writeup available together with the documentation necessary for reproducing the results.</p></li>
+<li><p><strong>Assess an analytic tool</strong> using a simulation. Document (a) the theoretical basis, (b) the (tidy) simulation setup under various scenarios, (c) an in-depth analysis of the results. (d) Discuss potential alternatives and limitations, and (e) make your writeup available together with code and documentation for reproducing the results.</p></li>
+</ol>
+<p>As an individual or in a team pick a topic and</p>
+<ol type="1">
+<li>work on a topic of your choice</li>
+<li>publish your analysis and findings</li>
+<li>create a video highlighting your work</li>
+</ol>
+<p>There are multiple submission stages for the project:</p>
+<section id="choice-of-topic" class="level2">
+<h2 class="anchored" data-anchor-id="choice-of-topic">Choice of Topic</h2>
+<p>Create a file <code>topic.qmd</code> that includes</p>
+<ol type="1">
+<li>a motivation of your topic,</li>
+<li>a description of your plan of work. Please provide as much detail as you can,</li>
+<li>a team name and a list of all members on your team</li>
+</ol>
+<p>For the submission, push the file <code>topic.qmd</code> to the github repository and include a submission link in Canvas.</p>
+</section>
+<section id="draft" class="level2">
+<h2 class="anchored" data-anchor-id="draft">Draft</h2>
+<p>Create a file <code>draft.qmd</code> that includes all of the items of the Choice of Topic (potentially in a different order). Change the Plan of work to an outline and fill in details. For any code chunk decide, whether you want to show the code (that should happen sparingly). Provide comments in the code about what each code chunk is supposed to do. Describe and interpret results. Include visuals (not so sparingly :))</p>
+<p>For the submission, push the file <code>draft.qmd</code> to the github repository and include a submission link in Canvas.</p>
+</section>
+<section id="final-writeupshow" class="level2">
+<h2 class="anchored" data-anchor-id="final-writeupshow">Final writeup/show</h2>
+<p>For the final work, create a file <code>index.qmd</code>. Make sure that this file renders its output into a folder called <code>docs</code>.</p>
+<p>Use Github pages for the repo to create publicly visible website showcasing your work.</p>
+<p>Provide links to all of the elements you have created (such as data sets, functions, R package, video, presentation slides, …).</p>
+<p>Your write-up should be concise (aim for 750 - 1500 words), contain clearly titled sections covering the motivation for your project, the methods you used, and any results you want to highlight. The connection to course material needs to be made obvious</p>
+<p>For the submission, push the index file, the docs folder and any of your creations to the repository, and include a submission link in Canvas.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

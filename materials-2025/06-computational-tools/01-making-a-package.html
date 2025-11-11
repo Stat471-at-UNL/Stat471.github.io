@@ -9,8 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-09-23">
-  <title>Stat 471 – Multivariate Outlier Detection</title>
+  <meta name="dcterms.date" content="2025-11-11">
+  <title>Stat 471 – Setting up a Package</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -193,67 +127,361 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Multivariate Outlier Detection</h1>
+  <h1 class="title">Setting up a Package</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-09-23</p>
+  <p class="date">2025-11-11</p>
 </section>
-<section id="outlier-detection-in-higher-dimensions" class="title-slide slide level1 center">
-<h1>Outlier detection in higher dimensions</h1>
+<section id="outline" class="title-slide slide level1 center">
+<h1>Outline</h1>
 <ul>
-<li><p>visually</p></li>
-<li><p>statistical tests</p></li>
-<li><p>data context</p></li>
+<li><p>file structures of packages</p></li>
+<li><p>documentation</p></li>
+<li><p>data in packages</p></li>
 </ul>
+<p><br> <br> <br></p>
+<p>Resource: <a href="http://r-pkgs.had.co.nz/">R packages</a> by Hadley Wickham</p>
 </section>
 
-<section id="visual-outlier-detection" class="title-slide slide level1 center">
-<h1>Visual Outlier Detection</h1>
-<ul>
-<li><p>use your data exploration skills</p></li>
-<li><p>make use of higher dimensional plots; add color and facetting</p></li>
-</ul>
+<section id="rstudio-and-r-packages" class="title-slide slide level1 center">
+<h1>RStudio and R packages</h1>
+<p>RStudio supports creating new packages. Follow the dialogs through <code>New Project ...</code></p>
+<p><img src="images/package-01.png" height="450"></p>
 </section>
 
-<section id="mahalonobis-distance" class="title-slide slide level1 center">
-<h1>Mahalonobis Distance</h1>
-<p>For a real-valued <span class="math inline">\(p\)</span> dimensional point <span class="math inline">\(x\)</span> with sample mean vector <span class="math inline">\(\boldsymbol{\mu} \in R^p\)</span> and covariance matrix <span class="math inline">\(\mathbf{\Sigma} \in R^{{p \times p}}\)</span> the Mahalonobis distance is defined as:</p>
-<p><span class="math display">\[
-D_M(\mathbf{x}) = \sqrt{ (\mathbf{x} - \boldsymbol{\mu})^t \mathbf{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu}) }
-\]</span></p>
-<p>Properties:</p>
-<ul>
-<li><span class="math inline">\(D_M(x) \ge 0\)</span> for all <span class="math inline">\(x\)</span></li>
-<li><span class="math inline">\(D_M(x)\)</span> is scale-invariant and unitless</li>
-</ul>
-<p>For <span class="math inline">\(x \sim N(\mu,\Sigma)\)</span>, the Mahalonobis distance <span class="math inline">\(D_M^2(x) \sim \chi^2_p\)</span></p>
+<section id="rstudio-and-r-packages-contd" class="title-slide slide level1 center">
+<h1>RStudio and R packages (cont’d)</h1>
+<p>RStudio supports creating new packages. Follow the dialogs through <code>New Project ...</code></p>
+<p><img src="images/package-02.png" height="450"></p>
 </section>
 
-<section id="example" class="title-slide slide level1 center">
-<h1>Example</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(car)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="co"># Base scatterplot</span></span>
-<span id="cb1-5"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(airquality, <span class="fu">aes</span>(<span class="at">x =</span> Wind, <span class="at">y =</span> Temp)) <span class="sc">+</span></span>
-<span id="cb1-6"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-7"><a></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb1-8"><a></a></span>
-<span id="cb1-9"><a></a><span class="co"># Add Mahalanobis distance ellipse (95% confidence ellipse)</span></span>
-<span id="cb1-10"><a></a>p <span class="sc">+</span> <span class="fu">stat_ellipse</span>(<span class="at">type =</span> <span class="st">"norm"</span>, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="rstudio-and-r-packages-contd-1" class="title-slide slide level1 center">
+<h1>RStudio and R packages (cont’d)</h1>
+<p>RStudio supports creating new packages. Follow the dialogs through <code>New Project ...</code></p>
+<p><img src="images/package-03.png" height="450"></p>
+</section>
 
-</div>
-<img data-src="04-multivariate-outliers_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="section" class="title-slide slide level1 center">
+<h1></h1>
+
+<img src="images/package-04.png" class="cover r-stretch"></section>
 
 <section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
 <h1>Your Turn</h1>
-<p>Consider the variables <code>Temp</code> and <code>Wind</code> in the <code>airquality</code> data set.</p>
-<p>Find the Mahalonobis Distance for Temp and Wind,</p>
-<p>Draw a scatterplot and mark all of the points in a different color that are larger than the .95 quantile of the <span class="math inline">\(\chi^2_2\)</span> distribution.</p>
-<p>How many points would we expect to be outside in this plot if the data is normally distributed?</p>
+<ul>
+<li><p>Create a new R package using the RStudio dialog to set it up in a new project.</p></li>
+<li><p>Build the package (CMD + shift + B) and run the function <code>hello()</code></p></li>
+<li><p>Have a look at the help for <code>hello</code></p></li>
+</ul>
+</section>
+
+<section id="your-turn-advanced" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn (Advanced)</h1>
+<ul>
+<li><p>Does the package pass R CMD check? (Cmd + Shift + E)</p></li>
+<li><p>Fix any warnings you might encounter … call <code>library(usethis)</code> and <code>apropos("license")</code></p></li>
+</ul>
+<p>… quick side remarks: <a href="https://thinkr-open.github.io/licensing-r/index.html#license" class="uri">https://thinkr-open.github.io/licensing-r/index.html#license</a></p>
+</section>
+
+<section id="devtools" class="title-slide slide level1 center">
+<h1><code>devtools</code></h1>
+<div class="small">
+<p>Once you have a package, the <code>devtools</code> package provides functionality to support your development</p>
+<p><code>devtools</code> functions operate on the active project (the folder of your project):</p>
+<ul>
+<li><p><code>document()</code> creates R help files from special comments in your code (talk about that in a bit)</p></li>
+<li><p><code>install()</code> installs the package, i.e.&nbsp;afterwards you can activate the package with the command <code>library("your package")</code></p></li>
+<li><p><code>check()</code> runs a couple of tests on your package. All of these have to be passed without warning before you can upload a package to CRAN</p></li>
+</ul>
+</div>
+</section>
+
+<section id="file-structure" class="title-slide slide level1 center">
+<h1>File structure</h1>
+<p>Within folder that has the same name as your R package:</p>
+<ul>
+<li><p>DESCRIPTION</p></li>
+<li><p>NAMESPACE</p></li>
+<li><p>R</p></li>
+<li><p>man</p></li>
+<li><p>data</p></li>
+</ul>
+<p>R code files go into the folder <code>R</code>, data sets go into the folder <code>data</code>, Rd files contain documentation and go into <code>man</code></p>
+</section>
+
+<section id="description" class="title-slide slide level1 center">
+<h1>DESCRIPTION</h1>
+<p>plain text file with all the meta information on a package</p>
+<pre><code>Package: happyR
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: package1,package2
+Suggests: package3
+Depends: package4,package5</code></pre>
+<p><a href="http://r-pkgs.had.co.nz/description.html">Description file reference</a></p>
+</section>
+
+<section id="package-dependencies-imports-suggests" class="title-slide slide level1 center">
+<h1>Package dependencies: Imports, Suggests</h1>
+<ul>
+<li><strong>Imports:</strong> packages in this list must be present for your package to work
+<ul>
+<li>Imports are NOT attached when your package is loaded</li>
+<li>You must refer to functions in these packages using <code>package::function()</code> or import them using roxygen tags (<code>@import</code>, <code>@importFrom</code>)</li>
+</ul></li>
+<li><strong>Suggests:</strong> packages in this list may add functionality but are not necessary
+<ul>
+<li>e.g.&nbsp;for example data, unit tests, build vignettes</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="package-dependencies-depends" class="title-slide slide level1 center">
+<h1>Package dependencies: Depends</h1>
+<ul>
+<li><strong>Depends:</strong> packages in this list are attached when your package is loaded<br>
+<strong>Hint:</strong> It is better practice to use <code>Imports</code> rather than <code>Depends</code>. <code>Depends</code> might overwrite a previously loaded function of the same name: <a href="http://r-pkgs.had.co.nz/namespace.html#namespace">Namespaces reference</a> - why Depends is a bad idea</li>
+</ul>
+<p>Try to keep dependencies as light as possible: <a href="https://r-pkgs.org/dependencies-mindset-background.html#dependencies-are-not-equal">It Depends</a></p>
+<p>DO NOT include <a href="https://www.tidyverse.org/blog/2018/06/tidyverse-not-for-packages/">tidyverse</a> as a dependency.</p>
+</section>
+
+<section id="licenses" class="title-slide slide level1 center">
+<h1>Licenses</h1>
+<div class="small">
+<ul>
+<li><p>There’s a (surprising?) range of common use licenses available: <a href="http://www.r-project.org/Licenses/" class="uri">http://www.r-project.org/Licenses/</a></p></li>
+<li><p>More licenses at <a href="http://creativecommons.org/choose/" class="uri">http://creativecommons.org/choose/</a> and <a href="http://www.opensource.org/licenses/category" class="uri">http://www.opensource.org/licenses/category</a></p></li>
+<li><p>Flowchart for picking a <a href="http://creativecommons.org.au/content/licensing-flowchart.pdf">(type of) license</a></p></li>
+<li><p>Most often used: GPL-2, GPL-3, MIT</p>
+<ul>
+<li><p>GPL-2/3: “run, copy, distribute, study, change and improve the software” now and in the future, i.e.&nbsp;preserve open-source nature</p></li>
+<li><p>GPL-3 clears up some inconsistencies and ambiguities in GPL-2 and should be used in new projects</p></li>
+<li><p>MIT releases software completely and also allows use in commercial projects, removes liability of provider.</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+
+<section id="documentation" class="title-slide slide level1 center">
+<h1>Documentation</h1>
+<p>hello.Rd:</p>
+<pre><code>\name{hello}
+\alias{hello}
+\title{Hello, World!}
+\usage{
+hello()
+}
+\description{
+Prints 'Hello, world!'.
+}
+\examples{
+hello()
+}</code></pre>
+<p><code>Rd</code> is the extension used for <strong>R d</strong>ocumentation.</p>
+<p>Rd files are clearly structured, yet, we DO NOT want to write these ourselves (way too many places to mess up)</p>
+</section>
+
+<section id="the-documentation-workflow" class="title-slide slide level1 center">
+<h1>The documentation workflow</h1>
+<p>First: Prep the DESCRIPTION file by adding the line</p>
+<pre><code>Roxygen: list(markdown = TRUE)</code></pre>
+<p>or use <code>usethis::use_roxygen_md()</code></p>
+<ol type="1">
+<li><p>Add tags to your .R files in form of roxygen (next slide) comments</p></li>
+<li><p>Run <code>devtools::document()</code> (or press <code>Ctrl/Cmd + Shift + D</code> in RStudio) to convert roxygen comments to .Rd files.</p></li>
+<li><p>Preview documentation with <code>?</code>.</p></li>
+<li><p>Rinse and repeat 1-3 until the documentation looks the way you want.</p></li>
+</ol>
+<p>Additional help: <a href="https://roxygen2.r-lib.org/articles/markdown.html">roxygen2 documentation</a></p>
+</section>
+
+<section id="roxygen2" class="title-slide slide level1 center">
+<h1>Roxygen2</h1>
+<p>Roxygen comments start with <code>#'</code> to distinguish them from regular comments:</p>
+<pre><code>#' Add together two numbers.
+#' 
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+add &lt;- function(x, y) {
+  x + y
+}</code></pre>
+</section>
+
+<section id="roxygen2-and-namespace" class="title-slide slide level1 center">
+<h1>Roxygen2 and NAMESPACE</h1>
+<p><code>@export</code>, <code>@import</code>, <code>@importFrom</code> do not write anything into the help file<br>
+instead, they write to <code>NAMESPACE</code></p>
+<ul>
+<li><p><code>@export</code> makes the function visible to package users</p></li>
+<li><p><code>@import</code> makes the imported package visible to the function code so you don’t have to use <code>package::function()</code> notation</p></li>
+<li><p><code>@importFrom</code> makes the imported function from the specified package visible (a more limited version of <code>@import</code>) <strong>my personal favorite</strong></p></li>
+</ul>
+</section>
+
+<section id="roxygenized-example-in-add.rd" class="title-slide slide level1 center">
+<h1>Roxygenized example in <code>add.Rd</code></h1>
+<pre><code>% Generated by roxygen2 (4.0.0): do not edit by hand
+\name{add}
+\alias{add}
+\title{Add together two numbers}
+\usage{
+add(x, y)
+}
+\arguments{
+  \item{x}{A number}
+
+  \item{y}{A number}
+}
+\value{
+The sum of \code{x} and \code{y}
+}
+\description{
+Add together two numbers
+}
+\examples{
+add(1, 1)
+add(10, 1)
+}</code></pre>
+</section>
+
+<section id="your-turn-1" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<ul>
+<li><p>Delete the file <code>hello.Rd</code> in the folder <code>man</code></p></li>
+<li><p>Prep the DESCRIPTION file by adding the Roxygen tag.</p></li>
+<li><p>Include roxygen comments for the function <code>hello()</code> in the file <code>hello.R</code> to create the same help for <code>hello</code> as was there before.</p></li>
+<li><p>Run <code>devtools::document()</code> to create the file <code>hello.Rd</code>.</p></li>
+<li><p>Build the package and run <code>?hello</code>.</p></li>
+<li><p>Already done? Expand the functionality of <code>hello</code> to produce an output of <code>Hello, string!</code> for <code>hello(string)</code>. Update <code>?hello</code> accordingly.</p></li>
+</ul>
+</section>
+
+<section id="roxygen-tags" class="title-slide slide level1 center">
+<h1>Roxygen tags</h1>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tag</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>@export</code></td>
+<td style="text-align: left;">Make the function visible to users of the package</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>@param</code></td>
+<td style="text-align: left;">Describe inputs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>@return</code></td>
+<td style="text-align: left;">Describe outputs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>@examples</code></td>
+<td style="text-align: left;">Show how the function works</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>@author</code></td>
+<td style="text-align: left;">Who wrote the function (if different from package)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>@seealso</code></td>
+<td style="text-align: left;">Pointers to related functions</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>@aliases</code></td>
+<td style="text-align: left;">Make it easier for users to find</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>@rdname</code></td>
+<td style="text-align: left;">Useful for functions that are invalid filenames and for combining docs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>@import</code></td>
+<td style="text-align: left;">Call all functions from another package natively (without <code>package::function</code>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>@importFrom</code></td>
+<td style="text-align: left;">Call a single function from another package natively</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section id="commands-in-roxygen" class="title-slide slide level1 center">
+<h1>Commands in Roxygen</h1>
+<p>Most of these elements can also be replaced by markdown</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tag</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>\code{}</code></td>
+<td style="text-align: left;">Discuss R code — backticks work here as well</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>\link{}</code></td>
+<td style="text-align: left;">Make link to another function (usually wrapped in <code>\code{}</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>\eqn{}</code></td>
+<td style="text-align: left;">Inline equation (standard LaTeX)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>\emph{}</code></td>
+<td style="text-align: left;">Italic text — or use <code>*</code> at the beginning and end</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>\strong{}</code></td>
+<td style="text-align: left;">Bold text — or use <code>**</code> at the beginning and end</td>
+</tr>
+</tbody>
+</table>
+<p>Numbered list (Use <code>\itemize{}</code> for bulleted):</p>
+<pre><code>\enumerate{
+  \item First item
+}</code></pre>
+</section>
+
+<section id="your-turn-2" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<ul>
+<li><p>Expand the functionality of <code>hello</code> to produce an output of <code>Hello, string!</code> for <code>hello(string)</code>.</p></li>
+<li><p>Insert the corresponding roxygen tags to expand on the documentation</p></li>
+<li><p>Run <code>devtools::document()</code></p></li>
+<li><p>Check that the help for <code>hello</code> is updated</p></li>
+</ul>
 
 
 </section>

@@ -9,8 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-09-23">
-  <title>Stat 471 – Univariate Outliers</title>
+  <meta name="dcterms.date" content="2025-11-11">
+  <title>Stat 471 – Data Packages</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,193 +193,180 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Univariate Outliers</h1>
+  <h1 class="title">Data Packages</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-09-23</p>
+  <p class="date">2025-11-11</p>
 </section>
-<section id="an-outlier-is" class="title-slide slide level1 center">
-<h1>An Outlier is …</h1>
-<blockquote>
-<p>… a data point that is extremely different from other data points in a set, mostly due to a legitimate extreme event or a mistake</p>
-</blockquote>
-<p>outliers can occur in one or more dimensions</p>
-<p>is it a ‘true’ outlier or just an extreme observation?</p>
-
-<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
-
-<section id="outlier-detection" class="title-slide slide level1 center">
-<h1>Outlier detection</h1>
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
 <ul>
-<li><p>visually</p></li>
-<li><p>statistical tests</p></li>
-<li><p>data context</p></li>
+<li><p>data in packages</p></li>
+<li><p>code examples in the help file</p></li>
+<li><p>checking a package</p></li>
+</ul>
+<p><br> <br> <br></p>
+<p>Resource:</p>
+<ul>
+<li><a href="https://usethis.r-lib.org/">usethis</a> by Hadley Wickham and Jenny Bryan</li>
+<li><a href="https://r-pkgs.org/">R packages (2ed)</a> by Hadley Wickham</li>
 </ul>
 </section>
-
-<section id="depth-statistics" class="title-slide slide level1 center">
-<h1>Depth Statistics</h1>
-<p>For a sample <span class="math inline">\(x\)</span> of numeric values let <span class="math inline">\(x_{(i)}\)</span> denote the <span class="math inline">\(i\)</span>th value of the sorted sample, i.e.&nbsp;<span class="math inline">\(x_{(1)} \le x_{(2)} \le ... \le x_{(n)}\)</span> for sample size <span class="math inline">\(n\)</span>.</p>
-<p>The depth <span class="math inline">\(d\)</span> of <span class="math inline">\(x_(i)\)</span> is defined as the minimum of <span class="math inline">\(i\)</span> and <span class="math inline">\(n-i+1\)</span>, i.e.&nbsp;“What is the minimum number of data points (including myself) that have to be overtaken to get out of the data set?”</p>
-<p>Depth is a measure of centrality - with larger depths indicating higher centrality</p>
+<section id="package-usethis-and-r-packages-book" class="slide level2">
+<h2>Package <code>usethis</code> and <code>R packages</code> book</h2>
+<p>R package development is not generally linear, we generally need a lot of details on specific things:</p>
+<p><code>usethis</code> is a package to help with organizing the workflow in packages as well as other non-package projects</p>
+<p><a href="https://usethis.r-lib.org/">README</a> gives an overview of the functionality of <code>usethis</code>.</p>
+<p><a href="https://r-pkgs.org/">R packages (2ed)</a> by Hadley Wickham is giving a general overview of the workflow with details</p>
 </section>
-
-<section id="example-depths" class="title-slide slide level1 center">
-<h1>Example Depths</h1>
-<p>Minimum and maximum have depth 1 (the smallest depth possible)</p>
-<p>Median has a depth of <span class="math inline">\(\lceil n/2  \rceil\)</span>.</p>
-<p>What depth do the first and third quartile have?</p>
-<p>Note: depth is only associated with data value, i.e.&nbsp;in general the mean of a sample does not have an associated depth</p>
+<section id="data-in-a-package" class="slide level2">
+<h2>Data in a package</h2>
+<p>Assume we have the data frame <code>mydata</code> (there are better names :)).</p>
+<pre><code>use_data
+function (..., internal = FALSE, overwrite = FALSE, compress = "bzip2")</code></pre>
+<p><code>use_data</code> places a data object into the <code>data</code> folder.</p>
+<p>internal data (used by the package not by the users of a package) is placed in the file <code>sysdata.rda</code></p>
 </section>
-
-<section id="visual-outlier-detection" class="title-slide slide level1 center">
-<h1>Visual Outlier Detection</h1>
-<ul>
-<li>Boxplot (JW Tukey, “Exploratory Data Analysis”, 1977)</li>
-</ul>
-
-<img data-src="https://lsc.studysixsigma.com/wp-content/uploads/sites/6/2015/12/1435.png" class="r-stretch"></section>
-
-<section id="boxplots" class="title-slide slide level1 center">
-<h1>Boxplots</h1>
-<p>Based on <em>depth</em> statistics: sort the data.</p>
-<p>Outliers are defined to be outside of <span class="math inline">\([Q_1 - 1.5 \times \text{IQR}, Q_3 + 1.5 \times \text{IQR}]\)</span></p>
-<p>Extreme outliers are defined to be outside of <span class="math inline">\([Q_1 - 3 \times \text{IQR}, Q_3 + 3 \times \text{IQR}]\)</span></p>
-</section>
-
 <section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
 <h1>Your Turn</h1>
-<p>Write a function (or find a function) in R that calculates the Inter-Quartile Range of a sample <span class="math inline">\(x\)</span>.</p>
-<p>With that function, calculate the number of outliers or extreme outliers of a sample <span class="math inline">\(x\)</span>.</p>
+<p>Include the <code>diamonds</code> data as a dataset in your package</p>
+<p>What does R CMD check say to that?</p>
+</section>
+
+<section id="data-documentation" class="title-slide slide level1 center">
+<h1>Data documentation</h1>
+<ul>
+<li>Documenting data in packages: https://r-pkgs.org/data.html</li>
+</ul>
+<pre><code>#' Prices of 50,000 round cut diamonds.
+#'
+#' A dataset containing the prices and other attributes of almost 54,000
+#' diamonds.
+#'
+#' @format A data frame with 53940 rows and 10 variables:
+#' \describe{
+#'   \item{price}{price, in US dollars}
+#'   \item{carat}{weight of the diamond, in carats}
+#'   ...
+#' }
+#' @source \url{http://www.diamondse.info/}
+"diamonds"</code></pre>
+<p>General convention is to have a <code>data.r</code> file in the folder <code>R</code> that consists of data documentation.</p>
+</section>
+
+<section id="data-provenance" class="title-slide slide level1 center">
+<h1>Data provenance</h1>
+<p>https://r-pkgs.org/data.html</p>
+<p>Keep the data set’s origin story!</p>
+<p>Origin story has at least two parts: original data and the script that converts the raw data to the R package data:</p>
+<ul>
+<li><p>script: has extension <code>.R</code> and goes into a folder called <code>data-raw</code> (not the <code>R</code> folder!!)</p></li>
+<li><p>in folder: inst/extdata include (some) of the raw data (csv, pdf, …)</p></li>
+</ul>
+<p>The folder <code>inst</code> is special in an R package: <code>inst</code> is a folder that is being unloaded into the R library during the <code>inst</code>allation process.</p>
+</section>
+
+<section id="your-turn-1" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<p>Expand the <code>hello</code> function by sampling from the diamonds data and reporting the carat weight as</p>
+<p>“You are a <carat> carat gem!”</carat></p>
+<p>Run R CMD check on this</p>
+</section>
+
+<section id="using-data-sets-in-packages" class="title-slide slide level1 center">
+<h1>Using data sets in packages</h1>
+<p>Activate the data <strong>in your function environment</strong>:</p>
+<p><code>data(diamonds, envir = environment())</code></p>
+<p>See also ‘Good Practices’ under <code>?data</code> Details</p>
+</section>
+
+<section id="examples-in-packages" class="title-slide slide level1 center">
+<h1>Examples in packages</h1>
+<ul>
+<li><p>The Roxygen tag <code>@examples</code> allows you to write code as an example in the help file.</p></li>
+<li><p>Always make use of this feature! It is not only good practice, it is also a first step in checking that your package is running properly - for new packages CRAN expects an example for every function</p></li>
+<li><p>Your example has to be <strong>stand alone</strong>, i.e.&nbsp;if you are using some data, it needs to be included in the package.</p></li>
+</ul>
+<pre><code>#' @examples
+#' # you can include comments
+#' x &lt;- 1
+#' 5*x
+#' hello("this is a test")</code></pre>
+</section>
+
+<section id="checking-packages" class="title-slide slide level1 center">
+<h1>Checking packages</h1>
+<ul>
+<li><p>The Comprehensive R Archive Network (CRAN) is the place for publishing packages for general use.</p></li>
+<li><p>Once a package is on CRAN it can be installed using the command <code>install.packages("&lt;package name&gt;")</code></p></li>
+<li><p>CRAN has installed certain rules that all packages must comply before being uploaded</p></li>
+</ul>
+<p><code>devtools::check()</code> or <code>Ctrl/Cmd + Shift + E</code> runs these tests on your local package</p>
+<p>Similar to <code>check()</code> it looks for the package to check in the working directory</p>
+</section>
+
+<section id="three-levels-of-faults" class="title-slide slide level1 center">
+<h1>Three levels of faults</h1>
+<ul>
+<li><p><strong><code>ERROR</code></strong>: severe problem that has to be fixed beofr esubmitting to CRAN - you should fix it anyway</p></li>
+<li><p><strong><code>WARNING</code></strong>: also has to be fixed before going onto CRAN, but not as severe.</p></li>
+<li><p><strong><code>NOTE</code></strong>: mild problem. You should try to get rid of all notes before submitting to CRAN, but sometimes there is a specific reason that does not allow you to fix all notes. In that case, write a careful description why this note happens in the submission comments.</p></li>
+</ul>
+</section>
+
+<section id="checking-cycle" class="title-slide slide level1 center">
+<h1>Checking cycle</h1>
+<pre><code>R CMD check results
+0 errors | 0 warnings | 0 notes </code></pre>
+<p>This is what you want to see, but not a likely outcome of your first run in a real package</p>
+<p>Checking workflow:</p>
+<ol type="1">
+<li><p>Run <code>devtools::check()</code>, or press <code>Ctrl/Cmd + Shift + E</code>.</p></li>
+<li><p>Fix the first problem.</p></li>
+<li><p>Repeat until there are no more problems.</p></li>
+</ol>
+</section>
+
+<section id="continuous-integration" class="title-slide slide level1 center">
+<h1>Continuous Integration</h1>
+<ul>
+<li><p>one of the problems of ensuring that a package is sound, is to actually <em>remember</em> to run the tests</p></li>
+<li><p><a href="https://github.com/features/actions">Github actions</a> allows us to create an automatized workflow (written in yaml): e.g.&nbsp;every time you push a change, the package is being built and checked for CRAN compliance</p></li>
+<li><p>github actions can be adjusted to specific use cases - for a start use <a href="https://github.com/r-lib/actions">example actions</a> :)</p></li>
+<li><p>the command <code>usethis::use_github_actions()</code> sets up a folder .github &gt; workflows with the file <code>R-CMD-check.yaml</code>. (This will only work out of the box when there is one package in the repo, and the package is not in a subfolder)</p></li>
+</ul>
+</section>
+
+<section id="connecting-the-package-to-git-github" class="title-slide slide level1 center">
+<h1>Connecting the package to git &amp; github</h1>
+<p>The <code>usethis</code> package allows us to first turn on git (locally):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>outliers <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, {</span>
-<span id="cb1-2"><a></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb1-3"><a></a>  </span>
-<span id="cb1-4"><a></a>  <span class="co"># determine the number of outliers</span></span>
-<span id="cb1-5"><a></a>  </span>
-<span id="cb1-6"><a></a>  <span class="co"># determine the number of extreme outliers</span></span>
-<span id="cb1-7"><a></a>  </span>
-<span id="cb1-8"><a></a>  <span class="co"># report both numbers back</span></span>
-<span id="cb1-9"><a></a>})</span>
-<span id="cb1-10"><a></a></span>
-<span id="cb1-11"><a></a><span class="co"># find the proportion of outliers across the samples</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and then create a github repository:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>… and while we are at it, also include a readme file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>usethis<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
-<section id="z-scores" class="title-slide slide level1 center">
-<h1>Z-scores</h1>
-<ul>
-<li>“Three sigma rule”: an outlier is defined as being outside an interval of <span class="math inline">\(\mu \pm 3 \sigma\)</span></li>
-</ul>
-<p>Probability for a normally distributed value to be outside that range: 0.002700</p>
-<p>Daily event is outside of that range about once a year.</p>
-<ul>
-<li>Better be safe? use the 6<span class="math inline">\(\sigma\)</span> rule!</li>
-</ul>
-<p>Probability for a normally distributed value to be outside that range: <span class="math inline">\(1.973 \times 10^{−9} = 1.973\)</span> ppb (or about 1 in 506,797,346 )</p>
-<p>Every 1.38 million years (twice in history of humankind)</p>
-</section>
-
-<section id="outlier-detection-1" class="title-slide slide level1 center">
-<h1>Outlier detection</h1>
-<ul>
-<li><p>different cutoffs for small/large samples</p></li>
-<li><p>all large samples will have outliers</p></li>
-<li><p>but we want tests to be powerful enough to also detect outliers in small samples</p></li>
-</ul>
-</section>
-
-<section id="example-brfss" class="title-slide slide level1 center">
-<h1>Example: BRFSS</h1>
-<p>Grubbs test (more in homework) tests difference between Max/Min and median:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(stat471)</span>
-<span id="cb2-2"><a></a><span class="fu">library</span>(outliers)</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Grubbs test for one outlier
-
-data:  brfss$HEIGHT3
-G = 5.35991, U = 0.99772, p-value = 0.0005156
-alternative hypothesis: highest value 9999 is an outlier</code></pre>
-</div>
-</div>
-<p>Correctly detects 9999 as an outlier</p>
-</section>
-
-<section id="example-brfss-1" class="title-slide slide level1 center">
-<h1>Example: BRFSS</h1>
-<p>But also detects 9200 as an outlier</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3[(brfss<span class="sc">$</span>HEIGHT3<span class="sc">!=</span><span class="dv">9999</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Grubbs test for one outlier
-
-data:  brfss$HEIGHT3[(brfss$HEIGHT3 != 9999)]
-G = 6.08173, U = 0.99703, p-value = 7.195e-06
-alternative hypothesis: highest value 9200 is an outlier</code></pre>
-</div>
-</div>
-<p>… and keeps going:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3[(brfss<span class="sc">$</span>HEIGHT3<span class="sc">&lt;</span><span class="dv">7777</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Grubbs test for one outlier
-
-data:  brfss$HEIGHT3[(brfss$HEIGHT3 &lt; 7777)]
-G = 5.47905, U = 0.99751, p-value = 0.0002533
-alternative hypothesis: lowest value 305 is an outlier</code></pre>
-</div>
-</div>
-</section>
-
-<section id="visual-detection-brfss" class="title-slide slide level1 center">
-<h1>Visual Detection: BRFSS</h1>
-<ul>
-<li><p>Gaps &amp; modes: histograms and (jittered) dot plots</p></li>
-<li><p>(formal) deviation from center: boxplots</p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(stat471)</span>
-<span id="cb8-2"><a></a><span class="fu">data</span>(brfss)</span>
-<span id="cb8-3"><a></a></span>
-<span id="cb8-4"><a></a>brfss <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HEIGHT3)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-
-<section id="visual-outlier-detection-1" class="title-slide slide level1 center">
-<h1>Visual outlier detection</h1>
-<ul>
-<li>visualizations also detect other problems in the data</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>brfss <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a></a>  <span class="fu">filter</span>(HEIGHT3 <span class="sc">&lt;</span> <span class="dv">7777</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HEIGHT3)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-8-1.png" width="480" class="r-stretch"></section>
-
-<section id="visual-outlier-detection-2" class="title-slide slide level1 center">
-<h1>Visual outlier detection</h1>
-<ul>
-<li>while also allowing for outlier detection</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>brfss <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HTM4)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
+<section id="package-website" class="title-slide slide level1 center">
+<h1>Package website</h1>
+<p>The package <code>pkgdown</code> creates web pages based on all the files in a package</p>
+<p><code>pkgdown</code> supports making websites for your package (see e.g.&nbsp;<a href="https://heike.github.io/x3ptools/">x3ptools</a>, <a href="https://ggplot2.tidyverse.org/">ggplot2</a>, … and soon yours)</p>
+<p>Process:</p>
+<pre><code>pkgdown::build_site()</code></pre>
+<p>Assuming your package has a github repo, add the <code>docs</code> folder to the repo</p>
+<p>In <code>Settings</code> for your repo, switch GitHub Pages to the docs folder (see screenshot)</p>
 
 
-<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-9-1.png" width="480" class="r-stretch"></section>
+
+<img data-src="images/github-docs.png" class="r-stretch"></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../N.svg" class="slide-logo"></p>
