@@ -9,8 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="dcterms.date" content="2025-11-18">
-  <title>Stat 471 – Working with large data</title>
+  <meta name="dcterms.date" content="2025-11-20">
+  <title>Stat 471 – Working with Apache Arrow in R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,499 +193,339 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Working with large data</h1>
+  <h1 class="title">Working with Apache Arrow in R</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-11-18</p>
+  <p class="date">2025-11-20</p>
 </section>
-<section id="databases-and-r" class="title-slide slide level1 center">
-<h1>Databases and R</h1>
-
-</section>
-
 <section id="outline" class="title-slide slide level1 center">
 <h1>Outline</h1>
 <ul>
-<li>a bit about databases</li>
-<li>linking R to a (local) data base</li>
-<li>investigate the FARS data</li>
+<li>Intro to Arrow</li>
+<li>Basic functionality R to and from Arrow</li>
 </ul>
 <p><br></p>
-<p>Resources:</p>
+<p>Resource:</p>
 <ul>
-<li><code>vignette("databases", package="dplyr")</code> (for working with dplyr and databases)</li>
-<li><code>vignette("two-table", package="dplyr")</code> (for joining tables - we’ve covered this before)</li>
+<li><a href="https://github.com/apache/arrow/blob/main/r/cheatsheet/arrow-cheatsheet.pdf">Arrow for R Cheat Sheet</a></li>
+<li><a href="https://r4ds.hadley.nz/arrow">Arrow for Data Science</a></li>
+<li><a href="https://arrow.apache.org/">Arrow Project</a></li>
 </ul>
 </section>
 
-<section id="why-databases" class="title-slide slide level1 center">
-<h1>Why databases?</h1>
-<p>What is a database?</p>
+<section id="what-is-apache-arrow" class="title-slide slide level1 smaller center">
+<h1>What is Apache Arrow?</h1>
+<p>language-independent columnar memory format for fast data access and interoperability</p>
 <ul>
-<li>A collection of data</li>
-<li>A set of rules to manipulate data</li>
-</ul>
-<p>Why are they important?</p>
-<ul>
-<li>Efficient manipulation of large data sets</li>
-<li>Convenient processing of data</li>
-<li>Integration of multiple sources of data</li>
-<li>Access to a shared resource</li>
+<li><p>fast I/O (locally: CSV, Parquet, Arrow; remotely: aws S3, Google Cloud, Arrow Flight)</p></li>
+<li><p>dataset queries without loading data into memory</p></li>
+<li><p>zero-copy data sharing between Python and R</p></li>
+<li><p>a dplyr interface for on-disk data</p></li>
+<li><p>integration with databases: DuckDB, Spark, Polars</p></li>
 </ul>
 </section>
 
-<section id="relational-databases" class="title-slide slide level1 center">
-<h1>Relational Databases</h1>
-<ul>
-<li>Database is collection of tables and links (normal form)</li>
-<li>SQL (Structured Query Language) for querying</li>
-<li>DBMS (Database Management System) and managing data</li>
-</ul>
-</section>
-
-<section id="structured-query-language" class="title-slide slide level1 center">
-<h1>Structured Query Language</h1>
-<ul>
-<li>Structured Query Language (1970, E Codds)</li>
-<li>Programming language used for accessing data in a database</li>
-<li>ANSI standard since 1986, ISO standard since 1987</li>
-<li>Still some portability issues between software systems!</li>
-<li>We’ll mainly focus on SQL queries to access data</li>
-</ul>
-</section>
-
-<section id="syntax" class="title-slide slide level1 center">
-<h1>Syntax</h1>
-<ul>
-<li>SQL is not case sensitive.</li>
-<li>Some systems require <code>;</code> at the end of each line. The semi-colon can be used to separate each SQL statement in a system that allows multiple command to be executed in a call to the server.</li>
-</ul>
-</section>
-
-<section id="select" class="title-slide slide level1 center">
-<h1>Select</h1>
-<div class="double">
-<p class="double-flow">
-</p><p><strong>Student</strong></p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong><em>ID</em></strong></th>
-<th style="text-align: center;">Name</th>
-<th style="text-align: right;">Major</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1234</td>
-<td style="text-align: center;">Never Ever</td>
-<td style="text-align: right;">Math</td>
-</tr>
-<tr class="even">
-<td>4321</td>
-<td style="text-align: center;">Some Times</td>
-<td style="text-align: right;">CS</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<p class="double-flow">
-</p><p><strong>Attendance</strong></p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong><em>ID</em></strong></th>
-<th style="text-align: center;"><strong><em>Date</em></strong></th>
-<th style="text-align: right;">Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1234</td>
-<td style="text-align: center;">02-Feb</td>
-<td style="text-align: right;">absent</td>
-</tr>
-<tr class="even">
-<td>1234</td>
-<td style="text-align: center;">09-Feb</td>
-<td style="text-align: right;">absent</td>
-</tr>
-<tr class="odd">
-<td>4321</td>
-<td style="text-align: center;">02-Feb</td>
-<td style="text-align: right;">present</td>
-</tr>
-<tr class="even">
-<td>4321</td>
-<td style="text-align: center;">09-Feb</td>
-<td style="text-align: right;">absent</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-</div>
-<p><code>Select * from student</code> leads to</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong><em>ID</em></strong></th>
-<th style="text-align: center;">Name</th>
-<th style="text-align: right;">Major</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1234</td>
-<td style="text-align: center;">Never Ever</td>
-<td style="text-align: right;">Math</td>
-</tr>
-<tr class="even">
-<td>4321</td>
-<td style="text-align: center;">Some Times</td>
-<td style="text-align: right;">CS</td>
-</tr>
-</tbody>
-</table>
-</section>
-
-<section>
-<section id="where" class="title-slide slide level1 center">
-<h1>Where</h1>
-<div class="double">
-<p class="double-flow">
-</p><p><strong>Student</strong></p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong><em>ID</em></strong></th>
-<th style="text-align: center;">Name</th>
-<th style="text-align: right;">Major</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1234</td>
-<td style="text-align: center;">Never Ever</td>
-<td style="text-align: right;">Math</td>
-</tr>
-<tr class="even">
-<td>4321</td>
-<td style="text-align: center;">Some Times</td>
-<td style="text-align: right;">CS</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<p class="double-flow">
-</p><p><strong>Attendance</strong></p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong><em>ID</em></strong></th>
-<th style="text-align: center;"><strong><em>Date</em></strong></th>
-<th style="text-align: right;">Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1234</td>
-<td style="text-align: center;">02-Feb</td>
-<td style="text-align: right;">absent</td>
-</tr>
-<tr class="even">
-<td>1234</td>
-<td style="text-align: center;">09-Feb</td>
-<td style="text-align: right;">absent</td>
-</tr>
-<tr class="odd">
-<td>4321</td>
-<td style="text-align: center;">02-Feb</td>
-<td style="text-align: right;">present</td>
-</tr>
-<tr class="even">
-<td>4321</td>
-<td style="text-align: center;">09-Feb</td>
-<td style="text-align: right;">absent</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-</div>
-<p><code>Select Name from student where Major='Math'</code> leads to</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Never Ever</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="aggregations" class="slide level2">
-<h2>Aggregations</h2>
-<div class="double">
-<p class="double-flow">
-</p><p><strong>Student</strong></p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong><em>ID</em></strong></th>
-<th style="text-align: center;">Name</th>
-<th style="text-align: right;">Major</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1234</td>
-<td style="text-align: center;">Never Ever</td>
-<td style="text-align: right;">Math</td>
-</tr>
-<tr class="even">
-<td>4321</td>
-<td style="text-align: center;">Some Times</td>
-<td style="text-align: right;">CS</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<p class="double-flow">
-</p><p><strong>Attendance</strong></p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong><em>ID</em></strong></th>
-<th style="text-align: center;"><strong><em>Date</em></strong></th>
-<th style="text-align: right;">Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1234</td>
-<td style="text-align: center;">02-Feb</td>
-<td style="text-align: right;">absent</td>
-</tr>
-<tr class="even">
-<td>1234</td>
-<td style="text-align: center;">09-Feb</td>
-<td style="text-align: right;">absent</td>
-</tr>
-<tr class="odd">
-<td>4321</td>
-<td style="text-align: center;">02-Feb</td>
-<td style="text-align: right;">present</td>
-</tr>
-<tr class="even">
-<td>4321</td>
-<td style="text-align: center;">09-Feb</td>
-<td style="text-align: right;">absent</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-</div>
-<p><code>Select ID, count(ID) from Attendance where Status='absent'</code> leads to</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong><em>ID</em></strong></th>
-<th style="text-align: right;">Frequency</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1234</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td>4321</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="additional-resources-for-sql" class="slide level2">
-<h2>Additional Resources for SQL</h2>
-<ul>
-<li>W3Schools: http://www.w3schools.com/sql/default.asp</li>
-<li>DBI package, RMySQL, RSQLite: http://cran.r-project.org/web/packages/RMySQL/RMySQL.pdf http://cran.r-project.org/web/packages/RSQLite/RSQLite.pdf</li>
-</ul>
-</section>
-<section id="good-news" class="slide level2">
-<h2>Good news!</h2>
-<ul>
-<li><code>dplyr</code> package works (almost) the same for local data frames as tables in a database</li>
-<li><code>dplyr</code> functionality: <code>group_by</code>, <code>summarize</code>, <code>transform</code>, <code>filter</code>, <code>arrange</code>, <code>select</code></li>
-</ul>
-</section>
-<section id="an-example-fars-data" class="slide level2">
-<h2>An example: FARS data</h2>
-<ul>
-<li>US Department of transportation is keeping a record of every accident that results in a fatality in the FARS Data base (fatal accident report system, http://www.nhtsa.gov/FARS)</li>
-<li>FARS consists of 20+ tables consisting of various aspects of each accident Documentation at</li>
-<li>http://www-nrd.nhtsa.dot.gov/Cats/listpublications.aspx?Id=J&amp;ShowBy=DocType</li>
-</ul>
-</section>
-<section id="sqlite" class="slide level2">
-<h2>SQLite</h2>
-<ul>
-<li>SQLite is a relational database management system</li>
-<li>Unlike other DBMS SQLite is a server-less system with “zero-configuration”</li>
-<li><code>fars2014</code> is a SQLite database of the 2014 data provided by FARS, consisting of three tables: <code>accidents</code>, <code>person</code>, and <code>vehicle</code> (make sure to download <code>fars2014</code> from our github repo).</li>
-</ul>
-<p>connecting to the database:</p>
+<section id="installing-arrow" class="title-slide slide level1 center">
+<h1>Installing Arrow</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a></a>fars <span class="ot">&lt;-</span> <span class="fu">src_sqlite</span>(<span class="st">"../data/fars2014"</span>)</span>
-<span id="cb1-3"><a></a>fars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">"arrow"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Check version:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(arrow)</span>
+<span id="cb2-2"><a></a><span class="fu">arrow_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>src:  sqlite 3.50.3 [/Users/hofmann/Documents/Teaching/Stat 471/Stat471-Fall-2025/materials-2025/data/fars2014]
-tbls: accidents, person, vehicle</code></pre>
+<pre><code>Arrow package version: 21.0.0
+
+Capabilities:
+               
+acero      TRUE
+dataset    TRUE
+substrait FALSE
+parquet    TRUE
+json       TRUE
+s3         TRUE
+gcs        TRUE
+utf8proc   TRUE
+re2        TRUE
+snappy     TRUE
+gzip       TRUE
+brotli    FALSE
+zstd       TRUE
+lz4        TRUE
+lz4_frame  TRUE
+lzo       FALSE
+bz2       FALSE
+jemalloc  FALSE
+mimalloc   TRUE
+
+Memory:
+                  
+Allocator mimalloc
+Current    0 bytes
+Max        0 bytes
+
+Runtime:
+                        
+SIMD Level          avx2
+Detected SIMD Level avx2
+
+Build:
+                                    
+C++ Library Version  21.0.0-SNAPSHOT
+C++ Compiler              AppleClang
+C++ Compiler Version 14.0.3.14030022</code></pre>
 </div>
 </div>
 </section>
-<section id="connecting-to-fars" class="slide level2">
-<h2>Connecting to FARS</h2>
-<p>Use <code>tbl</code> to connect to a specific table (dataset) in the database</p>
-<p>note: R does not load the data into the session</p>
+
+<section id="arrow-data-structures-in-r" class="title-slide slide level1 center">
+<h1>Arrow Data Structures in R</h1>
+<p>Arrow provides two main structures:</p>
+<ul>
+<li>Arrow Table — immutable, columnar, in-memory</li>
+<li>Arrow Dataset — lazily evaluated collections of files (CSV/Parquet)</li>
+</ul>
+</section>
+
+<section id="creating-an-arrow-table" class="title-slide slide level1 center">
+<h1>Creating an Arrow Table</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>accidents <span class="ot">&lt;-</span> <span class="fu">tbl</span>(fars, <span class="st">"accidents"</span>)</span>
-<span id="cb3-2"><a></a>accidents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(arrow)</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>tbl <span class="ot">&lt;-</span> Table<span class="sc">$</span><span class="fu">create</span>(</span>
+<span id="cb4-4"><a></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb4-5"><a></a>  <span class="at">y =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb4-6"><a></a>)</span>
+<span id="cb4-7"><a></a></span>
+<span id="cb4-8"><a></a>tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># Source:   table&lt;`accidents`&gt; [?? x 50]
-# Database: sqlite 3.50.3 [/Users/hofmann/Documents/Teaching/Stat 471/Stat471-Fall-2025/materials-2025/data/fars2014]
-   STATE ST_CASE VE_TOTAL VE_FORMS PVH_INVL  PEDS PERNOTMVIT PERMVIT PERSONS
-   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt; &lt;int&gt;      &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
- 1     1   10001        1        1        0     0          0       2       2
- 2     1   10002        1        1        0     0          0       1       1
- 3     1   10003        2        2        0     0          0       7       7
- 4     1   10004        3        3        0     0          0       5       5
- 5     1   10005        1        1        0     0          0       1       1
- 6     1   10006        1        1        0     0          0       1       1
- 7     1   10007        3        2        1     0          0       2       2
- 8     1   10008        2        2        0     0          0       4       4
- 9     1   10009        3        3        0     0          0       5       5
-10     1   10010        2        2        0     0          0       6       6
-# ℹ more rows
-# ℹ 41 more variables: COUNTY &lt;int&gt;, CITY &lt;int&gt;, DAY &lt;int&gt;, MONTH &lt;int&gt;,
-#   YEAR &lt;int&gt;, DAY_WEEK &lt;int&gt;, HOUR &lt;int&gt;, MINUTE &lt;int&gt;, NHS &lt;int&gt;,
-#   ROAD_FNC &lt;int&gt;, ROUTE &lt;int&gt;, TWAY_ID &lt;chr&gt;, TWAY_ID2 &lt;chr&gt;, MILEPT &lt;int&gt;,
-#   LATITUDE &lt;dbl&gt;, LONGITUD &lt;dbl&gt;, SP_JUR &lt;int&gt;, HARM_EV &lt;int&gt;,
-#   MAN_COLL &lt;int&gt;, RELJCT1 &lt;int&gt;, RELJCT2 &lt;int&gt;, TYP_INT &lt;int&gt;,
-#   WRK_ZONE &lt;int&gt;, REL_ROAD &lt;int&gt;, LGT_COND &lt;int&gt;, WEATHER1 &lt;int&gt;, …</code></pre>
+<pre><code>Table
+5 rows x 2 columns
+$x &lt;int32&gt;
+$y &lt;string&gt;</code></pre>
 </div>
 </div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<ul>
-<li><code>dplyr</code> commands do not actually download the (whole) database</li>
-<li>use <code>collect()</code> to extract <em>all</em> records. This returns a tibble</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>accidents <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a></a>  <span class="fu">filter</span>(<span class="fu">between</span>(LONGITUD, <span class="sc">-</span><span class="dv">130</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-3"><a></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(LONGITUD, LATITUDE)) <span class="sc">+</span></span>
-<span id="cb5-5"><a></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
 
-<img data-src="01-databases_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-<section id="your-turn-8-mins" class="slide level2">
-<h2>Your Turn (8 mins)</h2>
-<p>Connect to the FARS database (using the SQLite database <code>fars2014</code>). Answer the following questions:</p>
+<section id="converting-between-arrow-and-r" class="title-slide slide level1 center">
+<h1>Converting between Arrow and R</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">as.data.frame</span>(tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x y
+1 1 a
+2 2 b
+3 3 c
+4 4 d
+5 5 e</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>arrow_tbl <span class="ot">&lt;-</span> <span class="fu">as_arrow_table</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="reading-and-writing-files-with-arrow" class="title-slide slide level1 center">
+<h1>Reading and Writing Files with Arrow</h1>
 <ul>
-<li>are there some days of the week where more accidents happen than on others (use variable <code>DAY_WEEK</code>)?</li>
-<li>what time of the day do accidents happen (use variable <code>HOUR</code>)?</li>
-<li>what is the number of accidents with at least one drunk driver (use variable <code>DRUNK_DR</code>)?</li>
+<li>CSV</li>
 </ul>
-<p><br> <br> <br> <br></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>dayweek <span class="ot">&lt;-</span> accidents <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(DAY_WEEK) <span class="sc">%&gt;%</span> <span class="fu">tally</span>() </span>
-<span id="cb6-2"><a></a>dayweek <span class="sc">%&gt;%</span> <span class="fu">collect</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> DAY_WEEK, <span class="at">weight=</span>n)) <span class="sc">+</span> <span class="fu">geom_bar</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="01-databases_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>hours <span class="ot">&lt;-</span> accidents <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(HOUR) <span class="sc">%&gt;%</span> <span class="fu">tally</span>() </span>
-<span id="cb7-2"><a></a>hours <span class="sc">%&gt;%</span> <span class="fu">filter</span>(HOUR <span class="sc">&lt;</span> <span class="dv">25</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HOUR, <span class="at">weight=</span>n)) <span class="sc">+</span> <span class="fu">geom_bar</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="01-databases_files/figure-revealjs/unnamed-chunk-5-2.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>drunk <span class="ot">&lt;-</span> accidents <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(DRUNK_DR) <span class="sc">%&gt;%</span> <span class="fu">tally</span>() </span>
-<span id="cb8-2"><a></a>drunk <span class="sc">%&gt;%</span> <span class="fu">collect</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> DRUNK_DR, <span class="at">weight=</span>n)) <span class="sc">+</span> <span class="fu">geom_bar</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="01-databases_files/figure-revealjs/unnamed-chunk-5-3.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="your-turn-5-mins" class="slide level2">
-<h2>Your Turn (5 mins)</h2>
-<p>Connect to the <code>person</code> table. Identify drivers (<code>PER_TYP</code> == 1, see <a href="https://www-fars.nhtsa.dot.gov/Common/IdDefs.aspx">fars manual</a> ) and subset on them.</p>
-<p><br> <br> <br> <br> <br> <br> <br> <br></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>person <span class="ot">&lt;-</span> <span class="fu">tbl</span>(fars, <span class="st">"person"</span>)</span>
-<span id="cb9-2"><a></a>drivers <span class="ot">&lt;-</span> person <span class="sc">%&gt;%</span> <span class="fu">filter</span>(PER_TYP <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="working-with-multiple-tables" class="slide level2">
-<h2>Working with multiple tables</h2>
+<pre><code>csv_data &lt;- read_csv_arrow("bigfile.csv")
+write_csv_arrow(csv_data, "output.csv")</code></pre>
 <ul>
-<li>Only rarely single datasets are giving us all the answers we need</li>
-<li><code>left_join</code>, <code>right_join</code> work in the same way on databases as on local data frames.</li>
+<li>Parquet</li>
 </ul>
+<pre><code>parquet_data &lt;- read_parquet("data.parquet")
+write_parquet(csv_data, "out.parquet")</code></pre>
 </section>
-<section id="investigating-accidents-by-gender" class="slide level2">
-<h2>Investigating accidents by gender</h2>
-<p>We want to join drivers and accidents:</p>
+
+<section id="example-flight-data" class="title-slide slide level1 center">
+<h1>Example: Flight Data</h1>
+<p>Reading with <code>read_csv</code> in R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>driver_acc <span class="ot">&lt;-</span> <span class="fu">left_join</span>(drivers, accidents)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">system.time</span>(</span>
+<span id="cb11-2"><a></a>  flights_r <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"flights.csv"</span>))</span>
+<span id="cb11-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+ 76.641   4.008  17.168 </code></pre>
 </div>
-<p>Note that there are a lot of variables with the same name - we actually include all of these variables</p>
-</section>
-<section id="your-turn-5-min" class="slide level2">
-<h2>Your Turn (5 min)</h2>
-<ul>
-<li>Join drivers and accidents data.</li>
-<li>Tally the number of accidents by day of the week (<code>DAY_WEEK</code>), hour of the day (<code>HOUR</code>) and gender (<code>SEX</code>). Visualize the results!</li>
-</ul>
-<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+</div>
+<p>Reading with Arrow:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>driver_acc <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(DAY_WEEK, HOUR, SEX) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a></a>  <span class="fu">filter</span>(HOUR <span class="sc">&lt;</span> <span class="dv">25</span>, SEX <span class="sc">&lt;</span> <span class="dv">8</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-4"><a></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb11-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HOUR, <span class="at">y =</span> n)) <span class="sc">+</span> </span>
-<span id="cb11-6"><a></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">factor</span>(SEX))) <span class="sc">+</span></span>
-<span id="cb11-7"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>DAY_WEEK) <span class="sc">+</span></span>
-<span id="cb11-8"><a></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette=</span><span class="st">"Set1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">system.time</span>(</span>
+<span id="cb13-2"><a></a>  flights_arrow <span class="ot">&lt;-</span> <span class="fu">read_csv_arrow</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"flights.csv"</span>))</span>
+<span id="cb13-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+  7.583   1.471   9.023 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">class</span>(flights_arrow)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+</div>
+</section>
+
+<section id="arrow-datasets" class="title-slide slide level1 center">
+<h1>Arrow Datasets</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">system.time</span>(</span>
+<span id="cb17-2"><a></a>ds <span class="ot">&lt;-</span> <span class="fu">open_dataset</span>(</span>
+<span id="cb17-3"><a></a>  <span class="at">sources =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"flights.csv"</span>), </span>
+<span id="cb17-4"><a></a>  <span class="at">format =</span> <span class="st">"csv"</span>)</span>
+<span id="cb17-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+  0.054   0.178   0.217 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>FileSystemDataset with 1 csv file
+120 columns
+Year: int64
+Quarter: int64
+Month: int64
+DayofMonth: int64
+DayOfWeek: int64
+FlightDate: date32[day]
+Marketing_Airline_Network: string
+Operated_or_Branded_Code_Share_Partners: string
+DOT_ID_Marketing_Airline: int64
+IATA_Code_Marketing_Airline: string
+Flight_Number_Marketing_Airline: int64
+Originally_Scheduled_Code_Share_Airline: null
+DOT_ID_Originally_Scheduled_Code_Share_Airline: null
+IATA_Code_Originally_Scheduled_Code_Share_Airline: null
+Flight_Num_Originally_Scheduled_Code_Share_Airline: null
+Operating_Airline: string
+DOT_ID_Operating_Airline: int64
+IATA_Code_Operating_Airline: string
+Tail_Number: string
+Flight_Number_Operating_Airline: int64
+...
+100 more columns
+Use `schema()` to see entire schema</code></pre>
+</div>
+</div>
+<p>Datasets provide lazy, on-disk querying across directories of CSV/Parquet files.</p>
+</section>
+
+<section id="using-dplyr-with-arrow" class="title-slide slide level1 center">
+<h1>Using <code>dplyr</code> with Arrow</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>result <span class="ot">&lt;-</span> ds <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a></a>  <span class="fu">group_by</span>(Year, Month) <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>collect()</code> pulls results into R.<br>
+Arrow evaluates queries efficiently in C++.</p>
+</section>
+
+<section id="example-daily-flight-summary" class="title-slide slide level1 center">
+<h1>Example: daily flight summary</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">system.time</span>(</span>
+<span id="cb22-2"><a></a>result <span class="ot">&lt;-</span> ds <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a></a>  <span class="fu">group_by</span>(Year, Month, DayofMonth, Cancelled) <span class="sc">|&gt;</span></span>
+<span id="cb22-4"><a></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb22-5"><a></a>  <span class="fu">collect</span>()</span>
+<span id="cb22-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+  2.147   0.157   2.204 </code></pre>
+</div>
+</div>
+</section>
+
+<section id="daily-flights" class="title-slide slide level1 center">
+<h1>Daily flights</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>result <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb24-2"><a></a>  <span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">ymd</span>(</span>
+<span id="cb24-3"><a></a>    <span class="fu">sprintf</span>(<span class="st">"%d/%d/%d"</span>, Year, Month, DayofMonth)),</span>
+<span id="cb24-4"><a></a>    <span class="at">wday =</span> <span class="fu">wday</span>(date, <span class="at">label =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-5"><a></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb24-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb24-7"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> wday), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb24-8"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
+<img data-src="03-arrow_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+
+<section id="data-format-parquet" class="title-slide slide level1 center">
+<h1>Data format <code>parquet</code></h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>pq_path <span class="ot">&lt;-</span> <span class="st">"data/flights"</span></span>
+<span id="cb25-2"><a></a></span>
+<span id="cb25-3"><a></a>ds <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">78</span>) <span class="sc">|&gt;</span></span>
+<span id="cb25-4"><a></a>  <span class="fu">group_by</span>(Year, Month) <span class="sc">|&gt;</span></span>
+<span id="cb25-5"><a></a>  <span class="fu">write_dataset</span>(<span class="at">path =</span> pq_path, <span class="at">format =</span> <span class="st">"parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Arrow automatically handles partitions:</p>
+<pre><code>data/  
+  flights/
+    Year=2024/  
+      Month=11/
+      Month=12/
+    Year=2025/  
+      Month=1/</code></pre>
+</section>
+
+<section id="arrow-querying" class="title-slide slide level1 center">
+<h1>Arrow Querying</h1>
+<p>Querying:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">system.time</span>(</span>
+<span id="cb27-2"><a></a>flights_pq <span class="ot">&lt;-</span> <span class="fu">open_dataset</span>(<span class="st">"data/flights"</span>) <span class="sc">|&gt;</span> <span class="fu">collect</span>()</span>
+<span id="cb27-3"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+  4.195   0.528   4.368 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">system.time</span>(</span>
+<span id="cb29-2"><a></a>result <span class="ot">&lt;-</span> <span class="fu">open_dataset</span>(<span class="st">"data/flights"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb29-3"><a></a>  <span class="fu">group_by</span>(Year, Month, DayofMonth, Cancelled) <span class="sc">|&gt;</span></span>
+<span id="cb29-4"><a></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb29-5"><a></a>  <span class="fu">collect</span>()</span>
+<span id="cb29-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+  0.402   0.038   0.359 </code></pre>
+</div>
+</div>
+</section>
+
+<section id="arrow-duckdb" class="title-slide slide level1 center">
+<h1>Arrow + DuckDB</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(duckdb)</span>
+<span id="cb31-2"><a></a><span class="fu">library</span>(DBI)</span>
+<span id="cb31-3"><a></a><span class="fu">library</span>(arrow)</span>
+<span id="cb31-4"><a></a></span>
+<span id="cb31-5"><a></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(duckdb<span class="sc">::</span><span class="fu">duckdb</span>())</span>
+<span id="cb31-6"><a></a>flights_db <span class="ot">&lt;-</span> flights_pq <span class="sc">|&gt;</span> <span class="fu">to_duckdb</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Fast analytical queries on Arrow data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">system.time</span>(</span>
+<span id="cb32-2"><a></a>result <span class="ot">&lt;-</span> flights_db <span class="sc">|&gt;</span></span>
+<span id="cb32-3"><a></a>  <span class="fu">group_by</span>(Year, Month, DayofMonth, Cancelled) <span class="sc">|&gt;</span></span>
+<span id="cb32-4"><a></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb32-5"><a></a>  <span class="fu">collect</span>()</span>
+<span id="cb32-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+  0.167   0.005   0.188 </code></pre>
+</div>
+</div>
 
 
-<img data-src="01-databases_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../N.svg" class="slide-logo"></p>
