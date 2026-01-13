@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Stat 471: Analysis of Messy Data – Stat 471</title>
+<title>Stat 451: Development of Statistical Software – Stat 451</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,9 +135,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-type','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-type','listing-image',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -163,9 +163,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-type','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-type','listing-image',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -191,9 +191,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-type','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-type','listing-image',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -265,34 +265,6 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-module_6 .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-type','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-module_6'] = new List('listing-module_6', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
   </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -336,7 +308,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Stat 471</span>
+    <span class="navbar-title">Stat 451</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -358,7 +330,7 @@ window.Quarto = {
 <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://canvas.unl.edu/courses/205501"> 
+    <a class="nav-link" href="https://canvas.unl.edu/courses/214498"> 
 <span class="menu-text">Canvas</span></a>
   </li>  
 </ul>
@@ -386,7 +358,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Stat 471: Analysis of Messy Data</h1>
+<h1 class="title">Stat 451: Development of Statistical Software</h1>
 </div>
 
 
@@ -406,171 +378,10 @@ window.Quarto = {
 <section id="course-materials" class="level1">
 <h1>Course Materials</h1>
 <p><strong>Dates shown are due dates</strong> (for assignments and exams) and dates on which material was presented (for slides).</p>
-<p>The <a href="images/map-here-to-there.png">roadmap</a> from here to there.</p>
+<!--The [roadmap](images/map-here-to-there.png) from here to there.-->
+<p>:::</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Final Project
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div id="listing-project" class="quarto-listing quarto-listing-container-table">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-project-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-project'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-title-sort" data-direction="asc">
-        Title
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-
-<th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
-
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-
-<th>
-Type
-</th>
-
-<th>
- 
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-categories="UHJvamVjdCUyQ1dlZWsxMQ==" data-listing-date-sort="1760590800000" data-listing-file-modified-sort="1761671044692" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="General Instructions" data-listing-filename-sort="project.qmd">
-<td>
-<span class="listing-date">Oct 16, 2025</span>
-</td>
-<td>
-<a href="./project/project.html" class="title listing-title">General Instructions</a>
-</td>
-<td>
-<span class="listing-type">Project</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="UHJvamVjdCUyQ1dlZWswOQ==" data-listing-date-sort="1762236000000" data-listing-file-modified-sort="1761669877090" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="29" data-listing-title-sort="Choose Team and Topic" data-listing-filename-sort="01-choose-team-and-topic.qmd">
-<td>
-<span class="listing-date">Nov 4, 2025</span>
-</td>
-<td>
-<a href="./project/01-choose-team-and-topic.html" class="title listing-title">Choose Team and Topic</a>
-</td>
-<td>
-<span class="listing-type">Project</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-categories="UHJvamVjdCUyQ1dlZWsxMQ==" data-listing-date-sort="1764050400000" data-listing-file-modified-sort="1761671614414" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="Draft" data-listing-filename-sort="02-draft.qmd">
-<td>
-<span class="listing-date">Nov 25, 2025</span>
-</td>
-<td>
-<a href="./project/02-draft.html" class="title listing-title">Draft</a>
-</td>
-<td>
-<span class="listing-type">Project</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-categories="UHJvamVjdCUyQ1dlZWsxMQ==" data-listing-date-sort="1765260000000" data-listing-file-modified-sort="1764695365094" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="Final Report" data-listing-filename-sort="03-report.qmd">
-<td>
-<span class="listing-date">Dec 9, 2025</span>
-</td>
-<td>
-<a href="./project/03-report.html" class="title listing-title">Final Report</a>
-</td>
-<td>
-<span class="listing-type">Project</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="4" data-categories="UHJvamVjdCUyQ1dlZWsxMQ==" data-listing-date-sort="1765432800000" data-listing-file-modified-sort="1764695380554" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="21" data-listing-title-sort="Video - Screencast - Your Choice" data-listing-filename-sort="04-video.qmd">
-<td>
-<span class="listing-date">Dec 11, 2025</span>
-</td>
-<td>
-<a href="./project/04-video.html" class="title listing-title">Video - Screencast - Your Choice</a>
-</td>
-<td>
-<span class="listing-type">Project</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="5" data-categories="UHJvamVjdCUyQ0ZpbmFsJTIwV2Vlaw==" data-listing-date-sort="1766037600000" data-listing-file-modified-sort="1761671215828" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="20" data-listing-title-sort="Peer Review" data-listing-filename-sort="05-peer-review.qmd">
-<td>
-<span class="listing-date">Dec 18, 2025</span>
-</td>
-<td>
-<a href="./project/05-peer-review.html" class="title listing-title">Peer Review</a>
-</td>
-<td>
-<span class="listing-type">Project</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -579,7 +390,7 @@ Module 0: Setting up the work environment
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div id="listing-module_0" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
@@ -628,28 +439,12 @@ Type
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="V2VlazAx" data-listing-date-sort="1756184400000" data-listing-file-modified-sort="1757523094458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="277" data-listing-title-sort="About Stat 471" data-listing-filename-sort="00-about.qmd">
+<tr data-index="0" data-categories="V2VlazAx" data-listing-date-sort="1768284000000" data-listing-file-modified-sort="1768246157963" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="267" data-listing-title-sort="About Stat 451" data-listing-filename-sort="00-about.qmd">
 <td>
-<span class="listing-date">Aug 26, 2025</span>
+<span class="listing-date">Jan 13, 2026</span>
 </td>
 <td>
-<a href="./materials-2025/00-setting-up/00-about.html" class="title listing-title">About Stat 471</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="V2VlazAx" data-listing-date-sort="1756184400000" data-listing-file-modified-sort="1757523094459" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="213" data-listing-title-sort="R, RStudio, git" data-listing-filename-sort="01-installations.qmd">
-<td>
-<span class="listing-date">Aug 26, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/00-setting-up/01-installations.html" class="title listing-title">R, RStudio, git</a>
+<a href="./materials/00-setting-up/00-about.html" class="title listing-title">About Stat 451</a>
 </td>
 <td>
 <span class="listing-type">slides</span>
@@ -660,12 +455,28 @@ Type
 
 </tr>
 
-<tr data-index="2" data-categories="SFclMkNXZWVrMDE=" data-listing-date-sort="1756357200000" data-listing-file-modified-sort="1757523094459" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Homework 0 Setup A: Git and Github" data-listing-filename-sort="02-hwk-git-github.qmd">
+<tr data-index="1" data-categories="V2VlazAx" data-listing-date-sort="1768284000000" data-listing-file-modified-sort="1768250067692" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="213" data-listing-title-sort="R, RStudio, git" data-listing-filename-sort="01-installations.qmd">
 <td>
-<span class="listing-date">Aug 28, 2025</span>
+<span class="listing-date">Jan 13, 2026</span>
 </td>
 <td>
-<a href="./materials-2025/00-setting-up/02-hwk-git-github.html" class="title listing-title">Homework 0 Setup A: Git and Github</a>
+<a href="./materials/00-setting-up/01-installations.html" class="title listing-title">R, RStudio, git</a>
+</td>
+<td>
+<span class="listing-type">slides</span>
+</td>
+<td>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-categories="SFclMkNXZWVrMDE=" data-listing-date-sort="1768888800000" data-listing-file-modified-sort="1768250061692" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Homework 0 Setup A: Git and Github" data-listing-filename-sort="02-hwk-git-github.qmd">
+<td>
+<span class="listing-date">Jan 20, 2026</span>
+</td>
+<td>
+<a href="./materials/00-setting-up/02-hwk-git-github.html" class="title listing-title">Homework 0 Setup A: Git and Github</a>
 </td>
 <td>
 <span class="listing-type">Homework</span>
@@ -676,12 +487,12 @@ Type
 
 </tr>
 
-<tr data-index="3" data-categories="SFclMkNXZWVrMDI=" data-listing-date-sort="1756789200000" data-listing-file-modified-sort="1757523094460" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Homework 0 Setup B: Connecting RStudio and Git" data-listing-filename-sort="03-hwk-rstudio-git.qmd">
+<tr data-index="3" data-categories="SFclMkNXZWVrMDI=" data-listing-date-sort="1768888800000" data-listing-file-modified-sort="1768250083533" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Homework 0 Setup B: Connecting RStudio and Git" data-listing-filename-sort="03-hwk-rstudio-git.qmd">
 <td>
-<span class="listing-date">Sep 2, 2025</span>
+<span class="listing-date">Jan 20, 2026</span>
 </td>
 <td>
-<a href="./materials-2025/00-setting-up/03-hwk-rstudio-git.html" class="title listing-title">Homework 0 Setup B: Connecting RStudio and Git</a>
+<a href="./materials/00-setting-up/03-hwk-rstudio-git.html" class="title listing-title">Homework 0 Setup B: Connecting RStudio and Git</a>
 </td>
 <td>
 <span class="listing-type">Homework</span>
@@ -692,12 +503,12 @@ Type
 
 </tr>
 
-<tr data-index="4" data-categories="SFclMkNXZWVrMDI=" data-listing-date-sort="1756962000000" data-listing-file-modified-sort="1757523094460" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Homework 1: Reproducibility" data-listing-filename-sort="hwk-1-reproducibility.qmd">
+<tr data-index="4" data-categories="SFclMkNXZWVrMDI=" data-listing-date-sort="1769061600000" data-listing-file-modified-sort="1768249913445" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Homework 1: Building a book" data-listing-filename-sort="04-hwk-building-book.qmd">
 <td>
-<span class="listing-date">Sep 4, 2025</span>
+<span class="listing-date">Jan 22, 2026</span>
 </td>
 <td>
-<a href="./materials-2025/00-setting-up/hwk-1-reproducibility.html" class="title listing-title">Homework 1: Reproducibility</a>
+<a href="./materials/00-setting-up/04-hwk-building-book.html" class="title listing-title">Homework 1: Building a book</a>
 </td>
 <td>
 <span class="listing-type">Homework</span>
@@ -716,16 +527,16 @@ Type
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Module 1: Tidy forms of data
+Module 1: Function writing
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div id="listing-module_1" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
@@ -774,28 +585,12 @@ Type
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="V2VlazAx" data-listing-date-sort="1756184400000" data-listing-file-modified-sort="1757523094461" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="443" data-listing-title-sort="What is &quot;Messy Data&quot;?" data-listing-filename-sort="01-what-is-messy.qmd">
+<tr data-index="0" data-categories="V2VlazAx" data-listing-date-sort="1768456800000" data-listing-file-modified-sort="1768321859069" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="548" data-listing-title-sort="Review of functions" data-listing-filename-sort="00-review.qmd">
 <td>
-<span class="listing-date">Aug 26, 2025</span>
+<span class="listing-date">Jan 15, 2026</span>
 </td>
 <td>
-<a href="./materials-2025/01-tidy-forms-of-data/01-what-is-messy.html" class="title listing-title">What is “Messy Data”?</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="V2VlazAx" data-listing-date-sort="1756789200000" data-listing-file-modified-sort="1757523094461" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="708" data-listing-title-sort="Make it Tidy Data!" data-listing-filename-sort="01b-make-it-tidy.qmd">
-<td>
-<span class="listing-date">Sep 2, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/01-tidy-forms-of-data/01b-make-it-tidy.html" class="title listing-title">Make it Tidy Data!</a>
+<a href="./materials/01-function-writing/00-review.html" class="title listing-title">Review of functions</a>
 </td>
 <td>
 <span class="listing-type">slides</span>
@@ -806,60 +601,12 @@ Type
 
 </tr>
 
-<tr data-index="2" data-categories="V2VlazAy" data-listing-date-sort="1756789200000" data-listing-file-modified-sort="1757523094462" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="814" data-listing-title-sort="Normal Forms of data" data-listing-filename-sort="02-normal-forms.qmd">
+<tr data-index="1" data-categories="V2VlazAx" data-listing-date-sort="1768456800000" data-listing-file-modified-sort="1768336960039" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="129" data-listing-title-sort="More functions" data-listing-filename-sort="01-more-functions.qmd">
 <td>
-<span class="listing-date">Sep 2, 2025</span>
+<span class="listing-date">Jan 15, 2026</span>
 </td>
 <td>
-<a href="./materials-2025/01-tidy-forms-of-data/02-normal-forms.html" class="title listing-title">Normal Forms of data</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-categories="Q29kZSUyQ1dlZWswMg==" data-listing-date-sort="1756962000000" data-listing-file-modified-sort="1757523094462" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="Working through code: data summaries" data-listing-filename-sort="02b-workday.qmd">
-<td>
-<span class="listing-date">Sep 4, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/01-tidy-forms-of-data/02b-workday.html" class="title listing-title">Working through code: data summaries</a>
-</td>
-<td>
-<span class="listing-type">code</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="4" data-categories="SFclMkNXZWVrMDI=" data-listing-date-sort="1756962000000" data-listing-file-modified-sort="1757523094465" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="12" data-listing-title-sort="Homework 1: Reproducibility" data-listing-filename-sort="hwk-1-reproducibility.qmd">
-<td>
-<span class="listing-date">Sep 4, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/01-tidy-forms-of-data/hwk-1-reproducibility.html" class="title listing-title">Homework 1: Reproducibility</a>
-</td>
-<td>
-<span class="listing-type">Homework</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="5" data-categories="V2VlazAz" data-listing-date-sort="1757394000000" data-listing-file-modified-sort="1757530537437" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1148" data-listing-title-sort="Homework: chi-square and large data" data-listing-filename-sort="02c-chisquare.qmd">
-<td>
-<span class="listing-date">Sep 9, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/01-tidy-forms-of-data/02c-chisquare.html" class="title listing-title">Homework: chi-square and large data</a>
+<a href="./materials/01-function-writing/01-more-functions.html" class="title listing-title">More functions</a>
 </td>
 <td>
 <span class="listing-type">slides</span>
@@ -870,44 +617,12 @@ Type
 
 </tr>
 
-<tr data-index="6" data-categories="SFclMkNXZWVrMDI=" data-listing-date-sort="1757394000000" data-listing-file-modified-sort="1757532506837" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="492" data-listing-title-sort="Normalizing Data" data-listing-filename-sort="03-normalizing-data.qmd">
+<tr data-index="2" data-categories="V2VlazAx" data-listing-date-sort="1768456800000" data-listing-file-modified-sort="1768336066322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="Closer look at functions" data-listing-filename-sort="02-closer-look.qmd">
 <td>
-<span class="listing-date">Sep 9, 2025</span>
+<span class="listing-date">Jan 15, 2026</span>
 </td>
 <td>
-<a href="./materials-2025/01-tidy-forms-of-data/03-normalizing-data.html" class="title listing-title">Normalizing Data</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="7" data-categories="Q29kZSUyQ1dlZWswMg==" data-listing-date-sort="1757394000000" data-listing-file-modified-sort="1757523094464" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="Your Turn code for normalizing data" data-listing-filename-sort="03b-yourturn-code.qmd">
-<td>
-<span class="listing-date">Sep 9, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/01-tidy-forms-of-data/03b-yourturn-code.html" class="title listing-title">Your Turn code for normalizing data</a>
-</td>
-<td>
-<span class="listing-type">code</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="8" data-categories="V2VlazAy" data-listing-date-sort="1757394000000" data-listing-file-modified-sort="1757523094464" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="276" data-listing-title-sort="Resolution Strategies" data-listing-filename-sort="04-resolution-strategy.qmd">
-<td>
-<span class="listing-date">Sep 9, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/01-tidy-forms-of-data/04-resolution-strategy.html" class="title listing-title">Resolution Strategies</a>
+<a href="./materials/01-function-writing/02-closer-look.html" class="title listing-title">Closer look at functions</a>
 </td>
 <td>
 <span class="listing-type">slides</span>
@@ -918,22 +633,42 @@ Type
 
 </tr>
 
-<tr data-index="9" data-categories="SFclMkNXZWVrMDI=" data-listing-date-sort="1757566800000" data-listing-file-modified-sort="1757523094465" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="Homework 2: Cleaning the weather" data-listing-filename-sort="hwk-2-clean-weather.qmd">
-<td>
-<span class="listing-date">Sep 11, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/01-tidy-forms-of-data/hwk-2-clean-weather.html" class="title listing-title">Homework 2: Cleaning the weather</a>
-</td>
-<td>
-<span class="listing-type">Homework</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Module 2: Profiling Code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="listing-module_2" class="quarto-listing quarto-listing-container-table">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Title</th>
+<th data-quarto-table-cell-role="th">Type</th>
+<th data-quarto-table-cell-role="th"></th>
 </tr>
-
+</thead>
+<tbody class="list">
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
@@ -947,203 +682,29 @@ Type
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Module 2: Data Cleaning
+Module 3: Package Structure
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="listing-module_2" class="quarto-listing quarto-listing-container-table">
+<div id="listing-module_3" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-module_2-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-module_2'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-title-sort" data-direction="asc">
-        Title
-      </option>
-    </select>
-  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-<table class="quarto-listing-table table">
+<table class="quarto-listing-table table caption-top" data-quarto-postprocess="true">
 <thead>
-<tr>
-
-<th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
-
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-
-<th>
-Type
-</th>
-
-<th>
- 
-</th>
-
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Title</th>
+<th data-quarto-table-cell-role="th">Type</th>
+<th data-quarto-table-cell-role="th"></th>
 </tr>
 </thead>
 <tbody class="list">
-
-<tr data-index="0" data-categories="SFclMkNXZWVrMDM=" data-listing-date-sort="1757566800000" data-listing-file-modified-sort="1757627110832" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684" data-listing-title-sort="Data Formats" data-listing-filename-sort="01-data-formats.qmd">
-<td>
-<span class="listing-date">Sep 11, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/02-data-cleaning/01-data-formats.html" class="title listing-title">Data Formats</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="SFclMkNXZWVrMDI=" data-listing-date-sort="1757566800000" data-listing-file-modified-sort="1757523094466" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="Homework 2: Cleaning the weather" data-listing-filename-sort="hwk-2-clean-weather.qmd">
-<td>
-<span class="listing-date">Sep 11, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/02-data-cleaning/hwk-2-clean-weather.html" class="title listing-title">Homework 2: Cleaning the weather</a>
-</td>
-<td>
-<span class="listing-type">Homework</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-categories="Q29kZSUyQ1dlZWswMw==" data-listing-date-sort="1757998800000" data-listing-file-modified-sort="1758077232910" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="8" data-listing-title-sort="Reviewing Normalizing for 2nd Normal Form" data-listing-filename-sort="01b-code.qmd">
-<td>
-<span class="listing-date">Sep 16, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/02-data-cleaning/01b-code.html" class="title listing-title">Reviewing Normalizing for 2nd Normal Form</a>
-</td>
-<td>
-<span class="listing-type">code</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-categories="SFclMkNXZWVrMDM=" data-listing-date-sort="1758171600000" data-listing-file-modified-sort="1758215334635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="619" data-listing-title-sort="Data Validation" data-listing-filename-sort="02-validation.qmd">
-<td>
-<span class="listing-date">Sep 18, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/02-data-cleaning/02-validation.html" class="title listing-title">Data Validation</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="4" data-categories="Q29kZSUyQ1dlZWswMw==" data-listing-date-sort="1758171600000" data-listing-file-modified-sort="1758298162244" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="10" data-listing-title-sort="Code for Your Turn - Data Rules" data-listing-filename-sort="02b-code.qmd">
-<td>
-<span class="listing-date">Sep 18, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/02-data-cleaning/02b-code.html" class="title listing-title">Code for Your Turn - Data Rules</a>
-</td>
-<td>
-<span class="listing-type">code</span>
-</td>
-<td>
-<span class="listing-image"><p class="card-img-top"><img src="materials-2025/02-data-cleaning/02b-code_files/figure-html/unnamed-chunk-1-1.png" style="height: 40px;"  class="thumbnail-image card-img"/></p></span>
-</td>
-
-</tr>
-
-<tr data-index="5" data-categories="SFclMkNXZWVrMDM=" data-listing-date-sort="1758171600000" data-listing-file-modified-sort="1757572116230" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="Homework 3: Cleaning the weather ... more" data-listing-filename-sort="hwk-3-cleaner-weather.qmd">
-<td>
-<span class="listing-date">Sep 18, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/02-data-cleaning/hwk-3-cleaner-weather.html" class="title listing-title">Homework 3: Cleaning the weather … more</a>
-</td>
-<td>
-<span class="listing-type">Homework</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="6" data-categories="c2xpZGVzJTJDV2VlazA0" data-listing-date-sort="1758603600000" data-listing-file-modified-sort="1758216565625" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="552" data-listing-title-sort="Univariate Outliers" data-listing-filename-sort="03-outliers.qmd">
-<td>
-<span class="listing-date">Sep 23, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/02-data-cleaning/03-outliers.html" class="title listing-title">Univariate Outliers</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="7" data-categories="c2xpZGVzJTJDV2VlazA0" data-listing-date-sort="1758603600000" data-listing-file-modified-sort="1758602248396" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="190" data-listing-title-sort="Multivariate Outlier Detection" data-listing-filename-sort="04-multivariate-outliers.qmd">
-<td>
-<span class="listing-date">Sep 23, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/02-data-cleaning/04-multivariate-outliers.html" class="title listing-title">Multivariate Outlier Detection</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="8" data-categories="SFclMkNXZWVrMDU=" data-listing-date-sort="1758776400000" data-listing-file-modified-sort="1757572186494" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="Homework 4: Flights across the US" data-listing-filename-sort="hwk4-us-flights.qmd">
-<td>
-<span class="listing-date">Sep 25, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/02-data-cleaning/hwk4-us-flights.html" class="title listing-title">Homework 4: Flights across the US</a>
-</td>
-<td>
-<span class="listing-type">Homework</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
@@ -1157,285 +718,29 @@ Type
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Module 3: Working with Missing Values
+Module 4: Documentation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="listing-module_3" class="quarto-listing quarto-listing-container-table">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-module_3-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-module_3'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-title-sort" data-direction="asc">
-        Title
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-
-<th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
-
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-
-<th>
-Type
-</th>
-
-<th>
- 
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-categories="c2xpZGVzJTJDV2VlazA0" data-listing-date-sort="1759381200000" data-listing-file-modified-sort="1759379664467" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="875" data-listing-title-sort="Working with Missing Values - Overview" data-listing-filename-sort="01-missing-values.qmd">
-<td>
-<span class="listing-date">Oct 2, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/03-missing-values/01-missing-values.html" class="title listing-title">Working with Missing Values - Overview</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="c2xpZGVzJTJDV2VlazA0" data-listing-date-sort="1759813200000" data-listing-file-modified-sort="1759405376393" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="738" data-listing-title-sort="Imputing Missing Values" data-listing-filename-sort="02-imputation-techniques.qmd">
-<td>
-<span class="listing-date">Oct 7, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/03-missing-values/02-imputation-techniques.html" class="title listing-title">Imputing Missing Values</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-categories="SFclMkNXZWVrMDY=" data-listing-date-sort="1759986000000" data-listing-file-modified-sort="1760327297593" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="Homework 5: Outlier Tests" data-listing-filename-sort="hwk5-outliers.qmd">
-<td>
-<span class="listing-date">Oct 9, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/03-missing-values/hwk5-outliers.html" class="title listing-title">Homework 5: Outlier Tests</a>
-</td>
-<td>
-<span class="listing-type">Homework</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-categories="c2xpZGVzJTJDV2VlazA5" data-listing-date-sort="1760418000000" data-listing-file-modified-sort="1760715482479" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="990" data-listing-title-sort="MAR or MNAR?" data-listing-filename-sort="03-imputing-example.qmd">
-<td>
-<span class="listing-date">Oct 14, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/03-missing-values/03-imputing-example.html" class="title listing-title">MAR or MNAR?</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="4" data-categories="SFclMkNXZWVrMDY=" data-listing-date-sort="1760590800000" data-listing-file-modified-sort="1760327316005" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="Homework 6: Imputing Missing Values" data-listing-filename-sort="hwk6-imputing-missing-values.qmd">
-<td>
-<span class="listing-date">Oct 16, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/03-missing-values/hwk6-imputing-missing-values.html" class="title listing-title">Homework 6: Imputing Missing Values</a>
-</td>
-<td>
-<span class="listing-type">Homework</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="5" data-categories="c2xpZGVzJTJDV2VlazEw" data-listing-date-sort="1761195600000" data-listing-file-modified-sort="1761255481734" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="387" data-listing-title-sort="Sensitivity Analysis with `mice`" data-listing-filename-sort="04-mice-shift-check-mnar.qmd">
-<td>
-<span class="listing-date">Oct 23, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/03-missing-values/04-mice-shift-check-mnar.html" class="title listing-title">Sensitivity Analysis with <code>mice</code></a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Module 4: Record Linkage: joining data from different sources
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <div id="listing-module_4" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-module_4-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-module_4'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-title-sort" data-direction="asc">
-        Title
-      </option>
-    </select>
-  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-<table class="quarto-listing-table table">
+<table class="quarto-listing-table table caption-top" data-quarto-postprocess="true">
 <thead>
-<tr>
-
-<th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
-
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-
-<th>
-Type
-</th>
-
-<th>
- 
-</th>
-
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Title</th>
+<th data-quarto-table-cell-role="th">Type</th>
+<th data-quarto-table-cell-role="th"></th>
 </tr>
 </thead>
 <tbody class="list">
-
-<tr data-index="0" data-categories="c2xpZGVzJTJDV2VlazA5" data-listing-date-sort="1761195600000" data-listing-file-modified-sort="1760995957746" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="697" data-listing-title-sort="Deterministic Record Linkage" data-listing-filename-sort="01-introduction.qmd">
-<td>
-<span class="listing-date">Oct 23, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/04-record-linkage/01-introduction.html" class="title listing-title">Deterministic Record Linkage</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="c2xpZGVzJTJDV2VlazA5" data-listing-date-sort="1761195600000" data-listing-file-modified-sort="1761255530772" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="480" data-listing-title-sort="Probabilistic Record Linkage" data-listing-filename-sort="02-em-algorithm.qmd">
-<td>
-<span class="listing-date">Oct 23, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/04-record-linkage/02-em-algorithm.html" class="title listing-title">Probabilistic Record Linkage</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-categories="c2xpZGVzJTJDV2VlazA5" data-listing-date-sort="1761627600000" data-listing-file-modified-sort="1761595268433" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1342" data-listing-title-sort="The EM Algorithm — Example and Theory" data-listing-filename-sort="03-em_algorithm_example_and_theory.qmd">
-<td>
-<span class="listing-date">Oct 28, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/04-record-linkage/03-em_algorithm_example_and_theory.html" class="title listing-title">The EM Algorithm — Example and Theory</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-categories="SFclMkNXZWVrMDc=" data-listing-date-sort="1761800400000" data-listing-file-modified-sort="1761251024653" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="Homework 7: Linking Records" data-listing-filename-sort="hwk7-linkage.qmd">
-<td>
-<span class="listing-date">Oct 30, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/04-record-linkage/hwk7-linkage.html" class="title listing-title">Homework 7: Linking Records</a>
-</td>
-<td>
-<span class="listing-type">Homework</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
@@ -1444,16 +749,16 @@ Type
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Module 5: Working with large data
+Module 5: Computational Tools
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div id="listing-module_5" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
@@ -1502,28 +807,12 @@ Type
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="c2xpZGVzJTJDV2VlazEx" data-listing-date-sort="1763445600000" data-listing-file-modified-sort="1763498340515" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="993" data-listing-title-sort="The Structured Query Language (SQL)" data-listing-filename-sort="01-sql.qmd">
+<tr data-index="0" data-categories="c2xpZGVzJTJDV2VlazEw" data-listing-date-sort="1762840800000" data-listing-file-modified-sort="1762842179180" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1230" data-listing-title-sort="Setting up a Package" data-listing-filename-sort="01-making-a-package.qmd">
 <td>
-<span class="listing-date">Nov 18, 2025</span>
+<span class="listing-date">Nov 11, 2025</span>
 </td>
 <td>
-<a href="./materials-2025/05-large-data-tools/01-sql.html" class="title listing-title">The Structured Query Language (SQL)</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="c2xpZGVzJTJDV2VlazEx" data-listing-date-sort="1763445600000" data-listing-file-modified-sort="1763498386110" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="633" data-listing-title-sort="Working with Databases in R: dbplyr" data-listing-filename-sort="02-sqlite.qmd">
-<td>
-<span class="listing-date">Nov 18, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/05-large-data-tools/02-sqlite.html" class="title listing-title">Working with Databases in R: dbplyr</a>
+<a href="./materials/05-computational-tools/01-making-a-package.html" class="title listing-title">Setting up a Package</a>
 </td>
 <td>
 <span class="listing-type">slides</span>
@@ -1534,15 +823,31 @@ Type
 
 </tr>
 
-<tr data-index="2" data-categories="c2xpZGVzJTJDV2VlazEx" data-listing-date-sort="1763618400000" data-listing-file-modified-sort="1763659686192" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="403" data-listing-title-sort="Working with Apache Arrow in R" data-listing-filename-sort="03-arrow.qmd">
+<tr data-index="1" data-categories="c2xpZGVzJTJDV2VlazEw" data-listing-date-sort="1762840800000" data-listing-file-modified-sort="1762842583430" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="861" data-listing-title-sort="Data Packages" data-listing-filename-sort="02-data-packages.qmd">
 <td>
-<span class="listing-date">Nov 20, 2025</span>
+<span class="listing-date">Nov 11, 2025</span>
 </td>
 <td>
-<a href="./materials-2025/05-large-data-tools/03-arrow.html" class="title listing-title">Working with Apache Arrow in R</a>
+<a href="./materials/05-computational-tools/02-data-packages.html" class="title listing-title">Data Packages</a>
 </td>
 <td>
 <span class="listing-type">slides</span>
+</td>
+<td>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-listing-date-sort="1764050400000" data-listing-file-modified-sort="1764088529129" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="96" data-listing-title-sort="Making your own website" data-listing-filename-sort="03-website.qmd">
+<td>
+<span class="listing-date">Nov 25, 2025</span>
+</td>
+<td>
+<a href="./materials/05-computational-tools/03-website.html" class="title listing-title">Making your own website</a>
+</td>
+<td>
+<span class="listing-type">DIY</span>
 </td>
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
@@ -1554,26 +859,23 @@ Type
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
-</div>
-</div>
-</div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Module 6: Computational Tools
+Final Project
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="listing-module_6" class="quarto-listing quarto-listing-container-table">
+<div id="listing-project" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-module_6-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-module_6'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+    <select id="listing-project-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-project'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
       <option value="" disabled="" selected="" hidden="">Order By</option>
       <option value="index" data-direction="asc">Default</option>
       <option value="listing-date-sort" data-direction="asc">
@@ -1616,31 +918,15 @@ Type
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="c2xpZGVzJTJDV2VlazEw" data-listing-date-sort="1762840800000" data-listing-file-modified-sort="1762842179180" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1230" data-listing-title-sort="Setting up a Package" data-listing-filename-sort="01-making-a-package.qmd">
+<tr data-index="0" data-categories="UHJvamVjdCUyQ1dlZWsxMQ==" data-listing-date-sort="1760590800000" data-listing-file-modified-sort="1768239349168" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="General Instructions" data-listing-filename-sort="project.qmd">
 <td>
-<span class="listing-date">Nov 11, 2025</span>
+<span class="listing-date">Oct 16, 2025</span>
 </td>
 <td>
-<a href="./materials-2025/06-computational-tools/01-making-a-package.html" class="title listing-title">Setting up a Package</a>
+<a href="./project/project.html" class="title listing-title">General Instructions</a>
 </td>
 <td>
-<span class="listing-type">slides</span>
-</td>
-<td>
-<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="c2xpZGVzJTJDV2VlazEw" data-listing-date-sort="1762840800000" data-listing-file-modified-sort="1762842583430" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="861" data-listing-title-sort="Data Packages" data-listing-filename-sort="02-data-packages.qmd">
-<td>
-<span class="listing-date">Nov 11, 2025</span>
-</td>
-<td>
-<a href="./materials-2025/06-computational-tools/02-data-packages.html" class="title listing-title">Data Packages</a>
-</td>
-<td>
-<span class="listing-type">slides</span>
+<span class="listing-type">Project</span>
 </td>
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
@@ -1648,15 +934,63 @@ Type
 
 </tr>
 
-<tr data-index="2" data-listing-date-sort="1764050400000" data-listing-file-modified-sort="1764088529129" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="96" data-listing-title-sort="Making your own website" data-listing-filename-sort="03-website.qmd">
+<tr data-index="1" data-categories="UHJvamVjdCUyQ1dlZWsxMQ==" data-listing-date-sort="1764050400000" data-listing-file-modified-sort="1768239694199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="Draft" data-listing-filename-sort="02-draft.qmd">
 <td>
 <span class="listing-date">Nov 25, 2025</span>
 </td>
 <td>
-<a href="./materials-2025/06-computational-tools/03-website.html" class="title listing-title">Making your own website</a>
+<a href="./project/02-draft.html" class="title listing-title">Draft</a>
 </td>
 <td>
-<span class="listing-type">DIY</span>
+<span class="listing-type">Project</span>
+</td>
+<td>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-categories="UHJvamVjdCUyQ1dlZWsxMQ==" data-listing-date-sort="1765260000000" data-listing-file-modified-sort="1768239692454" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="Final Report" data-listing-filename-sort="03-report.qmd">
+<td>
+<span class="listing-date">Dec 9, 2025</span>
+</td>
+<td>
+<a href="./project/03-report.html" class="title listing-title">Final Report</a>
+</td>
+<td>
+<span class="listing-type">Project</span>
+</td>
+<td>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-categories="UHJvamVjdCUyQ0ZpbmFsJTIwV2Vlaw==" data-listing-date-sort="1766037600000" data-listing-file-modified-sort="1761671215828" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="20" data-listing-title-sort="Peer Review" data-listing-filename-sort="05-peer-review.qmd">
+<td>
+<span class="listing-date">Dec 18, 2025</span>
+</td>
+<td>
+<a href="./project/05-peer-review.html" class="title listing-title">Peer Review</a>
+</td>
+<td>
+<span class="listing-type">Project</span>
+</td>
+<td>
+<span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-categories="UHJvamVjdCUyQ1dlZWswOQ==" data-listing-date-sort="1775278800000" data-listing-file-modified-sort="1768239694150" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="29" data-listing-title-sort="Choose Team and Topic" data-listing-filename-sort="01-choose-team-and-topic.qmd">
+<td>
+<span class="listing-date">Apr 4, 2026</span>
+</td>
+<td>
+<a href="./project/01-choose-team-and-topic.html" class="title listing-title">Choose Team and Topic</a>
+</td>
+<td>
+<span class="listing-type">Project</span>
 </td>
 <td>
 <span class="listing-image"><div class="listing-item-img-placeholder card-img-top" style="height: 40px;">&nbsp;</div></span>
@@ -1671,6 +1005,9 @@ Type
 
 
 
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

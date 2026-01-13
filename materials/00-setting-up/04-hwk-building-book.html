@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-10-16">
+<meta name="dcterms.date" content="2026-01-22">
 
-<title>General Instructions – Stat 451</title>
+<title>Homework 1: Building a book – Stat 451</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,23 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Stat 451</span>
     </a>
   </div>
@@ -91,15 +91,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../project.html"> 
+    <a class="nav-link" href="../../project.html"> 
 <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
@@ -122,7 +122,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#final-project" id="toc-final-project" class="nav-link active" data-scroll-target="#final-project">Final Project</a></li>
+  <li><a href="#building-a-book" id="toc-building-a-book" class="nav-link active" data-scroll-target="#building-a-book">Building a book</a>
+  <ul class="collapse">
+  <li><a href="#what-we-want-build-a-book" id="toc-what-we-want-build-a-book" class="nav-link" data-scroll-target="#what-we-want-build-a-book">What we want: build a book</a></li>
+  <li><a href="#what-to-do-when-things-dont-work" id="toc-what-to-do-when-things-dont-work" class="nav-link" data-scroll-target="#what-to-do-when-things-dont-work">What to do when things don’t work?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -131,10 +135,10 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">General Instructions</h1>
+<h1 class="title">Homework 1: Building a book</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Project</div>
-    <div class="quarto-category">Week11</div>
+    <div class="quarto-category">HW</div>
+    <div class="quarto-category">Week02</div>
   </div>
   </div>
 
@@ -146,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 16, 2025</p>
+      <p class="date">January 22, 2026</p>
     </div>
   </div>
   
@@ -158,30 +162,42 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Note: This assignment must be accepted in Canvas and submitted in github classroom.</p>
+<p>Note: This assignment must be submitted in github classroom.</p>
+<section id="building-a-book" class="level1">
+<h1>Building a book</h1>
+<!-- badges: start -->
+<!-- badges: end -->
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<section id="final-project" class="level1">
-<h1>Final Project</h1>
-<p>The final project for this class is to write and publish an R package.</p>
-<p>You are free to choose package functionality, but there should be</p>
+<p>The goal of this exercise is to document what you are doing when things do not go according to plan.</p>
+<p>We have a specific use case in mind: we want to build a book from a github repository.</p>
+<p>What happens in practice usually, is that we run into some problems. So your real task turns into that of a bug-hunter and fixer. Luckily, you have a community (the class discussion board) who might be able to help you.</p>
+<section id="what-we-want-build-a-book" class="level3">
+<h3 class="anchored" data-anchor-id="what-we-want-build-a-book">What we want: build a book</h3>
+<p>Build the html version of the newest edition for Hadley Wickham’s book <code>Advanced R Programming</code> from a github repository.</p>
+<p>Steps:</p>
+<ol type="1">
+<li>Clone the repository <a href="https://github.com/hadley/adv-r" class="uri">https://github.com/hadley/adv-r</a>.</li>
+<li>Open the R project in the repository in RStudio.</li>
+<li>Activate the <code>Build</code> tab (by default in the top right panel). Click on the <code>Build Book</code> button.</li>
+<li>The book will be available in html format as index.html</li>
+</ol>
+<p><strong>Deliverable (1):</strong> what is the last word in chapter 15? - You don’t have to answer this question, if things don’t work.</p>
+</section>
+<section id="what-to-do-when-things-dont-work" class="level3">
+<h3 class="anchored" data-anchor-id="what-to-do-when-things-dont-work">What to do when things don’t work?</h3>
+<p>Errors happen, they are frustrating, but if we learn something from them, we can turn them into valuable experiences.</p>
 <ul>
-<li>a minimum of five functions with a coherent theme,</li>
-<li>a shiny app show-casing some of the functionality</li>
-<li>a website for the package</li>
-<li>a README page with installation instructions and basic demonstration of functionality</li>
-<li>evidence of testing the functionality</li>
-<li>8-10 page report detailing your work. This report should be written as a package vignette, included in your package’s documentation.</li>
+<li><p>check the Questions and Answers forum in Canvas whether there is a solution available for your problem.</p></li>
+<li><p>if the above document does (not yet) include your question, document the error you encounter (be as concise and specific as you can at the same time)</p></li>
+<li><p>if the Question and Answers forum does (not yet) include a solution, describe one approach on how you tried to solve the problem (and how this did not work).</p></li>
+<li><p>submit the description of your problem in Canvas at Discussions &gt; Questions and Answers. Write the paragraph in the mindset that you want to get help from somebody, and you try to describe the problem you are encountering.</p></li>
+<li><p>Extra points (1 pt for the first suggested working solution): post a solution to one of the problems in the Questions and Answers forum (your own does not count!).</p></li>
 </ul>
-<p>There are several stages to the project. Only the last two stages are graded. All other stages are not graded. You should use them as an opportunity to get feedback. For stages 1-3 feedback will be given as soon as you submit your contribution, i.e.&nbsp;you don’t have to wait until after Spring break to submit your project idea.</p>
-<ul>
-<li>Stage 1 (by mid March, not graded): Identify team and topic</li>
-<li>Stage 2 (by mid April, not graded): Functional Package</li>
-<li>Stage 3 (by end of April, not graded): Testing and Documentation</li>
-</ul>
-<p>Abstract and Presentation slots</p>
-<p>Stage 4: Presentation (Dead week and Finals, graded) Stage 5 (May 7th, graded): Package submission (Finals week)</p>
+<p><strong>Deliverable (2):</strong> Write a paragraph on the biggest problem you encountered when you were building the book, (and how you managed to solve it.)</p>
+<p>You can write your experience directly into the <code>README.qmd</code> file. Commit and push to your repo and you are done!</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

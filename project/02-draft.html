@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-11-25">
 
-<title>Draft – Stat 471</title>
+<title>Draft – Stat 451</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Stat 471</span>
+    <span class="navbar-title">Stat 451</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -103,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://canvas.unl.edu/courses/205501"> 
+    <a class="nav-link" href="https://canvas.unl.edu/courses/214498"> 
 <span class="menu-text">Canvas</span></a>
   </li>  
 </ul>
@@ -122,12 +122,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#final-project" id="toc-final-project" class="nav-link active" data-scroll-target="#final-project">Final Project</a>
-  <ul class="collapse">
-  <li><a href="#choice-of-topic" id="toc-choice-of-topic" class="nav-link" data-scroll-target="#choice-of-topic">Choice of Topic</a></li>
-  <li><a href="#draft" id="toc-draft" class="nav-link" data-scroll-target="#draft">Draft</a></li>
-  <li><a href="#final-writeupshow" id="toc-final-writeupshow" class="nav-link" data-scroll-target="#final-writeupshow">Final writeup/show</a></li>
-  </ul></li>
+  <li><a href="#final-project" id="toc-final-project" class="nav-link active" data-scroll-target="#final-project">Final Project</a></li>
   </ul>
 </nav>
     </div>
@@ -168,45 +163,26 @@ ul.task-list li input[type="checkbox"] {
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <section id="final-project" class="level1">
 <h1>Final Project</h1>
-<p>The general premise of the final project for this class is that is supposed to showcase some aspects of the techniques we discussed.</p>
-<p>Given the far-reaching extent of what can be considered ‘messy data analysis’, you could focus on any one of these aspects. Examples of potential routes your project could cover are:</p>
-<ol type="1">
-<li><p><strong>Create a tidy dataset</strong> from one or more (messy) sources. Document (a) the provenance of the data, (b) the tidying process, (c) the tidy data, and (d) make the data available, and (e) document a good use case.</p></li>
-<li><p><strong>Solve a problem</strong> by starting with a motivating question. Document (a) data sources suitable for answering the question, (b) the data collection process, (c) the tidying process, (d) the suitability of the analysis, and (e) make your analytic writeup available together with the documentation necessary for reproducing the results.</p></li>
-<li><p><strong>Assess an analytic tool</strong> using a simulation. Document (a) the theoretical basis, (b) the (tidy) simulation setup under various scenarios, (c) an in-depth analysis of the results. (d) Discuss potential alternatives and limitations, and (e) make your writeup available together with code and documentation for reproducing the results.</p></li>
-</ol>
-<p>As an individual or in a team pick a topic and</p>
-<ol type="1">
-<li>work on a topic of your choice</li>
-<li>publish your analysis and findings</li>
-<li>create a video highlighting your work</li>
-</ol>
-<p>There are multiple submission stages for the project:</p>
-<section id="choice-of-topic" class="level2">
-<h2 class="anchored" data-anchor-id="choice-of-topic">Choice of Topic</h2>
-<p>Create a file <code>topic.qmd</code> that includes</p>
-<ol type="1">
-<li>a motivation of your topic,</li>
-<li>a description of your plan of work. Please provide as much detail as you can,</li>
-<li>a team name and a list of all members on your team</li>
-</ol>
-<p>For the submission, push the file <code>topic.qmd</code> to the github repository and include a submission link in Canvas.</p>
-</section>
-<section id="draft" class="level2">
-<h2 class="anchored" data-anchor-id="draft">Draft</h2>
-<p>Create a file <code>draft.qmd</code> that includes all of the items of the Choice of Topic (potentially in a different order). Change the Plan of work to an outline and fill in details. For any code chunk decide, whether you want to show the code (that should happen sparingly). Provide comments in the code about what each code chunk is supposed to do. Describe and interpret results. Include visuals (not so sparingly :))</p>
-<p>For the submission, push the file <code>draft.qmd</code> to the github repository and include a submission link in Canvas.</p>
-</section>
-<section id="final-writeupshow" class="level2">
-<h2 class="anchored" data-anchor-id="final-writeupshow">Final writeup/show</h2>
-<p>For the final work, create a file <code>index.qmd</code>. Make sure that this file renders its output into a folder called <code>docs</code>.</p>
-<p>Use Github pages for the repo to create publicly visible website showcasing your work.</p>
-<p>Provide links to all of the elements you have created (such as data sets, functions, R package, video, presentation slides, …).</p>
-<p>Your write-up should be concise (aim for 750 - 1500 words), contain clearly titled sections covering the motivation for your project, the methods you used, and any results you want to highlight. The connection to course material needs to be made obvious</p>
-<p>For the submission, push the index file, the docs folder and any of your creations to the repository, and include a submission link in Canvas.</p>
+<p>The final project for this class is to write and publish an R package.</p>
+<p>You are free to choose package functionality, but there should be</p>
+<ul>
+<li>a minimum of five functions with a coherent theme,</li>
+<li>a shiny app show-casing some of the functionality</li>
+<li>a website for the package</li>
+<li>a README page with installation instructions and basic demonstration of functionality</li>
+<li>evidence of testing the functionality</li>
+<li>8-10 page report detailing your work. This report should be written as a package vignette, included in your package’s documentation.</li>
+</ul>
+<p>There are several stages to the project. Only the last two stages are graded. All other stages are not graded. You should use them as an opportunity to get feedback. For stages 1-3 feedback will be given as soon as you submit your contribution, i.e.&nbsp;you don’t have to wait until after Spring break to submit your project idea.</p>
+<ul>
+<li>Stage 1 (by mid March, not graded): Identify team and topic</li>
+<li>Stage 2 (by mid April, not graded): Functional Package</li>
+<li>Stage 3 (by end of April, not graded): Testing and Documentation</li>
+</ul>
+<p>Abstract and Presentation slots</p>
+<p>Stage 4: Presentation (Dead week and Finals, graded) Stage 5 (May 7th, graded): Package submission (Finals week)</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
