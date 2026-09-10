@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-09-10">
+<meta name="dcterms.date" content="2026-09-17">
 
-<title>Homework 2: Cleaning the weather – Stat 471</title>
+<title>Homework 3: Cleaning the weather … more – Stat 471</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -125,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cleaning-the-weather-forecast" id="toc-cleaning-the-weather-forecast" class="nav-link active" data-scroll-target="#cleaning-the-weather-forecast">Cleaning the Weather Forecast</a></li>
+  <li><a href="#cleaning-the-weather-forecast-more" id="toc-cleaning-the-weather-forecast-more" class="nav-link active" data-scroll-target="#cleaning-the-weather-forecast-more">Cleaning the Weather Forecast … more</a></li>
   <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo">TODO</a>
   <ul class="collapse">
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
@@ -138,10 +138,10 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homework 2: Cleaning the weather</h1>
+<h1 class="title">Homework 3: Cleaning the weather … more</h1>
   <div class="quarto-categories">
     <div class="quarto-category">HW</div>
-    <div class="quarto-category">Week03</div>
+    <div class="quarto-category">Week04</div>
   </div>
   </div>
 
@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 10, 2026</p>
+      <p class="date">September 17, 2026</p>
     </div>
   </div>
   
@@ -165,14 +165,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Note: This assignment must be accepted in classmoji and submitted in Canvas</p>
-<section id="cleaning-the-weather-forecast" class="level1">
-<h1>Cleaning the Weather Forecast</h1>
+<p>Note: This assignment must be accepted in classmoji and submitted in Canvas.</p>
+<section id="cleaning-the-weather-forecast-more" class="level1">
+<h1>Cleaning the Weather Forecast … more</h1>
 <p>The National Weather Service provides an hour-by-hour forecast for the next seven days at the website <code>forecast.weather.gov</code>.</p>
-<p>The file <code>scraper.R</code> contains the function <code>get_forecast</code> which downloads hourly forecast for the specified location, and converts the xml format into an R data frame.</p>
+<p>The file <code>scraper.R</code> contains the function <code>get_forecast_wide</code> which downloads hourly forecast for the specified location, and converts the xml format into an R data frame.</p>
 <pre><code>source("scraper.R", verbose=F)
 
-head(get_forecast)
+head(get_forecast_wide)
 
 ##                                                                                                      
 ## 1 function (latitude, longitude)                                                                     
@@ -181,48 +181,44 @@ head(get_forecast)
 ## 4         latitude, longitude)                                                                       
 ## 5     xml_data &lt;- read_xml(url)                                                                      
 ## 6     write_xml(xml_data, file = "download.xml")</code></pre>
-<p>The <code>get_forecast</code> function can be used to get data for Lincoln, NE or Ames, IA as shown below. Note that this code chunk is set to not autmoatically evaluate <code>eval = FALSE</code>, since we do not want to download new data every single time we render the current document. Instead, the results are saved in <code>rds</code> format and loaded in the next code chunk.</p>
-<pre><code>lincoln &lt;- get_forecast(40.8164, -96.6882)
+<p>The <code>get_forecast_wide</code> function can be used to get data for Lincoln, NE or Ames, IA as shown below. Note that this code chunk is set to not automatically evaluate <code>eval = FALSE</code>, since we do not want to download new data every single time we render the current document. Instead, the results are saved in <code>rds</code> format and loaded in the next code chunk.</p>
+<pre><code>lincoln &lt;- get_forecast_wide(40.8164, -96.6882)
+
 saveRDS(lincoln, "lincoln.rds")
 
-ames &lt;- get_forecast(42.04, -93.68)
+ames &lt;- get_forecast_wide(42.04, -93.68)
 saveRDS(ames, "ames.rds")</code></pre>
 <p>Load previously saved data for Lincoln:</p>
 <pre><code>lincoln &lt;- readRDS("lincoln.rds")
 head(lincoln)
 
-## # A tibble: 6 × 9
-##   parameter   type   units values times     latitude longitude conditions source
-##   &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt; 
-## 1 temperature hourly &lt;NA&gt;  70     2025-08-… 40.8164… -96.6882… rain (cha… WFO O…
-## 2 temperature hourly &lt;NA&gt;  72     2025-08-… 40.8164… -96.6882… rain (cha… WFO O…
-## 3 temperature hourly &lt;NA&gt;  73     2025-08-… 40.8164… -96.6882… rain (cha… WFO O…
-## 4 temperature hourly &lt;NA&gt;  74     2025-08-… 40.8164… -96.6882… rain (cha… WFO O…
-## 5 temperature hourly &lt;NA&gt;  74     2025-08-… 40.8164… -96.6882… thunderst… WFO O…
-## 6 temperature hourly &lt;NA&gt;  74     2025-08-… 40.8164… -96.6882… thunderst… WFO O…</code></pre>
+## # A tibble: 6 × 15
+##   times         temperature_hourly temperature_dew poin…¹ temperature_heat ind…²
+##   &lt;chr&gt;         &lt;chr&gt;              &lt;chr&gt;                  &lt;chr&gt;                 
+## 1 2025-09-10T2… 71                 65                     ""                    
+## 2 2025-09-11T0… 69                 64                     ""                    
+## 3 2025-09-11T0… 67                 64                     ""                    
+## 4 2025-09-11T0… 67                 63                     ""                    
+## 5 2025-09-11T0… 66                 63                     ""                    
+## 6 2025-09-11T0… 65                 62                     ""                    
+## # ℹ abbreviated names: ¹​`temperature_dew point`, ²​`temperature_heat index`
+## # ℹ 11 more variables: `probability-of-precipitation_floating` &lt;chr&gt;,
+## #   `wind-speed_sustained` &lt;chr&gt;, `wind-speed_gust` &lt;chr&gt;,
+## #   direction_wind &lt;chr&gt;, `cloud-amount_total` &lt;chr&gt;, humidity_relative &lt;chr&gt;,
+## #   `hourly-qpf_floating` &lt;chr&gt;, latitude &lt;chr&gt;, longitude &lt;chr&gt;,
+## #   conditions &lt;chr&gt;, source &lt;chr&gt;</code></pre>
 </section>
 <section id="todo" class="level1">
 <h1>TODO</h1>
-<p>Your job is to get a handle on the data structure.</p>
+<p>Your job is to ensure correct data formats and write rules for checking data.</p>
 <ol type="1">
 <li><p>Create a Quarto document called <code>index.qmd</code>, add it to the repository and include all of your answers and code in that file. Make sure to structure it such that it is obvious, which question you are addressing in which section of the file.</p></li>
-<li><p>Pick a place of your choice in the US and identify its latitude and longitude. Use the function <code>get_forecast</code> to get the 7-day forecast for that location. Save the data you scraped in an <code>rds</code> file and add the file to the homework repo.</p></li>
-<li><p>Find examples in the data for violations of two different principles of tidy data. Describe which principle they violate and how.</p></li>
-<li><p>Is the set of variables <code>latitude, longitude, times, parameter</code> a key to the data? Show (with code) why or why not.</p></li>
-<li><p>You are charged with re-structuring the data set such that the variables <code>latitude, longitude,</code> and <code>times</code> are a key.</p>
-<ol type="1">
-<li>describe in words the format of the data set that has <code>latitude, longitude,</code> and <code>times</code> as key.</li>
-<li>write the code that reshapes the data set and execute it. Name the result <code>data_lat_long_times</code></li>
-<li>validate (with code) that <code>latitude, longitude,</code> and <code>times</code> are the key of the <code>data_lat_long_times</code> data set.</li>
-</ol></li>
-<li><p>Why is <code>data_lat_long_times</code> not in 2nd normal form? Find at least two problems with split keys.</p></li>
-<li><p>Address the split key problems by separating the <code>data_lat_long_times</code> data set into three:</p>
-<ol type="1">
-<li>pick suitable names for each of the three data sets and specify which variables should go into each.</li>
-<li>write the code to split the <code>data_lat_long_times</code> data into three data sets.</li>
-<li>discuss if the three data sets are in 2nd normal form.</li>
-</ol></li>
-<li><p>The choice of using <code>latitude</code> and <code>longitude</code> as part of the key is potentially problematic. Discuss why and suggest a solution.</p></li>
+<li><p>For a place of your choice in the US use the function <code>get_forecast_wide</code> to get the 7-day forecast for that location. Save the data you scraped in an <code>rds</code> file and add the file to the homework repo.</p></li>
+<li><p>Use functionality from the <code>testdat</code> package to show that the variables <code>latitude, longitude,</code> and <code>times</code> are a key for the data set.</p></li>
+<li><p>The function <code>get_forecast_wide</code> returns character variables only. Change the type of each variable to the most appropriate format to analyse the data. In case of ambiguity, the variable names contain the unit in brackets.</p></li>
+<li><p>Write a set of at least three <em>different</em> checks of hard constraints on ranges (checking that percentages are between 0 and 100 counts for one check, regardless of how many of the variables are reported in percentages).</p></li>
+<li><p>Write a set of at least three different checks of plausible constraints on ranges.</p></li>
+<li><p>Explore some of the relationships and create one conditional check involving at least two variables.</p></li>
 </ol>
 <section id="submission" class="level2">
 <h2 class="anchored" data-anchor-id="submission">Submission</h2>

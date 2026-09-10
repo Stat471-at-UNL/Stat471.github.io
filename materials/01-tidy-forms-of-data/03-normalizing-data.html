@@ -258,7 +258,7 @@
 <span id="cb4-2"><a></a>  <span class="at">student_id =</span> <span class="fu">c</span>(<span class="dv">101</span>, <span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">103</span>),</span>
 <span id="cb4-3"><a></a>  <span class="at">course_id =</span> <span class="fu">c</span>(<span class="st">"CS101"</span>, <span class="st">"MATH201"</span>, <span class="st">"CS101"</span>, <span class="st">"PHYS101"</span>, <span class="st">"MATH201"</span>, <span class="st">"CS101"</span>),</span>
 <span id="cb4-4"><a></a>  <span class="at">semester =</span> <span class="fu">c</span>(<span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>, <span class="st">"Fall2023"</span>),</span>
-<span id="cb4-5"><a></a>  <span class="at">instructor_name =</span> <span class="fu">c</span>(<span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Johnson"</span>, <span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Johnson"</span>, <span class="st">"Dr. Brown"</span>, <span class="st">"Dr. Smith"</span>),</span>
+<span id="cb4-5"><a></a>  <span class="at">instructor_name =</span> <span class="fu">c</span>(<span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Brown"</span>, <span class="st">"Dr. Smith"</span>, <span class="st">"Dr. Johnson"</span>, <span class="st">"Dr. Brown"</span>, <span class="st">"Dr. Smith"</span>),</span>
 <span id="cb4-6"><a></a>  <span class="at">grade =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B+"</span>, <span class="st">"B"</span>, <span class="st">"A-"</span>, <span class="st">"A"</span>, <span class="st">"B+"</span>)</span>
 <span id="cb4-7"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -270,7 +270,9 @@
 
 <section id="checking-for-a-split-key" class="title-slide slide level1 center">
 <h1>Checking for a split key</h1>
-
+<p>Are there non-key variables that depend only on a part of the key?</p>
+<p>Idea: for each subset of the keys, count the number of different values in each of the non-key variables</p>
+<p>Functions <code>dplyr::n_distinct</code> or <code>nunique</code> (pandas) report the number of different values in a vector</p>
 </section>
 
 <section id="normalizing-from-1st-to-2nd-nf" class="title-slide slide level1 center" data-auto-animate="true">
