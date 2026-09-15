@@ -430,8 +430,8 @@ Rule failed: start_date &lt;= end_date (1 cases)
 </div>
 </section>
 
-<section id="making-rules" class="title-slide slide level1 center">
-<h1>Making rules</h1>
+<section id="better-use-existing-package-testdat" class="title-slide slide level1 center">
+<h1>Better: use existing package <code>testdat</code></h1>
 <p>Based on <code>testthat</code> package (for package development)</p>
 <p>Rules have the form <code>expect_XXX</code> where XXX specifies the expectation, e.g:</p>
 <pre><code>expect_equal(object, expected, tolerance)</code></pre>
@@ -467,30 +467,29 @@ Rule failed: start_date &lt;= end_date (1 cases)
 <section id="run-the-checks" class="title-slide slide level1 center">
 <h1>Run the checks</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(testdat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(testdat)</span>
+<span id="cb13-2"><a></a><span class="fu">set_testdata</span>(employees)</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a><span class="fu">expect_range</span>(age, <span class="dv">0</span>, <span class="dv">120</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in `library()`:
-! there is no package called 'testdat'</code></pre>
+<pre><code>Error:
+! `get_testdata()` has 2 records failing range check on variable `age`.
+Variable set: `age`
+Filter: None
+Arguments: `min = 0, max = 120`</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">set_testdata</span>(employees)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">expect_range</span>(salary, <span class="dv">0</span>, <span class="dv">500000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in `set_testdata()`:
-! could not find function "set_testdata"</code></pre>
+<pre><code>Error:
+! `get_testdata()` has 1 records failing range check on variable `salary`.
+Variable set: `salary`
+Filter: None
+Arguments: `min = 0, max = 5e+05`</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">expect_range</span>(age, <span class="dv">0</span>, <span class="dv">120</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">expect_cond</span>(<span class="sc">!</span><span class="fu">is.na</span>(end_date), end_date <span class="sc">&gt;</span> start_date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in `expect_range()`:
-! could not find function "expect_range"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">expect_range</span>(salary, <span class="dv">0</span>, <span class="dv">500000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `expect_range()`:
-! could not find function "expect_range"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">expect_cond</span>(<span class="sc">!</span><span class="fu">is.na</span>(end_date), end_date <span class="sc">&gt;</span> start_date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `expect_cond()`:
-! could not find function "expect_cond"</code></pre>
+<pre><code>Error:
+! `get_testdata()` failed consistency check. 1 cases have `!is.na(end_date)` but not `end_date &gt; start_date`.</code></pre>
 </div>
 </div>
 </section>
@@ -500,19 +499,22 @@ Rule failed: start_date &lt;= end_date (1 cases)
 <p>Group sets of expectations based on functionality and give names</p>
 <p>e.g.&nbsp;“check for key”, “check for hard constraints”, “check for plausible data ranges”</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">set_testdata</span>(employees)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `set_testdata()`:
-! could not find function "set_testdata"</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">set_testdata</span>(employees)</span>
+<span id="cb19-2"><a></a><span class="fu">test_that</span>(<span class="st">"check for hard constraints"</span>, {</span>
+<span id="cb19-3"><a></a>  <span class="co"># both age and salary are non-negative values</span></span>
+<span id="cb19-4"><a></a>  <span class="fu">expect_range</span>(age, <span class="dv">0</span>, <span class="cn">Inf</span>) </span>
+<span id="cb19-5"><a></a>  <span class="fu">expect_range</span>(salary, <span class="dv">0</span>, <span class="cn">Inf</span>)</span>
+<span id="cb19-6"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>── Failure: check for hard constraints ─────────────────────────────────────────
+`get_testdata()` has 1 records failing range check on variable `age`.
+Variable set: `age`
+Filter: None
+Arguments: `min = 0, max = Inf`</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">test_that</span>(<span class="st">"check for hard constraints"</span>, {</span>
-<span id="cb25-2"><a></a>  <span class="co"># both age and salary are non-negative values</span></span>
-<span id="cb25-3"><a></a>  <span class="fu">expect_range</span>(age, <span class="dv">0</span>, <span class="cn">Inf</span>) </span>
-<span id="cb25-4"><a></a>  <span class="fu">expect_range</span>(salary, <span class="dv">0</span>, <span class="cn">Inf</span>)</span>
-<span id="cb25-5"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in `test_that()`:
-! could not find function "test_that"</code></pre>
+<pre><code>Error:
+! Test failed with 1 failure and 1 success.</code></pre>
 </div>
 </div>
 </section>
@@ -520,26 +522,26 @@ Rule failed: start_date &lt;= end_date (1 cases)
 <section id="example-brfss-htin4" class="title-slide slide level1 center">
 <h1>Example: BRFSS (<code>HTIN4</code>)</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">summary</span>(brfss<span class="sc">$</span>HTIN4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">summary</span>(brfss<span class="sc">$</span>HTIN4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs 
   41.00   64.00   67.00   67.34   70.00   85.00     818 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">library</span>(testdat)</span>
-<span id="cb29-2"><a></a><span class="fu">with_testdata</span>(brfss, {</span>
-<span id="cb29-3"><a></a>  <span class="fu">test_that</span>(<span class="st">"check for key"</span>, {</span>
-<span id="cb29-4"><a></a>    <span class="fu">expect_unique</span>(SEQNO)</span>
-<span id="cb29-5"><a></a>  })</span>
-<span id="cb29-6"><a></a>  </span>
-<span id="cb29-7"><a></a>  <span class="fu">test_that</span>(<span class="st">"hard height constraints"</span>, {</span>
-<span id="cb29-8"><a></a>    <span class="fu">expect_range</span>(HTIN4, <span class="dv">0</span>, <span class="cn">Inf</span>)</span>
-<span id="cb29-9"><a></a>  })</span>
-<span id="cb29-10"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">library</span>(testdat)</span>
+<span id="cb24-2"><a></a><span class="fu">with_testdata</span>(brfss, {</span>
+<span id="cb24-3"><a></a>  <span class="fu">test_that</span>(<span class="st">"check for key"</span>, {</span>
+<span id="cb24-4"><a></a>    <span class="fu">expect_unique</span>(SEQNO)</span>
+<span id="cb24-5"><a></a>  })</span>
+<span id="cb24-6"><a></a>  </span>
+<span id="cb24-7"><a></a>  <span class="fu">test_that</span>(<span class="st">"hard height constraints"</span>, {</span>
+<span id="cb24-8"><a></a>    <span class="fu">expect_range</span>(HTIN4, <span class="dv">0</span>, <span class="cn">Inf</span>)</span>
+<span id="cb24-9"><a></a>  })</span>
+<span id="cb24-10"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed with 1 success 🎉.
-Test passed with 1 success 🥇.</code></pre>
+<pre><code>Test passed with 1 success 😀.
+Test passed with 1 success 🎊.</code></pre>
 </div>
 </div>
 </section>
@@ -550,12 +552,12 @@ Test passed with 1 success 🥇.</code></pre>
 <p>How should we determine plausible values?</p>
 </blockquote>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(testdat)</span>
-<span id="cb31-2"><a></a><span class="fu">with_testdata</span>(brfss, {</span>
-<span id="cb31-3"><a></a>  <span class="fu">test_that</span>(<span class="st">"plausible height ranges"</span>, {</span>
-<span id="cb31-4"><a></a>    <span class="fu">expect_range</span>(HTIN4, <span class="dv">50</span>, <span class="dv">100</span>)</span>
-<span id="cb31-5"><a></a>  })</span>
-<span id="cb31-6"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">library</span>(testdat)</span>
+<span id="cb26-2"><a></a><span class="fu">with_testdata</span>(brfss, {</span>
+<span id="cb26-3"><a></a>  <span class="fu">test_that</span>(<span class="st">"plausible height ranges"</span>, {</span>
+<span id="cb26-4"><a></a>    <span class="fu">expect_range</span>(HTIN4, <span class="dv">50</span>, <span class="dv">100</span>)</span>
+<span id="cb26-5"><a></a>  })</span>
+<span id="cb26-6"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>── Failure: plausible height ranges ────────────────────────────────────────────
 `get_testdata()` has 3 records failing range check on variable `HTIN4`.

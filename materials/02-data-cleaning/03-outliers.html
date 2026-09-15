@@ -9,8 +9,8 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <meta name="dcterms.date" content="2026-09-08">
-  <title>Stat 471 – Homework: chi-square and large data</title>
+  <meta name="dcterms.date" content="2026-09-17">
+  <title>Stat 471 – Univariate Outliers</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +31,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -130,92 +196,206 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Homework: chi-square and large data</h1>
+  <h1 class="title">Univariate Outliers</h1>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2026-09-08</p>
+  <p class="date">2026-09-17</p>
 </section>
-<section id="homework-question" class="title-slide slide level1 center">
-<h1>Homework question</h1>
-<p>Is the age distribution for Nebraskans in the BRFSS sample in 2023 different from the national age distribution?</p>
+<section id="an-outlier-is" class="title-slide slide level1 center">
+<h1>An Outlier is …</h1>
+<blockquote>
+<p>… a data point that is extremely different from other data points in a set, mostly due to a legitimate extreme event or a mistake</p>
+</blockquote>
+<p>outliers can occur in one or more dimensions</p>
+<p>reaction to mistake (fix or toss) is different from unprobable but legitimate observation (sigh and keep)</p>
 
-<img data-src="02c-chisquare_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
 
-<section id="chi2---goodness-of-fit-test" class="title-slide slide level1 center">
-<h1><span class="math inline">\(\chi^2\)</span> - goodness of fit test</h1>
-<p>Test 1: Percentages</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Chi-squared test for given probabilities
-
-data:  nebraska$Percentage
-X-squared = 1.2598, df = 13, p-value = 1</code></pre>
-</div>
-</div>
-<p>Test 2: Probabilities</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Chi-squared test for given probabilities
-
-data:  nebraska$Percentage/100
-X-squared = 0.012598, df = 13, p-value = 1</code></pre>
-</div>
-</div>
+<section id="outlier-detection" class="title-slide slide level1 center">
+<h1>Outlier detection</h1>
+<ul>
+<li><p>visually</p></li>
+<li><p>statistical tests</p></li>
+<li><p>data context</p></li>
+</ul>
 </section>
 
-<section id="chi2---goodness-of-fit-test-2" class="title-slide slide level1 center">
-<h1><span class="math inline">\(\chi^2\)</span> - goodness of fit test (2)</h1>
-<p>Test 3: Frequencies</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Chi-squared test for given probabilities
+<section id="visual-outlier-detection" class="title-slide slide level1 center">
+<h1>Visual Outlier Detection</h1>
+<ul>
+<li>Boxplot (JW Tukey, “Exploratory Data Analysis”, 1977)</li>
+</ul>
 
-data:  nebraska$Frequency
-X-squared = 162.34, df = 13, p-value &lt; 2.2e-16</code></pre>
-</div>
-</div>
-<p>No significant difference or hugely significant difference ???</p>
+<img data-src="https://lsc.studysixsigma.com/wp-content/uploads/sites/6/2015/12/1435.png" class="r-stretch"></section>
+
+<section id="boxplots" class="title-slide slide level1 center">
+<h1>Boxplots</h1>
+<p>Based on <em>depth</em> statistics: sort the data.</p>
+<p>Outliers are defined to be outside of <span class="math inline">\([Q_1 - 1.5 \times \text{IQR}, Q_3 + 1.5 \times \text{IQR}]\)</span></p>
+<p>Extreme outliers are defined to be outside of <span class="math inline">\([Q_1 - 3 \times \text{IQR}, Q_3 + 3 \times \text{IQR}]\)</span></p>
 </section>
 
-<section id="chi-squared-test-and-sample-size" class="title-slide slide level1 center">
-<h1>Chi-squared test and sample size</h1>
+<section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<p>Write a function (or find a function) in R that calculates the Inter-Quartile Range of a sample <span class="math inline">\(x\)</span>.</p>
+<p>Use this function in a (mini) simulation study:</p>
+<ul>
+<li><p>how many observations are declared an (extreme) outlier in a sample of 10, 100, 1000 normally distributed values?</p></li>
+<li><p>compare the numbers of outliers you get in a sample of 10, 100, 1000 exponentially distributed values with rate parameter <span class="math inline">\(\lambda = 1/10\)</span>.</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>outliers <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, {</span>
+<span id="cb1-2"><a></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb1-3"><a></a>  </span>
+<span id="cb1-4"><a></a>  <span class="co"># determine the number of outliers</span></span>
+<span id="cb1-5"><a></a>  </span>
+<span id="cb1-6"><a></a>  <span class="co"># determine the number of extreme outliers</span></span>
+<span id="cb1-7"><a></a>  </span>
+<span id="cb1-8"><a></a>  <span class="co"># report both numbers back</span></span>
+<span id="cb1-9"><a></a>})</span>
+<span id="cb1-10"><a></a></span>
+<span id="cb1-11"><a></a><span class="co"># find the proportion of outliers across the samples</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
 
-<img data-src="02c-chisquare_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
-
-<section id="cramers-v" class="title-slide slide level1 center">
-<h1>Cramer’s V</h1>
-<p>Different approach - mitigate sample size by using normalized approach:</p>
+<section id="chebychevs-inequality" class="title-slide slide level1 center">
+<h1>Chebychev’s inequality</h1>
+<p>For <span class="math inline">\(X\)</span> with <span class="math inline">\(E[X] = \mu\)</span> and <span class="math inline">\(Var[X]=\sigma^2, \ \ \sigma^2 \in R\)</span>:</p>
 <p><span class="math display">\[
-V = \sqrt{\frac{\chi^2/n}{\min (r, c) - 1}}
+P\left ( \left| X - \mu \right | &gt; k\sigma \right) &lt; \frac{1}{k^2}
 \]</span></p>
-<p><span class="math inline">\(n\)</span> is the overall sample size; <span class="math inline">\(r\)</span>, <span class="math inline">\(c\)</span> are the number of rows, columns.</p>
-<p>Here: <span class="math inline">\(\widehat{V}\)</span> = 0.0354939</p>
-<p>Heuristic: 0 &lt; negligible &lt; 0.1 &lt; weak &lt; 0.3 &lt; medium &lt; 0.5 &lt; strong</p>
+<p>Not very powerful</p>
 </section>
 
-<section id="visual-inference" class="title-slide slide level1 center">
-<h1>Visual Inference</h1>
-<p>Assume that there is no difference (null hypothesis)</p>
-<p>Create samples from the US age distribution</p>
-<p>Compare visually</p>
+<section id="normal-distribution" class="title-slide slide level1 center">
+<h1>Normal distribution</h1>
+<ul>
+<li>“Three sigma rule”: an outlier is defined as being outside an interval of <span class="math inline">\(\mu \pm 3 \sigma\)</span></li>
+</ul>
+<p>Probability for a normally distributed value to be outside that range: 0.002700</p>
+<p>Daily event is outside of that range about once a year.</p>
+<ul>
+<li>Better be safe? use the 6<span class="math inline">\(\sigma\)</span> rule!</li>
+</ul>
+<p>Probability for a normally distributed value to be outside that range: <span class="math inline">\(1.973 \times 10^{−9} = 1.973\)</span> ppb (or about 1 in 506,797,346 )</p>
+<p>Every 1.38 million years (twice in history of humankind)</p>
 </section>
 
-<section id="which-of-these-panels-is-different" class="title-slide slide level1 center">
-<h1>Which of these panels is different?</h1>
+<section id="depth-statistics" class="title-slide slide level1 center">
+<h1>Depth Statistics</h1>
+<p>For a sample <span class="math inline">\(x\)</span> of numeric values let <span class="math inline">\(x_{(i)}\)</span> denote the <span class="math inline">\(i\)</span>th value of the sorted sample, i.e.&nbsp;<span class="math inline">\(x_{(1)} \le x_{(2)} \le ... \le x_{(n)}\)</span> for sample size <span class="math inline">\(n\)</span>.</p>
+<p>The depth <span class="math inline">\(d\)</span> of <span class="math inline">\(x_(i)\)</span> is defined as the minimum of <span class="math inline">\(i\)</span> and <span class="math inline">\(n-i+1\)</span>, i.e.&nbsp;“What is the minimum number of data points (including myself) that have to be overtaken to get out of the data set?”</p>
+<p>Depth is a measure of centrality - with larger depths indicating higher centrality</p>
+</section>
 
-<img data-src="02c-chisquare_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="example-depths" class="title-slide slide level1 center">
+<h1>Example Depths</h1>
+<p>Minimum and maximum have depth 1 (the smallest depth possible)</p>
+<p>Median has a depth of <span class="math inline">\(\lceil n/2  \rceil\)</span>.</p>
+<p>What depth do the first and third quartile have?</p>
+<p>Note: depth is only associated with data value, i.e.&nbsp;in general the mean of a sample does not have an associated depth</p>
+</section>
 
-<section id="weighted-percentages" class="title-slide slide level1 center">
-<h1>Weighted Percentages</h1>
+<section id="outlier-detection-1" class="title-slide slide level1 center">
+<h1>Outlier detection</h1>
+<ul>
+<li><p>different cutoffs for small/large samples</p></li>
+<li><p>all large samples will have outliers</p></li>
+<li><p>but we want tests to be powerful enough to also detect outliers in small samples</p></li>
+</ul>
+</section>
+
+<section id="example-brfss" class="title-slide slide level1 center">
+<h1>Example: BRFSS</h1>
+<p>Grubbs test (more in homework) tests difference between Max/Min and mean for normal samples:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(stat471)</span>
+<span id="cb2-2"><a></a><span class="fu">library</span>(outliers)</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Grubbs test for one outlier
+
+data:  brfss$HEIGHT3
+G = 5.35991, U = 0.99772, p-value = 0.0005156
+alternative hypothesis: highest value 9999 is an outlier</code></pre>
+</div>
+</div>
+<p>Correctly detects 9999 as an outlier</p>
+</section>
+
+<section id="example-brfss-1" class="title-slide slide level1 center">
+<h1>Example: BRFSS</h1>
+<p>But also detects 9200 as an outlier</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3[(brfss<span class="sc">$</span>HEIGHT3<span class="sc">!=</span><span class="dv">9999</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Grubbs test for one outlier
+
+data:  brfss$HEIGHT3[(brfss$HEIGHT3 != 9999)]
+G = 6.08173, U = 0.99703, p-value = 7.195e-06
+alternative hypothesis: highest value 9200 is an outlier</code></pre>
+</div>
+</div>
+<p>… and keeps going:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">grubbs.test</span>(brfss<span class="sc">$</span>HEIGHT3[(brfss<span class="sc">$</span>HEIGHT3<span class="sc">&lt;</span><span class="dv">7777</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Grubbs test for one outlier
+
+data:  brfss$HEIGHT3[(brfss$HEIGHT3 &lt; 7777)]
+G = 5.47905, U = 0.99751, p-value = 0.0002533
+alternative hypothesis: lowest value 305 is an outlier</code></pre>
+</div>
+</div>
+</section>
+
+<section id="visual-detection-brfss" class="title-slide slide level1 center">
+<h1>Visual Detection: BRFSS</h1>
+<ul>
+<li><p>Gaps &amp; modes: histograms and (jittered) dot plots</p></li>
+<li><p>(formal) deviation from center: boxplots</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(stat471)</span>
+<span id="cb8-2"><a></a><span class="fu">data</span>(brfss)</span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a>brfss <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HEIGHT3)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+
+<section id="visual-outlier-detection-1" class="title-slide slide level1 center">
+<h1>Visual outlier detection</h1>
+<ul>
+<li>visualizations also detect other problems in the data</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>brfss <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a></a>  <span class="fu">filter</span>(HEIGHT3 <span class="sc">&lt;</span> <span class="dv">7777</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HEIGHT3)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-8-1.png" width="480" class="r-stretch"></section>
+
+<section id="visual-outlier-detection-2" class="title-slide slide level1 center">
+<h1>Visual outlier detection</h1>
+<ul>
+<li>while also allowing for outlier detection</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>brfss <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> HTM4)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
 
 
-
-<img data-src="02c-chisquare_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<img data-src="03-outliers_files/figure-revealjs/unnamed-chunk-9-1.png" width="480" class="r-stretch"></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../N.svg" class="slide-logo"></p>
@@ -378,14 +558,14 @@ V = \sqrt{\frac{\chi^2/n}{\min (r, c) - 1}}
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'slide',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+        backgroundTransition: 'fade',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,
