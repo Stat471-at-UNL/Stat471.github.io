@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-25">
+<meta name="dcterms.date" content="2026-10-01">
 
-<title>Homework 4: Flights across the US – Stat 471</title>
+<title>Homework 4: Outlier tests – Stat 471</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -160,11 +125,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#flights-across-the-us" id="toc-flights-across-the-us" class="nav-link active" data-scroll-target="#flights-across-the-us">Flights across the US</a></li>
+  <li><a href="#its-an-outlier-or-is-it" id="toc-its-an-outlier-or-is-it" class="nav-link active" data-scroll-target="#its-an-outlier-or-is-it">It’s an outlier! Or is it?</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
   <li><a href="#todo" id="toc-todo" class="nav-link" data-scroll-target="#todo">TODO</a>
   <ul class="collapse">
-  <li><a href="#prepping" id="toc-prepping" class="nav-link" data-scroll-target="#prepping">Prepping</a></li>
-  <li><a href="#to-do-items" id="toc-to-do-items" class="nav-link" data-scroll-target="#to-do-items">To Do Items</a></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul></li>
   </ul>
@@ -175,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homework 4: Flights across the US</h1>
+<h1 class="title">Homework 4: Outlier tests</h1>
   <div class="quarto-categories">
     <div class="quarto-category">HW</div>
     <div class="quarto-category">Week05</div>
@@ -190,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 25, 2025</p>
+      <p class="date">October 1, 2026</p>
     </div>
   </div>
   
@@ -203,41 +169,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Note: This assignment must be accepted in Canvas and submitted in github classroom.</p>
-<section id="flights-across-the-us" class="level1">
-<h1>Flights across the US</h1>
-<!-- badges: start -->
-<!-- badges: end -->
-<p>The department of transportation is tracking every flight taking off and landing on an airport in the US and publishing information through the TranStats system at <a href="https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr" class="uri">https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr</a>.</p>
-<p>Files for three months of flights have been added to the data folder. The flights for each month are contained in a compressed csv file each:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">"data"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2024_11.zip"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2024_12.zip"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2025_1.zip"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Information for each of the variables and explanations for each level can be found on the same website.</p>
+<section id="its-an-outlier-or-is-it" class="level1">
+<h1>It’s an outlier! Or is it?</h1>
+<p>The R package <code>outliers</code> contains two different tests for outliers in samples: the Grubbs test (Grubbs 1950) and the Dixon test (Dixon 1951).</p>
+<p>Both of the tests assume that the sample <code>x</code> has an (approximate) normal distribution. The Grubbs test is based on the <em>maximum absolute deviation</em> defined as |<em>x</em><sub><em>i</em></sub> − <em>M</em>| for all <em>i</em> = 1, …, <em>n</em>. <em>M</em> is the median of the sample <em>x</em>. In contrast to that, the Dixon test is based on the gap between the suspected outlier and its closest neighbor compared to the range of the data.</p>
+<pre><code>set.seed(20250917) # setting the seed makes a random sample reproducible
+x &lt;- rnorm(n = 30)</code></pre>
+<p>Make sure to install the <code>outliers</code> package. <code>type</code> specifies the number of outliers to check for 10 stands for 1 outlier on one side, 11 stands for one outlier each on either side:</p>
+<pre><code># install.packages("outliers")
+library(outliers)
+dixon.test(x, type = 10)
+
+## 
+##  Dixon test for outliers
+## 
+## data:  x
+## Q = 0.23315, p-value = 0.1527
+## alternative hypothesis: lowest value -1.90956999415621 is an outlier
+
+grubbs.test(x, type = 10)
+
+## 
+##  Grubbs test for one outlier
+## 
+## data:  x
+## G = 2.65111, U = 0.74928, p-value = 0.07244
+## alternative hypothesis: lowest value -1.90956999415621 is an outlier</code></pre>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Dixon, W.J. (1951). Ratios involving extreme values. Ann. Math. Stat. 22, 1, 68-78.</p>
+<p>Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.</p>
+</section>
 </section>
 <section id="todo" class="level1">
 <h1>TODO</h1>
-<section id="prepping" class="level2">
-<h2 class="anchored" data-anchor-id="prepping">Prepping</h2>
+<p>Your job is to see which of these tests has the better controlled type 1 error rate. For that, we are setting up a simulation study based on data under the null hypothesis (there is no outlier).</p>
 <ol type="1">
-<li>Accept the assignment in Canvas, follow the link to create a repository, and clone this repository to your local machine.</li>
-<li>Create a file named <code>index.qmd</code> and add it to the repository. This is the file that should contain your code, results, and interpretations. Make sure to include enough detail that your work is fully reproducible.</li>
+<li><p>Create a Quarto document called <code>index.qmd</code>, add it to the repository and include all of your answers and code in that file. Make sure to structure it such that it is obvious, which question you are addressing in which section of the file.</p></li>
+<li><p>Run both tests on the sample samples of size 5 <em>N</em>=1000 times. Keep track of both the <em>p</em>-values of the Grubbs test and the Dixon test. Create a data set in first normal form that allows you to compare the p-values from the simulated samples directly. Save this data set and add it to the repository as file <code>outlier-test-simulations.csv</code> in a folder called <code>results</code>.</p></li>
+<li><p>Statistics question: What is the expected distribution for the p-values of any statistical test under the null hypothesis? Explain.</p></li>
+<li><p>Draw histograms for the p-values from either test. Make sure that the results are comparable (i.e.&nbsp;same number of bins, same range on the x axis, same scale on the y axis). What do the resulting histograms look like? Compare the two tests to each other and to the theoretical expectation. What would your conclusion be based on this simulation?</p></li>
+<li><p>Re-run the simulation (with a different seed) and compare the resulting distributions visually and numerically. Summarize your findings in 2-3 sentences. Make sure to integrate the results from your second run of the simulation into your dataset and save that to the repository.</p></li>
+<li><p>What is the impact of the sample size <em>n</em> on the p-values? Expand your study to include larger sample sizes <em>n</em> = 10, 15, 20, 30. Run the tests and incorporate the results in your data set.</p></li>
+<li><p>Summarize the results of your study visually by showing the performance of the tests for different sample sizes under the null hypothesis for p-values in (0,.15]. Don’t forget to include the theoretical expectation. Write a paragraph summarizing the results shown in the chart.</p></li>
 </ol>
-</section>
-<section id="to-do-items" class="level2">
-<h2 class="anchored" data-anchor-id="to-do-items">To Do Items</h2>
-<ol type="1">
-<li><p>Import flights for all three months into a single object <code>flights</code>. Report on the number of flights by months and the number of features reported for it.</p></li>
-<li><p>Determine a key for the data set. Make sure to show that it fulfills the requirements of a key.</p></li>
-<li><p>Give three different examples of transitive dependencies in the data.</p></li>
-<li><p>Airport information is included for both <code>Origin</code> and <code>Dest</code>. Create a new data set called <code>airports</code> in which you include the information once, then remove all but the required airport information from the <code>flights</code> object.</p></li>
-<li><p>Create a summary for the number of flights each day and plot it. Color the points by day of the week. Make sure to provide labels for the days of the week. Describe the general pattern for the number of flights you see. Which days do not follow this pattern?</p></li>
-<li><p>The variable <code>Cancelled</code> contains information about whether a flight was cancelled. Why can we not assume that flight cancellations occur completely randomly? Identify at least two factors contributing to non-random flight cancellations and visualize your findings.</p></li>
-</ol>
-</section>
 <section id="submission" class="level2">
 <h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p>Ensure that the file <code>index.qmd</code> renders without errors. Read through the rendered document to check for consistency. Remove excessive printouts. Add all relevant(!) files to the repository, commit, and push!</p>
+<p>Make sure that your file <code>index.qmd</code> includes all details to make your answers fully reproducible. Ensure that the file renders properly. Add all relevant(!) files to the repository, commit, and push!</p>
 
 
 </section>
