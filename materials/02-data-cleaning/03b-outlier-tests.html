@@ -165,8 +165,17 @@ P(x_{(n)} \le c) &amp;=&amp; P(x_{(1)} \le c \ \&amp; \ x_{(2)} \le c \ \&amp;  
 <p>Test statistic <span class="math inline">\(G = \max_i \frac{\left | x_i - \bar{X} \right |}{s}\)</span> with <span class="math inline">\(\bar{X} = \frac{1}{n}\sum_{i=1}^nx_i\)</span> and <span class="math inline">\(s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{X})^2\)</span></p>
 <p>Null hypothesis: maximum/minimum is not an outlier</p>
 <p>We reject the null hypothesis, if</p>
-<p>$$</p>
-<p>G &gt; $$</p>
+<p><span class="math display">\[
+G &gt;
+\frac{n-1}{\sqrt{n}}
+\sqrt{
+\frac{
+t_{\alpha/(2n),\,n-2}^{2}
+}{
+n-2+t_{\alpha/(2n),\,n-2}^{2}
+}
+}
+\]</span></p>
 <p>Implemented in <code>outliers::grubbs.test</code></p>
 </section>
 
