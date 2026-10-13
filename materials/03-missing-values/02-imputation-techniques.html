@@ -311,8 +311,8 @@
 </div>
 <img data-src="02-imputation-techniques_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 
-<section id="model-ozone" class="title-slide slide level1 center">
-<h1>Model Ozone</h1>
+<section id="we-could-model-ozone" class="title-slide slide level1 center">
+<h1>We could model Ozone!</h1>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>ozone_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone<span class="sc">~</span>Temp <span class="sc">+</span> Wind, <span class="at">data =</span> airquality)</span>
 <span id="cb19-2"><a></a><span class="fu">summary</span>(ozone_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -384,11 +384,28 @@ F-statistic:  74.5 on 2 and 113 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>[1] 30.7584</code></pre>
 </div>
 </div>
-<p>… increase by using samples from the linear model rather than predictions</p>
 </section>
 
-<section id="idea-for-predictive-mean-matching" class="title-slide slide level1 center">
-<h1>Idea for Predictive Mean Matching</h1>
+<section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
+<h1>Your Turn</h1>
+<p>Will a better model help?</p>
+<p>Find transformations of <code>Wind</code> and <code>Temp</code> that fit <code>Ozone</code> in the airquality data better.</p>
+<p>Use the predictions to impute missing values in <code>Ozone</code> and compare mean and standard deviation of the imputed ozone values.</p>
+</section>
+
+<section id="regression-to-the-mean" class="title-slide slide level1 center">
+<h1>Regression to the mean</h1>
+<ul>
+<li><p>bad model is going to negatively affect the imputation</p></li>
+<li><p>even a very good model has problem of regression to the mean</p></li>
+<li><p>simply adding random error might result in unobservable outcomes</p></li>
+</ul>
+<p>Idea: use good model, then increase variability by using samples from ‘close’ observations</p>
+<p>This is the idea for Predictive Mean Matching (PMM)</p>
+</section>
+
+<section id="predictive-mean-matching" class="title-slide slide level1 center">
+<h1>Predictive Mean Matching</h1>
 <p>Assume Y is variable with missing values, X are covariates with observed data</p>
 <ul>
 <li><p>Fit regression <span class="math inline">\(Y = X\beta + \epsilon\)</span>.</p></li>
@@ -491,7 +508,7 @@ F-statistic:  74.5 on 2 and 113 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ul>
 </section>
 
-<section id="your-turn" class="title-slide slide level1 center" data-background-color="#006666">
+<section id="your-turn-1" class="title-slide slide level1 center" data-background-color="#006666">
 <h1>Your Turn</h1>
 <p>Use the NHANES data to try out predictive matching for imputing missing values.</p>
 <p>The variable <code>AgeMonths</code> in the data set is not recorded in one of the Survey years except for infants. Use <code>mice</code> to use predictive matching to impute missing values in all of the age variables</p>
@@ -583,7 +600,7 @@ F-statistic:  74.5 on 2 and 113 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Age1stBaby does not have an obvious dependence on the other age variables - even the simple condition that Age has to be at least as large as Age1stBaby is not recognized in PMM</p>
 </section>
 
-<section id="your-turn-1" class="title-slide slide level1 center" data-background-color="#006666">
+<section id="your-turn-2" class="title-slide slide level1 center" data-background-color="#006666">
 <h1>Your Turn</h1>
 <p>For the <code>NHANES</code> data:</p>
 <ol type="1">
