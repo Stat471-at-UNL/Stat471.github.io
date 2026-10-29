@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <meta name="dcterms.date" content="2026-10-13">
+  <meta name="dcterms.date" content="2026-10-27">
   <title>Stat 471 – MAR or MNAR?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -201,7 +201,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2026-10-13</p>
+  <p class="date">2026-10-27</p>
 </section>
 <section id="practical-clues-for-mnar" class="title-slide slide level1 center">
 <h1>Practical clues for MNAR</h1>
@@ -259,7 +259,7 @@
 <p>Situation:</p>
 <p><span class="math display">\[
 Y = X\beta + \varepsilon
-\]</span> Assume that ther <em>might</em> be some individuals that choose not to answer <span class="math inline">\(Y\)</span>, i.e.&nbsp;the probability for a missing value in <span class="math inline">\(Y\)</span> <em>might</em> depend on its value.</p>
+\]</span> Assume that there <em>might</em> be some individuals that choose not to answer <span class="math inline">\(Y\)</span>, i.e.&nbsp;the probability for a missing value in <span class="math inline">\(Y\)</span> <em>might</em> depend on its value.</p>
 <p>This introduce a <strong>selection bias</strong> into the observed sample.</p>
 <p>Heckman selection model corrects for this bias by modelling (1) the selection process <em>and</em> (2) the outcome simultaneously.</p>
 </section>
@@ -469,7 +469,7 @@ F-statistic: 132.1 on 1 and 4912 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>model <span class="ot">&lt;-</span> <span class="fu">selection</span>(</span>
 <span id="cb7-2"><a></a>  <span class="at">selection =</span> ADnonmissing <span class="sc">~</span>  Age <span class="sc">+</span> BMI <span class="sc">+</span> Testosterone <span class="sc">+</span> TotChol,</span>
-<span id="cb7-3"><a></a>  <span class="at">outcome   =</span> AlcoholDay <span class="sc">~</span> Underage,</span>
+<span id="cb7-3"><a></a>  <span class="at">outcome   =</span> AlcoholDay <span class="sc">~</span> Underage<span class="dv">-1</span>,</span>
 <span id="cb7-4"><a></a>  <span class="at">data =</span> NHANES)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
