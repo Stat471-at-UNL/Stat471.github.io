@@ -254,8 +254,8 @@ P(Z_i = 2 \mid x_i, \theta^{(0)}) = ?
 \]</span> We have <span class="math inline">\(f(x_i \mid Z_i, \theta)\)</span> … so we use Bayes and Total Probability a few times</p>
 </section>
 
-<section id="expectation-step" class="title-slide slide level1 center">
-<h1>Expectation Step</h1>
+<section id="expectation-step-e-step" class="title-slide slide level1 center">
+<h1>Expectation Step (E-step)</h1>
 <p>What is the probability that the <span class="math inline">\(i\)</span>th observation is from group 1 given the values in x and parameters <span class="math inline">\(\theta\)</span>?</p>
 <p><span class="math display">\[
 P(Z_i = 1 \mid  x_i, \theta^{(0)}) = \\
@@ -322,14 +322,14 @@ P(Z_i = 1 \mid  x_i, \theta^{(0)}) = \\
 </div>
 </section>
 
-<section id="maximization-step" class="title-slide slide level1 center">
-<h1>Maximization Step</h1>
+<section id="maximization-step-m-step" class="title-slide slide level1 center">
+<h1>Maximization Step (M-step)</h1>
 <p>We want to find the MLE estimates for <span class="math inline">\(\theta\)</span> given <span class="math inline">\(X\)</span> and <span class="math inline">\(Z\)</span>:</p>
 <p>We get updated values <span class="math inline">\(\theta^{(t+1)}\)</span> as</p>
 <p><span class="math display">\[
-\mu_k^{(t+1)} = \frac{\sum_i x_i \cdot P(Z_i = k \mid x_i,\theta^{(t)})}{\sum_i P(Z_i = k \mid x_i,\theta^{(t)})}
+\mu_k^{(t+1)} = E[X \mid Z = k] = \frac{\sum_i x_i \cdot P(Z_i = k \mid x_i,\theta^{(t)})}{\sum_i P(Z_i = k \mid x_i,\theta^{(t)})}
 \]</span> <span class="math display">\[
-{\sigma_k^2}^{(t+1)} = \frac{\sum_i (x_i - \mu_k^{(t)})^2 \cdot P(Z_i = k \mid x_i,\theta^{(t)})}{\sum_i P(Z_i = k \mid x_i,\theta^{(t)})}
+{\sigma_k^2}^{(t+1)} = Var[X \mid Z = k] = \frac{\sum_i (x_i - \mu_k^{(t)})^2 \cdot P(Z_i = k \mid x_i,\theta^{(t)})}{\sum_i P(Z_i = k \mid x_i,\theta^{(t)})}
 \]</span> <span class="math display">\[
 \pi^{(t+1)} = \frac{1}{n}\sum_i P(Z_i = 1 \mid x_i,\theta^{(t)})
 \]</span></p>
@@ -354,8 +354,8 @@ P(Z_i = 1 \mid  x_i, \theta^{(0)}) = \\
 </div>
 </section>
 
-<section id="now-we-repeat-e-and-m" class="title-slide slide level1 center">
-<h1>Now we repeat E and M</h1>
+<section id="now-we-repeat-the-steps-e-and-m" class="title-slide slide level1 center">
+<h1>Now we repeat the steps (E and M)</h1>
 <p>Concept of EM algorithm</p>
 <p>Optimization is done iteratively; each step gets closer to a (local) maximum</p>
 <p>Stopping criterion: log-likelihood does not change anymore</p>
@@ -367,11 +367,11 @@ P(Z_i = 1 \mid  x_i, \theta^{(0)}) = \\
 <span id="cb8-4"><a></a>    }) <span class="sc">|&gt;</span> <span class="fu">sum</span>()</span>
 <span id="cb8-5"><a></a>}</span>
 <span id="cb8-6"><a></a></span>
-<span id="cb8-7"><a></a><span class="fu">loglik</span>(df<span class="sc">$</span>x, <span class="fu">c</span>(theta_new<span class="sc">$</span>pi, <span class="dv">1</span><span class="sc">-</span> theta_new<span class="sc">$</span>pi), </span>
+<span id="cb8-7"><a></a><span class="fu">loglik</span>(df<span class="sc">$</span>x, <span class="fu">c</span>(theta_new<span class="sc">$</span>prob_pi, <span class="dv">1</span><span class="sc">-</span> theta_new<span class="sc">$</span>prob_pi), </span>
 <span id="cb8-8"><a></a>       <span class="at">mu_k =</span> <span class="fu">c</span>(theta_new<span class="sc">$</span>mu_1, theta_new<span class="sc">$</span>mu_2),</span>
 <span id="cb8-9"><a></a>       <span class="at">sigma_k =</span> <span class="fu">c</span>(theta_new<span class="sc">$</span>sd_1, theta_new<span class="sc">$</span>sd_2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -Inf</code></pre>
+<pre><code>[1] -758.5023</code></pre>
 </div>
 </div>
 </section>
