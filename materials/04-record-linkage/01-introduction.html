@@ -426,63 +426,132 @@ JW(s_1, s_2) = J(s_1, s_2) + \ell p \left (1 - J(s_1, s_2) \right)
 </div>
 </section>
 
-<section id="introduce-thresholds" class="title-slide slide level1 center">
-<h1>Introduce Thresholds</h1>
+<section id="distribution-of-distances-between-pairs" class="title-slide slide level1 center">
+<h1>Distribution of distances between pairs</h1>
+<p>Most of the pairs correspond to non-matches</p>
+
+<img data-src="01-introduction_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>df_a<span class="sc">$</span>first</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "John"      "Katherine" "Robert"    "Maria"     "William"   "Alicia"   </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>df_b<span class="sc">$</span>first</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Jon"    "Kathy"  "Rob"    "Maria"  "Will"   "Alisha" "Laura"  "Robert"</code></pre>
+</div>
+</div>
+</section>
+
+<section id="similarities-and-thresholds" class="title-slide slide level1 center">
+<h1>Similarities and Thresholds</h1>
+<p>Calculate the other similarities</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>pairs_last <span class="ot">&lt;-</span> pairs_last <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb12-2"><a></a>  <span class="at">sim =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">stringdist</span>(last_a, last_b, <span class="at">method =</span> <span class="st">"jw"</span>)</span>
-<span id="cb12-3"><a></a>)</span>
-<span id="cb12-4"><a></a></span>
-<span id="cb12-5"><a></a>pairs_city <span class="ot">&lt;-</span> pairs_city <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb12-6"><a></a>  <span class="at">sim =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">stringdist</span>(city_a, city_b, <span class="at">method =</span> <span class="st">"jw"</span>)</span>
-<span id="cb12-7"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>pairs_last <span class="ot">&lt;-</span> pairs_last <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb16-2"><a></a>  <span class="at">sim =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">stringdist</span>(last_a, last_b, <span class="at">method =</span> <span class="st">"jw"</span>)</span>
+<span id="cb16-3"><a></a>)</span>
+<span id="cb16-4"><a></a></span>
+<span id="cb16-5"><a></a>pairs_city <span class="ot">&lt;-</span> pairs_city <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb16-6"><a></a>  <span class="at">sim =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">stringdist</span>(city_a, city_b, <span class="at">method =</span> <span class="st">"jw"</span>)</span>
+<span id="cb16-7"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>and introduce thresholds:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>pairs_first <span class="ot">&lt;-</span> pairs_first <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">match =</span> sim <span class="sc">&gt;</span> <span class="fl">0.6</span>)</span>
-<span id="cb13-2"><a></a>pairs_last <span class="ot">&lt;-</span> pairs_last <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">match =</span> sim <span class="sc">&gt;</span> <span class="fl">0.8</span>)</span>
-<span id="cb13-3"><a></a>pairs_city <span class="ot">&lt;-</span> pairs_city <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">match =</span> sim <span class="sc">&gt;</span> <span class="fl">0.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>matches_first <span class="ot">&lt;-</span> pairs_first <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">match =</span> sim <span class="sc">&gt;</span> <span class="fl">0.25</span>)</span>
+<span id="cb17-2"><a></a>matches_last <span class="ot">&lt;-</span> pairs_last <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">match =</span> sim <span class="sc">&gt;</span> <span class="fl">0.25</span>)</span>
+<span id="cb17-3"><a></a>matches_city <span class="ot">&lt;-</span> pairs_city <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">match =</span> sim <span class="sc">&gt;</span> <span class="fl">0.25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 
 <section id="example-apply-thresholds-to-combined-data" class="title-slide slide level1 center">
 <h1>Example: apply thresholds to combined data</h1>
-<p>Stratify on birth year:</p>
+<p>Create a large data set of all pairs of observations:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>df_ab <span class="ot">&lt;-</span> df_a <span class="sc">|&gt;</span> <span class="fu">full_join</span>(df_b, <span class="at">by=</span><span class="st">"birth_year"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_a"</span>, <span class="st">"_b"</span>))</span>
-<span id="cb14-2"><a></a>df_ab <span class="ot">&lt;-</span> df_ab <span class="sc">|&gt;</span> </span>
-<span id="cb14-3"><a></a>  <span class="fu">left_join</span>(pairs_first <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>sim, <span class="at">match_first =</span> match))  <span class="sc">|&gt;</span></span>
-<span id="cb14-4"><a></a>  <span class="fu">left_join</span>(pairs_last <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>sim, <span class="at">match_last =</span> match))  <span class="sc">|&gt;</span></span>
-<span id="cb14-5"><a></a>  <span class="fu">left_join</span>(pairs_city <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>sim, <span class="at">match_city =</span> match))  <span class="sc">|&gt;</span></span>
-<span id="cb14-6"><a></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
-<span id="cb14-7"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb14-8"><a></a>    <span class="at">overall =</span> <span class="fu">sum</span>(match_first <span class="sc">+</span> match_last <span class="sc">+</span> match_city)</span>
-<span id="cb14-9"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>df_ab <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">expand.grid</span>(<span class="at">id_a =</span> df_a<span class="sc">$</span>id_a, <span class="at">id_b =</span> df_b<span class="sc">$</span>id_b)) <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a></a>  <span class="fu">left_join</span>(df_a, <span class="at">by =</span> <span class="st">"id_a"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a></a>  <span class="fu">left_join</span>(df_b, <span class="at">by =</span> <span class="st">"id_b"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_a"</span>, <span class="st">"_b"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-
-<section id="section-1" class="title-slide slide level1 center">
-<h1></h1>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 13
-# Rowwise: 
-   id_a first_a last_a birth_year city_a  id_b first_b last_b city_b match_first
-  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;lgl&gt;      
-1     1 John    Smith        1985 Linco…   101 Jon     Smyth  Lincon TRUE       
-2     2 Kather… Jones        1978 Omaha    102 Kathy   Jones  Omaha  TRUE       
-3     3 Robert  Brown        1990 Grand…   103 Rob     Brown  Grand… TRUE       
-4     3 Robert  Brown        1990 Grand…   108 Robert  Brown  Grand… TRUE       
-5     4 Maria   Lopez        1988 Kearn…   104 Maria   Lopes  Kearny TRUE       
-6     5 William Chen         1983 Norfo…   105 Will    Chen   Norfo… TRUE       
-7     6 Alicia  Mendez       1991 Linco…   106 Alisha  Mendez Linco… TRUE       
-8    NA &lt;NA&gt;    &lt;NA&gt;         1992 &lt;NA&gt;     107 Laura   King   Omaha  NA         
-# ℹ 3 more variables: match_last &lt;lgl&gt;, match_city &lt;lgl&gt;, overall &lt;int&gt;</code></pre>
+<pre><code>  id_a id_b   first_a last_a birth_year_a       city_a first_b last_b
+1    1  101      John  Smith         1985      Lincoln     Jon  Smyth
+2    2  101 Katherine  Jones         1978        Omaha     Jon  Smyth
+3    3  101    Robert  Brown         1990 Grand Island     Jon  Smyth
+4    4  101     Maria  Lopez         1988      Kearney     Jon  Smyth
+5    5  101   William   Chen         1983      Norfolk     Jon  Smyth
+6    6  101    Alicia Mendez         1991      Lincoln     Jon  Smyth
+  birth_year_b city_b
+1         1985 Lincon
+2         1985 Lincon
+3         1985 Lincon
+4         1985 Lincon
+5         1985 Lincon
+6         1985 Lincon</code></pre>
 </div>
 </div>
-
-
 </section>
+
+<section id="merge-similarities-and-total" class="title-slide slide level1 center">
+<h1>Merge Similarities and Total</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>df_ab <span class="ot">&lt;-</span> df_ab <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a></a>  <span class="fu">left_join</span>(pairs_first <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a></a>              <span class="fu">mutate</span>(<span class="at">sim_first=</span>sim) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>sim))  <span class="sc">|&gt;</span></span>
+<span id="cb20-4"><a></a>  <span class="fu">left_join</span>(pairs_last <span class="sc">|&gt;</span></span>
+<span id="cb20-5"><a></a>              <span class="fu">mutate</span>(<span class="at">sim_last=</span>sim) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>sim))   <span class="sc">|&gt;</span></span>
+<span id="cb20-6"><a></a>  <span class="fu">left_join</span>(pairs_city <span class="sc">|&gt;</span> </span>
+<span id="cb20-7"><a></a>              <span class="fu">mutate</span>(<span class="at">sim_city=</span>sim) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>sim))  <span class="sc">|&gt;</span></span>
+<span id="cb20-8"><a></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
+<span id="cb20-9"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-10"><a></a>    <span class="at">overall =</span> sim_first <span class="sc">+</span> sim_last <span class="sc">+</span> sim_city</span>
+<span id="cb20-11"><a></a>  ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+
+<section id="top-rows-should-be-matches" class="title-slide slide level1 center">
+<h1>Top rows should be matches</h1>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 × 11
+# Rowwise: 
+    id_a  id_b first_a   last_a birth_year_a city_a  first_b last_b birth_year_b
+   &lt;int&gt; &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;
+ 1     3   108 Robert    Brown          1990 Grand … Robert  Brown          1990
+ 2     5   105 William   Chen           1983 Norfolk Will    Chen           1983
+ 3     3   103 Robert    Brown          1990 Grand … Rob     Brown          1990
+ 4     4   104 Maria     Lopez          1988 Kearney Maria   Lopes          1988
+ 5     6   106 Alicia    Mendez         1991 Lincoln Alisha  Mendez         1991
+ 6     2   102 Katherine Jones          1978 Omaha   Kathy   Jones          1978
+ 7     1   101 John      Smith          1985 Lincoln Jon     Smyth          1985
+ 8     2   107 Katherine Jones          1978 Omaha   Laura   King           1992
+ 9     2   104 Katherine Jones          1978 Omaha   Maria   Lopes          1988
+10     5   106 William   Chen           1983 Norfolk Alisha  Mendez         1991
+# ℹ 38 more rows
+# ℹ 2 more variables: city_b &lt;chr&gt;, overall &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+
+<section id="sum-of-pairwise-distances" class="title-slide slide level1 center">
+<h1>Sum of Pairwise distances</h1>
+
+<img data-src="01-introduction_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
+
+<section id="sum-of-pairwise-distances-1" class="title-slide slide level1 center">
+<h1>Sum of Pairwise distances</h1>
+<p>Can we assume that these are two distinct normal distributions?</p>
+<div class="cell">
+
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  match  mean     sd
+  &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+1 FALSE  1.02 0.447 
+2 TRUE   2.82 0.0893</code></pre>
+</div>
+</div>
+
+
+<img data-src="01-introduction_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../N.svg" class="slide-logo"></p>
