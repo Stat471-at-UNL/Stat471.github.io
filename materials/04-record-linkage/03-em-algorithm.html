@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <meta name="dcterms.date" content="2025-11-05">
+  <meta name="dcterms.date" content="2025-11-17">
   <title>Stat 471 – Probabilistic Record Linkage</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -201,7 +201,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2025-11-05</p>
+  <p class="date">2025-11-17</p>
 </section>
 <section id="probabilistic-matching" class="title-slide slide level1 center">
 <h1>Probabilistic Matching</h1>
@@ -307,8 +307,8 @@ P(M \mid \gamma) = \frac{P(\gamma \mid M) P(M)}{P(\gamma \mid M) P(M) + P(\gamma
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(fastLink)</span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a>fl_out <span class="ot">&lt;-</span> <span class="fu">fastLink</span>(</span>
-<span id="cb1-4"><a></a>  <span class="at">dfA =</span> df_b,</span>
-<span id="cb1-5"><a></a>  <span class="at">dfB =</span> df_a,</span>
+<span id="cb1-4"><a></a>  <span class="at">dfA =</span> df_a,</span>
+<span id="cb1-5"><a></a>  <span class="at">dfB =</span> df_b,</span>
 <span id="cb1-6"><a></a>  <span class="at">varnames =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"birth_year"</span>, <span class="st">"city"</span>),</span>
 <span id="cb1-7"><a></a>  <span class="at">stringdist.match =</span> <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>, <span class="st">"city"</span>),</span>
 <span id="cb1-8"><a></a>  <span class="at">numeric.match =</span> <span class="fu">c</span>(<span class="st">"birth_year"</span>),</span>
@@ -336,21 +336,23 @@ Getting the match patterns for each estimated match.</code></pre>
 <section id="section" class="title-slide slide level1 center">
 <h1></h1>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>matches <span class="ot">&lt;-</span> <span class="fu">getMatches</span>(df_a, df_b, fl_out)</span>
+<span id="cb4-2"><a></a>matches <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(posterior)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id_b  first   last birth_year         city dfB.match[, names.dfB] gamma.1
-1  108 Robert  Brown       1990 Grand Island                      3       2
-2  104  Maria  Lopes       1988       Kearny                      4       2
-3  105   Will   Chen       1983      Norfolk                      5       1
-4  101    Jon  Smyth       1985       Lincon                      1       1
-5  102  Kathy  Jones       1978        Omaha                      2       0
-6  106 Alisha Mendez       1991      Lincoln                      6       0
-  gamma.2 gamma.3 gamma.4          posterior
-1       2       2       2 0.9999999999999742
-2       1       2       2 0.9999999999999014
-3       2       2       2 0.9999999999891651
-4       1       2       2 0.9999999999585425
-5       2       2       2 0.9999985233865725
-6       2       2       2 0.9999985233865725</code></pre>
+<pre><code>  id_a     first   last birth_year         city dfB.match[, names.dfB] gamma.1
+1    3    Robert  Brown       1990 Grand Island                    108       2
+2    4     Maria  Lopez       1988      Kearney                    104       2
+3    5   William   Chen       1983      Norfolk                    105       1
+4    1      John  Smith       1985      Lincoln                    101       1
+5    2 Katherine  Jones       1978        Omaha                    102       0
+6    6    Alicia Mendez       1991      Lincoln                    106       0
+  gamma.2 gamma.3 gamma.4 posterior
+1       2       2       2 1.0000000
+2       1       2       2 1.0000000
+3       2       2       2 1.0000000
+4       1       2       2 1.0000000
+5       2       2       2 0.9999983
+6       2       2       2 0.9999983</code></pre>
 </div>
 </div>
 
